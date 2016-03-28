@@ -22,8 +22,9 @@ shinyUI(fluidPage(
                   value = 9,
                   step = 1),
 
-     img(src="http://www.colacmar-senalmar2015.com/colacmar/public/logos/UNAL.png",
-         height = 80, width = 170),
+     img(src="https://srunal.files.wordpress.com/2016/03/logotransparente1.png",
+         height = 80, width = 150),
+     br(),
      br(),
      p("App creada por el Semillero de R de la Universidad Nacional de Colombia:"),
      tags$a(href="https://srunal.wordpress.com/", "https://srunal.wordpress.com/")
