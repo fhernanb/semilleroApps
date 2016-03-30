@@ -1,6 +1,6 @@
 library(shiny)
 shinyUI(pageWithSidebar(
-  headerPanel( "Graficos de resumen", "Flowserve"),
+  headerPanel( "Graficos de resumen para una variable cuantitativa", "Flowserve"),
   sidebarPanel(
     h5('Esta aplicacion sirve para dibujar el histograma, la densidad, el qqplot y 
        boxplot para una de las variables de la base de datos ingresada por el 
@@ -23,8 +23,10 @@ shinyUI(pageWithSidebar(
     tags$hr(),
     selectInput("product", "Seleccione la variable de la base de datos",""),
     
-    img(src="https://srunal.files.wordpress.com/2016/03/logotransparente1.png",
-        height = 80, width = 150)
+    img(src="udea.png", height = 72, width = 64),
+    img(src="logo.png", height = 56, width = 136),
+    
+    tags$a(href="https://srunal.wordpress.com/", "https://srunal.wordpress.com/")
 
     
   ),

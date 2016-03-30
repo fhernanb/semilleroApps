@@ -15,8 +15,8 @@ shinyServer(function(input, output)
   output$github <- renderText({
     esperanza <-exp(input$mu+((input$sigma)^2)/2)
     varianza <-(exp(input$sigma^2)-1)*exp(2*input$mu+((input$sigma)^2))
-    paste(c("Para esos parametros E(X)=", esperanza,
-            "con Var(X)=", varianza))
+    paste(c("Para esos parametros E(X)=", round(esperanza, 2),
+            "y Var(X)=", round(varianza,2)))
   })
   
 })

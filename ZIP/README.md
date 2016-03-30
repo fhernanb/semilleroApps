@@ -1,1 +1,1 @@
-Esta aplicación tiene por objetivo mostrar como afectan los parámetros las probabilidades en la distribución ZIP.
+Esta aplicacion tiene por objetivo mostrar como afectan los parametros las probabilidades en la distribucion ZIP.

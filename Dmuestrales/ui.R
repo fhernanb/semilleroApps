@@ -60,7 +60,10 @@ shinyUI(fluidPage(
                                     min=0.001, max=0.999)),
 
       img(src="udea.png", height = 72, width = 64),
-      img(src="logo.png", height = 56, width = 136)
+      img(src="logo.png", height = 56, width = 136),
+      br(),
+      p("App creada por el Semillero de R de la Universidad Nacional de Colombia:"),
+      tags$a(href="https://srunal.wordpress.com/", "https://srunal.wordpress.com/")
 
     ),
 

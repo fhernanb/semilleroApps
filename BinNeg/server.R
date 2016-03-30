@@ -12,8 +12,6 @@ shinyServer(function(input, output)
   })
   output$github <- renderText({
     if (input$p==0) paste("No tiene sentido p=0")
-    #paste('You selected', if (input$p == '') 'nothing' else input$p,
-    #      'in the Github example.')
   })
 })
 

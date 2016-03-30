@@ -15,8 +15,8 @@ shinyServer(function(input, output)
     esperanza <- ( input$alpha) * (1/input$lambda)
     varianza <- ( input$alpha) * (1/(input$lambda^2))
     escala <- (1/input$lambda)
-    paste(c("Para una escala=",escala,"E(X)=", esperanza,
-            "con Var(X)=", varianza))
+    paste(c("Para una escala=", round(escala,2), ", E(X)=", round(esperanza, 2),
+            "con Var(X)=", round(varianza,2)))
   })
   
 })

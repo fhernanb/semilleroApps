@@ -1,1 +1,1 @@
-Esta aplicacion tiene por objetivo mostrar como influyen los parámetros de la distribución lognormal sobre la forma de la densidad.
+Esta aplicacion tiene por objetivo mostrar como influyen los par?metros de la distribucion lognormal sobre la forma de la densidad.
