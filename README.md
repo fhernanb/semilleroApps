@@ -9,7 +9,7 @@ Para correr una de las aplicaciones usted debe tener instalado el paquete **shin
 
 ```s
 if (!require('shiny')) install.packages("shiny")
-shiny::runGitHub(repo="semilleroApps", username="fhernanb", subdir = "samplesize")
+shiny::runGitHub(repo="semilleroApps", user="fhernanb", sub="samplesize")
 ```
 
 Otra forma sería clonando el repositorio o descargando el repositorio y luego copia el siguiente código en la consola de Rstudio:
