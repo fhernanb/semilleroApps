@@ -1,4 +1,6 @@
 library(shiny)
+library(plotly)
+
 shinyUI(pageWithSidebar(
   headerPanel("Curva de log-verosimilitud", "Flowserve"),
   sidebarPanel(
@@ -32,7 +34,8 @@ shinyUI(pageWithSidebar(
 
     
   ),
-  mainPanel(h4('A continuacion se presenta la superficie de log-verosimilitud'),
+  mainPanel(h4('A continuacion se presenta la superficie de 
+               log-verosimilitud'),
             plotlyOutput("distPlot"))
   
 ))

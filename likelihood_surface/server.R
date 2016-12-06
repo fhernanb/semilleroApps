@@ -23,9 +23,6 @@ shinyServer(function(input,output,session){
     dt = read.csv(inFile$datapath, header=input$header, sep=input$sep)
     x <- as.vector(dt[, input$product])
     
-    #p <- plot_ly(x = x, type = "histogram")
-    #ggplotly(p)
-    
     ####
     loglik_function <- function(par1, par2) {
       eval(parse(text=paste('sum(d', Dist, '(x=x, par1, par2, log=T))', sep='')))
