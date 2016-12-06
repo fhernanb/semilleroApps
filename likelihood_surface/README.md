@@ -1,1 +1,1 @@
-Esta aplicacion sirve para crear 4 graficos de resumen para una variable cuantitativa de una base de datos ingresada por el usuario.
+Esta aplicacion sirve para construir la superficie de log-verosimilitud de una distribucion de probabilidad continua de dos parametros dada una muestra aleatoria.

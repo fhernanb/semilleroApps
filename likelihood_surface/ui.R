@@ -36,6 +36,6 @@ shinyUI(pageWithSidebar(
   ),
   mainPanel(h4('A continuacion se presenta la superficie de 
                log-verosimilitud'),
-            plotlyOutput("distPlot"))
+            plotlyOutput("distPlot", height="550px"))
   
 ))
