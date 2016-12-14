@@ -1,11 +1,11 @@
 library(shiny)
 library(plotly)
 
+
 shinyServer(function(input,output,session){
   
   observe({
     inFile<-input$file1
-    #print(inFile)
     if(is.null(inFile)) return(NULL)
     dt = read.csv(inFile$datapath, header=input$header, sep=input$sep)
     updateSelectInput(session, "product", choices = names(dt))
@@ -15,11 +15,10 @@ shinyServer(function(input,output,session){
     inFile<-input$file1
     
     Dist <- ifelse(input$Distribucion == 'Normal', 'norm',
-                   ifelse(input$Distribucion == 'Weibull', 
-                          'weibull', 'gamma'))
+                   ifelse(input$Distribucion == 'Weibull', 'weibull', 'gamma'))
     
-    n.points <- 20
-    sigmas <- 2
+    n.points <- 30
+    sigmas <- 3
     dt = read.csv(inFile$datapath, header=input$header, sep=input$sep)
     x <- as.vector(dt[, input$product])
     
@@ -57,11 +56,12 @@ shinyServer(function(input,output,session){
                zaxis = list(title = "Log-lik")))
     
     ggplotly(p)
-    
-    ####
-
-
   })
   
 
+  output$markdown <- renderUI({
+    HTML(markdown::markdownToHTML(knit('teoria.Rmd', quiet = TRUE)))
+  })
+  
+  
 })
