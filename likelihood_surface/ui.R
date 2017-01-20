@@ -19,7 +19,7 @@ fluidPage(
          log-verosimilitud asociada a una distribucion de 2 parametros
          dados los valores de una variable ingresados por el usuario.'),
       br(),
-      fileInput('file1', 'Use el siguiente boton para cargar la base de datos.',
+      fileInput('file1', 'Use el siguiente boton para ingresar su base de datos.',
                 accept = c(
                   'text/csv',
                   'text/comma-separated-values',
@@ -29,8 +29,9 @@ fluidPage(
                   '.tsv'
                 )
       ),
-      checkboxInput('header', 'Tiene su base de datos ENCABEZADO (header)?', TRUE),
-      radioButtons('sep', 'Cual es la separacion de sus datos?',
+      checkboxInput('header', 'Marque la casilla si su base de datos tiene
+                    ENCABEZADO (header)', TRUE),
+      radioButtons('sep', 'Cual es simbolo de separacion dentro de su base datos?',
                    c(Tab='\t', Comma=',', Semicolon=';' )
       ),
       tags$hr(),
