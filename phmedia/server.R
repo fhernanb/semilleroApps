@@ -61,6 +61,11 @@ shinyServer(function(input,output,session){
     paste0('El intervalo de confianza del ', 100*input$alfa,
            '% para la media poblacional es ', intervalo)
   })
+   
+   
+   output$markdown <- renderUI({
+     HTML(markdown::markdownToHTML(knit('teoria.Rmd', quiet = TRUE)))
+   })
 
   
 
