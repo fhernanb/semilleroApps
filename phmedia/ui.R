@@ -33,10 +33,10 @@ shinyUI(pageWithSidebar(
                  value=0),
     
     selectInput("h0", label = "Elija la hipotesis alterna", 
-                choices = list("<" = 1, 
-                               "diferente" = 2,
-                               ">" = 3),
-                selected = 2),
+                choices = list("Menor" = "less", 
+                               "Diferente" = "two.sided",
+                               "Mayor" = "greater"),
+                selected = "two.sided"),
     
     sliderInput(inputId='alfa', 
                 label=h5('Opcional: elija el nivel de significancia
@@ -55,19 +55,23 @@ shinyUI(pageWithSidebar(
     fluidRow(
       
       column(6,
-             h4('A continuacion se muestran las primeras 2 observaciones de 
+             h5('A continuacion se muestran las primeras 2 observaciones de 
                 la base ingresada.'), 
              tableOutput('summary'),
-             h4('A continuacion se presenta el histograma, densidad y qqplot 
-                para la variable seleccionada.'),
+             br(),
+             h5('A continuacion se presenta el histograma, la densidad, qqplot 
+                y valor P de la prueba de normalidad Shapiro para analizar
+                el cumplimiento del supuesto de normalidad para la variable de
+                interes.'),
              plotOutput("distPlot")
              ),
       
       column(6,
-             h4("A continuacion la tabla con las estadisticas de resumen:"),
+             h5("A continuacion la tabla con las estadisticas de resumen:"),
              tableOutput('statistic'),
-             "Hola, esto es una prueba. El valor de referencia de la prueba es ",
-             "Mensaje despedida"
+             br(),
+             h4("Resultados de la prueba de hipótesis:"),
+             textOutput("resul1")
              )
       
   
