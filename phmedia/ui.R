@@ -87,7 +87,8 @@ mainPanel(
                        textOutput("resul2")), 
               tabPanel("Base de datos", 
                        "A continuacion la base de datos ingresada por el usuario.",
-                       uiOutput('summary'))
+                       uiOutput('summary')),
+              tabPanel("Teoria", uiOutput('markdown'))
   )
 )
   
