@@ -69,7 +69,6 @@ mainPanel(
                        plotOutput("distPlot"),
                        h4("Tabla con las estadisticas de resumen:"),
                        tableOutput('statistic'),
-                       #br(),
                        h4("- Resultado de la prueba de hipótesis:"),
                        textOutput("resul1"),
                        h4(HTML("- Intervalo de confianza para la media &mu;")),
@@ -80,7 +79,7 @@ mainPanel(
                        uiOutput('summary')),
               
               tabPanel("Teoria 1", includeMarkdown("include.md")),
-              tabPanel("Teoria 2", uiOutput('markdown'))
+              tabPanel("Teoria 2", uiOutput('miteoria'))
               
   )
 )
