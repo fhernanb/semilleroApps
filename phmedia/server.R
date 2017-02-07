@@ -62,9 +62,8 @@ shinyServer(function(input,output,session){
            '% para la media poblacional es ', intervalo)
   })
    
-   
    output$markdown <- renderUI({
-     HTML(markdown::markdownToHTML(knit('teoria.Rmd', quiet = TRUE)))
+     HTML(markdown::markdownToHTML(knit(input='teoria.Rmd', quiet = TRUE)))
    })
 
   

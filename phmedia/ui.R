@@ -62,21 +62,21 @@ mainPanel(
   tabsetPanel(type = "pills",
               
               tabPanel("Resultados",
-                       h5('A continuacion se presenta el histograma, la densidad, qqplot 
+                       h4('A continuacion se presenta el histograma, la densidad, qqplot 
                 y valor P de la prueba de normalidad Shapiro para analizar
                 el cumplimiento del supuesto de normalidad para la variable de
                 interes.'),
                        plotOutput("distPlot"),
-                       h5("- A continuacion la tabla con las estadisticas de resumen:"),
+                       h4("Tabla con las estadisticas de resumen:"),
                        tableOutput('statistic'),
                        #br(),
                        h4("- Resultado de la prueba de hipótesis:"),
                        textOutput("resul1"),
-                       h4(HTML("Intervalo de confianza para la media &mu;")),
+                       h4(HTML("- Intervalo de confianza para la media &mu;")),
                        textOutput("resul2")),
               
               tabPanel("Base de datos", 
-                       "- A continuacion la base de datos ingresada por el usuario.",
+                       "A continuacion la base de datos ingresada por el usuario.",
                        uiOutput('summary')),
               
               tabPanel("Teoria 1", includeMarkdown("include.md")),
