@@ -78,7 +78,7 @@ mainPanel(
                        "A continuacion la base de datos ingresada por el usuario.",
                        uiOutput('summary')),
               
-              tabPanel("Teoria 1", includeMarkdown("include.md")),
+              tabPanel("Teoria 1", includeHTML("include.html")),
               tabPanel("Teoria 2", uiOutput('miteoria'))
               
   )
