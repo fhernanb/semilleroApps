@@ -1,6 +1,7 @@
 library(shiny)
 shinyUI(pageWithSidebar(
-  headerPanel("Prueba de hipotesis para la media", "Flowserve"),
+  headerPanel(HTML("Prueba de hipotesis para la media &mu;"),
+              windowTitle="PH media"),
   sidebarPanel(
     h5('Esta aplicacion sirve para realizar prueba de hipotesis 
         para la media de una variable cuantitativa. Ingrese la 
@@ -26,27 +27,29 @@ shinyUI(pageWithSidebar(
                 de datos",""),
     tags$hr(),
     
-    numericInput(inputId='alfa', label='Elija el nivel de significancia', 
-                 value=0.05, min=0.01, 
-                 step=0.01, max=0.10),
+    numericInput(inputId='mu0', 
+                 label=HTML("Ingrese el valor de referencia 
+                            &mu;<sub>0</sub> para la prueba:"), 
+                 value=0),
     
-    numericInput(inputId='mu0', label='Ingrese el ', 
-                 value=0.05, min=0.01, 
-                 step=0.01, max=0.10),
-    
-    selectInput("h0", label = h5("Elija la hipotesis alterna"), 
+    selectInput("h0", label = "Elija la hipotesis alterna", 
                 choices = list("<" = 1, 
                                "diferente" = 2,
                                ">" = 3),
                 selected = 2),
+    
+    sliderInput(inputId='alfa', 
+                label=h5('Opcional: elija el nivel de significancia
+                          para reportar el intervalo de confianza'),
+                min=0.90, max=0.99,
+                value=0.95, step=0.01),
     
     img(src="logo.png", height = 60, width = 150),
     br(),
     
     tags$a(href="https://srunal.wordpress.com/", "https://srunal.wordpress.com/")
 
-    
-  ),
+),
   mainPanel(h4('A continuacion se muestran las primeras 3 observaciones de la base.'), 
             tableOutput('contents'), 
             tableOutput('summary'),
