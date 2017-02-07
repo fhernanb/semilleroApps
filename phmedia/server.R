@@ -12,7 +12,7 @@ shinyServer(function(input,output,session){
     inFile <- input$file1
     if(is.null(inFile)) return(NULL)
     dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
-    dt[1:2, ]
+    dt
   })
   
   output$statistic <- renderTable({
