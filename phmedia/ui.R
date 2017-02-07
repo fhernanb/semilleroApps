@@ -6,7 +6,7 @@ shinyUI(pageWithSidebar(
     h5('Esta aplicacion sirve para realizar prueba de hipotesis 
         para la media de una variable cuantitativa. Ingrese la 
        informacion solicitada abajo.'),
-    br(),
+    
     fileInput('file1', 'Use el boton siguiente para cargar su base de datos.',
               accept = c(
                 'text/csv',
@@ -25,7 +25,6 @@ shinyUI(pageWithSidebar(
     
     selectInput("variable", "Seleccione la variable de interes de la base 
                 de datos",""),
-    tags$hr(),
     
     numericInput(inputId='mu0', 
                  label=HTML("Ingrese el valor de referencia 
@@ -51,33 +50,19 @@ shinyUI(pageWithSidebar(
 
 ),
   mainPanel(
-
-    fluidRow(
-      
-      column(6,
-             h5('A continuacion se muestran las primeras 2 observaciones de 
-                la base ingresada.'), 
-             tableOutput('summary'),
-             br(),
-             h5('A continuacion se presenta el histograma, la densidad, qqplot 
+            h5('A continuacion se presenta el histograma, la densidad, qqplot 
                 y valor P de la prueba de normalidad Shapiro para analizar
                 el cumplimiento del supuesto de normalidad para la variable de
                 interes.'),
-             plotOutput("distPlot")
-             ),
-      
-      column(6,
+             plotOutput("distPlot"),
              h5("A continuacion la tabla con las estadisticas de resumen:"),
              tableOutput('statistic'),
-             br(),
-             h4("Resultados de la prueba de hipótesis:"),
-             textOutput("resul1")
+             #br(),
+             h4("Resultado de la prueba de hipótesis:"),
+             textOutput("resul1"),
+             h4(HTML("Intervalo de confianza para la media &mu;")),
+             textOutput("resul2")
              )
-      
-  
-             )
-    
-    )
   
 ))
 

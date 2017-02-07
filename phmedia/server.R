@@ -36,7 +36,7 @@ shinyServer(function(input,output,session){
            ylab=as.character(input$variable))
     qqline(y)
     shapi <- shapiro.test(y)
-    legend('topleft', bty='n', col='red',
+    legend('topleft', bty='n', col='red', text.col='firebrick3',
            legend=paste('Valor P=', round(shapi$p.value,2)))
   })
   
@@ -46,10 +46,22 @@ shinyServer(function(input,output,session){
     y <- na.omit(dt[, input$variable])
     ph <- t.test(x=y, alternative=input$h0, mu=input$mu0, conf.level=input$alfa)
     conclusion <- ifelse(ph$p.value < 0.05, 'se rechaza.', 'no se rechaza.')
-    paste0('El estadístico de prueba fue t0=', round(ph$statistic, 2),
+    paste0('El estadístico de prueba fue to=', round(ph$statistic, 2),
            ' con un valor P de ', round(ph$p.value, 2), ', por lo tanto se concluye
            que basados en la evidencia muestral la hipótesis nula ', conclusion)
   })
+  
+  
+   output$resul2 <- renderText({
+    inFile <- input$file1
+    dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
+    y <- na.omit(dt[, input$variable])
+    ph <- t.test(x=y, alternative=input$h0, mu=input$mu0, conf.level=input$alfa)
+    intervalo <- paste("(", ph$conf.int[1], ", ", ph$conf.int[2], ").", sep='')
+    paste0('El intervalo de confianza del ', 100*input$alfa,
+           '% para la media poblacional es ', intervalo)
+  })
+
   
 
 })
