@@ -2,8 +2,9 @@ library(shiny)
 shinyUI(pageWithSidebar(
   headerPanel("Prueba de hipotesis para la media", "Flowserve"),
   sidebarPanel(
-    h5('Esta aplicacion sirve para realizar la prueba de hipotesis para la media de
-       una variable cuantitativa. Ingrese la informacion solicitada abajo.'),
+    h5('Esta aplicacion sirve para realizar prueba de hipotesis 
+        para la media de una variable cuantitativa. Ingrese la 
+       informacion solicitada abajo.'),
     br(),
     fileInput('file1', 'Use el boton siguiente para cargar su base de datos.',
               accept = c(
@@ -16,11 +17,13 @@ shinyUI(pageWithSidebar(
               )
     ),
     checkboxInput('header', 'Tiene encabezado la base de datos?', TRUE),
-    radioButtons('sep', 'Cual es la separacion de sus datos?',
-                 c(Tab='\t', Comma=',', Semicolon=';' )
-    ),
-    tags$hr(),
-    selectInput("product", "Seleccione la variable de interes de la base de datos",""),
+    selectInput("sep", label = h5("Cual es la separacion interna de los
+                 datos en la su base de datos?"), 
+                choices = list(Tab='\t', Comma=',', Semicolon=';'),
+                selected = ','),
+    
+    selectInput("product", "Seleccione la variable de interes de la base 
+                de datos",""),
     tags$hr(),
     
     numericInput(inputId='alfa', label='Elija el nivel de significancia', 
