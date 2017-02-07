@@ -23,7 +23,7 @@ shinyUI(pageWithSidebar(
                 choices = list(Tab='\t', Comma=',', Semicolon=';'),
                 selected = ','),
     
-    selectInput("product", "Seleccione la variable de interes de la base 
+    selectInput("variable", "Seleccione la variable de interes de la base 
                 de datos",""),
     tags$hr(),
     
@@ -50,11 +50,33 @@ shinyUI(pageWithSidebar(
     tags$a(href="https://srunal.wordpress.com/", "https://srunal.wordpress.com/")
 
 ),
-  mainPanel(h4('A continuacion se muestran las primeras 3 observaciones de la base.'), 
-            tableOutput('contents'), 
-            tableOutput('summary'),
-            h4('A continuacion los graficos para la variable seleccionada por 
-               el usuario'),
-            plotOutput("distPlot"))
+  mainPanel(
+
+    fluidRow(
+      
+      column(6,
+             h4('A continuacion se muestran las primeras 2 observaciones de 
+                la base ingresada.'), 
+             tableOutput('summary'),
+             h4('A continuacion se presenta el histograma, densidad y qqplot 
+                para la variable seleccionada.'),
+             plotOutput("distPlot")
+             ),
+      
+      column(6,
+             h4("A continuacion la tabla con las estadisticas de resumen:"),
+             tableOutput('statistic'),
+             "Hola, esto es una prueba. El valor de referencia de la prueba es ",
+             "Mensaje despedida"
+             )
+      
+  
+             )
+    
+    )
   
 ))
+
+
+
+
