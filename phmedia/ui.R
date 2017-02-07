@@ -17,9 +17,12 @@ shinyUI(pageWithSidebar(
                 '.tsv'
               )
     ),
-    checkboxInput('header', 'Tiene encabezado la base de datos?', TRUE),
-    selectInput("sep", label = h5("Cual es la separacion interna de los
-                 datos en la su base de datos?"), 
+    checkboxInput(inputId='header',
+                  label='Tiene encabezado la base de datos?', 
+                  value=TRUE),
+    
+    selectInput("sep", label = "Cual es la separacion interna de los
+                 datos en la su base de datos?", 
                 choices = list(Tab='\t', Comma=',', Semicolon=';'),
                 selected = ','),
     
@@ -28,18 +31,21 @@ shinyUI(pageWithSidebar(
     
     numericInput(inputId='mu0', 
                  label=HTML("Ingrese el valor de referencia 
-                            &mu;<sub>0</sub> para la prueba:"), 
+                            &mu;<sub>0</sub> para la probar
+                            H<sub>0</sub>: &mu; = &mu;<sub>0</sub>"), 
                  value=0),
     
-    selectInput("h0", label = "Elija la hipotesis alterna", 
+    selectInput("h0", 
+                label = HTML("Elija el tipo de hipotesis alterna
+                          < , &ne; o >"), 
                 choices = list("Menor" = "less", 
                                "Diferente" = "two.sided",
                                "Mayor" = "greater"),
                 selected = "two.sided"),
     
     sliderInput(inputId='alfa', 
-                label=h5('Opcional: elija el nivel de significancia
-                          para reportar el intervalo de confianza'),
+                label='Opcional: elija el nivel de significancia
+                reportar el intervalo de confianza',
                 min=0.90, max=0.99,
                 value=0.95, step=0.01),
     
@@ -55,10 +61,10 @@ shinyUI(pageWithSidebar(
                 el cumplimiento del supuesto de normalidad para la variable de
                 interes.'),
              plotOutput("distPlot"),
-             h5("A continuacion la tabla con las estadisticas de resumen:"),
+             h5("- A continuacion la tabla con las estadisticas de resumen:"),
              tableOutput('statistic'),
              #br(),
-             h4("Resultado de la prueba de hipótesis:"),
+             h4("- Resultado de la prueba de hipótesis:"),
              textOutput("resul1"),
              h4(HTML("Intervalo de confianza para la media &mu;")),
              textOutput("resul2")
