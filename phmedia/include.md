@@ -10,4 +10,3 @@ Suponga que se tiene una muestra aleatoria $x_1, x_2, \ldots, x_n$ proveniente d
 El estadístico para realizar la prueba es $$t_0=\frac{\bar{x} - \mu_0}{s/\sqrt{n}}$$
 
 El estadístico bajo la suposición de que $H_0$ es verdadera tiene distribución $t$-student con $n-1$ grados de libertad.
-
