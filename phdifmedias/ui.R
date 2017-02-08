@@ -29,10 +29,12 @@ shinyUI(pageWithSidebar(
                 choices = list(Tab='\t', Comma=',', Semicolon=';'),
                 selected = ';'),
     
-    selectInput("variable1", "Seleccione la variable cuantitativa 
+    selectInput(inputId="variable1",
+                label="Seleccione la variable cuantitativa 
                 de interes de la base de datos", ""),
     
-    selectInput("variable2", "Seleccione la variable cualitativa de 
+    selectInput(inputId="variable2",
+                label="Seleccione la variable cualitativa de 
                 agrupacion, debe tener 2 niveles.", ""),
     
     numericInput(inputId='mu0', 

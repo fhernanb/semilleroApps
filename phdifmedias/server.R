@@ -3,37 +3,53 @@ shinyServer(function(input,output,session){
   
   observe({
     inFile <- input$file1
-    if(is.null(inFile)) return(NULL)
-    dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
+    #if(is.null(inFile)) return(NULL)
+    if(is.null(inFile)) dt <- 
+        read.table('https://raw.githubusercontent.com/fhernanb/datos/master/orellana',
+                   header=T, sep='')
+    else dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
     updateSelectInput(session, "variable1", choices = names(dt))
     updateSelectInput(session, "variable2", choices = names(dt))
   })
   
   output$summary <- renderTable({
     inFile <- input$file1
-    if(is.null(inFile)) return(NULL)
-    dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
+    #if(is.null(inFile)) return(NULL)
+    if(is.null(inFile)) dt <- 
+        read.table('https://raw.githubusercontent.com/fhernanb/datos/master/orellana',
+                   header=T, sep='')
+    else dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
     dt
   })
   
   output$statistic <- renderTable({
     inFile <- input$file1
-    dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
+    if(is.null(inFile)) dt <- 
+        read.table('https://raw.githubusercontent.com/fhernanb/datos/master/orellana',
+                   header=T, sep='')
+    else dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
     x <- na.omit(dt[, input$variable1])
     group <- na.omit(dt[, input$variable2])
+    if (nlevels(group) != 2) group <- dt[, 'cascara']
     xx <- split(x, group)
     resumen <- function(x) c(mean(x), var(x), length(x))
     res <- sapply(xx, resumen)
     rownames(res) <- c('Media', 'varianza', 'n')
     res
-  })
+  },
+  rownames = TRUE)
   
   output$distPlot <- renderPlot({
     inFile <- input$file1
+    if(is.null(inFile)) dt <- 
+      read.table('https://raw.githubusercontent.com/fhernanb/datos/master/orellana',
+                 header=T, sep='')
+    else dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
+    # Aqui inicia la figura
     par(mfrow=c(1, 2))
-    dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
     x <- na.omit(dt[, input$variable1])
     group <- na.omit(dt[, input$variable2])
+    if (nlevels(group) != 2) group <- dt[, 'cascara']
     # Para dibujar las densidades
     xx <- split(x, group)
     den <- lapply(xx, density)
