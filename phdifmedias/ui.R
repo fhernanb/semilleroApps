@@ -42,8 +42,9 @@ shinyUI(pageWithSidebar(
 
     numericInput(inputId='mu0', 
                  label=HTML("Ingrese el valor de referencia 
-                            &mu;<sub>0</sub> para la probar
-                            H<sub>0</sub>: &mu; = &mu;<sub>0</sub>"), 
+                            &Delta;<sub>0</sub> para la probar
+                            H<sub>0</sub>: &mu;<sub>1</sub> 
+                            - &mu;<sub>2</sub> = &Delta;<sub>0</sub>"), 
                  value=0),
     
     selectInput("h0", 
@@ -71,7 +72,7 @@ mainPanel(
   tabsetPanel(type = "pills",
               
               tabPanel("Resultados",
-                       h4('A continuacion se presenta el histograma, la densidad, qqplot 
+                       h4('A continuacion se presentan las densidades, qqplot 
                 y valor P de la prueba de normalidad Shapiro para analizar
                 el cumplimiento del supuesto de normalidad para la variable de
                 interes.'),

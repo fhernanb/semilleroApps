@@ -28,8 +28,9 @@ shinyServer(function(input,output,session){
         read.table('https://raw.githubusercontent.com/fhernanb/datos/master/orellana',
                    header=T, sep='')
     else dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
-    x <- na.omit(dt[, input$variable1])
-    group <- na.omit(dt[, input$variable2])
+    dt <- na.omit(dt)
+    x <- dt[, input$variable1]
+    group <- dt[, input$variable2]
     if (nlevels(group) != 2) group <- dt[, 'cascara']
     xx <- split(x, group)
     resumen <- function(x) c(mean(x), var(x), length(x))
@@ -47,8 +48,9 @@ shinyServer(function(input,output,session){
     else dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
     # Aqui inicia la figura
     par(mfrow=c(1, 2))
-    x <- na.omit(dt[, input$variable1])
-    group <- na.omit(dt[, input$variable2])
+    dt <- na.omit(dt)
+    x <- dt[, input$variable1]
+    group <- dt[, input$variable2]
     if (nlevels(group) != 2) group <- dt[, 'cascara']
     # Para dibujar las densidades
     xx <- split(x, group)
@@ -94,7 +96,9 @@ shinyServer(function(input,output,session){
   output$resul1 <- renderText({
     inFile <- input$file1
     dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
-    y <- na.omit(dt[, input$variable1])
+    dt <- na.omit(dt)
+    x <- dt[, input$variable1]
+    group <- dt[, input$variable2]
     ph <- t.test(x=y, alternative=input$h0, mu=input$mu0, conf.level=input$alfa)
     conclusion <- ifelse(ph$p.value < 0.05, 'se rechaza.', 'no se rechaza.')
     paste0('El estadístico de prueba fue to=', round(ph$statistic, 2),
