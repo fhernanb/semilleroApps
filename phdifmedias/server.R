@@ -5,7 +5,8 @@ shinyServer(function(input,output,session){
     inFile <- input$file1
     if(is.null(inFile)) return(NULL)
     dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
-    updateSelectInput(session, "variable", choices = names(dt))
+    updateSelectInput(session, "variable1", choices = names(dt))
+    updateSelectInput(session, "variable2", choices = names(dt))
   })
   
   output$summary <- renderTable({
@@ -18,22 +19,30 @@ shinyServer(function(input,output,session){
   output$statistic <- renderTable({
     inFile <- input$file1
     dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
-    y <- na.omit(dt[, input$variable])
-    res <- data.frame(Media=mean(y), Varianza=var(y), n=length(y))
+    x <- na.omit(dt[, input$variable1])
+    y <- na.omit(dt[, input$variable2])
+    res <- data.frame(Media1=mean(x), Varianza1=var(x), n1=length(x),
+                      Media2=mean(y), Varianza1=var(y), n2=length(y))
   })
   
   output$distPlot <- renderPlot({
     inFile <- input$file1
     par(mfrow=c(1, 2))
     dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
-    y <- na.omit(dt[, input$variable])
-    hist(y, col='deepskyblue3', freq=F, las=1,
-         xlab=as.character(input$variable), main='Histograma y densidad',
-         ylab='Densidad')
-    lines(density(y), lwd=4, col='firebrick3')
+    x <- na.omit(dt[, input$variable1])
+    y <- na.omit(dt[, input$variable2])
+    denx <- density(x)
+    deny <- density(y)
+    plot(denx, lwd=3, col='deepskyblue3',
+         xlim=range(range(denx$x), range(deny$x)),
+         ylim=c(0, max(   c(denx$y, deny$y))),
+         xlab='Variable',
+         ylab='Densidad',
+         main='Densidades')
+    lines(deny, lwd=3, col='firebrick3')
     qqnorm(y, las=1, main='QQplot',
            pch=19, col='deepskyblue3',
-           ylab=as.character(input$variable))
+           ylab=as.character(input$variable1))
     qqline(y)
     shapi <- shapiro.test(y)
     legend('topleft', bty='n', col='red', text.col='firebrick3',
@@ -43,7 +52,7 @@ shinyServer(function(input,output,session){
   output$resul1 <- renderText({
     inFile <- input$file1
     dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
-    y <- na.omit(dt[, input$variable])
+    y <- na.omit(dt[, input$variable1])
     ph <- t.test(x=y, alternative=input$h0, mu=input$mu0, conf.level=input$alfa)
     conclusion <- ifelse(ph$p.value < 0.05, 'se rechaza.', 'no se rechaza.')
     paste0('El estadístico de prueba fue to=', round(ph$statistic, 2),
@@ -55,7 +64,7 @@ shinyServer(function(input,output,session){
    output$resul2 <- renderText({
     inFile <- input$file1
     dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
-    y <- na.omit(dt[, input$variable])
+    y <- na.omit(dt[, input$variable1])
     ph <- t.test(x=y, alternative=input$h0, mu=input$mu0, conf.level=input$alfa)
     intervalo <- paste("(", ph$conf.int[1], ", ", ph$conf.int[2], ").", sep='')
     paste0('El intervalo de confianza del ', 100*input$alfa,

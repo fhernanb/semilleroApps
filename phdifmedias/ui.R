@@ -2,11 +2,12 @@ library(shiny)
 library(markdown)
 
 shinyUI(pageWithSidebar(
-  headerPanel(HTML("Prueba de hipotesis para la media &mu;"),
-              windowTitle="PH media"),
+  headerPanel(HTML("Prueba de hipotesis para diferencia de medias 
+                   &mu;<sub>1</sub> - &mu;<sub>2</sub>"),
+              windowTitle="PH dif medias"),
   sidebarPanel(
     h5('Esta aplicacion sirve para realizar prueba de hipotesis 
-        para la media de una variable cuantitativa. Ingrese la 
+        para la diferencia de medias de variables cuantitativas. Ingrese la 
        informacion solicitada abajo.'),
     
     fileInput('file1', 'Use el boton siguiente para cargar su base de datos.',
@@ -26,9 +27,12 @@ shinyUI(pageWithSidebar(
     selectInput("sep", label = "Cual es la separacion interna de los
                  datos en la su base de datos?", 
                 choices = list(Tab='\t', Comma=',', Semicolon=';'),
-                selected = ','),
+                selected = ';'),
     
-    selectInput("variable", "Seleccione la variable de interes de la base 
+    selectInput("variable1", "Seleccione la variable de interes de la base 
+                de datos",""),
+    
+    selectInput("variable2", "Seleccione la variable de interes de la base 
                 de datos",""),
     
     numericInput(inputId='mu0', 

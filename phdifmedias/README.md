@@ -1,1 +1,1 @@
-Esta aplicacion sirve para realizar una prueba de hipótesis sobre la media de una variable cuantitativa.
+Esta aplicacion sirve para realizar prueba de hipótesis para la diferencia de medias de variables cuantitativas.
