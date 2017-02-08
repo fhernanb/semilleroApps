@@ -20,9 +20,12 @@ shinyServer(function(input,output,session){
     inFile <- input$file1
     dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
     x <- na.omit(dt[, input$variable1])
-    y <- na.omit(dt[, input$variable2])
-    res <- data.frame(Media1=mean(x), Varianza1=var(x), n1=length(x),
-                      Media2=mean(y), Varianza1=var(y), n2=length(y))
+    group <- na.omit(dt[, input$variable2])
+    xx <- split(x, group)
+    resumen <- function(x) c(mean(x), var(x), length(x))
+    res <- sapply(xx, resumen)
+    rownames(res) <- c('Media', 'varianza', 'n')
+    res
   })
   
   output$distPlot <- renderPlot({
@@ -30,23 +33,46 @@ shinyServer(function(input,output,session){
     par(mfrow=c(1, 2))
     dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
     x <- na.omit(dt[, input$variable1])
-    y <- na.omit(dt[, input$variable2])
-    denx <- density(x)
-    deny <- density(y)
-    plot(denx, lwd=3, col='deepskyblue3',
-         xlim=range(range(denx$x), range(deny$x)),
-         ylim=c(0, max(   c(denx$y, deny$y))),
-         xlab='Variable',
+    group <- na.omit(dt[, input$variable2])
+    # Para dibujar las densidades
+    xx <- split(x, group)
+    den <- lapply(xx, density)
+    plot(den[[1]], lwd=3, col='deepskyblue3',
+         main='Densidad',
+         xlab=as.character(input$variable1),
          ylab='Densidad',
-         main='Densidades')
-    lines(deny, lwd=3, col='firebrick3')
-    qqnorm(y, las=1, main='QQplot',
-           pch=19, col='deepskyblue3',
-           ylab=as.character(input$variable1))
-    qqline(y)
-    shapi <- shapiro.test(y)
-    legend('topleft', bty='n', col='red', text.col='firebrick3',
-           legend=paste('Valor P=', round(shapi$p.value,2)))
+         xlim=range(range(den[[1]]$x), range(den[[2]]$x)),
+         ylim=c(0, max(c(den[[1]]$y, den[[2]]$y))))
+    lines(den[[2]], lwd=3, col='firebrick3')
+    
+    # Leyenda para distiguir
+    legend('topright', bty='n',
+           lwd=3, 
+           col=c('deepskyblue3', 'firebrick3'),
+           legend=unique(group))
+    
+    # Para dibujar los qqplot
+    qq1 <- qqnorm(xx[[1]], plot.it=FALSE)
+    qq2 <- qqnorm(xx[[2]], plot.it=FALSE)
+    
+    plot(qq1, las=1, main='QQplot',
+         pch=19, col='deepskyblue3',
+         xlim=range(c(qq1$x, qq2$x)),
+         ylim=range(c(qq1$y, qq2$y)),
+         xlab='Cuantiles teóricos',
+         ylab=as.character(input$variable1))
+    points(qq2, pch=19, col='firebrick3')
+    
+    qqline(xx[[1]], col='deepskyblue3')
+    qqline(xx[[2]], col='firebrick3')
+    
+    # Para incluir el valor P de Shapiro
+    shapi <- lapply(xx, shapiro.test)
+    leyenda <- c(paste('Valor P=', round(shapi[[1]]$p.value, 2)),
+                 paste('Valor P=', round(shapi[[2]]$p.value, 2)))
+    legend('topleft', bty='n',
+           text.col=c('deepskyblue3', 'firebrick3'),
+           legend=leyenda)
   })
   
   output$resul1 <- renderText({
