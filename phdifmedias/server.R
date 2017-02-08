@@ -28,11 +28,11 @@ shinyServer(function(input,output,session){
         read.table('https://raw.githubusercontent.com/fhernanb/datos/master/orellana',
                    header=T, sep='')
     else dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
-    dt <- na.omit(dt)
-    x <- dt[, input$variable1]
-    group <- dt[, input$variable2]
-    if (nlevels(group) != 2) group <- dt[, 'cascara']
-    xx <- split(x, group)
+    dt <- na.omit(dt)  # Para eliminar obs con NA
+    x <- dt[, input$variable1]  # Variable de interes
+    group <- dt[, input$variable2]  # Variable de clasificacion
+    if (nlevels(group) != 2) group <- dt[, sapply(dt, is.factor)]
+    xx <- split(x, group)  # Lista con variable interes
     resumen <- function(x) c(mean(x), var(x), length(x))
     res <- sapply(xx, resumen)
     rownames(res) <- c('Media', 'varianza', 'n')
@@ -48,10 +48,10 @@ shinyServer(function(input,output,session){
     else dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
     # Aqui inicia la figura
     par(mfrow=c(1, 2))
-    dt <- na.omit(dt)
+    dt <- na.omit(dt)  # Para eliminar obs con NA
     x <- dt[, input$variable1]
     group <- dt[, input$variable2]
-    if (nlevels(group) != 2) group <- dt[, 'cascara']
+    if (nlevels(group) != 2) group <- dt[, sapply(dt, is.factor)]
     # Para dibujar las densidades
     xx <- split(x, group)
     den <- lapply(xx, density)
@@ -96,7 +96,7 @@ shinyServer(function(input,output,session){
   output$resul1 <- renderText({
     inFile <- input$file1
     dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
-    dt <- na.omit(dt)
+    dt <- na.omit(dt)  # Para eliminar obs con NA
     x <- dt[, input$variable1]
     group <- dt[, input$variable2]
     ph <- t.test(x=y, alternative=input$h0, mu=input$mu0, conf.level=input$alfa)
