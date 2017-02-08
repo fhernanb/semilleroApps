@@ -8,7 +8,8 @@ shinyUI(pageWithSidebar(
   sidebarPanel(
     h5('Esta aplicacion sirve para realizar prueba de hipotesis 
         para la diferencia de medias de variables cuantitativas. Ingrese la 
-       informacion solicitada abajo.'),
+       informacion solicitada abajo. Por defecto se cargo una base de ejemplo,
+       usted puede ingresar la suya'),
     
     fileInput('file1', 'Use el boton siguiente para cargar su base de datos.',
               accept = c(
@@ -30,13 +31,15 @@ shinyUI(pageWithSidebar(
                 selected = ';'),
     
     selectInput(inputId="variable1",
-                label="Seleccione la variable cuantitativa 
-                de interes de la base de datos", ""),
+                label="Seleccione la variable 
+                           de interes de la base de datos", ""),
     
     selectInput(inputId="variable2",
-                label="Seleccione la variable cualitativa de 
-                agrupacion, debe tener 2 niveles.", ""),
+                label=paste("Seleccione la variable", 
+                "cualitativa", 
+                "de agrupacion, debe tener 2 niveles."), ""),
     
+
     numericInput(inputId='mu0', 
                  label=HTML("Ingrese el valor de referencia 
                             &mu;<sub>0</sub> para la probar
