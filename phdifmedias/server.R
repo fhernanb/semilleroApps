@@ -3,7 +3,6 @@ shinyServer(function(input,output,session){
   
   observe({
     inFile <- input$file1
-    #if(is.null(inFile)) return(NULL)
     if(is.null(inFile)) dt <- 
         read.table('https://raw.githubusercontent.com/fhernanb/datos/master/orellana',
                    header=T, sep='')
@@ -14,7 +13,6 @@ shinyServer(function(input,output,session){
   
   output$summary <- renderTable({
     inFile <- input$file1
-    #if(is.null(inFile)) return(NULL)
     if(is.null(inFile)) dt <- 
         read.table('https://raw.githubusercontent.com/fhernanb/datos/master/orellana',
                    header=T, sep='')

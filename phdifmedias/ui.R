@@ -8,8 +8,8 @@ shinyUI(pageWithSidebar(
   sidebarPanel(
     h5('Esta aplicacion sirve para realizar prueba de hipotesis 
         para la diferencia de medias de variables cuantitativas. Ingrese la 
-       informacion solicitada abajo. Por defecto se cargo una base de ejemplo,
-       usted puede ingresar la suya'),
+       informacion solicitada abajo. Por defecto se carga una base de ejemplo
+       pero usted puede ingresar la suya'),
     
     fileInput('file1', 'Use el boton siguiente para cargar su base de datos.',
               accept = c(
