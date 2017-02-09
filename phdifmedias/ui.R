@@ -55,6 +55,10 @@ shinyUI(pageWithSidebar(
                                "Mayor" = "greater"),
                 selected = "two.sided"),
     
+    checkboxInput(inputId='pareadas',
+                  label='Es un problema de medias pareadas?', 
+                  value=FALSE),
+    
     sliderInput(inputId='alfa', 
                 label='Opcional: elija el nivel de significancia
                 reportar el intervalo de confianza',
