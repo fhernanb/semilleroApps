@@ -2,16 +2,18 @@ library(shiny)
 library(markdown)
 
 shinyUI(pageWithSidebar(
-  headerPanel(HTML("Prueba de hipotesis para diferencia de medias 
-                   &mu;<sub>1</sub> - &mu;<sub>2</sub>"),
+  headerPanel(title=HTML("Prueba de hipotesis para diferencia de medias 
+                         &mu;<sub>1</sub> - &mu;<sub>2</sub>"),
               windowTitle="PH dif medias"),
+  
   sidebarPanel(
     h5('Esta aplicacion sirve para realizar prueba de hipotesis 
         para la diferencia de medias de variables cuantitativas. Ingrese la 
-       informacion solicitada abajo. Por defecto se carga una base de ejemplo
-       pero usted puede ingresar la suya'),
+        informacion solicitada abajo. Por defecto se carga una base de ejemplo
+        pero usted puede ingresar la suya'),
     
-    fileInput('file1', 'Use el boton siguiente para cargar su base de datos.',
+    fileInput(inputId='file1',
+              label='Use el boton siguiente para cargar su base de datos.',
               accept = c(
                 'text/csv',
                 'text/comma-separated-values',
@@ -19,27 +21,28 @@ shinyUI(pageWithSidebar(
                 'text/plain',
                 '.csv',
                 '.tsv'
-              )
-    ),
+              )),
+    
     checkboxInput(inputId='header',
                   label='Tiene encabezado la base de datos?', 
                   value=TRUE),
     
-    selectInput("sep", label = "Cual es la separacion interna de los
-                 datos en la su base de datos?", 
+    selectInput(inputId="sep",
+                label = "Cual es la separacion interna de los
+                datos en la su base de datos?", 
                 choices = list(Tab='\t', Comma=',', Semicolon=';'),
                 selected = ';'),
     
     selectInput(inputId="variable1",
                 label="Seleccione la variable 
-                           de interes de la base de datos", ""),
+                       de interes de la base de datos",
+                choices=""),
     
     selectInput(inputId="variable2",
-                label=paste("Seleccione la variable", 
-                "cualitativa", 
-                "de agrupacion, debe tener 2 niveles."), ""),
+                label="Seleccione la variable cualitativa 
+                de agrupacion, DEBE tener 2 niveles y se un factor.",
+                choices=""),
     
-
     numericInput(inputId='delta0', 
                  label=HTML("Ingrese el valor de referencia 
                             &Delta;<sub>0</sub> para la probar
@@ -47,12 +50,12 @@ shinyUI(pageWithSidebar(
                             - &mu;<sub>2</sub> = &Delta;<sub>0</sub>"), 
                  value=0),
     
-    selectInput("h0", 
-                label = HTML("Elija el tipo de hipotesis alterna
+    selectInput(inputId="h0", 
+                label=HTML("Elija el tipo de hipotesis alterna
                           < , &ne; o >"), 
-                choices = list("Menor" = "less", 
-                               "Diferente" = "two.sided",
-                               "Mayor" = "greater"),
+                choices=list("Menor" = "less", 
+                             "Diferente" = "two.sided",
+                             "Mayor" = "greater"),
                 selected = "two.sided"),
     
     checkboxInput(inputId='var.equal',
@@ -76,16 +79,18 @@ mainPanel(
   tabsetPanel(type = "pills",
               
               tabPanel(title="Resultados",
-                       h5('A continuacion se presentan las densidades, qqplot 
-                y valor P de la prueba de normalidad Shapiro para analizar
-                el cumplimiento del supuesto de normalidad para la variable de
-                interes.'),
+                       h5('A continuacion se presentan las densidades, 
+                       qqplot y valor P de la prueba de normalidad Shapiro 
+                       para analizar el cumplimiento del supuesto de 
+                       normalidad para la variable de interes.'),
                        plotOutput("distPlot",
                                   width='70%', height='300px'),
                        h5("Tabla con las estadisticas de resumen:"),
+                       
                        tableOutput('statistic'),
                        h5("- Resultado de la prueba de hipótesis:"),
                        textOutput("resul1"),
+                       
                        h5(HTML("- Intervalo de confianza para la 
                                diferencia de medias 
                                &mu;<sub>1</sub> - &mu;<sub>2</sub>")),

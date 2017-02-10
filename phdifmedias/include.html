@@ -119,16 +119,24 @@ $(document).ready(function () {
 </div>
 
 
-<div id="prueba-de-hipotesis-para-la-media-mu" class="section level1">
-<h1>Prueba de hipotesis para la media <span class="math inline">\(\mu\)</span></h1>
-<p>Suponga que se tiene una muestra aleatoria <span class="math inline">\(x_1, x_2, \ldots, x_n\)</span> proveniente de una poblacion normal. Se quiere estudiar la hipotesis nula <span class="math inline">\(H_0: \mu = \mu_0\)</span> y se sospecha que:</p>
+<div id="prueba-de-hipotesis-para-la-diferencia-de-medias-mu_1---mu_2" class="section level1">
+<h1>Prueba de hipotesis para la diferencia de medias <span class="math inline">\(\mu_1 - \mu_2\)</span></h1>
+<p>Suponga que se tienen dos muestras aleatorias asi:</p>
 <ol style="list-style-type: decimal">
-<li><span class="math inline">\(H_A: \mu &lt; \mu_0\)</span></li>
-<li><span class="math inline">\(H_A: \mu \neq \mu_0\)</span></li>
-<li><span class="math inline">\(H_A: \mu &gt; \mu_0\)</span></li>
+<li><span class="math inline">\(x_1, x_2, \ldots, x_m\)</span> proveniente de una poblacion I con media <span class="math inline">\(\mu_1\)</span> y varianza <span class="math inline">\(\sigma^2_1\)</span>.</li>
+<li><span class="math inline">\(y_1, y_2, \ldots, y_n\)</span> proveniente de una poblacion II con media <span class="math inline">\(\mu_2\)</span> y varianza <span class="math inline">\(\sigma^2_2\)</span>.</li>
+<li>Ambas muestras son independientes entre si.</li>
 </ol>
-<p>El estadístico para realizar la prueba es <span class="math display">\[t_0=\frac{\bar{x} - \mu_0}{s/\sqrt{n}}\]</span></p>
-<p>El estadístico bajo la suposición de que <span class="math inline">\(H_0\)</span> es verdadera tiene distribución <span class="math inline">\(t\)</span>-student con <span class="math inline">\(n-1\)</span> grados de libertad.</p>
+<p>Se quiere estudiar la hipotesis nula <span class="math inline">\(H_0: \mu_1 - \mu_2 = \Delta_0\)</span> y se sospecha que:</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(H_0: \mu_1 - \mu_2 &lt; \Delta_0\)</span></li>
+<li><span class="math inline">\(H_0: \mu_1 - \mu_2 \neq \Delta_0\)</span></li>
+<li><span class="math inline">\(H_0: \mu_1 - \mu_2 &gt; \Delta_0\)</span></li>
+</ol>
+<p>El estadístico para realizar la prueba es</p>
+<p><span class="math display">\[T=\frac{\bar{x} - \bar{y} - \Delta_0}{\sqrt{\frac{s_1^2}{m} + \frac{s_2^2}{n}}}\]</span></p>
+<p>El estadístico bajo la suposición de que <span class="math inline">\(H_0\)</span> es verdadera tiene distribución <span class="math inline">\(t\)</span>-student con <span class="math inline">\(v\)</span> grados de libertad calculados como:</p>
+<p><span class="math display">\[v=\frac{ \left( \frac{s_1^2}{m} + \frac{s_2^2}{n} \right)^2 }{ \frac{(s_1^2/m)^2}{m-1} + \frac{(s_2^2/n)^2}{n-1}}\]</span></p>
 </div>
 
 

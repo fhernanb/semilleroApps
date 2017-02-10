@@ -6,8 +6,10 @@ shinyServer(function(input,output,session){
     if(is.null(inFile)) 
       dt <- read.table('unequal_var_data.txt', header=T, sep='\t')
     else dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
-    updateSelectInput(session, "variable1", choices = names(dt))
-    updateSelectInput(session, "variable2", choices = names(dt))
+    updateSelectInput(session, "variable1",
+                      choices=names(dt[!sapply(dt, is.factor)])) # Asegurar cuanti
+    updateSelectInput(session, "variable2", 
+                      choices=names(dt[sapply(dt, is.factor)])) # Asegurar cuali
   })
   
   output$summary <- renderTable({
@@ -110,7 +112,7 @@ shinyServer(function(input,output,session){
            por lo tanto se concluye
            que basados en la evidencia muestral 
            la hipótesis nula ', conclusion,
-           '(nivel de significancia 5%).')
+           ' (nivel de significancia 5%).')
   })
   
   
