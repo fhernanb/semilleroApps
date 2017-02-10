@@ -64,7 +64,7 @@ shinyUI(pageWithSidebar(
     
     sliderInput(inputId='alfa', 
                 label='Opcional: elija el nivel de significancia
-                reportar el intervalo de confianza',
+                para construir el intervalo de confianza',
                 min=0.90, max=0.99,
                 value=0.95, step=0.01),
     
