@@ -3,9 +3,8 @@ shinyServer(function(input,output,session){
   
   observe({
     inFile <- input$file1
-    if(is.null(inFile)) dt <- 
-        read.table('https://raw.githubusercontent.com/fhernanb/datos/master/orellana',
-                   header=T, sep='')
+    if(is.null(inFile)) 
+      dt <- read.table('unequal_var_data.txt', header=T, sep='\t')
     else dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
     updateSelectInput(session, "variable1", choices = names(dt))
     updateSelectInput(session, "variable2", choices = names(dt))
@@ -13,18 +12,17 @@ shinyServer(function(input,output,session){
   
   output$summary <- renderTable({
     inFile <- input$file1
-    if(is.null(inFile)) dt <- 
-        read.table('https://raw.githubusercontent.com/fhernanb/datos/master/orellana',
-                   header=T, sep='')
+    if(is.null(inFile)) 
+      dt <- read.table('unequal_var_data.txt', header=T, sep='\t')
     else dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
+    dt <- na.omit(dt)  # Para eliminar obs con NA
     dt
   })
   
   output$statistic <- renderTable({
     inFile <- input$file1
-    if(is.null(inFile)) dt <- 
-        read.table('https://raw.githubusercontent.com/fhernanb/datos/master/orellana',
-                   header=T, sep='')
+    if(is.null(inFile)) 
+      dt <- read.table('unequal_var_data.txt', header=T, sep='\t')
     else dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
     dt <- na.omit(dt)  # Para eliminar obs con NA
     x <- dt[, input$variable1]  # Variable de interes
@@ -33,19 +31,18 @@ shinyServer(function(input,output,session){
     xx <- split(x, group)  # Lista con variable interes
     resumen <- function(x) c(mean(x), var(x), length(x))
     res <- sapply(xx, resumen)
-    rownames(res) <- c('Media', 'varianza', 'n')
-    res
+    rownames(res) <- c('Media', 'Varianza', 'n')
+    t(res)
   },
-  rownames = TRUE)
+  rownames = TRUE) # Para obtener tabla con rownames
   
   output$distPlot <- renderPlot({
     inFile <- input$file1
-    if(is.null(inFile)) dt <- 
-      read.table('https://raw.githubusercontent.com/fhernanb/datos/master/orellana',
-                 header=T, sep='')
+    if(is.null(inFile)) 
+      dt <- read.table('unequal_var_data.txt', header=T, sep='\t')
     else dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
     # Aqui inicia la figura
-    par(mfrow=c(1, 2))
+    par(mfrow=c(1, 2), bg='gray98')
     dt <- na.omit(dt)  # Para eliminar obs con NA
     x <- dt[, input$variable1]
     group <- dt[, input$variable2]
@@ -53,17 +50,17 @@ shinyServer(function(input,output,session){
     # Para dibujar las densidades
     xx <- split(x, group)
     den <- lapply(xx, density)
-    plot(den[[1]], lwd=3, col='deepskyblue3',
+    plot(den[[1]], lwd=4, col='deepskyblue3',
          main='Densidad',
          xlab=as.character(input$variable1),
          ylab='Densidad',
          xlim=range(range(den[[1]]$x), range(den[[2]]$x)),
          ylim=c(0, max(c(den[[1]]$y, den[[2]]$y))))
-    lines(den[[2]], lwd=3, col='firebrick3')
+    lines(den[[2]], lwd=4, col='firebrick3')
     
-    # Leyenda para distiguir
+    # Leyenda para distiguir las densidades
     legend('topright', bty='n',
-           lwd=3, 
+           lwd=4, 
            col=c('deepskyblue3', 'firebrick3'),
            legend=unique(group))
     
@@ -79,6 +76,7 @@ shinyServer(function(input,output,session){
          ylab=as.character(input$variable1))
     points(qq2, pch=19, col='firebrick3')
     
+    # Para construir los qqplot
     qqline(xx[[1]], col='deepskyblue3')
     qqline(xx[[2]], col='firebrick3')
     
@@ -93,26 +91,51 @@ shinyServer(function(input,output,session){
   
   output$resul1 <- renderText({
     inFile <- input$file1
-    dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
+    if(is.null(inFile)) 
+      dt <- read.table('unequal_var_data.txt', header=T, sep='\t')
+    else dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
     dt <- na.omit(dt)  # Para eliminar obs con NA
     x <- dt[, input$variable1]
     group <- dt[, input$variable2]
-    ph <- t.test(x=y, alternative=input$h0, mu=input$mu0, conf.level=input$alfa)
-    conclusion <- ifelse(ph$p.value < 0.05, 'se rechaza.', 'no se rechaza.')
-    paste0('El estadístico de prueba fue to=', round(ph$statistic, 2),
-           ' con un valor P de ', round(ph$p.value, 2), ', por lo tanto se concluye
-           que basados en la evidencia muestral la hipótesis nula ', conclusion)
+    if (nlevels(group) != 2) group <- dt[, sapply(dt, is.factor)]
+    xx <- split(x, group)
+    ph <- t.test(x=xx[[1]], y=xx[[2]],
+                 alternative=input$h0, 
+                 mu=input$delta0, 
+                 conf.level=input$alfa,
+                 var.equal=input$var.equal)
+    conclusion <- ifelse(ph$p.value < 0.05, 'se rechaza', 'no se rechaza')
+    paste0('El estadístico de prueba fue to=', round(ph$statistic, 4),
+           ' con un valor P de ', round(ph$p.value, 2), ', 
+           por lo tanto se concluye
+           que basados en la evidencia muestral 
+           la hipótesis nula ', conclusion,
+           '(nivel de significancia 5%).')
   })
   
   
    output$resul2 <- renderText({
-    inFile <- input$file1
-    dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
-    y <- na.omit(dt[, input$variable1])
-    ph <- t.test(x=y, alternative=input$h0, mu=input$mu0, conf.level=input$alfa)
-    intervalo <- paste("(", ph$conf.int[1], ", ", ph$conf.int[2], ").", sep='')
+     inFile <- input$file1
+     if(is.null(inFile)) 
+       dt <- read.table('unequal_var_data.txt', header=T, sep='\t')
+     else dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
+     dt <- na.omit(dt)  # Para eliminar obs con NA
+     x <- dt[, input$variable1]
+     group <- dt[, input$variable2]
+     if (nlevels(group) != 2) group <- dt[, sapply(dt, is.factor)]
+     xx <- split(x, group)
+     ph <- t.test(x=xx[[1]], y=xx[[2]],
+                  alternative=input$h0, 
+                  mu=input$delta0, 
+                  conf.level=input$alfa,
+                  var.equal=input$var.equal)
+    intervalo <- paste("(", round(ph$conf.int[1], digits=4),
+                       ", ",
+                       round(ph$conf.int[2], digits=4),
+                       ").", sep='')
     paste0('El intervalo de confianza del ', 100*input$alfa,
-           '% para la media poblacional es ', intervalo)
+           '% para la diferencia de medias poblacionales es ',
+           intervalo)
   })
    
    output$miteoria <- renderUI({

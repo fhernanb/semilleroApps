@@ -40,7 +40,7 @@ shinyUI(pageWithSidebar(
                 "de agrupacion, debe tener 2 niveles."), ""),
     
 
-    numericInput(inputId='mu0', 
+    numericInput(inputId='delta0', 
                  label=HTML("Ingrese el valor de referencia 
                             &Delta;<sub>0</sub> para la probar
                             H<sub>0</sub>: &mu;<sub>1</sub> 
@@ -55,9 +55,9 @@ shinyUI(pageWithSidebar(
                                "Mayor" = "greater"),
                 selected = "two.sided"),
     
-    checkboxInput(inputId='pareadas',
-                  label='Es un problema de medias pareadas?', 
-                  value=FALSE),
+    checkboxInput(inputId='var.equal',
+                  label='Las varianzas poblacionales son iguales', 
+                  value=TRUE),
     
     sliderInput(inputId='alfa', 
                 label='Opcional: elija el nivel de significancia
@@ -75,17 +75,20 @@ shinyUI(pageWithSidebar(
 mainPanel(
   tabsetPanel(type = "pills",
               
-              tabPanel("Resultados",
-                       h4('A continuacion se presentan las densidades, qqplot 
+              tabPanel(title="Resultados",
+                       h5('A continuacion se presentan las densidades, qqplot 
                 y valor P de la prueba de normalidad Shapiro para analizar
                 el cumplimiento del supuesto de normalidad para la variable de
                 interes.'),
-                       plotOutput("distPlot"),
-                       h4("Tabla con las estadisticas de resumen:"),
+                       plotOutput("distPlot",
+                                  width='70%', height='300px'),
+                       h5("Tabla con las estadisticas de resumen:"),
                        tableOutput('statistic'),
-                       h4("- Resultado de la prueba de hipótesis:"),
+                       h5("- Resultado de la prueba de hipótesis:"),
                        textOutput("resul1"),
-                       h4(HTML("- Intervalo de confianza para la media &mu;")),
+                       h5(HTML("- Intervalo de confianza para la 
+                               diferencia de medias 
+                               &mu;<sub>1</sub> - &mu;<sub>2</sub>")),
                        textOutput("resul2")),
               
               tabPanel("Base de datos", 
