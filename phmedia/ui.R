@@ -71,11 +71,15 @@ mainPanel(
                        normalidad Shapiro para analizar el cumplimiento 
                        del supuesto de normalidad para la variable de
                        interes.'),
-                       plotOutput("distPlot"),
+                       plotOutput("distPlot",
+                                  width='70%', height='300px'),
+                       
                        h5("Tabla con las estadisticas de resumen:"),
                        tableOutput('statistic'),
+                       
                        h5("- Resultado de la prueba de hipótesis:"),
                        textOutput("resul1"),
+                       
                        h5(HTML("- Intervalo de confianza para la media &mu;")),
                        textOutput("resul2")),
               

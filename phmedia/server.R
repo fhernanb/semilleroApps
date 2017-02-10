@@ -43,7 +43,7 @@ shinyServer(function(input,output,session){
            ylab=as.character(input$variable))
     qqline(y)
     shapi <- shapiro.test(y)
-    legend('topleft', bty='n', col='red', text.col='firebrick3',
+    legend('topleft', bty='n', col='red', text.col='deepskyblue3',
            legend=paste('Valor P=', round(shapi$p.value,2)))
   })
   
