@@ -1,0 +1,61 @@
+¿Qué es?
+=======================
+
+Es un teorema fundamental de probabilidad y estadística, establece la distribución de $(\boldsymbol{\overline{x}})$ : la media de una muestra aleatoria de una población con varianza finita ($\sigma^2$), cuando crece el  número de sumandos asegura su convergencia hacia una distribución normal.
+
+=======================
+
+
+
+
+![](tlc11.jpg)
+
+
+* Garantiza un patrón de comportamiento de las medias muéstrales siempre y cuando se cumpla la condición que __n__ es suficientemente grande, la distribución de medias muéstrales es normal.
+	
+* A medida que se aumente el tamaño de la muestra la variabilidad disminuye y hace que la distribución de las medias muéstrales se concentren más alrededor de ($\mu$).
+
+* Las medias muéstrales sin importar la distribución de la población tienen             distribución normal y son independientes.
+
+* La media de la distribución coincide con la media de la población, se centran en    el valor de interés.
+
+* La varianza está relacionada con la varianza de la población.
+
+# Tamaño de muestra 
+
+
+
+ __n>=30__, sin embargo  la distribución de la población es  simétrica no es necesario que los valores de la muestra sean mayores que 30. 
+ 
+
+# Aplicaciones 
+ 
+ 
+
+
+Este teorema tiene gran aplicación en:
+
+
+* Inferencia estadística, pues muchos parámetros de diferentes
+distribuciones de probabilidad como: Media, Momentos, Coeficiente de correlación, Proporción.Pueden expresarse en función de una suma de variables. 
+
+* Aproxima muchas distribuciones de uso frecuente:
+Binomial,Poisson,chi-cuadrado,t-student,Gamma,cuando sus parámetros crecen y el cálculo se hace difícil.
+
+* la suma de variables aleatorias aparece en forma natural en muchas aplicaciones de procesos de simulación de la ingeniería: 
+Determinación de masa forestal, Carga soportada por una estructura, Tiempo de espera de servicios, Entre otros.
+
+
+Todo ello hace explicar por qué muchos métodos estadísticos requieren la condición de normalidad para su correcta aplicación y, en consecuencia, este teorema es una componente importante de la formación estadística de los ingenieros y areas afines.
+
+=======================
+
+# Referencias 
+
+* Soporte Minitab 17
+
+$\href{http://support.minitab.com/es-mx/minitab/17/topic-library/basic-statistics-and-graphs/introductory-concepts/basic-concepts/central-limit-theorem/}{El teorema del límite central}$
+
+* Universidad de valencia (Tlc)
+
+$\href{https://riunet.upv.es/bitstream/handle/10251/7940/El%20teorema%20central%20del%20limite.pdf}{Utilización Práctica del Teorema Central del Límite Central}$
