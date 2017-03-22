@@ -13,10 +13,10 @@ fluidPage(
   ### ubicacion de botones y ventanas en la aplicacion
   sidebarLayout(
      sidebarPanel(
-       h6('Esta aplicacion sirve para ilustrar el Teorema del Limite Central
-           con diferentes distribuciones poblacionales. El objetivo es
-           mostrar que cuando n crece la distribucion 
-           de las medias muestrales es normal.'),
+       h6('Esta aplicacion sirve para ilustrar el Teorema del Limite Central.
+           El objetivo es simular 1000 de cualquiera de las distribuciones
+           disponibles y ver que cuando n crece la distribucion 
+           de las medias muestrales se aproxima a una normal.'),
        br(),
   ### relaciona las distribuciones a usar y por defecto selecciona la distribucion normal.    
        selectInput(inputId = "distri",
