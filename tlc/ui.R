@@ -27,7 +27,6 @@ fluidPage(
                                "Beta"),
                    selected = "Gamma"),
   
-       
       br(),
 
   
@@ -88,8 +87,7 @@ fluidPage(
                                 step=0.1) ),
 
   
-  
-      sliderInput(inputId="n", 
+  sliderInput(inputId="n", 
                   "Seleccione tamano de muestra n:", 
                   value=1,
                   min=1, 
@@ -105,8 +103,8 @@ fluidPage(
     mainPanel(
       tabsetPanel(type = "tabs", 
                   tabPanel("TLC",
-                           plotOutput("TLC", width='100%', height='600px')),
-                  tabPanel("Teoria", uiOutput('markdown'))
+                           plotOutput("TLC", width='90%', height='600px')),
+                  tabPanel("Teoria", includeHTML("include.html"))
                   
       )
     )
