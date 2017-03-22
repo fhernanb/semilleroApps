@@ -41,16 +41,29 @@ shinyServer(function(input, output, session) {
     }
     
     medias <- rowMeans(muestras)
+    s2n <- varia/n  # Varianza de la distribucion de medias
     
-    hist(medias, freq=FALSE, xlab=expression(bar(x)), las=1,
-         ylab='Densidad', breaks=30,
-         ylim=c(0, dnorm(media, media, sqrt(varia/n))),
+    par(mfrow=c(2, 1), bg='gray98')
+    
+    hist(medias, breaks=30, freq=FALSE,
+         xlab=expression(bar(x)), las=1, ylab='Densidad',
+         ylim=c(0, max(c(hist(medias, breaks=30, freq=FALSE, plot=F)$density,
+                dnorm(media, media, sqrt(s2n))))),
+         xlim=media + c(-4, 4) * sqrt(s2n),
          main='Distribucion de las 1000 medias muestrales')
     
     curve(dnorm(x, mean=media, sd=sqrt(varia/n)),
           add=T, lwd=3, col='dodgerblue3')
-    nom <- paste('N(', round(media, 2), ', ', round(varia, 2),')', sep='')
+    nom <- paste('N(', round(media, 2), ', ', round(s2n, 2),')', sep='')
     legend('topright', legend=nom, lwd=3, col='dodgerblue3', bty='n')
+    
+    qqnorm(medias, las=1, main='QQplot para las 1000 medias muestrales',
+           pch=1, col='dodgerblue3')
+    qqline(medias)
+    shapi <- shapiro.test(medias)
+    legend('topleft', bty='n', col='red', text.col='dodgerblue3',
+           legend=paste('Prueba Shapiro Valor P=', round(shapi$p.value, 4)))
+
 
   })
   

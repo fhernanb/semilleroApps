@@ -13,9 +13,10 @@ fluidPage(
   ### ubicacion de botones y ventanas en la aplicacion
   sidebarLayout(
      sidebarPanel(
-       h5('Esta aplicacion sirve para ilustrar el uso del Teorema del Limite Central
-           aplicado a varias distribuciones buscando la convergencia a la 
-           distribucion normal.'),
+       h6('Esta aplicacion sirve para ilustrar el Teorema del Limite Central
+           con diferentes distribuciones poblacionales. El objetivo es
+           mostrar que cuando n crece la distribucion 
+           de las medias muestrales es normal.'),
        br(),
   ### relaciona las distribuciones a usar y por defecto selecciona la distribucion normal.    
        selectInput(inputId = "distri",
@@ -24,7 +25,7 @@ fluidPage(
                                "Uniforme",
                                "Gamma",
                                "Beta"),
-                   selected = "Beta"),
+                   selected = "Gamma"),
   
        
       br(),
@@ -62,13 +63,13 @@ fluidPage(
                    numericInput(inputId="shape",
                                 label=HTML("Ingrese parametro de forma."),
                                 min=0.01,
-                                value="3",
+                                value="1",
                                 step=0.1),
                    
                    numericInput(inputId="scale",
                                 label=HTML("Ingrese parametro de escala."),
                                 min=0.01,
-                                value="2",
+                                value="1",
                                 step=0.1) ),
   
   # Distribucion beta
@@ -92,11 +93,8 @@ fluidPage(
                   "Seleccione tamano de muestra n:", 
                   value=1,
                   min=1, 
-                  max=1000, step=1, animate=T),
+                  max=100, step=1, animate=T),
   
-
-    plotOutput(outputId="main_plot", height="50px"),
-
 
   img(src="medellin.png", height = 80, width = 200),
   br(),
@@ -104,11 +102,10 @@ fluidPage(
   tags$a(href="https://srunal.wordpress.com/", "https://srunal.wordpress.com/")
   ),
     
-    # Show a tabset that includes a plot, summary, and table view
-    # of the generated distribution
     mainPanel(
       tabsetPanel(type = "tabs", 
-                  tabPanel("TLC", plotOutput("TLC")),
+                  tabPanel("TLC",
+                           plotOutput("TLC", width='100%', height='600px')),
                   tabPanel("Teoria", uiOutput('markdown'))
                   
       )
