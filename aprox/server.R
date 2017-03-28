@@ -9,15 +9,14 @@ shinyServer(function(input, output) {
     Max <- 1.2 * max(dbinom(x=x, size=n, prob=p),
                dnorm(x=x, mean=n*p, sd=sqrt(n*p*(1-p))))
     plot(x=x,
-         y=dbinom(x=x, size=n, prob=p), type='h',
+         y=dbinom(x=x, size=n, prob=p), type='h', bty='n',
          ylim=c(0, Max), main="Distribución binomial", col="skyblue",
-         las=1, lwd=5, ylab='Probabilidad', xlab='x',frame.plot = FALSE)
+         las=1, lwd=5, ylab='Probabilidad', xlab='x', xaxt='n')
     
-    lines(x=x,
-         y=dnorm(x=x, mean=n*p, sd=sqrt(n*p*(1-p))), 
-         col='red', type='l',
-         las=1, lwd=3, ylab='',
-         xlim=c(0,n), ylim=c(0, Max),frame.plot = FALSE)
+    axis(side=1, at=x, labels=x)
+    
+    lines(x=x, y=dnorm(x=x, mean=n*p, sd=sqrt(n*p*(1-p))), 
+         col='red', lwd=3, type='b')
     
     position <- ifelse(p < 0.5, 'topright', 'topleft')
     legend(position,
@@ -26,23 +25,19 @@ shinyServer(function(input, output) {
   }
     
     f3 <- function(l){
-      x <- 0:(3*l)
-      Max <- max(dpois(x=x, lambda=l))
+      x <- 0:(2*l)
+      Max <- 1.2 * max(dpois(x=x, lambda=l),
+                       dnorm(x=x, mean=l, sd=sqrt(l)))
       plot(x=x,
            y=dpois(x=x, lambda=l), type='h',
            ylim=c(0, Max),
            las=1, lwd=5, ylab='Probabilidad', xlab='x',
-           col="skyblue",
-           frame.plot = FALSE)
+           col="skyblue", bty='n', xaxt='n')
       
-      par(new=TRUE)
-      plot(x=x,
-           y=dnorm(x=x, mean=l, sd=sqrt(l)), 
-           col='red', type='l',
-           las=1, lwd=3, ylab='',
-           xlim=c(0, (3*l)), ylim=c(0, Max),
-           main = "",
-           frame.plot = FALSE)
+      axis(side=1, at=x, labels=x)
+      
+      lines(x=x, y=dnorm(x=x, mean=l, sd=sqrt(l)), 
+           col='red', lwd=3, type='b')
     
     legend("topright",0,c("Aproximación Normal","Distribución Poisson"),bty="n",
            lty = 1,col = c("red","skyblue"),

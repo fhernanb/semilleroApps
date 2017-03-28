@@ -45,14 +45,14 @@ shinyUI(fluidPage(
                                       min = 5,
                                       max = 100,
                                       value = 10,
-                                      step = 1),
+                                      step = 1, animate=TRUE),
                           
                           sliderInput("p",
                                       "Probabilidad de éxito p",
                                       min = 0,
                                       max = 1,
-                                      value = 0.8,
-                                      step = 0.01)
+                                      value = 0.84,
+                                      step = 0.01, animate=TRUE)
                         ),
                         
                         # Show a plot of the generated distribution
@@ -83,11 +83,11 @@ shinyUI(fluidPage(
                           
                           
                           sliderInput("l",
-                                      HTML("Tasa Promedio &lambda;"),
+                                      HTML("Tasa promedio &lambda;"),
                                       min = 1,
-                                      max = 20,
-                                      value = 1,
-                                      step = 1)
+                                      max = 50,
+                                      value = 2,
+                                      step = 1, animate=TRUE)
                         ),
                         
                         # Show a plot of the generated distribution
@@ -116,14 +116,14 @@ shinyUI(fluidPage(
                                         min = 5,
                                         max = 300,
                                         value = 5,
-                                        step = 1),
+                                        step = 1, animate=TRUE),
                             
                             sliderInput("p2",
                                         "Probabilidad de éxito p",
                                         min = 0,
                                         max = 1,
                                         value = 0.9,
-                                        step = 0.05)
+                                        step = 0.05, animate=TRUE)
                           ),
                           
                           # Show a plot of the generated distribution
