@@ -24,7 +24,7 @@ shinyServer(function(input, output) {
            bty="n", lty=1, col=c("red","skyblue"), lwd=4)
   }
     
-    f3 <- function(l){
+    f2 <- function(l){
       x <- 0:(2*l)
       Max <- 1.2 * max(dpois(x=x, lambda=l),
                        dnorm(x=x, mean=l, sd=sqrt(l)))
@@ -45,23 +45,27 @@ shinyServer(function(input, output) {
   }
   
     
-    f2 <- function(n,p){
+    f3 <- function(n,p){
       x <- 0:n
       prob_binom <- dbinom(x=x, size=n, prob=p)
       prob_poiss <- dpois(x=x, lambda=n*p)
       Max <- max(c(prob_binom, prob_poiss))
       plot(x=x,
-           y=prob_binom, type='h', col='black',
-           las=1, lwd=7, ylab='Probabilidad', xlab='x',
-           xlim=c(0, n), ylim=c(0, Max),frame.plot = FALSE)
+           y=prob_binom, type='h', col='skyblue',
+           las=1, lwd=7, ylab='Probabilidad', xlab='x', xaxt='n',
+           xlim=c(0, n), ylim=c(0, Max), frame.plot = FALSE)
+      
+      axis(side=1, at=x, labels=x)
+      
       par(new=TRUE)
       plot(x=x,
-           y=prob_poiss, type='h', col='skyblue', 
+           y=prob_poiss, type='h', col='red', 
            las=1, lwd=3, ylab='', xlab='x',
            xlim=c(0, n), ylim=c(0, Max),frame.plot = FALSE)
     
-    legend("topright",0,c("Aproximación Poisson","Distribución Binomial"),bty="n",
-           lty = 1,col = c("skyblue","black"),
+      position <- ifelse(p < 0.5, 'topright', 'topleft')
+      legend(position, legend=c("Aproximación Poisson","Distribución Binomial"),
+           bty="n", lty = 1, col = c("red","skyblue"),
            lwd = 4)
   }
     f4<-function(m,n,k){
@@ -90,11 +94,11 @@ shinyServer(function(input, output) {
   })
   
   output$Grafica1 <- renderPlot({
-    f3(input$l)
+    f2(input$l)
   })
   
   output$Grafica2 <- renderPlot({
-    f2(input$n2,input$p2)
+    f3(input$n2,input$p2)
   })
   output$Grafica3 <- renderPlot({
     f4(input$m,input$n,input$k)

@@ -116,7 +116,7 @@ shinyUI(fluidPage(
                             sliderInput("n2",
                                         "Número de ensayos n",
                                         min = 5,
-                                        max = 300,
+                                        max = 100,
                                         value = 5,
                                         step = 1, animate=TRUE),
                             
@@ -125,7 +125,7 @@ shinyUI(fluidPage(
                                         min = 0,
                                         max = 1,
                                         value = 0.9,
-                                        step = 0.05, animate=TRUE)
+                                        step = 0.01, animate=TRUE)
                           ),
                           
                           # Show a plot of the generated distribution
