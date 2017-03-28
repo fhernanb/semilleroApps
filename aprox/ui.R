@@ -23,11 +23,11 @@ shinyUI(fluidPage(
                         # Show a plot of the generated distribution
                         mainPanel(
                           
-                          h2("Aproximaciones"),
-                          h3("1. De la distribución binomial a la normal"),
-                          h3("2. De la distribución poisson a la normal"),
-                          h3("3. De la distribución binomial a la poisson"),
-                          h3("4. De la distribución hipergeométrica a la binomial")
+                          h2("Casos:"),
+                          h3("Aprox 1: de la binomial a la normal"),
+                          h3("Aprox 2: de la Poisson a la normal"),
+                          h3("Aprox 3: de la binomial a la Poisson"),
+                          h3("Aprox 4: de la hipergeométrica a la binomial")
                           
                           
                         )
@@ -43,16 +43,16 @@ shinyUI(fluidPage(
                           sliderInput("n",
                                       "Tamaño de muestra n",
                                       min = 5,
-                                      max = 300,
+                                      max = 100,
                                       value = 10,
-                                      step = 10),
+                                      step = 1),
                           
                           sliderInput("p",
                                       "Probabilidad de éxito p",
                                       min = 0,
                                       max = 1,
                                       value = 0.8,
-                                      step = 0.05)
+                                      step = 0.01)
                         ),
                         
                         # Show a plot of the generated distribution

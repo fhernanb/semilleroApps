@@ -6,21 +6,23 @@ shinyServer(function(input, output) {
   
   f1 <- function(n,p){
     x <- 0:n
-    Max <- max(dbinom(x=x,size = n,prob = p))
+    Max <- 1.2 * max(dbinom(x=x, size=n, prob=p),
+               dnorm(x=x, mean=n*p, sd=sqrt(n*p*(1-p))))
     plot(x=x,
-         y=dbinom(x=x,size = n,prob = p), type='h',
-         ylim=c(0, Max),main = "Distribución Binomial",col="skyblue",
+         y=dbinom(x=x, size=n, prob=p), type='h',
+         ylim=c(0, Max), main="Distribución binomial", col="skyblue",
          las=1, lwd=5, ylab='Probabilidad', xlab='x',frame.plot = FALSE)
     
-    par(new=TRUE)
-    plot(x=x,
+    lines(x=x,
          y=dnorm(x=x, mean=n*p, sd=sqrt(n*p*(1-p))), 
          col='red', type='l',
          las=1, lwd=3, ylab='',
          xlim=c(0,n), ylim=c(0, Max),frame.plot = FALSE)
-    legend("topright",0,c("Aproximación Normal","Distribución Binomial"),bty="n",
-           lty = 1,col = c("red","skyblue"),
-           lwd = 4)
+    
+    position <- ifelse(p < 0.5, 'topright', 'topleft')
+    legend(position,
+           legend=c("Aproximación Normal","Distribución Binomial"),
+           bty="n", lty=1, col=c("red","skyblue"), lwd=4)
   }
     
     f3 <- function(l){
@@ -89,17 +91,17 @@ shinyServer(function(input, output) {
   
   
   output$Grafica <- renderPlot({
-    f1 (input$n,input$p)
+    f1(input$n,input$p)
   })
   
   output$Grafica1 <- renderPlot({
-    f3 (input$l)
+    f3(input$l)
   })
   
   output$Grafica2 <- renderPlot({
-    f2 (input$n2,input$p2)
+    f2(input$n2,input$p2)
   })
   output$Grafica3 <- renderPlot({
-    f4 (input$m,input$n,input$k)
+    f4(input$m,input$n,input$k)
   })
 })
