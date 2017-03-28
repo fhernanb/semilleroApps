@@ -39,9 +39,10 @@ shinyUI(fluidPage(
              tabPanel("Aproximación 1",
                       sidebarLayout(
                         sidebarPanel(
-                          
+                          h4('Ingrese los parámetros de la binomial'),
+                          br(),
                           sliderInput("n",
-                                      "Tamaño de muestra n",
+                                      "Número de ensayos n",
                                       min = 5,
                                       max = 100,
                                       value = 10,
@@ -80,8 +81,8 @@ shinyUI(fluidPage(
              tabPanel("Aproximación 2",
                       sidebarLayout(
                         sidebarPanel(
-                          
-                          
+                          h4('Ingrese los parámetros de la Poisson'),
+                          br(),
                           sliderInput("l",
                                       HTML("Tasa promedio &lambda;"),
                                       min = 1,
@@ -110,9 +111,10 @@ shinyUI(fluidPage(
              tabPanel("Aproximación 3",
                         sidebarLayout(
                           sidebarPanel(
-                            
+                            h4('Ingrese los parámetros de la binomial'),
+                            br(),
                             sliderInput("n2",
-                                        "Tamaño de muestra n",
+                                        "Número de ensayos n",
                                         min = 5,
                                         max = 300,
                                         value = 5,
