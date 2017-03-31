@@ -91,7 +91,7 @@ fluidPage(
                   "Seleccione tamano de muestra n:", 
                   value=1,
                   min=1, 
-                  max=100, step=1, animate=T),
+                  max=100, step=NULL, animate=T),
   
 
   img(src="medellin.png", height = 80, width = 200),

@@ -120,19 +120,21 @@ $(document).ready(function () {
 
 
 <div id="que-es" class="section level1">
-<h1>Que es?</h1>
-<p>Es un teorema fundamental de probabilidad y estadistica que establece que, la distribucion de las medias de una muestrales <span class="math inline">\(\bar{x}\)</span> provenientes de una poblacion con varianza finita (<span class="math inline">\(\sigma^2\)</span>), convergen en distribución a una normal a medida que el tamano <span class="math inline">\(n\)</span> de la muestra crece.</p>
+<h1>¿Qué es?</h1>
+<p>Es un teorema fundamental de probabilidad y estadística que establece que, la distribucion de las medias de una muestrales <span class="math inline">\(\bar{x}_n\)</span> provenientes de una población con varianza finita (<span class="math inline">\(\sigma^2\)</span>), convergen en distribución a una normal a medida que el tamano <span class="math inline">\(n\)</span> de la muestra crece.</p>
 </div>
 <div id="simbolicamente" class="section level1">
-<h1>Simbolicamente</h1>
-<p>Si <span class="math inline">\(x_1, x_2, \ldots, x_n\)</span> son una muestra aleatoria de una poblacion cualquiera con media <span class="math inline">\(\mu\)</span> y varianza finita <span class="math inline">\(\sigma^2\)</span>, entonces</p>
-<p><span class="math display">\[\bar{x} \overset{d}{\rightarrow} N(\mu, \sigma^2/n)\]</span></p>
+<h1>Simbólicamente</h1>
+<p>Si <span class="math inline">\(x_1, x_2, \ldots, x_n\)</span> son una muestra aleatoria de una población cualquiera con media <span class="math inline">\(\mu\)</span> y varianza finita <span class="math inline">\(\sigma^2\)</span>, la media muestral</p>
+<p><span class="math display">\[\bar{x}_n= \frac{1}{n} \sum_{i=1}^{n}x_i\]</span></p>
+<p>cumple que</p>
+<p><span class="math display">\[\sqrt{n} \left( \bar{x}_n - \mu \right) / \sigma \overset{d}{\rightarrow} N(0, 1), \quad n \to \infty\]</span> Esto es, <span class="math display">\[\bar{x}_n \overset{aprox}{\sim} N(\mu, \sigma^2/n)\]</span></p>
 <p>a medida que <span class="math inline">\(n\)</span> aumente.</p>
 </div>
 <div id="implicaciones" class="section level1">
 <h1>Implicaciones</h1>
 <ul>
-<li><p>Garantiza un patron de comportamiento de las medias muestrales siempre y cuando se cumpla la condicion que <span class="math inline">\(n\)</span> es suficientemente grande.</p></li>
+<li><p>Garantiza un patrón de comportamiento de las medias muestrales siempre y cuando se cumpla la condicion que <span class="math inline">\(n\)</span> es suficientemente grande.</p></li>
 <li><p>La media de la distribucion de las <span class="math inline">\(\bar{x}\)</span> coincide con la media de la poblacion <span class="math inline">\(\mu\)</span>.</p></li>
 <li><p>La variabilidad de la distribucion de las <span class="math inline">\(\bar{x}\)</span> esta dada por <span class="math inline">\(\sigma^2/n\)</span> y disminuye a medida que aumenta <span class="math inline">\(n\)</span>.</p></li>
 <li><p>A medida que <span class="math inline">\(n\)</span> aumenta, las medias muestrales <span class="math inline">\(\bar{x}\)</span> tiene distribucion normal sin importar la distribucion de la poblacion de la cual fueron obtenidas.</p></li>

@@ -15,24 +15,28 @@ shinyServer(function(input, output, session) {
     n <- input$n
 
     if(input$distri == "Normal") {
+      set.seed(input$media * input$desvi)
       muestras <- matrix(rnorm(k*n, input$media, input$desvi), nrow=k)
       media <- input$media
       varia <- input$desvi ^ 2
     }
     
     if(input$distri == "Uniforme") {
+      set.seed(input$min * input$max)
       muestras <- matrix(runif(k*n, input$min, input$max), nrow=k)
       media <- (input$min + input$max) / 2
       varia <- (input$max + input$min)^2 / 12
     }
     
     if(input$distri == "Gamma") {
+      set.seed(input$shape * input$scale)
       muestras <- matrix(rgamma(k*n, shape=input$shape, scale=input$scale), nrow=k)
       media <- input$shape * input$scale
       varia <- input$shape * input$scale^2
     }
     
     if(input$distri == "Beta") {
+      set.seed(input$shape1 * input$shape2)
       muestras <- matrix(rbeta(k*n, input$shape1, input$shape2), nrow=k)
       a <- input$shape1
       b <- input$shape2
@@ -62,7 +66,9 @@ shinyServer(function(input, output, session) {
     qqline(medias)
     shapi <- shapiro.test(medias)
     legend('topleft', bty='n', col='red', text.col='dodgerblue3',
-           legend=paste('Prueba Shapiro Valor P=', round(shapi$p.value, 4)))
+           legend=paste('Prueba de normalidad \nde Shapiro-Wilk \nValor P =',
+                        round(shapi$p.value, 4)))
+    
 
 
   })

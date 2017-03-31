@@ -68,23 +68,31 @@ shinyServer(function(input, output) {
            bty="n", lty = 1, col = c("red","skyblue"),
            lwd = 4)
   }
-    f4<-function(m,n,k){
-      x <- max(c(0,k-n)):min(c(k,m))
-      prob_hyper <- dhyper(x=x,m=m,k=k,n=n)
-      prob_binom <- dbinom(x=x, size=k, prob=m/(n+m))
-      Max <- max(c(prob_binom, prob_hyper))
-      plot(x=x,
-           y=prob_hyper, type='h', col='black', 
-           las=1, lwd=7, ylab='', xlab='x',
-           xlim=c(0,max(x)), ylim=c(0, Max),frame.plot = FALSE)
-      par(new=TRUE)
-      plot(x=x,
-           y=prob_binom, type='h', col='skyblue',
-           las=1, lwd=3, ylab='Probabilidad', xlab='x',
-           xlim=c(0,max(x)), ylim=c(0, Max),frame.plot = FALSE)
-    legend("topright",0,c("Distribución Hipergeométrica","Aproximación Binomial"),
-           bty="n",lty = 1,col = c("black","skyblue"),
-           lwd = 4)
+    
+    f4 <- function(m, n, k){
+      #x <- max(c(0, k-n)) : min(c(k, m))
+      x <- 0:min(c(m, k))
+      prob_hyper <- dhyper(x=x, m=m, n=n, k=k)
+      #prob_binom <- dbinom(x=x, size=k, prob=m/(n+m))
+      #Max <- max(c(prob_binom, prob_hyper))
+      plot(x=x, main=paste(length(x), length(prob_hyper)),
+           y=prob_hyper, type='h', lwd=7)
+           #type='h', col='black', 
+           #las=1, lwd=7, ylab='', xlab='x', xaxt='n')
+           #main=range(x),
+           #main=paste(x),
+           #xlim=range(x),
+           #ylim=c(0, Max)
+           #)
+      #axis(side=1, at=x, labels=x)
+      #par(new=TRUE)
+      #plot(x=x,
+      #     y=prob_binom, type='h', col='skyblue', xaxt='n',
+      #     las=1, lwd=3, ylab='Probabilidad', xlab='x',
+      #     xlim=c(0,max(x)), ylim=c(0, Max),frame.plot = FALSE)
+      #legend("topright",0,c("Distribución Hipergeométrica","Aproximación Binomial"),
+      #     bty="n",lty = 1,col = c("black","skyblue"),
+      #     lwd = 4)
   }
   
   
@@ -101,6 +109,9 @@ shinyServer(function(input, output) {
     f3(input$n2,input$p2)
   })
   output$Grafica3 <- renderPlot({
-    f4(input$m,input$n,input$k)
+    #f4(input$m,input$n,input$k)
+    plot(x=0:min(c(input$m, input$k)),
+         y=dhyper(x=0:min(c(input$m, input$k)), 
+                  m=input$m, n=input$n, k=input$k), type='h', lwd=7)
   })
 })

@@ -152,26 +152,27 @@ shinyUI(fluidPage(
              tabPanel("Aproximación 4",
                       sidebarLayout(
                         sidebarPanel(
-                          
-                          
+                          h4('Ingrese los parámetros de la hipergeométrica'),
+                          br(),
                           sliderInput("m",
-                                      "Número de éxitos en la población m",
-                                      min = 0,
-                                      max = 300,
-                                      value = 10,
-                                      step = 1),
+                                      "Número de éxitos en la población: m",
+                                      min = 1,
+                                      max = 30,
+                                      value = 5,
+                                      step = 1, animate=TRUE),
                           sliderInput("n",
-                                      "Número de fracasos en la población n",
-                                      min = 0,
-                                      max = 300,
-                                      value = 50,
-                                      step = 1),
+                                      "Número de fracasos en la población: n",
+                                      min = 1,
+                                      max = 30,
+                                      value = 5,
+                                      step = 1, animate=TRUE),
                           sliderInput("k",
-                                      "tamaño de muestra k",
-                                      min = 0,
-                                      max = 300,
-                                      value = 25,
-                                      step = 1)
+                                      "Tamaño de muestra: k, recuerde que k 
+                                      tiene que ser menor o igual que m + n",
+                                      min = 1,
+                                      max = 30,
+                                      value = 6,
+                                      step = 1, animate=TRUE)
                         ),
                         
                         # Show a plot of the generated distribution
