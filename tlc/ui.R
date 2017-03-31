@@ -7,20 +7,20 @@ library(png)
 fluidPage(
   
   # Titulo de la aplicacion
-  titlePanel("Teorema del limite Central (TLC)"),
+  titlePanel("Teorema del límite Central (TLC)"),
   
 
   ### ubicacion de botones y ventanas en la aplicacion
   sidebarLayout(
      sidebarPanel(
-       h6('Esta aplicacion sirve para ilustrar el Teorema del Limite Central.
-           El objetivo es simular 1000 de cualquiera de las distribuciones
-           disponibles y ver que cuando n crece la distribucion 
-           de las medias muestrales se aproxima a una normal.'),
+       h6('Esta aplicación sirve para ilustrar el Teorema del Límite Central.
+           La aplicación simula 1000 muestras de cualquiera de las distribuciones
+           disponibles y el usuario elije el tamaño de cada muestra para verificar
+           que la distribución de las medias muestrales se aproxima a una normal.'),
        br(),
   ### relaciona las distribuciones a usar y por defecto selecciona la distribucion normal.    
        selectInput(inputId = "distri",
-                   label = "Elija Distribucion:",
+                   label = "Elija la distribución:",
                    choices = c("Normal",
                                "Uniforme",
                                "Gamma",
@@ -29,7 +29,7 @@ fluidPage(
   
       br(),
 
-  
+  # Distribucion normal
   conditionalPanel(condition="input.distri == 'Normal'",
                    numericInput(inputId="media",
                                 label=HTML("Ingrese la media &mu;."),
@@ -37,13 +37,12 @@ fluidPage(
                                 step=0.1),
                    
                    numericInput(inputId="desvi",
-                                label=HTML("Ingrese la desviacion &sigma;."),
+                                label=HTML("Ingrese la desviación &sigma;."),
                                 min=0.1,
                                 value="3",
                                 step=0.1) ),
   
   # Distribucion Uniforme
-  
   conditionalPanel(condition="input.distri == 'Uniforme'",
                    numericInput(inputId="min",
                                 label=HTML("Ingrese el valor minimo."),
@@ -57,38 +56,36 @@ fluidPage(
                                 step=0.1) ),
   
   # Distribucion Gamma
-  
-  conditionalPanel(condition="input.distri == 'Gamma'",
+    conditionalPanel(condition="input.distri == 'Gamma'",
                    numericInput(inputId="shape",
-                                label=HTML("Ingrese parametro de forma."),
+                                label=HTML("Ingrese el parámetro de forma."),
                                 min=0.01,
                                 value="1",
                                 step=0.1),
                    
                    numericInput(inputId="scale",
-                                label=HTML("Ingrese parametro de escala."),
+                                label=HTML("Ingrese el parámetro de escala."),
                                 min=0.01,
                                 value="1",
                                 step=0.1) ),
   
   # Distribucion beta
-  
-  conditionalPanel(condition="input.distri == 'Beta'",
+    conditionalPanel(condition="input.distri == 'Beta'",
                    numericInput(inputId="shape1",
-                                label=HTML("Ingrese el parametro a."),
+                                label=HTML("Ingrese el parámetro a."),
                                 min=0.01,
                                 value="1.5",
                                 step=0.1),
                    
                    numericInput(inputId="shape2",
-                                label=HTML("Ingrese el parametro b."),
+                                label=HTML("Ingrese el parámetro b."),
                                 min=0.01,
                                 value="0.9",
                                 step=0.1) ),
 
   
   sliderInput(inputId="n", 
-                  "Seleccione tamano de muestra n:", 
+                  "Seleccione el tamaño de muestra n:", 
                   value=1,
                   min=1, 
                   max=100, step=NULL, animate=T),
@@ -104,7 +101,7 @@ fluidPage(
       tabsetPanel(type = "tabs", 
                   tabPanel("TLC",
                            plotOutput("TLC", width='90%', height='600px')),
-                  tabPanel("Teoria", includeHTML("include.html"))
+                  tabPanel("Teoría", includeHTML("include.html"))
                   
       )
     )

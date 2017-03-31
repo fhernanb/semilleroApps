@@ -54,7 +54,7 @@ shinyServer(function(input, output, session) {
          ylim=c(0, max(c(hist(medias, breaks=30, freq=FALSE, plot=F)$density,
                 dnorm(media, media, sqrt(s2n))))),
          xlim=media + c(-4, 4) * sqrt(s2n),
-         main='Distribucion de las 1000 medias muestrales')
+         main='Distribución de las 1000 medias muestrales')
     
     curve(dnorm(x, mean=media, sd=sqrt(varia/n)),
           add=T, lwd=3, col='dodgerblue3')
@@ -62,7 +62,8 @@ shinyServer(function(input, output, session) {
     legend('topright', legend=nom, lwd=3, col='dodgerblue3', bty='n')
     
     qqnorm(medias, las=1, main='QQplot para las 1000 medias muestrales',
-           pch=1, col='dodgerblue3')
+           pch=1, col='dodgerblue3',
+           xlab='Cuantiles teóricos', ylab='Cuantiles muestrales')
     qqline(medias)
     shapi <- shapiro.test(medias)
     legend('topleft', bty='n', col='red', text.col='dodgerblue3',
