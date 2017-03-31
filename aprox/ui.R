@@ -58,7 +58,7 @@ shinyUI(fluidPage(
                         
                         # Show a plot of the generated distribution
                         mainPanel(h2("Aproximación de la binomial a la normal"),
-                                  tabsetPanel(tabPanel("Grafica", plotOutput("Grafica")),
+                                  tabsetPanel(tabPanel("Grafica", plotOutput("Grafica1")),
                                               tabPanel("Teoria", 
                                                        h4(HTML("Cuando la cantidad de experimentos tiende a 
                                                           infinito (generalmente se considera que esto sucede 
@@ -93,7 +93,7 @@ shinyUI(fluidPage(
                         
                         # Show a plot of the generated distribution
                         mainPanel(h2("Aproximación de la poisson a a normal"),
-                                  tabsetPanel(tabPanel("Grafica", plotOutput("Grafica1")),
+                                  tabsetPanel(tabPanel("Grafica", plotOutput("Grafica2")),
                                               tabPanel("Teoria", 
                                                        h4("Para el caso de la distribución de Poisson,
                                                           cuando λ≥10, la forma de esta distribución se 
@@ -130,7 +130,7 @@ shinyUI(fluidPage(
                           
                           # Show a plot of the generated distribution
                           mainPanel(h2("Aproximación de la binomial a la poisson"),
-                                    tabsetPanel(tabPanel("Grafica", plotOutput("Grafica2")),
+                                    tabsetPanel(tabPanel("Grafica", plotOutput("Grafica3")),
                                                 tabPanel("Teoria", 
                                                          h4("Se puede demostrar que una binomial cuyo n es muy
                                                             grande y p tiende a 0, es decir, un suceso raro, 
@@ -177,7 +177,7 @@ shinyUI(fluidPage(
                         
                         # Show a plot of the generated distribution
                         mainPanel(h2("Aproximación de la hipergeométrica a la binomial"),
-                                  tabsetPanel(tabPanel("Grafica", plotOutput("Grafica3")),
+                                  tabsetPanel(tabPanel("Grafica", plotOutput("Grafica4")),
                                               tabPanel("Teoria", 
                                                        h4("En general puede mostrarse que la hipergeométrica
                                                           h(x;m,n,k) se aproxima a la binomial b(x;k,p) con 

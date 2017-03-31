@@ -10,7 +10,7 @@ shinyServer(function(input, output) {
                dnorm(x=x, mean=n*p, sd=sqrt(n*p*(1-p))))
     plot(x=x,
          y=dbinom(x=x, size=n, prob=p), type='h', bty='n',
-         ylim=c(0, Max), main="Distribución binomial", col="skyblue",
+         ylim=c(0, Max), col="skyblue",
          las=1, lwd=5, ylab='Probabilidad', xlab='x', xaxt='n')
     
     axis(side=1, at=x, labels=x)
@@ -66,52 +66,49 @@ shinyServer(function(input, output) {
       position <- ifelse(p < 0.5, 'topright', 'topleft')
       legend(position, legend=c("Aproximación Poisson","Distribución Binomial"),
            bty="n", lty = 1, col = c("red","skyblue"),
-           lwd = 4)
+           lwd = 3)
   }
     
     f4 <- function(m, n, k){
-      #x <- max(c(0, k-n)) : min(c(k, m))
-      x <- 0:min(c(m, k))
+      x <- max(c(0, k-n)) : min(c(k, m))
       prob_hyper <- dhyper(x=x, m=m, n=n, k=k)
-      #prob_binom <- dbinom(x=x, size=k, prob=m/(n+m))
-      #Max <- max(c(prob_binom, prob_hyper))
-      plot(x=x, main=paste(length(x), length(prob_hyper)),
-           y=prob_hyper, type='h', lwd=7)
-           #type='h', col='black', 
-           #las=1, lwd=7, ylab='', xlab='x', xaxt='n')
-           #main=range(x),
-           #main=paste(x),
-           #xlim=range(x),
-           #ylim=c(0, Max)
-           #)
-      #axis(side=1, at=x, labels=x)
-      #par(new=TRUE)
-      #plot(x=x,
-      #     y=prob_binom, type='h', col='skyblue', xaxt='n',
-      #     las=1, lwd=3, ylab='Probabilidad', xlab='x',
-      #     xlim=c(0,max(x)), ylim=c(0, Max),frame.plot = FALSE)
-      #legend("topright",0,c("Distribución Hipergeométrica","Aproximación Binomial"),
-      #     bty="n",lty = 1,col = c("black","skyblue"),
-      #     lwd = 4)
+      prob_binom <- dbinom(x=x, size=k, prob=m/(n+m))
+      Max <- max(c(prob_binom, prob_hyper))
+      plot(x=x, y=prob_hyper, type='h', col='skyblue',
+           ylim=c(0, Max),
+           las=1, lwd=7, ylab='Probabilidad', xlab='x', xaxt='n')
+      axis(side=1, at=x, labels=x)
+      
+      par(new=TRUE)
+      plot(x=x, y=prob_binom, type='h', col='red',
+           las=1, lwd=3, xaxt='n', yaxt='n',
+           xlab='', ylab='',
+           xlim=range(x), ylim=c(0, Max), frame.plot = FALSE)
+      
+      p <- m / (m + n)
+      position <- ifelse(p < 0.5, 'topright', 'topleft')
+      legend(position,
+             legend=c("Distribución hipergeométrica", "Aproximación binomial"),
+             bty="n",lty = 1,col = c("skyblue","red"),
+             lwd = 3)
   }
   
   
   
-  output$Grafica <- renderPlot({
+  output$Grafica1 <- renderPlot({
     f1(input$n,input$p)
   })
   
-  output$Grafica1 <- renderPlot({
+  output$Grafica2 <- renderPlot({
     f2(input$l)
   })
   
-  output$Grafica2 <- renderPlot({
+  output$Grafica3 <- renderPlot({
     f3(input$n2,input$p2)
   })
-  output$Grafica3 <- renderPlot({
-    #f4(input$m,input$n,input$k)
-    plot(x=0:min(c(input$m, input$k)),
-         y=dhyper(x=0:min(c(input$m, input$k)), 
-                  m=input$m, n=input$n, k=input$k), type='h', lwd=7)
+  
+  output$Grafica4 <- renderPlot({
+    f4(input$m,input$n,input$k)
   })
+  
 })
