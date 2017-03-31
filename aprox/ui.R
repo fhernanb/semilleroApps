@@ -7,16 +7,16 @@ shinyUI(fluidPage(
   
   # Application title
   
-  titlePanel("APROXIMACIÓN ENTRE DISTRIBUCIONES"),
+  titlePanel("Aproximación de distribuciones"),
   
   navbarPage(" ",
              tabPanel("Introducción",
                       sidebarLayout(
                         sidebarPanel(h3("Objetivo:"),
-                                     h4(" El objetivo principal de la aplicación es mostrar
-                                        gráficamente cómo se comportan las aproximaciones entre
-                                        distribuciones, variando los parámetros necesarios de 
-                                        cada distribución y viendo su comportamiento.")),
+                                     h5("El objetivo de esta aplicación es mostrar
+                                        gráficamente la aproximación de una distribución a otra
+                                        a medida que el usuario varía los parámetros
+                                        de una de ellas.")),
                         
                         
                         
@@ -24,10 +24,10 @@ shinyUI(fluidPage(
                         mainPanel(
                           
                           h2("Casos:"),
-                          h3("Aprox 1: de la binomial a la normal"),
-                          h3("Aprox 2: de la Poisson a la normal"),
-                          h3("Aprox 3: de la binomial a la Poisson"),
-                          h3("Aprox 4: de la hipergeométrica a la binomial")
+                          h3("Aproximación 1: de la binomial a la normal"),
+                          h3("Aproximación 2: de la Poisson a la normal"),
+                          h3("Aproximación 3: de la binomial a la Poisson"),
+                          h3("Aproximación 4: de la hipergeométrica a la binomial")
                           
                           
                         )
@@ -154,20 +154,20 @@ shinyUI(fluidPage(
                         sidebarPanel(
                           h4('Ingrese los parámetros de la hipergeométrica'),
                           br(),
-                          sliderInput("m",
-                                      "Número de éxitos en la población: m",
+                          sliderInput("m4",
+                                      "Número de éxitos en la población m",
                                       min = 1,
                                       max = 30,
                                       value = 5,
                                       step = 1, animate=TRUE),
-                          sliderInput("n",
-                                      "Número de fracasos en la población: n",
+                          sliderInput("n4",
+                                      "Número de fracasos en la población n",
                                       min = 1,
                                       max = 30,
                                       value = 5,
                                       step = 1, animate=TRUE),
-                          sliderInput("k",
-                                      "Tamaño de muestra: k, recuerde que k 
+                          sliderInput("k4",
+                                      "Tamaño de muestra k, recuerde que k 
                                       tiene que ser menor o igual que m + n",
                                       min = 1,
                                       max = 30,
