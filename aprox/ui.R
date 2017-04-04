@@ -157,41 +157,30 @@ shinyUI(fluidPage(
                           sliderInput("m4",
                                       "Número de éxitos en la población m",
                                       min = 1,
-                                      max = 30,
-                                      value = 5,
+                                      max = 100,
+                                      value = 10,
                                       step = 1, animate=TRUE),
                           sliderInput("n4",
                                       "Número de fracasos en la población n",
                                       min = 1,
-                                      max = 30,
-                                      value = 5,
+                                      max = 100,
+                                      value = 10,
                                       step = 1, animate=TRUE),
                           sliderInput("k4",
                                       "Tamaño de muestra k, recuerde que k 
                                       tiene que ser menor o igual que m + n",
                                       min = 1,
                                       max = 30,
-                                      value = 6,
+                                      value = 7,
                                       step = 1, animate=TRUE)
                         ),
                         
                         # Show a plot of the generated distribution
                         mainPanel(h2("Aproximación de la hipergeométrica a la binomial"),
                                   tabsetPanel(tabPanel("Grafica", plotOutput("Grafica4")),
-                                              tabPanel("Teoria", 
-                                                       h4("En general puede mostrarse que la hipergeométrica
-                                                          h(x;m,n,k) se aproxima a la binomial b(x;k,p) con 
-                                                          p = m/N = m/(m+n) cuando N tiende a infinito.Se usa la aproximación
-                                                          generalmente cuando: 1.) n es menor que N/10, 2.)N-n/N-1 sea cercano a 1,
-                                                          3.) n/N es menor que 0.05, es decir cuando la muestra es inferior al 5%
-                                                          de la población.")
-                                                       )
-                                              
-                                                       )
-                                              )
-                                              )
-                      
-                                              )
+                                              tabPanel("Teoría", includeHTML("teo4.html"))
+                                              )))
+                      )
              
                    )
   
