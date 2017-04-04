@@ -1,1 +1,1 @@
-Esta aplicacion sirve para ilustrar el Teorema del Límite Central.
+Esta aplicación sirve para ilustrar el Teorema del Límite Central.

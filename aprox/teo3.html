@@ -119,7 +119,17 @@ $(document).ready(function () {
 </div>
 
 
-<p>Esta aplicación sirve para construir la superficie de log-verosimilitud de una distribución de probabilidad continua de dos parámetros dada una muestra aleatoria.</p>
+<div id="aproximacion" class="section level1">
+<h1>Aproximación</h1>
+<p>Una distribución binomial con número de ensayos <span class="math inline">\(n\)</span> muy grande y probabilidad de éxito <span class="math inline">\(p\)</span> cercana a 0 (suceso raro), se puede aproximar a una distribución Poisson con <span class="math inline">\(\lambda=np\)</span>.</p>
+<p>Una regla general aceptable es emplear esta aproximación si:</p>
+<ul>
+<li><p><span class="math inline">\(n \geq 20\)</span> y <span class="math inline">\(p \leq 0.05\)</span>.</p></li>
+<li><p><span class="math inline">\(n \geq 100\)</span> y <span class="math inline">\(np \leq 10\)</span>.</p></li>
+</ul>
+<p>Por esta razón se considera a veces al modelo de Poisson como una forma límite de la distribución Binomial y se le utiliza para aproximar probabilidades en ésta.</p>
+<p>La información fue tomada de este <a href="http://www.itchihuahua.edu.mx/academic/industrial/sabaticorita/_private/06Aprox%20Poisson%20Binomial.htm">enlace</a></p>
+</div>
 
 
 

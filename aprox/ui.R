@@ -16,13 +16,14 @@ shinyUI(fluidPage(
                                      h5("El objetivo de esta aplicación es mostrar
                                         gráficamente la aproximación de una distribución a otra
                                         a medida que el usuario varía los parámetros
-                                        de una de ellas.")),
+                                        de una de ellas."),
+                                     img(src="medellin.png", height = 80, width = 200),
+                                     br(),
+                                     br(),
+                                     p("App creada por el Semillero de R de la Universidad Nacional de Colombia:"),
+                                     tags$a(href="https://srunal.wordpress.com/", "https://srunal.wordpress.com/")),
                         
-                        
-                        
-                        # Show a plot of the generated distribution
                         mainPanel(
-                          
                           h2("Casos:"),
                           h3("Aproximación 1: de la binomial a la normal"),
                           h3("Aproximación 2: de la Poisson a la normal"),
@@ -31,8 +32,7 @@ shinyUI(fluidPage(
                           
                           
                         )
-                                     )
-                      
+                        )
                         ),
              
              
@@ -59,22 +59,10 @@ shinyUI(fluidPage(
                         # Show a plot of the generated distribution
                         mainPanel(h2("Aproximación de la binomial a la normal"),
                                   tabsetPanel(tabPanel("Grafica", plotOutput("Grafica1")),
-                                              tabPanel("Teoria", 
-                                                       h4(HTML("Cuando la cantidad de experimentos tiende a 
-                                                          infinito (generalmente se considera que esto sucede 
-                                                          cuando n≥30), la distribución binomial tiende a la 
-                                                          distribución normal, siempre y cuando p y q (q=1-p) no sean 
-                                                          ninguna menor a 0.1 y además np≥10 y nq≥10. 
-                                                          Cuando aproximamos una distribución binomial mediante una normal,
-                                                          estamos convirtiendo una variable X discreta (toma un número 
-                                                          determinado de valores) en una continua X’ (toma valores en un intervalo) 
-                                                          ,entonces se tiene en cuenta un factor de corrección por continuidad de + o - 0.5."))
-                                                       )
-                                              
-                                                       )
-                                              )
-                                  )
-                      
+                                              tabPanel("Teoría", includeHTML("teo1.html"))
+                        )
+                        )
+                        )
                         ),
              
              
@@ -92,18 +80,9 @@ shinyUI(fluidPage(
                         ),
                         
                         # Show a plot of the generated distribution
-                        mainPanel(h2("Aproximación de la poisson a a normal"),
+                        mainPanel(h2("Aproximación de la Poisson a a normal"),
                                   tabsetPanel(tabPanel("Grafica", plotOutput("Grafica2")),
-                                              tabPanel("Teoria", 
-                                                       h4("Para el caso de la distribución de Poisson,
-                                                          cuando λ≥10, la forma de esta distribución se 
-                                                          asemeja lo suficiente a la distribución Normal
-                                                          como para que puede utilizarse ésta última como
-                                                          aproximación. Para realizar la aproximación,
-                                                          debe considerarse que la distribución Normal 
-                                                          tendrá parámetros lambda y raiz de lambda para la
-                                                          media y la desviación estándar respectivamente.")
-                                              ))
+                                              tabPanel("Teoría", includeHTML("teo2.html")))
                                   
                         )
                       )
@@ -131,22 +110,8 @@ shinyUI(fluidPage(
                           # Show a plot of the generated distribution
                           mainPanel(h2("Aproximación de la binomial a la poisson"),
                                     tabsetPanel(tabPanel("Grafica", plotOutput("Grafica3")),
-                                                tabPanel("Teoria", 
-                                                         h4("Se puede demostrar que una binomial cuyo n es muy
-                                                            grande y p tiende a 0, es decir, un suceso raro, 
-                                                            se aproxima como una Poisson con λ=np. Una regla 
-                                                            general aceptable es emplear esta aproximación 
-                                                            si n≥20 y p≤0.05: sí n≥100, la aproximación es ge
-                                                            neralmente excelente siempre y cuando np≤10. P
-                                                            or esta razón se considera a veces al modelo de 
-                                                            Poisson como una forma límite de la distribución
-                                                            Binomial y se le utiliza para aproximar 
-                                                            probabilidades en ésta.")
-                                                         )
-                                                
-                                                )
-                                                )
-                                                )
+                                                tabPanel("Teoría", includeHTML("teo3.html"))
+                                                )))
                         
                                                 ),
              tabPanel("Aproximación 4",

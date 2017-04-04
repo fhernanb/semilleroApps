@@ -119,7 +119,14 @@ $(document).ready(function () {
 </div>
 
 
-<p>Esta aplicación sirve para construir la superficie de log-verosimilitud de una distribución de probabilidad continua de dos parámetros dada una muestra aleatoria.</p>
+<div id="aproximacion" class="section level1">
+<h1>Aproximación</h1>
+<p>La distribución Poisson con parámetro <span class="math inline">\(\lambda\)</span>, <span class="math inline">\(P(\lambda)\)</span> se puede aproximar por medio de la distribución normal si:</p>
+<ul>
+<li><span class="math inline">\(\lambda \geq 10\)</span>.</li>
+</ul>
+<p>La distribución normal que se usa para la aproximación tiene media <span class="math inline">\(\mu=\lambda\)</span> y varianza <span class="math inline">\(\sigma^2=\lambda\)</span>.</p>
+</div>
 
 
 
