@@ -58,7 +58,7 @@ shinyUI(fluidPage(
                         
                         # Show a plot of the generated distribution
                         mainPanel(h2("Aproximación de la binomial a la normal"),
-                                  tabsetPanel(tabPanel("Grafica", plotOutput("Grafica1")),
+                                  tabsetPanel(tabPanel("Gráfica", plotOutput("Grafica1")),
                                               tabPanel("Teoría", includeHTML("teo1.html"))
                         )
                         )
@@ -81,7 +81,7 @@ shinyUI(fluidPage(
                         
                         # Show a plot of the generated distribution
                         mainPanel(h2("Aproximación de la Poisson a a normal"),
-                                  tabsetPanel(tabPanel("Grafica", plotOutput("Grafica2")),
+                                  tabsetPanel(tabPanel("Gráfica", plotOutput("Grafica2")),
                                               tabPanel("Teoría", includeHTML("teo2.html")))
                                   
                         )
@@ -109,7 +109,7 @@ shinyUI(fluidPage(
                           
                           # Show a plot of the generated distribution
                           mainPanel(h2("Aproximación de la binomial a la poisson"),
-                                    tabsetPanel(tabPanel("Grafica", plotOutput("Grafica3")),
+                                    tabsetPanel(tabPanel("Gráfica", plotOutput("Grafica3")),
                                                 tabPanel("Teoría", includeHTML("teo3.html"))
                                                 )))
                         
@@ -142,7 +142,7 @@ shinyUI(fluidPage(
                         
                         # Show a plot of the generated distribution
                         mainPanel(h2("Aproximación de la hipergeométrica a la binomial"),
-                                  tabsetPanel(tabPanel("Grafica", plotOutput("Grafica4")),
+                                  tabsetPanel(tabPanel("Gráfica", plotOutput("Grafica4")),
                                               tabPanel("Teoría", includeHTML("teo4.html"))
                                               )))
                       )
