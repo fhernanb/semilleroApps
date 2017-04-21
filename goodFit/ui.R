@@ -13,7 +13,7 @@ con una base predeterminada inicialmente
 la Exp y asi respectivamente). A continuación 
 suba su base de interes e indique con exactitud el tipo de separación de su base.'),
 br(),
-fileInput(inputId='file1', label='Use el boton siguiente para
+fileInput(inputId='file1', label='Use el botón siguiente para
           cargar la base de datos.',
           accept = c(
             'text/csv',
@@ -24,17 +24,17 @@ fileInput(inputId='file1', label='Use el boton siguiente para
             '.tsv'
             )),
 
-checkboxInput('header', label='Tiene encabezado la base
+checkboxInput('header', label='¿Tiene encabezado la base
               de datos?', value=TRUE),
 
-selectInput(inputId="sep", label="Cual es la separacion de sus datos?",
-             choices=list(Tabulacion='\t',Coma=',',PuntoyComa=';'),
+selectInput(inputId="sep", label="¿Cual es la separación de sus datos?",
+             choices=list(Tabulacion='\t', Coma=',', PuntoyComa=';'),
              selected=';'),
 
 tags$hr(),
 
 selectInput("product",label="Seleccione la variable 
-            de la base de datos",choices=""),
+            de la base de datos", choices=""),
 
 selectInput("familia", "Seleccione la familia de distribuciones 
             a analizar",choice=list("Reales"="realAll",
@@ -44,8 +44,7 @@ selectInput("familia", "Seleccione la familia de distribuciones
                             "Conteos"="counts",
                             "Binomiales"="binom")),
 
-sliderInput("k","Ingrese una penalización K por cantidad 
-            de parametros",
+sliderInput("k","Ingrese una penalización K por cantidad de parámetros",
             min=1,
             max=10,
             value=4,
@@ -60,11 +59,12 @@ tags$a(href="https://srunal.wordpress.com/",
            "https://srunal.wordpress.com/")),
 mainPanel(
   tabsetPanel(type ="pills",
-tabPanel("Ajuste",h4('A continuacion el ajuste para 
+tabPanel("Ajuste",h4('A continuación el ajuste para 
 la variable seleccionada por el usuario'),
-         plotOutput("distPlot",width="800px",height="600px"),
-         downloadButton(outputId="descarga1",'Descargar en png la gráfica de su base')),
-tabPanel("Teoria",uiOutput('markdown'))
+         plotOutput("distPlot", width="600px", height="600px"),
+         downloadButton(outputId="descarga1",
+                        'Descargar en png la gráfica.')),
+tabPanel("Teoría",uiOutput('markdown'))
     )
   )
  )

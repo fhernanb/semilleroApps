@@ -47,11 +47,11 @@ shinyServer(function(input,output,session){
 
     f1 <- function(k, f, p){
       m <- fitDist(dt[, p], type=f, k=k)
-      par(mfrow=c(2, 2))
+      par(mfrow=c(2, 2), bg='gray98')
       for(i in 1:4){
         denst <- density(dt[, p])
-        res <- histDist(dt[,p], family=names(m$fits)[i],
-                        main=names(m$fits)[i],
+        res <- histDist(dt[, p], family=names(m$fits)[i],
+                        main=names(m$fits)[i], ylab='Densidad',
                         xlab=p, las=1,
                         line.wd=3,
                         line.ty=1,
