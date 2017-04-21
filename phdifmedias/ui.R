@@ -84,7 +84,8 @@ mainPanel(
                        para analizar el cumplimiento del supuesto de 
                        normalidad para la variable de interes.'),
                        plotOutput("distPlot",
-                                  width='70%', height='300px'),
+                                  width='70%',
+                                  height='300px'),
                        h5("Tabla con las estadisticas de resumen:"),
                        
                        tableOutput('statistic'),
