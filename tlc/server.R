@@ -1,8 +1,3 @@
-library(shiny)
-library(knitr)
-library(png)
-library(markdown)
-
 
 shinyServer(function(input, output, session) {
   

@@ -1,13 +1,22 @@
-library(markdown)
+packages = c("knitr", "png", "markdown")
+
+# use this function to check if each package is on the local machine
+# if a package is installed, it will be loaded
+# if any are not, the missing package(s) will be installed and loaded
+package.check <- lapply(packages, FUN = function(x) {
+  if (!require(x, character.only = TRUE)) {
+    install.packages(x, dependencies = TRUE)
+    library(x, character.only = TRUE)
+  }
+})
+
 library(shiny)
-library(knitr)
-library(png)
 
 #  interfaz del usuario para montaje de comandos y ventanas, bases si se requiere
 fluidPage(
   
   # Titulo de la aplicacion
-  titlePanel("Teorema del límite Central (TLC)"),
+  titlePanel("Teorema del Límite Central (TLC)"),
   
 
   ### ubicacion de botones y ventanas en la aplicacion
@@ -88,11 +97,9 @@ fluidPage(
                   "Seleccione el tamaño de muestra n:", 
                   value=1,
                   min=1, 
-                  max=100, step=NULL, animate=T),
+                  max=1000, step=NULL, animate=T),
   
 
-  img(src="medellin.png", height = 80, width = 200),
-  br(),
   p("App creada por el Semillero de R de la Universidad Nacional de Colombia:"),
   tags$a(href="https://srunal.wordpress.com/", "https://srunal.wordpress.com/")
   ),
