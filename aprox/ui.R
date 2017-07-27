@@ -13,22 +13,21 @@ shinyUI(fluidPage(
              tabPanel("Introducción",
                       sidebarLayout(
                         sidebarPanel(h3("Objetivo:"),
-                                     h5("El objetivo de esta aplicación es mostrar
-                                        gráficamente la aproximación de una distribución a otra
-                                        a medida que el usuario varía los parámetros
-                                        de una de ellas."),
-                                     img(src="medellin.png", height = 80, width = 200),
-                                     br(),
+                                     h5("Esta aplicación muestra gráficamente la aproximación 
+                                        de una distribución candidata a otra distribución 
+                                        a medida que se modifican los parámetros
+                                        de la distribución candidata."),
+                                     h5("En las pestañas de la parte superior están las diferentes aproximaciones."),
                                      br(),
                                      p("App creada por el Semillero de R de la Universidad Nacional de Colombia:"),
                                      tags$a(href="https://srunal.wordpress.com/", "https://srunal.wordpress.com/")),
                         
                         mainPanel(
-                          h2("Casos:"),
-                          h3("Aproximación 1: de la binomial a la normal"),
-                          h3("Aproximación 2: de la Poisson a la normal"),
-                          h3("Aproximación 3: de la binomial a la Poisson"),
-                          h3("Aproximación 4: de la hipergeométrica a la binomial")
+                          h2("Casos"),
+                          h4("Aproximación 1, de la binomial a la normal"),
+                          h4("Aproximación 2, de la Poisson a la normal"),
+                          h4("Aproximación 3, de la binomial a la Poisson"),
+                          h4("Aproximación 4, de la hipergeométrica a la binomial")
                           
                           
                         )
@@ -53,7 +52,8 @@ shinyUI(fluidPage(
                                       min = 0,
                                       max = 1,
                                       value = 0.84,
-                                      step = 0.01, animate=TRUE)
+                                      step = 0.01, animate=TRUE),
+                          p("Nota: puede dar click en el triángulo para obtener una animación.")
                         ),
                         
                         # Show a plot of the generated distribution
@@ -69,7 +69,7 @@ shinyUI(fluidPage(
              tabPanel("Aproximación 2",
                       sidebarLayout(
                         sidebarPanel(
-                          h4('Ingrese los parámetros de la Poisson'),
+                          h4('Ingrese el parámetro de la Poisson'),
                           br(),
                           sliderInput("l",
                                       HTML("Tasa promedio &lambda;"),
@@ -108,7 +108,7 @@ shinyUI(fluidPage(
                           ),
                           
                           # Show a plot of the generated distribution
-                          mainPanel(h2("Aproximación de la binomial a la poisson"),
+                          mainPanel(h2("Aproximación de la binomial a la Poisson"),
                                     tabsetPanel(tabPanel("Gráfica", plotOutput("Grafica3")),
                                                 tabPanel("Teoría", includeHTML("teo3.html"))
                                                 )))
