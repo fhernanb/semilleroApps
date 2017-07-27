@@ -39,7 +39,8 @@ shinyServer(function(input, output) {
       lines(x=x, y=dnorm(x=x, mean=l, sd=sqrt(l)), 
            col='red', lwd=3, type='b')
     
-    legend("topright",0,c("Aproximación Normal","Distribución Poisson"),bty="n",
+      legend("topright",0,c("Aproximación Normal","Distribución Poisson"),
+           bty="n",
            lty = 1,col = c("red","skyblue"),
            lwd = 4)
   }
@@ -100,8 +101,8 @@ shinyServer(function(input, output) {
         p <- m / (m+n)
         position <- ifelse(p < 0.5, 'topright', 'topleft')
         legend(position,
-               legend=c("Distribución hipergeométrica", "Aproximación binomial"),
-               bty="n",lty = 1,col = c("skyblue","red"),
+               legend=c("Aproximación binomial", "Distribución hipergeométrica"),
+               bty="n",lty = 1,col = c("red","skyblue"),
                lwd = 3)
       }
 

@@ -74,14 +74,14 @@ shinyUI(fluidPage(
                           sliderInput("l",
                                       HTML("Tasa promedio &lambda;"),
                                       min = 1,
-                                      max = 50,
+                                      max = 200,
                                       value = 2,
                                       step = 1, animate=TRUE),
                           p("Nota: puede dar clic en el triángulo para obtener una animación.")
                         ),
                         
                         # Show a plot of the generated distribution
-                        mainPanel(h2("Aproximación de la Poisson a a normal"),
+                        mainPanel(h2("Aproximación de la Poisson a la normal"),
                                   tabsetPanel(tabPanel("Gráfica", plotOutput("Grafica2")),
                                               tabPanel("Teoría", includeHTML("teo2.html")))
                                   
@@ -125,20 +125,20 @@ shinyUI(fluidPage(
                                       "Número de éxitos en la población m",
                                       min = 1,
                                       max = 100,
-                                      value = 10,
+                                      value = 50,
                                       step = 1, animate=TRUE),
                           sliderInput("n4",
                                       "Número de fracasos en la población n",
                                       min = 1,
                                       max = 100,
-                                      value = 10,
+                                      value = 50,
                                       step = 1, animate=TRUE),
                           sliderInput("k4",
                                       "Tamaño de muestra k, recuerde que k 
                                       tiene que ser menor o igual que m + n",
                                       min = 1,
-                                      max = 30,
-                                      value = 7,
+                                      max = 50,
+                                      value = 40,
                                       step = 1, animate=TRUE),
                           p("Nota: puede dar clic en el triángulo para obtener una animación.")
                         ),

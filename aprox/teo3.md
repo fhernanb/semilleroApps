@@ -2,9 +2,8 @@ Una distribución binomial con número de ensayos $n$ muy grande y probabilidad 
 
 Una regla general aceptable es emplear esta aproximación si:
 
-- $n \geq 20$ y $p \leq 0.05$.
-
-- $n \geq 100$ y  $np \leq 10$. 
+- $n > 50$ y $n p < 5$.
 
 Por esta razón se considera a veces al modelo de Poisson como una forma límite de la distribución Binomial y se le utiliza para aproximar probabilidades en ésta.
 
+Tomado de Devore, J. L. (2016). Probability and statistics for engineering and the sciences. Cengage, página 132.
