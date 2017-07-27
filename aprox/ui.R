@@ -19,7 +19,7 @@ shinyUI(fluidPage(
                                         de la distribución candidata."),
                                      h5("En las pestañas de la parte superior están las diferentes aproximaciones."),
                                      br(),
-                                     p("App creada por el Semillero de R de la Universidad Nacional de Colombia:"),
+                                     p("App creada por el Semillero de R de la Universidad Nacional de Colombia."),
                                      tags$a(href="https://srunal.wordpress.com/", "https://srunal.wordpress.com/")),
                         
                         mainPanel(
@@ -53,7 +53,7 @@ shinyUI(fluidPage(
                                       max = 1,
                                       value = 0.84,
                                       step = 0.01, animate=TRUE),
-                          p("Nota: puede dar click en el triángulo para obtener una animación.")
+                          p("Nota: puede dar clic en el triángulo para obtener una animación.")
                         ),
                         
                         # Show a plot of the generated distribution
@@ -76,7 +76,8 @@ shinyUI(fluidPage(
                                       min = 1,
                                       max = 50,
                                       value = 2,
-                                      step = 1, animate=TRUE)
+                                      step = 1, animate=TRUE),
+                          p("Nota: puede dar clic en el triángulo para obtener una animación.")
                         ),
                         
                         # Show a plot of the generated distribution
@@ -95,7 +96,7 @@ shinyUI(fluidPage(
                             sliderInput("n2",
                                         "Número de ensayos n",
                                         min = 5,
-                                        max = 100,
+                                        max = 150,
                                         value = 5,
                                         step = 1, animate=TRUE),
                             
@@ -104,7 +105,8 @@ shinyUI(fluidPage(
                                         min = 0,
                                         max = 1,
                                         value = 0.9,
-                                        step = 0.01, animate=TRUE)
+                                        step = 0.01, animate=TRUE),
+                            p("Nota: puede dar clic en el triángulo para obtener una animación.")
                           ),
                           
                           # Show a plot of the generated distribution
@@ -137,7 +139,8 @@ shinyUI(fluidPage(
                                       min = 1,
                                       max = 30,
                                       value = 7,
-                                      step = 1, animate=TRUE)
+                                      step = 1, animate=TRUE),
+                          p("Nota: puede dar clic en el triángulo para obtener una animación.")
                         ),
                         
                         # Show a plot of the generated distribution

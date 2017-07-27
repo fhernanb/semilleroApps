@@ -1,6 +1,4 @@
-Aproximación
-=======================
-La distribución Poisson con parámetro $\lambda$, $P(\lambda)$ se puede aproximar por medio de la distribución normal si:
+La distribución Poisson con parámetro $\lambda$ se puede aproximar por medio de la distribución normal si:
 
 - $\lambda \geq 10$.
 
