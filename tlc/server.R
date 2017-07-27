@@ -46,7 +46,7 @@ shinyServer(function(input, output, session) {
     
     hist(medias, breaks=30, freq=FALSE,
          xlab=expression(bar(x)), las=1, ylab='Densidad',
-         ylim=c(0, max(c(hist(medias, breaks=30, freq=FALSE, plot=F)$density,
+         ylim=c(0, max(c(hist(medias, breaks=30, plot=F)$density,
                 dnorm(media, media, sqrt(s2n))))),
          xlim=media + c(-4, 4) * sqrt(s2n),
          main='Distribución de las 1000 medias muestrales')
