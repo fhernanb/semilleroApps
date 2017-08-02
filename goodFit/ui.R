@@ -4,15 +4,15 @@ library(knitr)
 shinyUI(pageWithSidebar(
   headerPanel( "Explorando la distribución que mejor se ajusta a una variable"),
   sidebarPanel(h3("Objetivo:"),
-h5('Esta aplicación sirve para mostrar
+h5('Esta aplicación sirve para identificar
 las mejores cuatro distribuciones 
-que se ajustan a una variable elegida de 
-una base de datos. Se muestra una gráfica 
-con una base predeterminada inicialmente 
-(Siendo el mejor ajuste BCPEo, seguido por 
-la Exp y asi respectivamente). A continuación 
-suba su base de interes e indique con exactitud el tipo de separación de su base.'),
+que se ajustan a una variable de 
+una base de datos ingresada por el usuario.'),
+h5('Como ejemplo se muestran los resultados obtenidos para 
+   la variable X1 de una base de datos ilustrativa'),
 br(),
+h5('Suba su base, indique el tipo de separación de su base y seleccione
+   la variable de interés.'),
 fileInput(inputId='file1', label='Use el botón siguiente para
           cargar la base de datos.',
           accept = c(
@@ -50,8 +50,6 @@ sliderInput("k","Ingrese una penalización K por cantidad de parámetros",
             value=4,
             step=1,
             animate=TRUE),
-img(src="medellin.png", height = 80, width = 200),
-br(),
 br(),
 p("App creada por el Semillero de R de la Universidad Nacional 
       de Colombia:"),

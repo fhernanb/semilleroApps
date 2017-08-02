@@ -75,7 +75,7 @@ shinyServer(function(input,output,session){
   
   output$descarga1<-downloadHandler(
     filename=function(){
-      paste("grafica","png",sep=".")},content=function(file){
+      paste("grafica", "png",sep=".")}, content=function(file){
         png(file)
         print(f1(input$k,input$familia,input$product))
         dev.off()
