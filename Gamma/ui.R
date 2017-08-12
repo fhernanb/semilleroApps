@@ -4,7 +4,7 @@ library(shiny)
 shinyUI(fluidPage(
   
   # Application title
-  titlePanel("Distribucion Gamma"),
+  titlePanel("Distribucionn Gamma"),
   
   # Sidebar with a slider input for the number of bins
   sidebarLayout(
