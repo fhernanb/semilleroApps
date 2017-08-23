@@ -24,7 +24,6 @@ shinyUI(fluidPage(
                   max = 500,
                   value = 20,
                   step= 1),
-      img(src="logo.png", height = 60, width = 150),
       br(),
       br(),
       p("App creada por el Semillero de R de la Universidad Nacional de Colombia:"),
