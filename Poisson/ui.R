@@ -4,19 +4,20 @@ library(shiny)
 shinyUI(fluidPage(
 
   # Application title
-  titlePanel("Distribucion Poisson"),
+  titlePanel("Distribuci'on Poisson"),
 
   # Sidebar with a slider input for the number of bins
   sidebarLayout(
     sidebarPanel(
-      p("Modifique los valores de los parametros y observe lo que sucede en el grafico."),
+      p("Modifique los valores de los parámetros y observe lo que sucede en el grafico."),
       br(),
       sliderInput(inputId = "l",
                   label = HTML("Media &lambda;:"),
                   min = 0,
                   max = 40,
                   value = 5,
-                  step= 1),
+                  step= 1,
+                  animate = TRUE),
       tags$hr(),
       numericInput(inputId = "n",
                   label = "Ingrese el maximo valor de x para el cual desea ver las probabilidades:",
