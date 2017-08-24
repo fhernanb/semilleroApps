@@ -8,7 +8,7 @@ shinyUI(fluidPage(
   sidebarLayout(
     sidebarPanel(
      p("Modifique los valores de los parámetros y observe lo 
-       que sucede en el gráfico."),
+       que sucede en el diagrama"),
      br(),
       sliderInput(inputId = "p",
                   label = "Probabilidad de éxito p:",
@@ -24,7 +24,6 @@ shinyUI(fluidPage(
                   value = 9,
                   step = 1,
                   animate = TRUE),
-     br(),
      br(),
      p("App creada por el Semillero de R de la Universidad Nacional de Colombia:"),
      tags$a(href="https://srunal.wordpress.com/", "https://srunal.wordpress.com/")

@@ -9,7 +9,8 @@ shinyUI(fluidPage(
   # Sidebar with a slider input for the number of bins
   sidebarLayout(
     sidebarPanel(
-      p("Modifique los valores de los parámetros y observe lo que sucede en el gráfico."),
+      p("Modifique los valores de los parámetros y observe
+        lo que sucede en el diagrama"),
       br(),
       sliderInput(inputId = "l",
                   label = HTML("Media &lambda;:"),
@@ -18,14 +19,12 @@ shinyUI(fluidPage(
                   value = 5,
                   step= .1,
                   animate = TRUE),
-      tags$hr(),
       numericInput(inputId = "n",
                   label = "Ingrese el máximo valor de x para el cual desea ver las probabilidades:",
                   min = 10,
                   max = 500,
                   value = 20,
                   step= 1),
-      br(),
       br(),
       p("App creada por el Semillero de R de la Universidad Nacional de Colombia:"),
       tags$a(href="https://srunal.wordpress.com/", "https://srunal.wordpress.com/")

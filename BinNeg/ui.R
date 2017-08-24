@@ -11,23 +11,22 @@ shinyUI(fluidPage(
   sidebarLayout(
     sidebarPanel(
       p("Modifique los valores de los parámetros y 
-        observe lo que sucede en el gráfico."),
+        observe lo que sucede en el diagrama"),
       br(),
       sliderInput(inputId = "p",
                   label = "Probabilidad individual de éxito p:",
                   min = 0,
                   max = 1,
                   value = 0.6,
-                  step= 0.1),
+                  step= 0.1,
+                  animate = TRUE),
       sliderInput(inputId = "exitos",
-                  label = "Némero de Exitos",
+                  label = "Número de éxitos",
                   min = 1,
                   max = 30,
                   value = 5,
-                  step = 1),
-      tags$br(),
-      tags$br(),
-      tags$hr(),
+                  step = 1,
+                  animate = TRUE),
       sliderInput(inputId = "x.max",
                   label = "Ingrese el máximo valor de x para el cual desea 
                   ver las probabilidades:",
@@ -35,8 +34,6 @@ shinyUI(fluidPage(
                   max = 50,
                   value = 15,
                   step = 1),
-
-      br(),
       br(),
       p("App creada por el Semillero de R de la Universidad Nacional de Colombia:"),
       tags$a(href="https://srunal.wordpress.com/", "https://srunal.wordpress.com/")
