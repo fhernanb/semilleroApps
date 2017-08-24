@@ -1,1 +1,1 @@
-Esta aplicacion tiene por objetivo mostrar como influyen los parametros de la distribucion Gamma sobre la forma de la densidad.
+Esta aplicación tiene por objetivo mostrar como influyen los parmetros de la distribución Gamma sobre la forma de la densidad.

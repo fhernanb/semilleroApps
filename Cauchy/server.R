@@ -13,8 +13,8 @@ shinyServer(function(input, output)
   output$github <- renderText({
     mediana <- input$mu
     entropia <- log(4*pi*input$sigma)
-    paste(c("Para esos parametros Mediana=", mediana,
-            "con Entropia=", entropia))
+    paste(c("Para esta configuración Mediana =", mediana,
+            "con Entropia =", entropia))
   })
   
 })

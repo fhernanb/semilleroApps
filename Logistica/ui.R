@@ -4,12 +4,13 @@ library(shiny)
 shinyUI(fluidPage(
   
   # Application title
-  titlePanel("Distribucion Logistica"),
+  titlePanel("Distribución Logística"),
   
   # Sidebar with a slider input for the number of bins
   sidebarLayout(
     sidebarPanel(
-      p("Modifique los valores de los parametros y observe lo que sucede con la densidad."),
+      p("Modifique los valores de los parámetros y observe 
+        lo que sucede con la densidad."),
       br(),
       numericInput(inputId = "location",
                    label = p("Ingrese el valor de Location:"),
@@ -27,8 +28,6 @@ shinyUI(fluidPage(
                    min = 1,
                    value = 0.5,
                    step= 0.5),
-      img(src="logo.png", height = 60, width = 150),
-      br(),
       br(),
       p("App creada por el Semillero de R de la Universidad Nacional de Colombia:"),
       tags$a(href="https://srunal.wordpress.com/", "https://srunal.wordpress.com/")
@@ -36,7 +35,7 @@ shinyUI(fluidPage(
     
     # Show a plot of the generated distribution
     mainPanel(
-      h3("Densidad para la distribucion Logistica", align = "center"),
+      h3("Densidad para la distribución Logística", align = "center"),
       plotOutput("grafico1"),
       verbatimTextOutput('github')
     )
