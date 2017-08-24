@@ -3,26 +3,27 @@ library(shiny)
 shinyUI(fluidPage(
 
   # Application title
-  titlePanel("Distribucion binomial"),
+  titlePanel("Distribución binomial"),
 
   sidebarLayout(
     sidebarPanel(
-     p("Modifique los valores de los parametros y observe lo que sucede en el grafico."),
+     p("Modifique los valores de los parámetros y observe lo 
+       que sucede en el gráfico."),
      br(),
       sliderInput(inputId = "p",
-                  label = "Probabilidad de exito p:",
+                  label = "Probabilidad de éxito p:",
                   min = 0,
                   max = 1,
                   value = 0.4,
-                  step= 0.1),
+                  step= 0.1,
+                  animate = TRUE),
       sliderInput(inputId = "n",
-                  label = "Tamano de la muestra n:",
+                  label = "Tamaño de la muestra n:",
                   min = 1,
                   max = 30,
                   value = 9,
-                  step = 1),
-
-     img(src="logo.png", height = 60, width = 150),
+                  step = 1,
+                  animate = TRUE),
      br(),
      br(),
      p("App creada por el Semillero de R de la Universidad Nacional de Colombia:"),
