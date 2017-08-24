@@ -9,18 +9,18 @@ shinyUI(fluidPage(
   # Sidebar with a slider input for the number of bins
   sidebarLayout(
     sidebarPanel(
-      p("Modifique los valores de los parámetros y observe lo que sucede en el grafico."),
+      p("Modifique los valores de los parámetros y observe lo que sucede en el gráfico."),
       br(),
       sliderInput(inputId = "l",
                   label = HTML("Media &lambda;:"),
                   min = 0,
                   max = 40,
                   value = 5,
-                  step= 1,
+                  step= .1,
                   animate = TRUE),
       tags$hr(),
       numericInput(inputId = "n",
-                  label = "Ingrese el maximo valor de x para el cual desea ver las probabilidades:",
+                  label = "Ingrese el máximo valor de x para el cual desea ver las probabilidades:",
                   min = 10,
                   max = 500,
                   value = 20,
