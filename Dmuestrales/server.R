@@ -33,7 +33,7 @@ shinyServer(function(input, output, session){
 
            k <- 5  # numero de desviaciones
            curve(dnorm(x, media, desvi), xlim=media+c(-k,k)*desvi, lwd=3,
-                 main='Distribucion normal', ylab="", xlab="", axes=FALSE)
+                 main='Distribución normal', ylab="", xlab="", axes=FALSE)
            axis(1, at=seq(media-k*desvi, media+k*desvi, desvi), pos=0)
            axis(2, las=1)
            secuencia <- seq(media-k*desvi, percentil, length.out=10000)

@@ -1,10 +1,13 @@
 shinyUI(fluidPage(
-  titlePanel(h1("Distribuciones muestrales",align="center", style="color:steelblue")),
-  h4(p("Esta aplicacion te ayudara a calcular probabilidades y percentiles de distribuciones asociadas al muestreo"),align="center"),
+  titlePanel(h1("Distribuciones muestrales", align="center", 
+                style="color:steelblue")),
+  h4(p("Esta aplicacion te ayudara a calcular probabilidades y 
+       percentiles de distribuciones asociadas al muestreo."),
+     align="left"),
   sidebarLayout(
     sidebarPanel(
       selectInput(inputId="Distribucion",
-                  label="Elige la distribucion:",
+                  label="Elija la distribución:",
                   choices=c("Normal", "t-student", "chi.cuadrada", "F"),
                   selected="Normal"),
 
@@ -59,8 +62,6 @@ shinyUI(fluidPage(
                                     value=0.70, step=0.001,
                                     min=0.001, max=0.999)),
 
-      img(src="udea.png", height = 72, width = 64),
-      img(src="logo.png", height = 56, width = 136),
       br(),
       p("App creada por el Semillero de R de la Universidad Nacional de Colombia:"),
       tags$a(href="https://srunal.wordpress.com/", "https://srunal.wordpress.com/")
@@ -70,7 +71,7 @@ shinyUI(fluidPage(
 
     mainPanel(
       tabsetPanel(type = "tabs",
-                  tabPanel("Grafica", plotOutput(outputId="miplot"))
+                  tabPanel("Gráfica", plotOutput(outputId="miplot"))
 
 
       )

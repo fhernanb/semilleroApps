@@ -1,1 +1,1 @@
-Esta aplicacion sirve para calcular percentiles y probabilidades para las distribuciones muestrales.
+Esta aplicación sirve para calcular percentiles y probabilidades para las distribuciones muestrales.
