@@ -1,1 +1,1 @@
-Esta aplicacion tiene por objetivo mostrar como afectan los parametros la distribucion de las probabilidades en la distribucion binomial.
+Esta aplicación tiene por objetivo mostrar como afectan los parámetros la distribución de las probabilidades en la distribucion binomial.
