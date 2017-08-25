@@ -5,12 +5,13 @@ library(shiny)
 shinyUI(fluidPage(
   
   # Application title
-  titlePanel("Distribucion Gamma aumentada con ceros"),
+  titlePanel("Distribución Gamma aumentada con ceros"),
   
   # Sidebar with a slider input for the number of bins
   sidebarLayout(
     sidebarPanel(
-      p("Modifique los valores de los parametros y observe lo que sucede con la densidad."),
+      p("Modifique los valores de los parámetros y observe 
+        lo que sucede con la densidad."),
       br(),
       numericInput(inputId = "mu",
                   label = HTML("Ingrese el valor de &mu;:"),
@@ -28,24 +29,20 @@ shinyUI(fluidPage(
                   max = 0.99,
                   value = 0.2,
                   step = 0.01),
-      tags$br(),
       sliderInput(inputId = "x.max",
-                  label = "Ingrese el maximo valor de x para mostrar en el grafico:",
+                  label = "Ingrese el máximo valor de x para mostrar en el gráfico:",
                   min = 5,
                   max = 20,
                   value = 5,
                   step = 1),
-
-      img(src="logo.png", height = 60, width = 150),
-      br(),
-      br(),
+    br(),
       p("App creada por el Semillero de R de la Universidad Nacional de Colombia:"),
       tags$a(href="https://srunal.wordpress.com/", "https://srunal.wordpress.com/")
     ),
     
     # Show a plot of the generated distribution
     mainPanel(
-      h3("Densidad para la distribucion ZAGA", align = "center"),
+      h3("Densidad para la distribución ZAGA", align = "center"),
       plotOutput("grafico1"),
       verbatimTextOutput('github')
     )
