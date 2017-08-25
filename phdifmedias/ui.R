@@ -67,10 +67,7 @@ shinyUI(pageWithSidebar(
                 para construir el intervalo de confianza',
                 min=0.90, max=0.99,
                 value=0.95, step=0.01),
-    
-    img(src="logo.png", height = 60, width = 150),
     br(),
-    
     tags$a(href="https://srunal.wordpress.com/", "https://srunal.wordpress.com/")
 
 ),
