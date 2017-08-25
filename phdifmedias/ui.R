@@ -7,13 +7,13 @@ shinyUI(pageWithSidebar(
               windowTitle="PH dif medias"),
   
   sidebarPanel(
-    h5('Esta aplicacion sirve para realizar prueba de hipotesis 
+    h5('Esta aplicación sirve para realizar prueba de hipotesis 
         para la diferencia de medias de variables cuantitativas. Ingrese la 
-        informacion solicitada abajo. Por defecto se carga una base de ejemplo
+        información solicitada abajo. Por defecto se carga una base de ejemplo
         pero usted puede ingresar la suya'),
     
     fileInput(inputId='file1',
-              label='Use el boton siguiente para cargar su base de datos.',
+              label='Use el botón siguiente para cargar su base de datos.',
               accept = c(
                 'text/csv',
                 'text/comma-separated-values',
@@ -28,7 +28,7 @@ shinyUI(pageWithSidebar(
                   value=TRUE),
     
     selectInput(inputId="sep",
-                label = "Cual es la separacion interna de los
+                label = "Cual es la separación interna de los
                 datos en la su base de datos?", 
                 choices = list(Tab='\t', Comma=',', Semicolon=';'),
                 selected = ';'),
@@ -76,10 +76,10 @@ mainPanel(
   tabsetPanel(type = "pills",
               
               tabPanel(title="Resultados",
-                       h5('A continuacion se presentan las densidades, 
+                       h5('A continuación se presentan las densidades, 
                        qqplot y valor P de la prueba de normalidad Shapiro 
                        para analizar el cumplimiento del supuesto de 
-                       normalidad para la variable de interes.'),
+                       normalidad para la variable de interés.'),
                        plotOutput("distPlot",
                                   width='70%',
                                   height='300px'),
