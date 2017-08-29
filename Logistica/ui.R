@@ -24,7 +24,8 @@ shinyUI(fluidPage(
                    value = 0.3,
                    step= 0.1),
       numericInput(inputId = "distribuciones",
-                   label = p("Ingrese el valor de desviaciones estandar:"),
+                   label = p("Ingrese el valor de desviaciones estándar
+                             para modificar el rango horizontal:"),
                    min = 1,
                    value = 0.5,
                    step= 0.5),
