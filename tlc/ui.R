@@ -92,6 +92,8 @@ fluidPage(
   
 
   p("App creada por el Semillero de R de la Universidad Nacional de Colombia:"),
+  img(src="https://fhbunal.files.wordpress.com/2017/08/logo.png",
+      height = 56, width = 136),
   tags$a(href="https://srunal.wordpress.com/", "https://srunal.wordpress.com/")
   ),
     

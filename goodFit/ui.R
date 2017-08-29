@@ -6,7 +6,7 @@ shinyUI(pageWithSidebar(
   sidebarPanel(
 h5("Esta aplicación sirve para identificar
     las cuatro distribuciones 
-    que se mejor se ajustan a una variable de 
+    que se mejor se ajustan para una variable de 
     una base de datos ingresada por el usuario."),
 h5('Como ejemplo se muestran los resultados obtenidos para 
    la variable x1 de una base de datos cargada por defecto.'),
@@ -27,25 +27,19 @@ fileInput(inputId='file1', label='Use el botón siguiente para
 
 checkboxInput('header', label='¿Tiene encabezado la base
               de datos?', value=TRUE),
-
 selectInput(inputId="sep", label="¿Cual es la separación de sus datos?",
              choices=list(Tabulacion='\t', Coma=',', PuntoyComa=';'),
              selected=';'),
-
-tags$hr(),
-
 selectInput("product",label="Seleccione la variable 
             de la base de datos", choices=""),
-
-selectInput("familia", "Seleccione la familia de distribuciones 
-            a analizar",choice=list("Reales"="realAll",
-                            "Reales Lineales"="realline",
-                            "Reales Positivas"="realplus",
-                            "Reales de 0 a 1"="real0to1",
-                            "Conteos"="counts",
-                            "Binomiales"="binom")),
-
-sliderInput("k","Ingrese una penalización K por cantidad de parámetros",
+selectInput("familia", "Seleccione la familia a la cual pertenece 
+            la variable de interés:", 
+            choice=list("Reales Positivos" = "realplus",
+                        "Reales" = "realAll",
+                        "Reales entre 0 y 1" = "real0to1",
+                        "Conteos" = "counts",
+                        "Binomiales" = "binom")),
+sliderInput("k", "Ingrese una penalización K por el exceso de parámetros",
             min=1,
             max=10,
             value=4,
@@ -65,7 +59,7 @@ tabPanel("Ajuste", h4('A continuación el ajuste para
          plotOutput("distPlot", width="600px", height="600px")
          #downloadButton(outputId="descarga1", 'Descargar en png la gráfica.')
          ),
-tabPanel("Teoría", uiOutput('markdown'))
+tabPanel("Teoría", includeHTML("include.html"))
     )
   )
  )
