@@ -3,16 +3,17 @@ library(knitr)
 
 shinyUI(pageWithSidebar(
   headerPanel( "Explorando la distribución que mejor se ajusta a una variable"),
-  sidebarPanel(h3("Objetivo:"),
-h5('Esta aplicación sirve para identificar
-las mejores cuatro distribuciones 
-que se ajustan a una variable de 
-una base de datos ingresada por el usuario.'),
+  sidebarPanel(
+h5("Esta aplicación sirve para identificar
+    las cuatro distribuciones 
+    que se mejor se ajustan a una variable de 
+    una base de datos ingresada por el usuario."),
 h5('Como ejemplo se muestran los resultados obtenidos para 
-   la variable X1 de una base de datos ilustrativa'),
-br(),
-h5('Suba su base, indique el tipo de separación de su base y seleccione
-   la variable de interés.'),
+   la variable x1 de una base de datos cargada por defecto.'),
+h4('Para usar la aplicación haga lo siguiente:'),
+h6('1. Suba su base,'),
+h6('2. Indique el tipo de separación de su base,'),
+h6('3. Seleccione la variable de interés.'),
 fileInput(inputId='file1', label='Use el botón siguiente para
           cargar la base de datos.',
           accept = c(
@@ -53,16 +54,18 @@ sliderInput("k","Ingrese una penalización K por cantidad de parámetros",
 br(),
 p("App creada por el Semillero de R de la Universidad Nacional 
       de Colombia:"),
+img(src="https://fhbunal.files.wordpress.com/2017/08/logo.png",
+    height = 56, width = 136),
 tags$a(href="https://srunal.wordpress.com/", 
            "https://srunal.wordpress.com/")),
 mainPanel(
   tabsetPanel(type ="pills",
-tabPanel("Ajuste",h4('A continuación el ajuste para 
-la variable seleccionada por el usuario'),
-         plotOutput("distPlot", width="600px", height="600px"),
-         downloadButton(outputId="descarga1",
-                        'Descargar en png la gráfica.')),
-tabPanel("Teoría",uiOutput('markdown'))
+tabPanel("Ajuste", h4('A continuación el ajuste para 
+                      la variable seleccionada por el usuario'),
+         plotOutput("distPlot", width="600px", height="600px")
+         #downloadButton(outputId="descarga1", 'Descargar en png la gráfica.')
+         ),
+tabPanel("Teoría", uiOutput('markdown'))
     )
   )
  )

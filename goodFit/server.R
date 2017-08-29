@@ -81,6 +81,7 @@ shinyServer(function(input,output,session){
         dev.off()
       }
   )
+  
   output$markdown <- renderUI({
     HTML(markdown::markdownToHTML(knit('Teoria.Rmd', quiet = TRUE)))
   })
