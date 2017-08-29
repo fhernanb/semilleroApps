@@ -13,7 +13,7 @@ shinyServer(function(input,output,session){
     updateSelectInput(session, "familia")
   })
   require(gamlss)
-  f1<-function(k,f,p){
+  f1 <- function(k,f,p){
     m <- fitDist(dt[,p], type=f, k=k)
     par(mfrow=c(2, 2))
     for(i in 1:4){

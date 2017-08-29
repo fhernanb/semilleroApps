@@ -58,7 +58,7 @@ shinyServer(function(input,output,session){
     ggplotly(p)
   })
   
-
+  
   output$markdown <- renderUI({
     HTML(markdown::markdownToHTML(knit('teoria.Rmd', quiet = TRUE)))
   })
