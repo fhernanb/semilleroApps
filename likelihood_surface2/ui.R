@@ -48,7 +48,8 @@ fluidPage(
       tabsetPanel(type = "pills", 
                   tabPanel("Superficie", plotOutput("superficie",
                                                       width="600px",
-                                                      height="600px")), 
+                                                      height="600px")),
+                  #tabPanel("Hola mundo", includeHTML("include.html"),
                   tabPanel("Teoría", uiOutput('lateoria'))
       )
     )
