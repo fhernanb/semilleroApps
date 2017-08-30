@@ -1,6 +1,4 @@
 library(shiny)
-library(plotly)
-
 
 shinyServer(function(input,output,session){
   
