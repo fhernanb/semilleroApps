@@ -11,7 +11,7 @@ shinyServer(function(input,output,session){
     updateSelectInput(session, "product", choices = names(dt))
   })
   
-  output$distPlot <- renderPlot({
+  output$superficie <- renderPlot({
     inFile <- input$file1
     if(is.null(inFile)) dt <- read.table('datos.txt', header=T, sep='\t')
     else

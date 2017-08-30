@@ -46,7 +46,7 @@ fluidPage(
     # of the generated distribution
     mainPanel(
       tabsetPanel(type = "pills", 
-                  tabPanel("Superficie", plotOutput("distPlot",
+                  tabPanel("Superficie", plotOutput("superficie",
                                                       width="600px",
                                                       height="600px")), 
                   tabPanel("Teoría", uiOutput('lateoria'))
