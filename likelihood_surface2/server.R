@@ -55,7 +55,7 @@ shinyServer(function(input,output,session){
     color <- jet.colors(nbcol)
     ncz <- ncol(loglik)
     nrz <- nrow(loglik)
-    zfacet <- z[-1, -1] + z[-1, -ncz] + z[-nrz, -1] + z[-nrz, -ncz]
+    zfacet <- loglik[-1, -1] + loglik[-1, -ncz] + loglik[-nrz, -1] + loglik[-nrz, -ncz]
     facetcol <- cut(zfacet, nbcol)
     # ---------------
     myplot <- persp(par1, par2, loglik, theta=30, phi=30, 

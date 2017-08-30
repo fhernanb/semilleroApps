@@ -1,6 +1,4 @@
 library(shiny)
-#library(knitr)
-
 
 # Define UI for random distribution application 
 fluidPage(
