@@ -1,4 +1,3 @@
-
 library(shiny)
 library(plotly)
 library(knitr)
@@ -42,7 +41,7 @@ fluidPage(
       img(src="https://fhbunal.files.wordpress.com/2017/08/logo.png",
           height = 56, width = 136),
       tags$a(href="https://srunal.wordpress.com/", "https://srunal.wordpress.com/")
-      ),
+    ),
     
     # Show a tabset that includes a plot, summary, and table view
     # of the generated distribution
@@ -51,7 +50,7 @@ fluidPage(
                   tabPanel("Superficie", plotlyOutput("distPlot",
                                                       width="800px",
                                                       height="600px")), 
-                  tabPanel("Teoría", includeHTML("include.html"))
+                  tabPanel("Teoría", uiOutput('lateoria'))
       )
     )
   )

@@ -5,22 +5,25 @@ library(plotly)
 shinyServer(function(input,output,session){
   
   observe({
-    inFile<-input$file1
-    if(is.null(inFile)) return(NULL)
-    dt = read.csv(inFile$datapath, header=input$header, sep=input$sep)
+    inFile <- input$file1
+    if(is.null(inFile)) dt <- read.table('datos.txt', header=T, sep='\t')
+    else
+    dt <-  read.csv(inFile$datapath, header=input$header, sep=input$sep)
     updateSelectInput(session, "product", choices = names(dt))
   })
   
   output$distPlot <- renderPlotly({
-    inFile<-input$file1
-    
+    inFile <- input$file1
+    if(is.null(inFile)) dt <- read.table('datos.txt', header=T, sep='\t')
+    else
+      dt <-  read.csv(inFile$datapath, header=input$header, sep=input$sep)
+    x <- as.vector(dt[, input$product])
+
     Dist <- ifelse(input$Distribucion == 'Normal', 'norm',
                    ifelse(input$Distribucion == 'Weibull', 'weibull', 'gamma'))
     
     n.points <- 30
     sigmas <- 3
-    dt = read.csv(inFile$datapath, header=input$header, sep=input$sep)
-    x <- as.vector(dt[, input$product])
     
     ####
     loglik_function <- function(par1, par2) {
@@ -59,8 +62,8 @@ shinyServer(function(input,output,session){
   })
   
   
-  output$markdown <- renderUI({
-    HTML(markdown::markdownToHTML(knit('teoria.Rmd', quiet = TRUE)))
+  output$lateoria <- renderUI({
+    HTML(markdown::markdownToHTML(knit('lateoria.txt', quiet = TRUE)))
   })
   
   
