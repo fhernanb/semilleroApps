@@ -48,7 +48,7 @@ fluidPage(
     mainPanel(
       tabsetPanel(type = "pills", 
                   tabPanel("Superficie", plotOutput("distPlot",
-                                                      width="800px",
+                                                      width="600px",
                                                       height="600px")), 
                   tabPanel("Teoría", uiOutput('lateoria'))
       )
