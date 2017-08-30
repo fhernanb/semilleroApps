@@ -100,7 +100,7 @@ fluidPage(
     mainPanel(
       tabsetPanel(type = "tabs", 
                   tabPanel("TLC",
-                           plotOutput("TLC", width="400px", height="400px")),
+                           plotOutput("TLC", width="550px", height="550px")),
                   tabPanel("Teoría", includeHTML("include.html"))
                   
       )
