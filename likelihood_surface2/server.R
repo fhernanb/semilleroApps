@@ -1,4 +1,5 @@
 library(shiny)
+require(grDevices)
 
 shinyServer(function(input,output,session){
   
