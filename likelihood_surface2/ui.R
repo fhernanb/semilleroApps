@@ -1,5 +1,5 @@
 library(shiny)
-library(knitr)
+#library(knitr)
 
 
 # Define UI for random distribution application 
@@ -49,8 +49,7 @@ fluidPage(
                   tabPanel("Superficie", plotOutput("superficie",
                                                       width="600px",
                                                       height="600px")),
-                  #tabPanel("Hola mundo", includeHTML("include.html"),
-                  tabPanel("Teoría", uiOutput('lateoria'))
+                  tabPanel("Teoría", includeHTML("include.html"))
       )
     )
   )
