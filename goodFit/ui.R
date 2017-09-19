@@ -30,7 +30,7 @@ checkboxInput('header', label='¿Tiene encabezado la base
 selectInput(inputId="sep", label="¿Cual es la separación de sus datos?",
              choices=list(Tabulacion='\t', Coma=',', PuntoyComa=';'),
              selected=';'),
-selectInput("product",label="Seleccione la variable 
+selectInput("response", label="Seleccione la variable 
             de la base de datos", choices=""),
 selectInput("familia", "Seleccione la familia a la cual pertenece 
             la variable de interés:", 
@@ -41,7 +41,7 @@ selectInput("familia", "Seleccione la familia a la cual pertenece
                         "Binomiales" = "binom")),
 sliderInput("k", "Ingrese una penalización K por el exceso de parámetros",
             min=1,
-            max=10,
+            max=20,
             value=4,
             step=1,
             animate=TRUE),
