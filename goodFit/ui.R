@@ -46,7 +46,7 @@ sliderInput("k", "Ingrese una penalización K por el exceso de parámetros",
             step=1,
             animate=TRUE),
 br(),
-p("App creada por el Semillero de R de la Universidad Nacional 
+p("This app was created by Semillero de R at Universidad Nacional 
       de Colombia:"),
 img(src="https://fhbunal.files.wordpress.com/2017/08/logo.png",
     height = 56, width = 136),
