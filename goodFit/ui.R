@@ -24,7 +24,6 @@ fileInput(inputId='file1', label='Use el botón siguiente para
             '.csv',
             '.tsv'
             )),
-
 checkboxInput('header', label='¿Tiene encabezado la base
               de datos?', value=TRUE),
 selectInput(inputId="sep", label="¿Cual es la separación de sus datos?",
@@ -47,6 +46,10 @@ sliderInput("k", "Ingrese una penalización K por el exceso de parámetros
             step=1,
             animate=TRUE),
 br(),
+radioButtons(inputId = "var3", 
+             label = "Select the file type to download the plot", 
+             choices = list("png", "pdf")),
+br(),
 p("This app was created by Semillero de R at Universidad Nacional 
       de Colombia:"),
 img(src="https://fhbunal.files.wordpress.com/2017/08/logo.png",
@@ -57,8 +60,9 @@ mainPanel(
   tabsetPanel(type ="pills",
 tabPanel("Ajuste", h4('A continuación el ajuste para 
                       la variable seleccionada por el usuario'),
-         plotOutput("distPlot", width="700px", height="600px")
-         #downloadButton(outputId="descarga1", 'Descargar en png la gráfica.')
+         plotOutput("distPlot", width="700px", height="600px"),
+         downloadButton(outputId = "down",
+                        label = "Download the plot with the extension .png or .pdf")
          ),
 tabPanel("Teoría", includeHTML("include.html"))
     )

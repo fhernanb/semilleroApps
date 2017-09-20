@@ -2,6 +2,42 @@ library(shiny)
 require(gamlss)
 
 shinyServer(function(input, output, session){
+  
+  four.hist <- function(k, f, p) {
+    par(cex.main=0.95)
+    inFile <- input$file1
+    if(is.null(inFile))
+      dt <- cars
+    else dt <- read.csv(inFile$datapath, header=input$header, 
+                        sep=input$sep)
+    mod <- fitDist(dt[, p], type=f, k=k)
+    par(mfrow=c(2, 2), bg='gray98')
+    for(i in 1:4){
+      denst <- density(dt[, p])
+      res <- histDist(dt[, p], family=names(mod$fits)[i],
+                      main='', 
+                      ylab='Density',
+                      xlab=p, las=1,
+                      line.wd=3,
+                      line.ty=1,
+                      line.col='dodgerblue2',
+                      ylim=c(0, (3 * max(denst$y))))
+      gaic <- round(-2 * logLik(res) + k * length(res$parameters), 2)
+      title(main=paste(i, ')', names(mod$fits)[i], 
+                       'distribution with GAIC=', gaic),
+            col.main='blue4')
+      param <- c('mu', 'sigma', 'nu', 'tau') 
+      np <- length(res$parameters)
+      fun1 <- function(x) eval(parse(text=x))
+      hat.param <- sapply(as.list(paste('res$', param[1:np], sep='')), fun1)
+      hat.param <- round(hat.param, digits=2)
+      txt <- paste('hat(', param[1:np], ')==', hat.param, sep='')
+      txt <- paste(txt, collapse=', ')
+      legend('topright', bty='n',
+             legend=eval(parse(text=paste('expression(', txt, ')'))))
+    }
+  }
+  
   observe({
     inFile <- input$file1
     if(is.null(inFile)) 
@@ -14,53 +50,24 @@ shinyServer(function(input, output, session){
   })
   
 
-
   output$distPlot <- renderPlot({
-    inFile <- input$file1
-    if(is.null(inFile))
-      dt <- cars
-    else dt <- read.csv(inFile$datapath, header=input$header, 
-                        sep=input$sep)
-    
-    f1 <- function(k, f, p){
-      mod <- fitDist(dt[, p], type=f, k=k)
-      par(mfrow=c(2, 2), bg='gray98')
-      for(i in 1:4){
-        denst <- density(dt[, p])
-        res <- histDist(dt[, p], family=names(mod$fits)[i],
-                        main='', 
-                        ylab='Density',
-                        xlab=p, las=1,
-                        line.wd=3,
-                        line.ty=1,
-                        line.col='dodgerblue2',
-                        ylim=c(0, (3 * max(denst$y))))
-        gaic <- round(-2 * logLik(res) + k * length(res$parameters), 2)
-        title(main=paste(i, ') ', names(mod$fits)[i], 
-                         ' distribution with GAIC =', gaic),
-              col.main='blue4')
-        param <- c('mu', 'sigma', 'nu', 'tau') 
-        np <- length(res$parameters)
-        fun1 <- function(x) eval(parse(text=x))
-        hat.param <- sapply(as.list(paste('res$', param[1:np], sep='')), fun1)
-        hat.param <- round(hat.param, digits=2)
-        txt <- paste('hat(', param[1:np], ')==', hat.param, sep='')
-        txt <- paste(txt, collapse=', ')
-        legend('topright', bty='n',
-               legend=eval(parse(text=paste('expression(', txt, ')'))))
-      }
-    }
-    
-    f1(input$k, input$familia, input$response)
+    four.hist(input$k, input$familia, input$response)
   })
   
-  output$descarga1 <- downloadHandler(
-    filename=function(){
-      paste("grafica", "png", sep=".")}, content=function(file){
-        png(file)
-        print(f1(input$k, input$familia, input$response))
-        dev.off()
-      }
+  output$down <- downloadHandler(
+    filename =  function() {
+      paste("iris", input$var3, sep=".")
+    },
+    # content is a function with argument file. content writes the plot to the device
+    content = function(file) {
+      if(input$var3 == "png")
+        png(file) # open the png device
+      else
+        pdf(file) # open the pdf device
+      four.hist(input$k, input$familia, input$response) # draw the plot
+      dev.off()  # turn the device off
+      
+    } 
   )
   
   output$markdown <- renderUI({
