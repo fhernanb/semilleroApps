@@ -6,7 +6,7 @@ shinyUI(pageWithSidebar(
   sidebarPanel(
 h6("Esta aplicación sirve para identificar
     las cuatro distribuciones 
-    que se mejor se ajustan para una variable de 
+    que mejor se ajustan a una variable de 
     una base de datos ingresada por el usuario."),
 h6('Como ejemplo se muestran los resultados obtenidos para 
    la variable speed de la base de datos cars de R.'),
@@ -39,7 +39,8 @@ selectInput("familia", "Seleccione la familia a la cual pertenece
                         "Reales entre 0 y 1" = "real0to1",
                         "Conteos" = "counts",
                         "Binomiales" = "binom")),
-sliderInput("k", "Ingrese una penalización K por el exceso de parámetros",
+sliderInput("k", "Ingrese una penalización K por el exceso de parámetros 
+            para calcular el GAIC=-2 l + k df.",
             min=1,
             max=20,
             value=4,
@@ -56,7 +57,7 @@ mainPanel(
   tabsetPanel(type ="pills",
 tabPanel("Ajuste", h4('A continuación el ajuste para 
                       la variable seleccionada por el usuario'),
-         plotOutput("distPlot", width="600px", height="600px")
+         plotOutput("distPlot", width="700px", height="600px")
          #downloadButton(outputId="descarga1", 'Descargar en png la gráfica.')
          ),
 tabPanel("Teoría", includeHTML("include.html"))

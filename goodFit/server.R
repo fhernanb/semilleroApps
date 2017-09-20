@@ -54,11 +54,11 @@ shinyServer(function(input, output, session){
     f1(input$k, input$familia, input$response)
   })
   
-  output$descarga1<-downloadHandler(
+  output$descarga1 <- downloadHandler(
     filename=function(){
-      paste("grafica", "png",sep=".")}, content=function(file){
+      paste("grafica", "png", sep=".")}, content=function(file){
         png(file)
-        print(f1(input$k,input$familia,input$response))
+        print(f1(input$k, input$familia, input$response))
         dev.off()
       }
   )
