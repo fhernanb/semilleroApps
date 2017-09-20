@@ -48,7 +48,7 @@ sliderInput("k", "Ingrese una penalización K por el exceso de parámetros
 br(),
 radioButtons(inputId = "var3", 
              label = "Select the file type to download the plot", 
-             choices = list("png", "pdf")),
+             choices = list("pdf", "png")),
 br(),
 p("This app was created by Semillero de R at Universidad Nacional 
       de Colombia:"),
