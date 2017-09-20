@@ -56,7 +56,7 @@ shinyServer(function(input, output, session){
   
   output$down <- downloadHandler(
     filename =  function() {
-      paste("iris", input$var3, sep=".")
+      paste("four_dist", input$var3, sep=".")
     },
     # content is a function with argument file. content writes the plot to the device
     content = function(file) {
