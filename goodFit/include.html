@@ -119,18 +119,18 @@ $(document).ready(function () {
 </div>
 
 
-<div id="prueba-de-bondad-de-ajuste" class="section level1">
-<h1>Prueba de bondad de ajuste</h1>
+<div id="generalized-akaike-information-criterion-gaic" class="section level1">
+<h1>Generalized Akaike Information Criterion (GAIC)</h1>
 <p>Esta aplicación hace la comparación de modelos usando el Generalized Akaike Information Criterion propuesto por Akaike (1983) dado por la expresión</p>
 <p><span class="math display">\[GAIC = −2 \times l + k \times df,\]</span></p>
-<p>donde <span class="math inline">\(l\)</span> corresponde al valor de log-verosimilitud estimada para el modelo y <span class="math inline">\(df\)</span> corresponde al número de parámetros estimados del modelo. El valor de <span class="math inline">\(k\)</span> es una penalización que el analista asigna por el exceso de parámetros, cuando <span class="math inline">\(k=2\)</span> el <span class="math inline">\(GAIC\)</span> coincide con el <span class="math inline">\(AIC\)</span>, el Schwarz Bayesian criterion (<span class="math inline">\(SBC\)</span>) propuesto por Schwarz (1978), se da cuando el valor de penalidad es <span class="math inline">\(k = log(n)\)</span>, donde <span class="math inline">\(n\)</span> es el número de observaciones del modelo.</p>
+<p>donde <span class="math inline">\(l\)</span> corresponde al valor de log-verosimilitud estimada para el modelo, <span class="math inline">\(df\)</span> es el número de parámetros estimados del modelo y el valor de <span class="math inline">\(k\)</span> es una penalización que el analista asigna por el exceso de parámetros. Cuando <span class="math inline">\(k=2\)</span> el <span class="math inline">\(GAIC\)</span> coincide con el <span class="math inline">\(AIC\)</span>, cuando el valor de penalidad es <span class="math inline">\(k = log(n)\)</span> se obtine el Schwarz Bayesian criterion (<span class="math inline">\(SBC\)</span>) propuesto por Schwarz (1978) en el que <span class="math inline">\(n\)</span> es el número de observaciones del modelo.</p>
 </div>
 <div id="distribuciones-disponibles" class="section level1">
 <h1>Distribuciones disponibles</h1>
 <p>Las distribuciones que se pueden elegir en la aplicación son las que están disponibles en el paquete <a href="https://cran.r-project.org/web/packages/gamlss/gamlss.pdf">Manual de gamlss</a> de R, a continuación el listado de familias y las distribuciones que pertenecen a cada una de ellas.</p>
 <ol style="list-style-type: decimal">
 <li>Reales positivos: “EXP”,“GA”,“IG”,“LNO”, “WEI3”, “BCCGo”, “exGAUS”, “GG”, “GIG”, “BCTo”, “BCPEo”.</li>
-<li>Reales: “EXP”,“GA”,“IG”,“LNO”, “WEI3”, “BCCGo”, “exGAUS”, “GG”, “GIG”, “BCTo”, “BCPEo”, “GU”, “RG” ,“LO”, “NET”, “TF”, “PE”, “SN1”, “SN2”, “SHASH”, “EGB2”, “JSU”, “SEP1”, “SEP2”, “SEP3”, “SEP4”,“ST1”, “ST2”, “ST3”, “ST4”, “ST5”, “GT”</li>
+<li>Reales: “GU”, “RG” ,“LO”, “NET”, “TF”, “PE”, “SN1”, “SN2”, “SHASH”, “EGB2”, “JSU”, “SEP1”, “SEP2”, “SEP3”, “SEP4”,“ST1”, “ST2”, “ST3”, “ST4”, “ST5”, “GT”.</li>
 <li>Reales entre 0 y 1: “BE”, “BEINF”, “BEINF0”, “BEINF1”, “BEOI”, “BEZI”, “GB1”.</li>
 <li>Conteos: “PO”, “LG”, “NBI”, “NBII”, “PIG”, “DEL”, “SI”, “ZIP”, “ZAP”, “ZALG”, “ZANBI”, “ZIP2”, “ZIPIG”.</li>
 <li>Binomiales: “BI”, “BB”, “ZIBI”, “ZIBB”, “ZABI”, “ZABB”.</li>

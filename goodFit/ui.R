@@ -4,12 +4,12 @@ library(knitr)
 shinyUI(pageWithSidebar(
   headerPanel( "Explorando la distribución que mejor se ajusta a una variable"),
   sidebarPanel(
-h5("Esta aplicación sirve para identificar
+h6("Esta aplicación sirve para identificar
     las cuatro distribuciones 
     que se mejor se ajustan para una variable de 
     una base de datos ingresada por el usuario."),
-h5('Como ejemplo se muestran los resultados obtenidos para 
-   la variable speed de la base de datos cars.'),
+h6('Como ejemplo se muestran los resultados obtenidos para 
+   la variable speed de la base de datos cars de R.'),
 h4('Para usar la aplicación haga lo siguiente:'),
 h6('1. Suba su base,'),
 h6('2. Indique el tipo de separación de su base,'),
