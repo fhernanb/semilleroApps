@@ -9,7 +9,7 @@ h5("Esta aplicación sirve para identificar
     que se mejor se ajustan para una variable de 
     una base de datos ingresada por el usuario."),
 h5('Como ejemplo se muestran los resultados obtenidos para 
-   la variable x1 de una base de datos cargada por defecto.'),
+   la variable speed de la base de datos cars.'),
 h4('Para usar la aplicación haga lo siguiente:'),
 h6('1. Suba su base,'),
 h6('2. Indique el tipo de separación de su base,'),
