@@ -57,7 +57,7 @@ mainPanel(
   tabsetPanel(type ="pills",
 tabPanel("Ajuste", h4('A continuación el ajuste para 
                       la variable seleccionada por el usuario'),
-         plotOutput("distPlot", width="700px", height="600px")
+         plotOutput("distPlot", width="800px", height="600px")
          #downloadButton(outputId="descarga1", 'Descargar en png la gráfica.')
          ),
 tabPanel("Teoría", includeHTML("include.html"))
