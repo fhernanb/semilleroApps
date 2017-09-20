@@ -62,7 +62,7 @@ tabPanel("Ajuste", h4('A continuación el ajuste para
                       la variable seleccionada por el usuario'),
          plotOutput("distPlot", width="700px", height="600px"),
          downloadButton(outputId = "down",
-                        label = "Download the plot with the extension .png or .pdf")
+                        label = "Download the plot")
          ),
 tabPanel("Teoría", includeHTML("include.html"))
     )
