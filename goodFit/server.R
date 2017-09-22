@@ -21,7 +21,7 @@ shinyServer(function(input, output, session){
                       line.wd=3,
                       line.ty=1,
                       line.col='dodgerblue2',
-                      ylim=c(0, (3 * max(denst$y))))
+                      ylim=c(0, (2 * max(denst$y))))
       gaic <- round(-2 * logLik(res) + k * length(res$parameters), 2)
       title(main=paste(i, ')', names(mod$fits)[i], 
                        'distribution with GAIC=', gaic),

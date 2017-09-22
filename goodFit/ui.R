@@ -14,6 +14,7 @@ h4('Para usar la aplicación haga lo siguiente:'),
 h6('1. Suba su base,'),
 h6('2. Indique el tipo de separación de su base,'),
 h6('3. Seleccione la variable de interés.'),
+withMathJax(helpText("Some math here $$\\text{GAIC}=-2 \\times l + k \\times \\text{df}$$")),
 fileInput(inputId='file1', label='Use el botón siguiente para
           cargar la base de datos.',
           accept = c(
@@ -27,7 +28,7 @@ fileInput(inputId='file1', label='Use el botón siguiente para
 checkboxInput('header', label='¿Tiene encabezado la base
               de datos?', value=TRUE),
 selectInput(inputId="sep", label="¿Cual es la separación de sus datos?",
-             choices=list(Tabulacion='\t', Coma=',', PuntoyComa=';'),
+             choices=list('tab'='\t', ','=',', ';'=';'),
              selected=';'),
 selectInput("response", label="Seleccione la variable 
             de la base de datos", choices=""),
@@ -38,11 +39,12 @@ selectInput("familia", "Seleccione la familia a la cual pertenece
                         "Reales entre 0 y 1" = "real0to1",
                         "Conteos" = "counts",
                         "Binomiales" = "binom")),
-sliderInput("k", "Ingrese una penalización K por el exceso de parámetros 
-            para calcular el GAIC=-2 l + k df.",
-            min=1,
+sliderInput("k", HTML("Ingrese una penalización <i>k</i> por el exceso de parámetros 
+            para calcular el <i>GAIC=-2 * logLik + k * df</i> donde <i>df</i> es
+                      numero de parametros del modelo."),
+            min=2,
             max=20,
-            value=4,
+            value=2,
             step=1,
             animate=TRUE),
 br(),
