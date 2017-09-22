@@ -14,7 +14,6 @@ h4('Para usar la aplicación haga lo siguiente:'),
 h6('1. Suba su base,'),
 h6('2. Indique el tipo de separación de su base,'),
 h6('3. Seleccione la variable de interés.'),
-withMathJax(helpText("Some math here $$\\text{GAIC}=-2 \\times l + k \\times \\text{df}$$")),
 fileInput(inputId='file1', label='Use el botón siguiente para
           cargar la base de datos.',
           accept = c(
@@ -39,9 +38,9 @@ selectInput("familia", "Seleccione la familia a la cual pertenece
                         "Reales entre 0 y 1" = "real0to1",
                         "Conteos" = "counts",
                         "Binomiales" = "binom")),
-sliderInput("k", HTML("Ingrese una penalización <i>k</i> por el exceso de parámetros 
-            para calcular el <i>GAIC=-2 * logLik + k * df</i> donde <i>df</i> es
-                      numero de parametros del modelo."),
+sliderInput("k", helpText('Ingrese una penalización \\( k \\) para penalizar
+            por el exceso de parámetros en \\(GAIC=-2 \\times logLik + k \\times df\\)
+            donde \\( df \\) es número de parametros del modelo.'),
             min=2,
             max=20,
             value=2,
@@ -60,13 +59,14 @@ tags$a(href="https://srunal.wordpress.com/",
            "https://srunal.wordpress.com/")),
 mainPanel(
   tabsetPanel(type ="pills",
-tabPanel("Ajuste", h4('A continuación el ajuste para 
+tabPanel("Selected distributions", h4('A continuación el ajuste para 
                       la variable seleccionada por el usuario'),
          plotOutput("distPlot", width="700px", height="600px"),
          downloadButton(outputId = "down",
                         label = "Download the plot")
          ),
-tabPanel("Teoría", includeHTML("include.html"))
+tabPanel("Goodness of fit test"),
+tabPanel("Theory", includeHTML("include.html"))
     )
   )
  )

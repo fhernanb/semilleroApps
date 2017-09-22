@@ -3,7 +3,7 @@ Generalized Akaike Information Criterion (GAIC)
 
 Esta aplicación hace la comparación de modelos usando el Generalized Akaike Information Criterion propuesto por Akaike (1983) dado por la expresión
 
-$$GAIC = −2 \times l + k \times df,$$
+$$GAIC = −2 \times logLik + k \times df,$$
 
 donde $l$ corresponde al valor de log-verosimilitud estimada para el modelo, $df$ es el número de parámetros estimados del modelo y el valor de $k$ es una penalización que el analista asigna por el exceso de parámetros. Cuando $k=2$ el $GAIC$ coincide con el $AIC$, cuando el valor de penalidad es $k = log(n)$ se obtine el Schwarz Bayesian criterion ($SBC$ or $BIC$) propuesto por Schwarz (1978) en el que $n$ es el número de observaciones del modelo.
 
