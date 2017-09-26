@@ -33,20 +33,21 @@ selectInput("response", label="Seleccione la variable
             de la base de datos", choices=""),
 selectInput("familia", "Seleccione la familia a la cual pertenece 
             la variable de interés:", 
-            choice=list("Reales Positivos" = "realplus",
+            choice=list("Reales positivos" = "realplus",
                         "Reales" = "realAll",
                         "Reales entre 0 y 1" = "real0to1",
                         "Conteos" = "counts",
                         "Binomiales" = "binom")),
-sliderInput("k", helpText('Ingrese una penalización \\( k \\) para penalizar
-            por el exceso de parámetros en \\(GAIC=-2 \\times logLik + k \\times df\\)
-            donde \\( df \\) es número de parametros del modelo.'),
+sliderInput("k", 'Ingrese una penalización \\( k \\) para 
+                 penalizar el exceso de parámetros 
+                 en el calculo del \\(GAIC=-2 \\times logLik + k \\times df\\)
+                 donde \\( df \\) es número de parametros 
+                 del modelo.',
             min=2,
             max=20,
             value=2,
             step=1,
             animate=TRUE),
-br(),
 radioButtons(inputId = "var3", 
              label = "Select the file type to download the plot", 
              choices = list("pdf", "png")),
@@ -59,12 +60,15 @@ tags$a(href="https://srunal.wordpress.com/",
            "https://srunal.wordpress.com/")),
 mainPanel(
   tabsetPanel(type ="pills",
-tabPanel("Selected distributions", h4('A continuación el ajuste para 
-                      la variable seleccionada por el usuario'),
-         plotOutput("distPlot", width="700px", height="600px"),
-         downloadButton(outputId = "down",
-                        label = "Download the plot")
+tabPanel("Selected distributions",
+         h4('A continuación el ajuste para la variable 
+            seleccionada por el usuario'),
+         plotOutput("distPlot1", width="700px", height="600px"),
+         downloadButton(outputId = "down", label = "Download the plot")
          ),
+tabPanel("Selected distributions II",
+         h4('A continuación '),
+         plotOutput("distPlot2", width="700px", height="600px")),
 tabPanel("Goodness of fit test"),
 tabPanel("Theory", includeHTML("include.html"))
     )
