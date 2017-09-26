@@ -61,14 +61,16 @@ tags$a(href="https://srunal.wordpress.com/",
 mainPanel(
   tabsetPanel(type ="pills",
 tabPanel("Selected distributions",
-         h4('A continuación el ajuste para la variable 
-            seleccionada por el usuario'),
+         h4('A continuación el histograma para la variable
+            con la curva de densidad para cada distribución.'),
          plotOutput("distPlot1", width="700px", height="600px"),
          downloadButton(outputId = "down", label = "Download the plot")
          ),
 tabPanel("Selected distributions II",
-         h4('A continuación '),
-         plotOutput("distPlot2", width="700px", height="600px")),
+         h4('A continuación el histograma para la variable
+            con la curva de densidad para cada distribución y
+            el qqplot asociado.'),
+         plotOutput("distPlot2", width="700px", height="800px")),
 tabPanel("Goodness of fit test"),
 tabPanel("Theory", includeHTML("include.html"))
     )

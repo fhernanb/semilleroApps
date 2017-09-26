@@ -77,7 +77,9 @@ shinyServer(function(input, output, session){
       a <- paste(a, paste(hat.param, collapse=', '),  ')')
       par(bty='n', col.axis='blue4', col.lab='blue4')
       qqplot(y=dt[, p], x=eval(parse(text=a)),
-             xlab=a, ylab=p)
+             xlab=a, ylab=p, col='blue4')
+      axis(side=1, col='blue4')
+      axis(side=2, col='blue4')
     }
   }
   
