@@ -27,7 +27,7 @@ fileInput(inputId='file1', label='Use el botón siguiente para
 checkboxInput('header', label='¿Tiene encabezado la base
               de datos?', value=TRUE),
 selectInput(inputId="sep", label="¿Cual es la separación de sus datos?",
-             choices=list('tab'='\t', ','=',', ';'=';'),
+             choices=list('tab'='\t', ','=',', ';'=';', 'space'=' '),
              selected=';'),
 selectInput("response", label="Seleccione la variable 
             de la base de datos", choices=""),
