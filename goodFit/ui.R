@@ -60,22 +60,25 @@ tags$a(href="https://srunal.wordpress.com/",
            "https://srunal.wordpress.com/")),
 mainPanel(
   tabsetPanel(type ="pills",
-tabPanel("Selected distributions",
-         h4('A continuación se presenta el histograma para 
-            la variable de interés
-            con la curva de densidad para cada distribución.'),
-         plotOutput("distPlot1", width="700px", height="600px"),
-         downloadButton(outputId = "downplot1", label = "Download the plot")
+  tabPanel("Selected distributions I",
+           h4('A continuación se presenta el histograma para 
+           la variable de interés
+           con la curva de densidad para cada distribución.'),
+           plotOutput("distPlot1", width="700px", height="600px"),
+           downloadButton(outputId = "downplot1", label = "Download the plot")
          ),
-tabPanel("Selected distributions II",
-         h4('A continuación se presenta el histograma para 
-            la variable de interés
-            con la curva de densidad para cada distribución y
-            el qqplot asociado.'),
-         plotOutput("distPlot2", width="700px", height="800px"),
-         downloadButton(outputId = "downplot2", label = "Download the plot")
+  tabPanel("Selected distributions II",
+           h4('A continuación se presenta el histograma para 
+           la variable de interés
+           con la curva de densidad para cada distribución y
+           el qqplot asociado.'),
+           plotOutput("distPlot2", width="700px", height="800px"),
+           downloadButton(outputId = "downplot2", label = "Download the plot")
          ),
-tabPanel("Goodness of fit test"),
+  tabPanel("Data", 
+           "A continuacion la base de datos ingresada por el usuario.",
+           uiOutput('data_table')),
+#tabPanel("Goodness of fit test"),
 tabPanel("Theory", includeHTML("include.html"))
     )
   )

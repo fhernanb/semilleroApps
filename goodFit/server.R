@@ -94,6 +94,15 @@ shinyServer(function(input, output, session){
     updateSelectInput(session, "familia")
   })
   
+  output$data_table <- renderTable({
+    inFile <- input$file1
+    if(is.null(inFile)) 
+      dt <- cars
+    else dt <- read.csv(inFile$datapath, header=input$header, 
+                        sep=input$sep)
+    dt
+  })
+  
 
   output$distPlot1 <- renderPlot({
     four.hist(input$k, input$familia, input$response)
