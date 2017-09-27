@@ -3,6 +3,8 @@ library(knitr)
 
 shinyUI(pageWithSidebar(
   headerPanel( "Explorando la distribución que mejor se ajusta a una variable"),
+  
+# Here the sidebarpanel
   sidebarPanel(
 h6("Esta aplicación sirve para identificar
     las cuatro distribuciones 
@@ -57,29 +59,30 @@ p("This app was created by Semillero de R at Universidad Nacional
 img(src="https://fhbunal.files.wordpress.com/2017/08/logo.png",
     height = 56, width = 136),
 tags$a(href="https://srunal.wordpress.com/", 
-           "https://srunal.wordpress.com/")),
+           "https://srunal.wordpress.com/")
+),
+
+# Here the panels
 mainPanel(
   tabsetPanel(type ="pills",
-  tabPanel("Selected distributions I",
-           h4('A continuación se presenta el histograma para 
-           la variable de interés
-           con la curva de densidad para cada distribución.'),
-           plotOutput("distPlot1", width="700px", height="600px"),
-           downloadButton(outputId = "downplot1", label = "Download the plot")
-         ),
-  tabPanel("Selected distributions II",
-           h4('A continuación se presenta el histograma para 
-           la variable de interés
-           con la curva de densidad para cada distribución y
-           el qqplot asociado.'),
-           plotOutput("distPlot2", width="700px", height="800px"),
-           downloadButton(outputId = "downplot2", label = "Download the plot")
-         ),
-  tabPanel("Data", 
-           "A continuacion la base de datos ingresada por el usuario.",
-           uiOutput('data_table')),
-#tabPanel("Goodness of fit test"),
-tabPanel("Theory", includeHTML("include.html"))
+              tabPanel("Selected distributions I",
+                       h4('A continuación se presenta el histograma para 
+                          la variable de interés
+                          con la curva de densidad para cada distribución.'),
+                       plotOutput("distPlot1", width="700px", height="600px"),
+                       downloadButton(outputId = "downplot1", label = "Download the plot")
+              ),
+              tabPanel("Selected distributions II",
+                       h4('A continuación se presenta el histograma para 
+                          la variable de interés
+                          con la curva de densidad para cada distribución y
+                          el qqplot asociado.'),
+                       plotOutput("distPlot2", width="700px", height="800px"),
+                       downloadButton(outputId = "downplot2", label = "Download the plot")
+              ),
+              tabPanel('Data', uiOutput('data_table')),
+              tabPanel("Goodness of fit test"),
+              tabPanel("Theory", includeHTML("include.html"))
     )
   )
  )

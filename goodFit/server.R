@@ -103,7 +103,6 @@ shinyServer(function(input, output, session){
     dt
   })
   
-
   output$distPlot1 <- renderPlot({
     four.hist(input$k, input$familia, input$response)
   })
