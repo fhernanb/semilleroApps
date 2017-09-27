@@ -103,17 +103,33 @@ shinyServer(function(input, output, session){
     four.hist.qqplot(input$k, input$familia, input$response)
   })
   
-  output$down <- downloadHandler(
+  output$downplot1 <- downloadHandler(
     filename =  function() {
-      paste("four_dist", input$var3, sep=".")
+      paste("four_dist", input$type_plot, sep=".")
     },
     # content is a function with argument file. content writes the plot to the device
     content = function(file) {
-      if(input$var3 == "png")
+      if(input$type_plot == "png")
         png(file) # open the png device
       else
         pdf(file) # open the pdf device
       four.hist(input$k, input$familia, input$response) # draw the plot
+      dev.off()  # turn the device off
+      
+    } 
+  )
+  
+  output$downplot2 <- downloadHandler(
+    filename =  function() {
+      paste("four_dist", input$type_plot, sep=".")
+    },
+    # content is a function with argument file. content writes the plot to the device
+    content = function(file) {
+      if(input$type_plot == "png")
+        png(file) # open the png device
+      else
+        pdf(file) # open the pdf device
+      four.hist.qqplot(input$k, input$familia, input$response) # draw the plot
       dev.off()  # turn the device off
       
     } 
