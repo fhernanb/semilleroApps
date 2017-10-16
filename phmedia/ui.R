@@ -2,15 +2,17 @@ library(shiny)
 library(markdown)
 
 shinyUI(pageWithSidebar(
-  headerPanel(title=HTML("Prueba de hipotesis para la media &mu;"),
-              windowTitle="PH media"),
+  headerPanel(title=HTML("Hypothesis test for &mu;"),
+              windowTitle="Test_for_mu"),
   sidebarPanel(
-    h5('Esta aplicacion sirve para realizar prueba de hipotesis 
-        para la media de una variable cuantitativa. Ingrese la 
-       informacion solicitada abajo.'),
+    h5('This app performs the hypothesis test for the mean of
+        a quantitative variable.'),
+    
+    h6('The app works with a dataset as example but the user can upload
+       her/his own dataset.'),
     
     fileInput(inputId='file1',
-              label='Use el boton siguiente para cargar su base de datos.',
+              label='Use the next button to upload your dataset.',
               accept = c(
                 'text/csv',
                 'text/comma-separated-values',
@@ -21,37 +23,36 @@ shinyUI(pageWithSidebar(
               )
     ),
     checkboxInput(inputId='header',
-                  label='Tiene encabezado la base de datos?', 
+                  label='Does the dataset have header?', 
                   value=TRUE),
     
     selectInput(inputId="sep",
-                label = "Cual es la separacion interna de los
-                datos en la su base de datos?", 
+                label = "What is the separation sign?", 
                 choices = list(Tab='\t', Comma=',', Semicolon=';'),
                 selected = ';'),
     
     selectInput(inputId="variable",
-                label="Seleccione la variable de interes de la base 
-                de datos",
+                label="Choose the quantitative variable to perform
+                        the hypothesis test.",
                 choices=""),
     
     numericInput(inputId='mu0', 
-                 label=HTML("Ingrese el valor de referencia 
-                            &mu;<sub>0</sub> para la probar
+                 label=HTML("Enter the reference value of 
+                            &mu;<sub>0</sub> to test
                             H<sub>0</sub>: &mu; = &mu;<sub>0</sub>"), 
                  value=0),
     
     selectInput(inputId="h0", 
-                label=HTML("Elija el tipo de hipotesis alterna
+                label=HTML("Choose the alternative hipothesis
                           < , &ne; o >"), 
-                choices=list("Menor" = "less", 
-                             "Diferente" = "two.sided",
-                             "Mayor" = "greater"),
+                choices=list("Less" = "less", 
+                             "Different" = "two.sided",
+                             "Greater" = "greater"),
                 selected = "two.sided"),
     
     sliderInput(inputId='alfa', 
-                label='Opcional: elija el nivel de significancia
-                para construir el intervalo de confianza',
+                label='Optional: choose the confidence level to
+                        create the interval confidence.',
                 min=0.90, max=0.99,
                 value=0.95, step=0.01),
     
@@ -65,29 +66,28 @@ shinyUI(pageWithSidebar(
 mainPanel(
   tabsetPanel(type = "pills",
               
-              tabPanel("Resultados",
-                       h5('A continuacion se presenta el histograma, 
-                       la densidad, qqplot y valor P de la prueba de 
-                       normalidad Shapiro para analizar el cumplimiento 
-                       del supuesto de normalidad para la variable de
-                       interes.'),
-                       plotOutput("distPlot",
-                                  width='70%', height='300px'),
+              tabPanel("Results",
+                       h5('Next you can find the histogram with density 
+                          and the qqplot for the choosen variable.'),
                        
-                       h5("Tabla con las estadisticas de resumen:"),
+                       plotOutput("distPlot",
+                                  width='500px',
+                                  height='300px'),
+                       
+                       h5("- Summary table with sample statistics:"),
                        tableOutput('statistic'),
                        
-                       h5("- Resultado de la prueba de hipótesis:"),
+                       h5("- Results for the hypothesis test:"),
                        textOutput("resul1"),
                        
-                       h5(HTML("- Intervalo de confianza para la media &mu;")),
+                       h5(HTML("- Confidence interval for the mean &mu;")),
                        textOutput("resul2")),
               
-              tabPanel("Base de datos", 
-                       "A continuacion la base de datos ingresada por el usuario.",
+              tabPanel("Dataset", 
+                       "Next you can find the dataset used in the app.",
                        uiOutput('summary')),
               
-              tabPanel("Teoria", includeHTML("include.html"))
+              tabPanel("Theory", includeHTML("include.html"))
               
   )
 )

@@ -23,7 +23,7 @@ shinyServer(function(input,output,session){
       dt <- read.table('means_data.txt', header=T, sep='\t')
     else dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
     y <- na.omit(dt[, input$variable])  # Para sacar los NA de la variable
-    res <- data.frame(Media=mean(y), Varianza=var(y), n=length(y))
+    res <- data.frame(Mean=mean(y), Variance=var(y), n=length(y))
     res
   })
   
@@ -35,8 +35,9 @@ shinyServer(function(input,output,session){
     par(mfrow=c(1, 2), bg='gray98')
     y <- na.omit(dt[, input$variable])  # Para sacar los NA de la variable
     hist(y, col='deepskyblue3', freq=F, las=1,
-         xlab=as.character(input$variable), main='Histograma y densidad',
-         ylab='Densidad')
+         xlab=as.character(input$variable),
+         main='Histogram and density',
+         ylab='Density')
     lines(density(y), lwd=4, col='firebrick3')
     qqnorm(y, las=1, main='QQplot',
            pch=19, col='deepskyblue3',
@@ -54,11 +55,12 @@ shinyServer(function(input,output,session){
     else dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
     y <- na.omit(dt[, input$variable])  # Para sacar los NA de la variable
     ph <- t.test(x=y, alternative=input$h0, mu=input$mu0, conf.level=input$alfa)
-    conclusion <- ifelse(ph$p.value < 0.05, 'se rechaza', 'no se rechaza')
-    paste0('El estadístico de prueba fue to=', round(ph$statistic, 2),
-           ' con un valor P de ', round(ph$statistic, 4), ', por lo tanto se concluye
-           que basados en la evidencia muestral la hipótesis nula ', conclusion,
-           ' (nivel de significancia 5%).')
+    conclusion <- ifelse(ph$p.value < 0.05, 'it is rejected',
+                         'it is not rejected')
+    paste0('The statistic test was to=', round(ph$statistic, 2),
+           ' with a p-value of', round(ph$statistic, 4), ', for this reason
+            we can conclude that, given the sample information, the null 
+            hypothesis ', conclusion, ' (with a signifance level 5%).')
   })
   
   
@@ -71,8 +73,8 @@ shinyServer(function(input,output,session){
     ph <- t.test(x=y, alternative=input$h0, mu=input$mu0, conf.level=input$alfa)
     intervalo <- paste("(", round(ph$conf.int[1], digits=4), ", ",
                        round(ph$conf.int[2], digits=4), ").", sep='')
-    paste0('El intervalo de confianza del ', 100*input$alfa,
-           '% para la media poblacional es ', intervalo)
+    paste0('The confidence interval of ', 100*input$alfa,
+           '% for the population mean is ', intervalo)
   })
    
    output$miteoria <- renderUI({
