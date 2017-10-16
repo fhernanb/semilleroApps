@@ -77,9 +77,7 @@ shinyServer(function(input,output,session){
            '% for the population mean is ', intervalo)
   })
    
-   output$miteoria <- renderUI({
-     HTML(markdown::markdownToHTML(knit(input='teoria.md', quiet = TRUE)))
-   })
+
 
   
 
