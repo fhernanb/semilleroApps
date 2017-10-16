@@ -2,17 +2,17 @@ library(shiny)
 library(markdown)
 
 shinyUI(pageWithSidebar(
-  headerPanel(title=HTML("Hypothesis test for &mu;"),
+  headerPanel(title=HTML("Prueba de hipótesis para la media &mu;"),
               windowTitle="Test_for_mu"),
   sidebarPanel(
-    h5('This app performs the hypothesis test for the mean of
-        a quantitative variable.'),
+    h5('Esta aplicación realiza la prueba de hipótesis para la 
+       media de una variable cuantitativa.'),
     
-    h6('The app works with a dataset as example but the user can upload
-       her/his own dataset.'),
+    h6('La aplicación usa una base de datos de ejemplo pero el usuario
+       puede cargar su propia base de datos.'),
     
     fileInput(inputId='file1',
-              label='Use the next button to upload your dataset.',
+              label='Use el siguiente botón para cargar su base de datos.',
               accept = c(
                 'text/csv',
                 'text/comma-separated-values',
@@ -20,45 +20,46 @@ shinyUI(pageWithSidebar(
                 'text/plain',
                 '.csv',
                 '.tsv'
-              )
-    ),
+              )),
+    
     checkboxInput(inputId='header',
-                  label='Does the dataset have header?', 
+                  label='¿Tiene encabezado la base de datos?', 
                   value=TRUE),
     
     selectInput(inputId="sep",
-                label = "What is the separation sign?", 
-                choices = list(Tab='\t', Comma=',', Semicolon=';'),
+                label = "¿Cuál es la sepación de los datos?", 
+                choices = list(Tab='\t', Comma=',',
+                               Semicolon=';', 'space'=' '),
                 selected = ';'),
     
     selectInput(inputId="variable",
-                label="Choose the quantitative variable to perform
-                        the hypothesis test.",
+                label="Elija la variable cuantitativa para realizar
+                la prueba de hipótesis.",
                 choices=""),
     
     numericInput(inputId='mu0', 
-                 label=HTML("Enter the reference value of 
-                            &mu;<sub>0</sub> to test
+                 label=HTML("Ingrese el valor de referencia
+                            &mu;<sub>0</sub> para probar
                             H<sub>0</sub>: &mu; = &mu;<sub>0</sub>"), 
                  value=0),
     
     selectInput(inputId="h0", 
-                label=HTML("Choose the alternative hipothesis
+                label=HTML("Elija la hipótesis alternativa
                           < , &ne; o >"), 
-                choices=list("Less" = "less", 
-                             "Different" = "two.sided",
-                             "Greater" = "greater"),
+                choices=list("Menor" = "less", 
+                             "Differente" = "two.sided",
+                             "Mayor" = "greater"),
                 selected = "two.sided"),
     
-    sliderInput(inputId='alfa', 
-                label='Optional: choose the confidence level to
-                        create the interval confidence.',
+    sliderInput(inputId='alfa',
+                label=HTML("Opcional: elija un nivel de confianza para 
+                construir el intervalo de confianza para la media &mu;"),
                 min=0.90, max=0.99,
                 value=0.95, step=0.01),
     
-    img(src="logo.png", height = 60, width = 150),
+    img(src="logo.png", height = 60, width = 120),
+    img(src="udea.png", height = 25, width = 70),
     br(),
-    
     tags$a(href="https://srunal.wordpress.com/", "https://srunal.wordpress.com/")
 
 ),
@@ -66,28 +67,30 @@ shinyUI(pageWithSidebar(
 mainPanel(
   tabsetPanel(type = "pills",
               
-              tabPanel("Results",
-                       h5('Next you can find the histogram with density 
-                          and the qqplot for the choosen variable.'),
+              tabPanel("Resultados",
+                       h5('A continuación el histograma, densidad, QQplot
+                          y valor-P para la prueba de normalidad
+                          Kolmogorov-Smirnov.'),
                        
-                       plotOutput("distPlot",
+                       plotOutput("appPlot",
                                   width='500px',
                                   height='300px'),
                        
-                       h5("- Summary table with sample statistics:"),
+                       h4("- Tabla de resumen con estadísticos muestrales:"),
                        tableOutput('statistic'),
                        
-                       h5("- Results for the hypothesis test:"),
+                       h4("- Resultados de la prueba de hipótesis:"),
                        textOutput("resul1"),
                        
-                       h5(HTML("- Confidence interval for the mean &mu;")),
+                       h4(HTML("- Intervalo de confianza para la media &mu;")),
                        textOutput("resul2")),
               
-              tabPanel("Dataset", 
-                       "Next you can find the dataset used in the app.",
+              tabPanel("Datos", 
+                       "A continuación los datos que está usando 
+                       la aplicación.",
                        uiOutput('summary')),
               
-              tabPanel("Theory", includeHTML("include.html"))
+              tabPanel("Teoría", includeHTML("include.html"))
               
   )
 )

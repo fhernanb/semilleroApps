@@ -38,7 +38,7 @@ shinyServer(function(input,output,session){
   },
   rownames = TRUE) # Para obtener tabla con rownames
   
-  output$distPlot <- renderPlot({
+  output$appPlot <- renderPlot({
     inFile <- input$file1
     if(is.null(inFile)) 
       dt <- read.table('unequal_var_data.txt', header=T, sep='\t')
@@ -53,7 +53,7 @@ shinyServer(function(input,output,session){
     xx <- split(x, group)
     den <- lapply(xx, density)
     plot(den[[1]], lwd=4, col='deepskyblue3',
-         main='Densidad',
+         main='Densidad', las=1,
          xlab=as.character(input$variable1),
          ylab='Densidad',
          xlim=range(range(den[[1]]$x), range(den[[2]]$x)),
@@ -74,7 +74,7 @@ shinyServer(function(input,output,session){
          pch=19, col='deepskyblue3',
          xlim=range(c(qq1$x, qq2$x)),
          ylim=range(c(qq1$y, qq2$y)),
-         xlab='Cuantiles teóricos',
+         xlab='Cuantiles teóricos N(0, 1)',
          ylab=as.character(input$variable1))
     points(qq2, pch=19, col='firebrick3')
     
@@ -107,12 +107,12 @@ shinyServer(function(input,output,session){
                  conf.level=input$alfa,
                  var.equal=input$var.equal)
     conclusion <- ifelse(ph$p.value < 0.05, 'se rechaza', 'no se rechaza')
-    paste0('El estadístico de prueba fue to=', round(ph$statistic, 4),
-           ' con un valor P de ', round(ph$p.value, 2), ', 
+    paste0('El estadístico de prueba es to=', round(ph$statistic, 4),
+           ' con un valor-P de ', round(ph$p.value, 2), ', 
            por lo tanto se concluye
-           que basados en la evidencia muestral 
+           que, basados en la evidencia muestral, 
            la hipótesis nula ', conclusion,
-           ' (nivel de significancia 5%).')
+           ' (nivel de significancia del 5%).')
   })
   
   

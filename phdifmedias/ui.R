@@ -8,9 +8,10 @@ shinyUI(pageWithSidebar(
   
   sidebarPanel(
     h5('Esta aplicación sirve para realizar prueba de hipotesis 
-        para la diferencia de medias de variables cuantitativas. Ingrese la 
-        información solicitada abajo. Por defecto se carga una base de ejemplo
-        pero usted puede ingresar la suya'),
+        para la diferencia de medias de variables cuantitativas.'),
+    
+    h6('La aplicación usa una base de datos de ejemplo pero el usuario
+       puede cargar su propia base de datos.'),
     
     fileInput(inputId='file1',
               label='Use el botón siguiente para cargar su base de datos.',
@@ -24,23 +25,23 @@ shinyUI(pageWithSidebar(
               )),
     
     checkboxInput(inputId='header',
-                  label='Tiene encabezado la base de datos?', 
+                  label='¿Tiene encabezado la base de datos?', 
                   value=TRUE),
     
     selectInput(inputId="sep",
-                label = "Cual es la separación interna de los
-                datos en la su base de datos?", 
-                choices = list(Tab='\t', Comma=',', Semicolon=';'),
+                label = "¿Cuál es la sepación de los datos?", 
+                choices = list(Tab='\t', Comma=',',
+                               Semicolon=';', 'space'=' '),
                 selected = ';'),
     
     selectInput(inputId="variable1",
-                label="Seleccione la variable 
-                       de interes de la base de datos",
+                label="Elija la variable cuantitativa para realizar
+                la prueba de hipótesis.",
                 choices=""),
     
     selectInput(inputId="variable2",
-                label="Seleccione la variable cualitativa 
-                de agrupacion, DEBE tener 2 niveles y se un factor.",
+                label="Elija la variable cualitativa 
+                de agrupacion, DEBE tener 2 niveles y ser un factor.",
                 choices=""),
     
     numericInput(inputId='delta0', 
@@ -63,10 +64,14 @@ shinyUI(pageWithSidebar(
                   value=TRUE),
     
     sliderInput(inputId='alfa', 
-                label='Opcional: elija el nivel de significancia
-                para construir el intervalo de confianza',
+                label=HTML("Opcional: elija un nivel de confianza para 
+                construir el intervalo de confianza para la diferencia
+                &mu;<sub>1</sub> - &mu;<sub>2</sub>"),
                 min=0.90, max=0.99,
                 value=0.95, step=0.01),
+    
+    img(src="logo.png", height = 60, width = 120),
+    img(src="udea.png", height = 25, width = 70),
     br(),
     tags$a(href="https://srunal.wordpress.com/", "https://srunal.wordpress.com/")
 
@@ -77,28 +82,31 @@ mainPanel(
               
               tabPanel(title="Resultados",
                        h5('A continuación se presentan las densidades, 
-                       qqplot y valor P de la prueba de normalidad Shapiro 
+                       QQplot y valor P de la prueba de normalidad 
+                       Shapiero
                        para analizar el cumplimiento del supuesto de 
-                       normalidad para la variable de interés.'),
-                       plotOutput("distPlot",
-                                  width='70%',
+                       normalidad de la variable de interés.'),
+                       plotOutput("appPlot",
+                                  width='500px',
                                   height='300px'),
-                       h5("Tabla con las estadisticas de resumen:"),
                        
+                       h4("- Tabla de resumen con estadísticos muestrales:"),
                        tableOutput('statistic'),
-                       h5("- Resultado de la prueba de hipótesis:"),
+                       
+                       h4("- Resultados de la prueba de hipótesis:"),
                        textOutput("resul1"),
                        
-                       h5(HTML("- Intervalo de confianza para la 
+                       h4(HTML("- Intervalo de confianza para la 
                                diferencia de medias 
                                &mu;<sub>1</sub> - &mu;<sub>2</sub>")),
                        textOutput("resul2")),
               
-              tabPanel("Base de datos", 
-                       "A continuacion la base de datos ingresada por el usuario.",
+              tabPanel("Datos", 
+                       "A continuación los datos que está usando 
+                       la aplicación.",
                        uiOutput('summary')),
               
-              tabPanel("Teoria", includeHTML("include.html"))
+              tabPanel("Teoría", includeHTML("include.html"))
               
   )
 )
