@@ -1,0 +1,24 @@
+---
+title: "include"
+author: "Santiago Humberto Londoño Restrepo"
+date: "18 de mayo de 2017"
+output: md_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Las pruebas de hipótesis para analizar la varianza son:
+
+$H_0: \sigma^2_1 = \sigma^2_2$
+
+$H_a: \sigma^2_1 < \sigma^2_2$ prueba de una sola cola (más baja)
+
+$\quad \quad \sigma^2_1 > \sigma^2_2$ prueba de una sola cola (más alta)
+
+$\quad \quad \sigma^2_1 \neq \sigma^2_2$ prueba de dos colas
+
+El estadístico de prueba es: $F = s^2_1/s^2_2$, donde $s^2_1$ y $s^2_2$ son las varianzas muestrales.
+
+El estadístico $F$ sigue una distribución $F$  con $N_1 - 1$  y $N_2 - 1$ grados de libertad, donde $N_1$ es el tamaño muestral del grupo 1 y $N_2$ es el del grupo 2.

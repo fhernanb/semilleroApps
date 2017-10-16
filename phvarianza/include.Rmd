@@ -1,0 +1,29 @@
+---
+title: "Teoria"
+author: "Santiago Humberto Londoño Restrepo"
+date: "18 de mayo de 2017"
+output: md_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Las pruebas de hipótesis para analizar la varianza son:
+
+$H_0: \sigma^2 = \sigma^2_0$
+
+$H_a: \sigma^2 < \sigma^2_0$ prueba de una sola cola (más baja)
+
+$\quad \quad \sigma^2 > \sigma^2_0$ prueba de una sola cola (más alta)
+
+$\quad \quad \sigma^2 \neq \sigma^2_0$ prueba de dos colas
+
+El estadístico de prueba es: $T = (N-1)(s/\sigma_0)^{2}$, donde $N$ es el tamaño muestral, $s$ es la desviación estándar muestral y $\sigma_0$ es el valor a poner a prueba.
+
+El estadístico $T$ sigue una distribución $\chi^2$  con $N - 1$ grados de libertad.
+
+
+
+
+
