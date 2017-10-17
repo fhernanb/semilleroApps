@@ -79,7 +79,6 @@ shinyUI(pageWithSidebar(
 
 mainPanel(
   tabsetPanel(type = "pills",
-              
               tabPanel(title="Resultados",
                        h5('A continuación se presentan las densidades, 
                        QQplot y valor P de la prueba de normalidad 
