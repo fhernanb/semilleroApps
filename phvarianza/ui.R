@@ -76,9 +76,11 @@ mainPanel(
                        h5('A continuación el histograma, densidad, QQplot
                           y valor-P para la prueba de normalidad
                          Shapiro-Wilk.'),
-                       plotOutput("distPlot", width='500px', height='300px'),
+                       plotOutput("appPlot",
+                                  width='500px',
+                                  height='300px'),
                                      
-                       h5("- Tabla de resumen con estadísticos muestrales:"),
+                       h5("- Tabla de resumen de la prueba:"),
                        tableOutput("statistic")),
 
               tabPanel("Datos", 

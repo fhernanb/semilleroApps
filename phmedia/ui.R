@@ -88,7 +88,7 @@ mainPanel(
               tabPanel("Datos", 
                        "A continuación los datos que está usando 
                        la aplicación.",
-                       uiOutput('summary')),
+                       uiOutput('inputData')),
               
               tabPanel("Teoría", includeHTML("include.html"))
               
