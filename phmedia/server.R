@@ -13,7 +13,8 @@ shinyServer(function(input,output,session){
     inFile <- input$file1
     if(is.null(inFile)) 
       dt <- read.table('means_data.txt', header=T, sep='\t')
-    else dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
+    else dt <- read.csv(inFile$datapath, header=input$header, 
+                        sep=input$sep)
     dt
   })
   

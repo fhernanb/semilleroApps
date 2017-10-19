@@ -57,7 +57,8 @@ shinyUI(pageWithSidebar(
                 
     sliderInput(inputId='alfa',
                 label=HTML("Opcional: elija un nivel de confianza para 
-                           construir el intervalo de confianza para la media &mu;"),
+                           construir el intervalo de confianza para 
+                           la varianza &sigma;<sup>2</sup>"),
                 min=0.90, max=0.99,
                 value=0.95, step=0.01),
                 
@@ -72,17 +73,13 @@ mainPanel(
   tabsetPanel(type = "pills",
               
               tabPanel(title="Resultados",
-                       h5('A continuacion se presenta el histograma, 
-                       la densidad, qqplot y valor P de la prueba de 
-                       normalidad Shapiro para analizar el cumplimiento 
-                       del supuesto de normalidad para la variable de
-                       interes.'),
+                       h5('A continuación el histograma, densidad, QQplot
+                          y valor-P para la prueba de normalidad
+                         Shapiro-Wilk.'),
                        plotOutput("distPlot", width='500px', height='300px'),
                                      
-                       h5("En la siguiente tabla se muestran los principales elementos de la prueba de hipotesis:
-                       varianza muestral, varianza escogida para la hipotesis nula, estadistico de prueba, valores de la region critica de rechazo, intervalo de confianza y
-                       conclusion de la prueba."),
-                       tableOutput("analisis_ph")),
+                       h5("- Tabla de resumen con estadísticos muestrales:"),
+                       tableOutput("statistic")),
 
               tabPanel("Datos", 
                        "A continuación los datos que está usando 
