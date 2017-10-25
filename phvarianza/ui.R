@@ -1,7 +1,6 @@
 library(shiny)
 library(markdown)
 
-source("funciones.R")
 shinyUI(pageWithSidebar(
   headerPanel(title=HTML("Prueba de hipótesis para la varianza
                                &sigma;<sup>2</sup>"),
