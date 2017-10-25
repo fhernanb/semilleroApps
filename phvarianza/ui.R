@@ -83,7 +83,11 @@ mainPanel(
                        tableOutput('statistic'),
                        
                        h4("- Resultados de la prueba de hipótesis:"),
-                       textOutput("resul1")
+                       textOutput("resul1"),
+                       
+                       h4(HTML("- Intervalo de confianza para la varianza
+                               &sigma;<sup>2</sup>")),
+                       textOutput("resul2")
                        
                        ),
               

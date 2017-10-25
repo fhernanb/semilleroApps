@@ -57,15 +57,32 @@ shinyServer(function(input,output,session){
     else dt <- read.csv(inFile$datapath, header=input$header, 
                         sep=input$sep)
     y <- na.omit(dt[, input$variable])  # Para sacar los NA de la variable
-    ph <- t.test(x=y, alternative=input$h0, mu=input$mu0, 
+    require(usefultools)
+    ph <- Var.test(x=y, alternative=input$h0, null.value=input$sigma20, 
                  conf.level=input$alfa)
     conclusion <- ifelse(ph$p.value < 0.05, 'es rechazada',
                          'no es rechazada')
-    paste0('El estadístico de prueba es to=', round(ph$statistic, 2),
+    paste0('El estadístico de prueba es ', round(ph$statistic, 2),
            ' con un valor-P de ', round(ph$p.value, 4), ', por esta razón
             se puede concluir que, dada la información de la muestra, 
             la hipótesis nula ', conclusion, 
            ' (a un nivel de significancia del 5%).')
+  })
+  
+  output$resul2 <- renderText({
+    inFile <- input$file1
+    if(is.null(inFile)) 
+      dt <- read.table('var_data.txt', header=T, sep='\t')
+    else dt <- read.csv(inFile$datapath, header=input$header, 
+                        sep=input$sep)
+    y <- na.omit(dt[, input$variable])  # Para sacar los NA de la variable
+    require(usefultools)
+    ph <- Var.test(x=y, alternative=input$h0, null.value=input$sigma20, 
+                   conf.level=input$alfa)
+    intervalo <- paste("(", round(ph$conf.int[1], digits=4), ", ",
+                       round(ph$conf.int[2], digits=4), ").", sep='')
+    paste0('El intervalo de confianza del ', 100*input$alfa,
+           '% para la varianza poblacional es ', intervalo)
   })
         
   output$miteoria <- renderUI({
