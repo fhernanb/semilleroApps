@@ -1,41 +1,30 @@
 library(shiny)
 shinyServer(function(input,output,session){
         
-  output$statistic <- renderTable({
-    inFile <- input$file1
-    if(is.null(inFile)) 
-      dt <- read.table('geardata.txt', col.names = c("diameter", "batch_number"))
-    else dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
-    y <- na.omit(dt[, input$variable])  # Para sacar los NA de la variable
-    prueba_hip_varianza(variable = y, varianza_h_n = input$sigma20, 
-                        nivel_significancia = input$alfa,
-                        tipo_de_prueba = input$h0)
-    })
-        
   observe({
     inFile <- input$file1
     if(is.null(inFile)) 
-      dt <- read.table('geardata.txt', 
-                       col.names=c("diameter", "batch_number"))
+      dt <- read.table('var_data.txt', header=T, sep='\t')
     else dt <- read.csv(inFile$datapath, header=input$header, 
                         sep=input$sep)
     updateSelectInput(session, "variable", choices=names(dt))
   })
         
-  output$summary <- renderTable({
+  output$statistic <- renderTable({
     inFile <- input$file1
     if(is.null(inFile)) 
-      dt <- read.table('geardata.txt', 
-                       col.names=c("diameter", "batch_number"))
+      dt <- read.table('var_data.txt', header=T, sep='\t')
     else dt <- read.csv(inFile$datapath, header=input$header, 
                         sep=input$sep)
-    dt
+    y <- na.omit(dt[, input$variable])  # Para sacar los NA de la variable
+    res <- data.frame(Varianza=var(y), n=length(y))
+    res
   })
-        
+  
   output$appPlot <- renderPlot({
     inFile <- input$file1
     if(is.null(inFile)) 
-      dt <- read.table('geardata.txt', col.names = c("diameter", "batch_number"))
+      dt <- read.table('var_data.txt', header=T, sep='\t')
     else dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
     par(mfrow=c(1, 2), bg='gray98')
     y <- na.omit(dt[, input$variable])  # Para sacar los NA de la variable
@@ -50,6 +39,33 @@ shinyServer(function(input,output,session){
     shapi <- shapiro.test(y)
     legend('topleft', bty='n', col='red', text.col='deepskyblue3',
     legend=paste('Valor P=', round(shapi$p.value,2)))
+  })
+  
+  output$inputData <- renderTable({
+    inFile <- input$file1
+    if(is.null(inFile)) 
+      dt <- read.table('var_data.txt', header=T, sep='\t')
+    else dt <- read.csv(inFile$datapath, header=input$header, 
+                        sep=input$sep)
+    dt
+  })
+  
+  output$resul1 <- renderText({
+    inFile <- input$file1
+    if(is.null(inFile)) 
+      dt <- read.table('var_data.txt', header=T, sep='\t')
+    else dt <- read.csv(inFile$datapath, header=input$header, 
+                        sep=input$sep)
+    y <- na.omit(dt[, input$variable])  # Para sacar los NA de la variable
+    ph <- t.test(x=y, alternative=input$h0, mu=input$mu0, 
+                 conf.level=input$alfa)
+    conclusion <- ifelse(ph$p.value < 0.05, 'es rechazada',
+                         'no es rechazada')
+    paste0('El estadístico de prueba es to=', round(ph$statistic, 2),
+           ' con un valor-P de ', round(ph$p.value, 4), ', por esta razón
+            se puede concluir que, dada la información de la muestra, 
+            la hipótesis nula ', conclusion, 
+           ' (a un nivel de significancia del 5%).')
   })
         
   output$miteoria <- renderUI({

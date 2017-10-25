@@ -79,15 +79,18 @@ mainPanel(
                        plotOutput("appPlot",
                                   width='500px',
                                   height='300px'),
-                                     
-                       h5("- Tabla de resumen de la prueba:"),
-                       tableOutput("statistic")),
-
-              tabPanel("Datos", 
-                       "A continuación los datos que está usando 
-                       la aplicación.",
-                       uiOutput('summary')),
-                            
+                       h4("- Tabla de resumen con estadísticos muestrales:"),
+                       tableOutput('statistic'),
+                       
+                       h4("- Resultados de la prueba de hipótesis:"),
+                       textOutput("resul1")
+                       
+                       ),
+              
+              tabPanel("Datos", "A continuación los datos que está usando 
+                        la aplicación.",
+                       uiOutput('inputData')),
+              
               tabPanel("Teoría", includeMarkdown("include.md"))
   )
 )
