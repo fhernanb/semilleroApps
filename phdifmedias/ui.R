@@ -80,11 +80,10 @@ shinyUI(pageWithSidebar(
 mainPanel(
   tabsetPanel(type = "pills",
               tabPanel(title="Resultados",
-                       h5('A continuación se presentan las densidades, 
-                       QQplot y valor P de la prueba de normalidad 
-                       Shapiero
-                       para analizar el cumplimiento del supuesto de 
-                       normalidad de la variable de interés.'),
+                       h5('A continuación el histograma, densidad, QQplot
+                          y valor-P para la prueba de normalidad
+                          Kolmogorov-Smirnov de cada una de las
+                          dos muestras.'),
                        plotOutput("appPlot",
                                   width='500px',
                                   height='300px'),
