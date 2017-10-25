@@ -47,9 +47,9 @@ shinyServer(function(input,output,session){
            pch=19, col='deepskyblue3',
            ylab=as.character(input$variable))
     qqline(y)
-    ks <- ks.test(x=y, y=pnorm)
+    shapi <- shapiro.test(x=y)
     legend('topleft', bty='n', col='red', text.col='deepskyblue3',
-           legend=paste('Valor P=', round(ks$p.value, 2)))
+           legend=paste('Valor P=', round(shapi$p.value, 2)))
   })
   
   output$resul1 <- renderText({

@@ -82,7 +82,7 @@ mainPanel(
               tabPanel(title="Resultados",
                        h5('A continuación el histograma, densidad, QQplot
                           y valor-P para la prueba de normalidad
-                          Kolmogorov-Smirnov de cada una de las
+                          Shapiro-Wilk de cada una de las
                           dos muestras.'),
                        plotOutput("appPlot",
                                   width='500px',
