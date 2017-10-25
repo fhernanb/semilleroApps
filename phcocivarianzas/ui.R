@@ -84,19 +84,20 @@ mainPanel(
                        tableOutput('statistic'),
                        
                        h4("- Resultados de la prueba de hipótesis:"),
-                       textOutput("resul1"))
+                       textOutput("resul1"),
                        
-                       #h4(HTML("- Intervalo de confianza para la 
-                      #         diferencia de medias 
-                      #         &mu;<sub>1</sub> - &mu;<sub>2</sub>")),
-                      # textOutput("resul2")),
+                       h4(HTML("- Intervalo de confianza para
+                                el cociente
+                               &sigma;<sup>2</sup><sub>1</sub> / 
+                         &sigma;<sup>2</sup><sub>2</sub>")),
+                       textOutput("resul2")),
               
-              #tabPanel("Datos", 
-              #         "A continuación los datos que está usando 
-              #         la aplicación.",
-              #         uiOutput('summary')),
+              tabPanel("Datos", 
+                       "A continuación los datos que está usando 
+                       la aplicación.",
+                       uiOutput('summary')),
               
-              #tabPanel("Teoría", includeHTML("include.html"))
+              tabPanel("Teoría", includeHTML("include.html"))
 
   )
 )

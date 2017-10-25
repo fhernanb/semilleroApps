@@ -12,6 +12,15 @@ shinyServer(function(input,output,session){
                       choices=names(dt[sapply(dt, is.factor)])) # Asegurar cuali
   })
   
+  output$summary <- renderTable({
+    inFile <- input$file1
+    if(is.null(inFile)) 
+      dt <- read.table('unequal_var_data.txt', header=T, sep='\t')
+    else dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
+    dt <- na.omit(dt)  # Para eliminar obs con NA
+    dt
+  })
+  
   output$statistic <- renderTable({
     inFile <- input$file1
     if(is.null(inFile)) 
@@ -95,8 +104,7 @@ shinyServer(function(input,output,session){
     ph <- var.test(x=xx[[1]], y=xx[[2]],
                    alternative=input$h0, 
                    ratio=1, 
-                   conf.level=input$alfa,
-                   var.equal=TRUE)
+                   conf.level=input$alfa)
     conclusion <- ifelse(ph$p.value < 0.05, 'se rechaza', 'no se rechaza')
     paste0('El estadístico de prueba es f=', round(ph$statistic, 4),
            ' con un valor-P de ', round(ph$p.value, 2), ', 
@@ -104,6 +112,29 @@ shinyServer(function(input,output,session){
            que, basados en la evidencia muestral, 
            la hipótesis nula ', conclusion,
            ' (nivel de significancia del 5%).')
+  })
+  
+  output$resul2 <- renderText({
+    inFile <- input$file1
+    if(is.null(inFile)) 
+      dt <- read.table('unequal_var_data.txt', header=T, sep='\t')
+    else dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
+    dt <- na.omit(dt)  # Para eliminar obs con NA
+    x <- dt[, input$variable1]
+    group <- dt[, input$variable2]
+    if (nlevels(group) != 2) group <- dt[, sapply(dt, is.factor)]
+    xx <- split(x, group)
+    ph <- var.test(x=xx[[1]], y=xx[[2]],
+                   alternative=input$h0, 
+                   ratio=1, 
+                   conf.level=input$alfa)
+    intervalo <- paste("(", round(ph$conf.int[1], digits=4),
+                       ", ",
+                       round(ph$conf.int[2], digits=4),
+                       ").", sep='')
+    paste0('El intervalo de confianza del ', 100*input$alfa,
+           '% para el cociente de varianzas poblacionales es ',
+           intervalo)
   })
         
         
