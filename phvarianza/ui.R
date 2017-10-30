@@ -94,7 +94,7 @@ mainPanel(
                         la aplicación.",
                        uiOutput('inputData')),
               
-              tabPanel("Teoría", includeMarkdown("include.md"))
+              tabPanel("Teoría", includeHTML("include.html"))
   )
 )
 

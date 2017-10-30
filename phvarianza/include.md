@@ -1,19 +1,12 @@
-Las pruebas de hipótesis para analizar la varianza son:
+Suponga que se tiene una muestra aleatoria $x_1, x_2, \ldots, x_n$ proveniente de una población normal. Se quiere estudiar la hipótesis nula $H_0: \sigma^2 = \sigma_0^2$ y se sospecha que la varianza $\sigma^2$ cumple una de las siguientes situaciones:
 
-*H*<sub>0</sub> : *σ*<sup>2</sup> = *σ*<sub>0</sub><sup>2</sup>
+1. $H_1: \sigma^2 < \sigma_0^2$
+2. $H_1: \sigma^2 \neq \sigma_0^2$
+3. $H_1: \sigma^2 > \sigma_0^2$
 
-*H*<sub>*a*</sub> : *σ*<sup>2</sup> &lt; *σ*<sub>0</sub><sup>2</sup>
-prueba de una sola cola (más baja)
+El estadístico para realizar la prueba es $$\chi_0^2=\frac{(n-1) s^2}{\sigma_0^2},$$
 
-  *σ*<sup>2</sup> &gt; *σ*<sub>0</sub><sup>2</sup> prueba de una sola
-cola (más alta)
+donde $s$ desviación estándar muestral.
 
-  *σ*<sup>2</sup> ≠ *σ*<sub>0</sub><sup>2</sup> prueba de dos colas
+Bajo la suposición de que $H_0$ es verdadera, $\chi_0^2$ tiene distribución $\chi^2$ con $n-1$ grados de libertad (Montgomery & Runger, 1996).
 
-El estadístico de prueba es:
-*T* = (*N* − 1)(*s*/*σ*<sub>0</sub>)<sup>2</sup>, donde *N* es el tamaño
-muestral, *s* es la desviación estándar muestral y *σ*<sub>0</sub> es el
-valor a poner a prueba.
-
-El estadístico *T* sigue una distribución *χ*<sup>2</sup> con *N* − 1
-grados de libertad.

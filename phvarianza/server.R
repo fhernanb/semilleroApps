@@ -58,7 +58,7 @@ shinyServer(function(input,output,session){
     else dt <- read.csv(inFile$datapath, header=input$header, 
                         sep=input$sep)
     y <- na.omit(dt[, input$variable])  # Para sacar los NA de la variable
-    require(usefultools)
+    require(usefultools) # Paquete en el que esta Var.test
     ph <- Var.test(x=y, alternative=input$h0, null.value=input$sigma20, 
                  conf.level=input$alfa)
     conclusion <- ifelse(ph$p.value < 0.05, 'es rechazada',
