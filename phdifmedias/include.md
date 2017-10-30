@@ -1,10 +1,7 @@
-Prueba de hipótesis para la diferencia de medias $\mu_1 - \mu_2$
-=======================
-
 Suponga que se tienen dos muestras aleatorias que provienen de poblaciones normales así:
 
-- $x_{11}, x_{12}, \ldots, x_{1,n1}$ proveniente de una población I con media $\mu_1$ y varianza $\sigma^2_1$. 
-- $x_{21}, x_{22}, \ldots, x_{2,n2}$ proveniente de una población II con media $\mu_2$ y varianza $\sigma^2_2$.
+- $n_1$ observaciones $x_{11}, x_{12}, \ldots, x_{1,n1}$ provenientes de una población I con media $\mu_1$ y varianza $\sigma^2_1$. 
+- $n_2$ observaciones $x_{21}, x_{22}, \ldots, x_{2,n2}$ provenientes de una población II con media $\mu_2$ y varianza $\sigma^2_2$.
 - Ambas muestras son independientes entre sí.
 
 Se quiere estudiar la hipótesis nula $H_0: \mu_1 - \mu_2 = \delta_0$ y se sospecha que la diferencia de medias $\mu_1 - \mu_2$ cumple una de las siguientes situaciones:
@@ -32,8 +29,8 @@ En este caso el estadístico $t$, bajo la suposición de que $H_0$ es verdadera,
 ### Caso 2, varianzas poblacionales diferentes $\sigma_1^2 \neq \sigma_2^2$
 En este caso el estadístico para realizar la prueba es 
 
-$$t=\frac{\bar{x}_1 - \bar{x}_2 - \delta_0}{\sqrt{\frac{s_1^2}{m} + \frac{s_2^2}{n}}}$$
+$$t=\frac{\bar{x}_1 - \bar{x}_2 - \delta_0}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}$$
 
-El estadístico $t$ bajo la suposición de que $H_0$ es verdadera tiene distribución $t$-student con $v$ grados de libertad calculados como:
+En este caso el estadístico $t$, bajo la suposición de que $H_0$ es verdadera, tiene distribución $t$-student con $v$ grados de libertad calculados como:
 
-$$v=\frac{ \left( \frac{s_1^2}{m} + \frac{s_2^2}{n} \right)^2 }{ \frac{(s_1^2/m)^2}{m-1} + \frac{(s_2^2/n)^2}{n-1}}$$
+$$v=\frac{ \left( \frac{s_1^2}{n_1} + \frac{s_2^2}{n_2} \right)^2 }{ \frac{(s_1^2/n_1)^2}{n_1-1} + \frac{(s_2^2/n_2)^2}{n_2-1}}$$

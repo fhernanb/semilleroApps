@@ -1,6 +1,3 @@
-Prueba de hipótesis para la media $\mu$
-=======================
-
 Suponga que se tiene una muestra aleatoria $x_1, x_2, \ldots, x_n$ proveniente de una población normal. Se quiere estudiar la hipótesis nula $H_0: \mu = \mu_0$ y se sospecha que la media $\mu$ cumple una de las siguientes situaciones:
 
 1. $H_1: \mu < \mu_0$
