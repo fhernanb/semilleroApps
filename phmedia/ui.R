@@ -3,7 +3,7 @@ library(markdown)
 
 shinyUI(pageWithSidebar(
   headerPanel(title=HTML("Prueba de hipótesis para la media &mu;"),
-              windowTitle="Test_for_mu"),
+              windowTitle="PH media"),
   sidebarPanel(
     h5('Esta aplicación realiza la prueba de hipótesis para la 
        media de una variable cuantitativa.'),

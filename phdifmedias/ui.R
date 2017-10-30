@@ -46,9 +46,9 @@ shinyUI(pageWithSidebar(
     
     numericInput(inputId='delta0', 
                  label=HTML("Ingrese el valor de referencia 
-                            &Delta;<sub>0</sub> para la probar
+                            &delta;<sub>0</sub> para la probar
                             H<sub>0</sub>: &mu;<sub>1</sub> 
-                            - &mu;<sub>2</sub> = &Delta;<sub>0</sub>"), 
+                            - &mu;<sub>2</sub> = &delta;<sub>0</sub>"), 
                  value=0),
     
     selectInput(inputId="h0", 
