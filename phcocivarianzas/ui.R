@@ -2,10 +2,10 @@ library(shiny)
 library(markdown)
 
 shinyUI(pageWithSidebar(
-  headerPanel(title=HTML("Prueba de hipotesis para el cociente de 
+  headerPanel(title=HTML("Prueba de hipótesis para el cociente de 
                          varianzas &sigma;<sup>2</sup><sub>1</sub> / 
                          &sigma;<sup>2</sup><sub>2</sub>"),
-  windowTitle="test_sigmas"),
+  windowTitle="PH coc varianzas"),
         
   sidebarPanel(
     h5('Esta aplicación sirve para realizar prueba de hipotesis 
