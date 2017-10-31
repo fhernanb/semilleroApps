@@ -1,0 +1,1 @@
+Esta aplicación permite al usuario realizar pruebas de hipótesis para la varianza de una variable cuantitativa.
