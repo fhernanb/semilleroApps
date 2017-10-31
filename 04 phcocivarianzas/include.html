@@ -119,13 +119,22 @@ $(document).ready(function () {
 </div>
 
 
-<p>Las pruebas de hip?tesis para analizar la varianza son:</p>
-<p><span class="math inline">\(H_0: \sigma^2_1 = \sigma^2_2\)</span></p>
-<p><span class="math inline">\(H_a: \sigma^2_1 &lt; \sigma^2_2\)</span> prueba de una sola cola (m?s baja)</p>
-<p><span class="math inline">\(\quad \quad \sigma^2_1 &gt; \sigma^2_2\)</span> prueba de una sola cola (m?s alta)</p>
-<p><span class="math inline">\(\quad \quad \sigma^2_1 \neq \sigma^2_2\)</span> prueba de dos colas</p>
-<p>El estad?stico de prueba es: <span class="math inline">\(F = s^2_1/s^2_2\)</span>, donde <span class="math inline">\(s^2_1\)</span> y <span class="math inline">\(s^2_2\)</span> son las varianzas muestrales.</p>
-<p>El estad?stico <span class="math inline">\(F\)</span> sigue una distribuci?n <span class="math inline">\(F\)</span> con <span class="math inline">\(N_1 - 1\)</span> y <span class="math inline">\(N_2 - 1\)</span> grados de libertad, donde <span class="math inline">\(N_1\)</span> es el tama?o muestral del grupo 1 y <span class="math inline">\(N_2\)</span> es el del grupo 2.</p>
+<p>Suponga que se tienen dos muestras aleatorias que provienen de poblaciones normales así:</p>
+<ul>
+<li><span class="math inline">\(n_1\)</span> observaciones <span class="math inline">\(x_{11}, x_{12}, \ldots, x_{1,n1}\)</span> de una población I con varianza <span class="math inline">\(\sigma^2_1\)</span>.</li>
+<li><span class="math inline">\(n_2\)</span> observaciones <span class="math inline">\(x_{21}, x_{22}, \ldots, x_{2,n2}\)</span> de una población II con varianza <span class="math inline">\(\sigma^2_2\)</span>.</li>
+<li>Ambas muestras son independientes entre sí.</li>
+</ul>
+<p>Se quiere estudiar la hipótesis nula <span class="math inline">\(H_0: \sigma_1^2 / \sigma_2^2 = 1\)</span> y se sospecha que el cociente de varianzas <span class="math inline">\(\sigma_1^2 / \sigma_2^2\)</span> cumple una de las siguientes situaciones:</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(H_1: \sigma_1^2 / \sigma_2^2 &lt; 1\)</span></li>
+<li><span class="math inline">\(H_1: \sigma_1^2 / \sigma_2^2 \neq 1\)</span></li>
+<li><span class="math inline">\(H_1: \sigma_1^2 / \sigma_2^2 &gt; 1\)</span></li>
+</ol>
+<p>El estadístico para realizar la prueba es</p>
+<p><span class="math display">\[f_0=\frac{s_1^2}{s_1^2},\]</span></p>
+<p>donde <span class="math inline">\(s_1^2\)</span> y <span class="math inline">\(s_2^2\)</span> son las varianzas muestrales de las poblaciones I y II respectivamente.</p>
+<p>En este caso el estadístico <span class="math inline">\(f_0\)</span>, bajo la suposición de que <span class="math inline">\(H_0\)</span> es verdadera, tiene distribución <span class="math inline">\(f\)</span> con <span class="math inline">\(n_1-1\)</span> grados de libertad en el numerador y <span class="math inline">\(n_2-1\)</span> grados de libertad en el denominador (Montgomery &amp; Runger, 1996).</p>
 
 
 

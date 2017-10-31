@@ -1,21 +1,19 @@
-Las pruebas de hipótesis para analizar la varianza son:
+Suponga que se tienen dos muestras aleatorias que provienen de poblaciones normales así:
 
-*H*<sub>0</sub> : *σ*<sub>1</sub><sup>2</sup> = *σ*<sub>2</sub><sup>2</sup>
+- $n_1$ observaciones $x_{11}, x_{12}, \ldots, x_{1,n1}$ de una población I con  varianza $\sigma^2_1$. 
+- $n_2$ observaciones $x_{21}, x_{22}, \ldots, x_{2,n2}$ de una población II con varianza $\sigma^2_2$.
+- Ambas muestras son independientes entre sí.
 
-*H*<sub>*a*</sub> : *σ*<sub>1</sub><sup>2</sup> &lt; *σ*<sub>2</sub><sup>2</sup>
-prueba de una sola cola (más baja)
+Se quiere estudiar la hipótesis nula $H_0: \sigma_1^2 / \sigma_2^2 = 1$ y se sospecha que el cociente de varianzas $\sigma_1^2 / \sigma_2^2$ cumple una de las siguientes situaciones:
 
-  *σ*<sub>1</sub><sup>2</sup> &gt; *σ*<sub>2</sub><sup>2</sup> prueba de
-una sola cola (más alta)
+1. $H_1: \sigma_1^2 / \sigma_2^2 < 1$
+2. $H_1: \sigma_1^2 / \sigma_2^2 \neq 1$
+3. $H_1: \sigma_1^2 / \sigma_2^2 > 1$
 
-  *σ*<sub>1</sub><sup>2</sup> ≠ *σ*<sub>2</sub><sup>2</sup> prueba de
-dos colas
+El estadístico para realizar la prueba es
 
-El estadístico de prueba es:
-*F* = *s*<sub>1</sub><sup>2</sup>/*s*<sub>2</sub><sup>2</sup>, donde
-*s*<sub>1</sub><sup>2</sup> y *s*<sub>2</sub><sup>2</sup> son las
-varianzas muestrales.
+$$f_0=\frac{s_1^2}{s_1^2},$$
 
-El estadístico *F* sigue una distribución *F* con *N*<sub>1</sub> − 1 y
-*N*<sub>2</sub> − 1 grados de libertad, donde *N*<sub>1</sub> es el
-tamaño muestral del grupo 1 y *N*<sub>2</sub> es el del grupo 2.
+donde $s_1^2$ y $s_2^2$ son las varianzas muestrales de las poblaciones I y II respectivamente.
+
+En este caso el estadístico $f_0$, bajo la suposición de que $H_0$ es verdadera, tiene distribución $f$ con $n_1-1$ grados de libertad en el numerador y $n_2-1$ grados de libertad en el denominador (Montgomery & Runger, 1996).

@@ -121,8 +121,8 @@ $(document).ready(function () {
 
 <p>Suponga que se tienen dos muestras aleatorias que provienen de poblaciones normales así:</p>
 <ul>
-<li><span class="math inline">\(n_1\)</span> observaciones <span class="math inline">\(x_{11}, x_{12}, \ldots, x_{1,n1}\)</span> provenientes de una población I con media <span class="math inline">\(\mu_1\)</span> y varianza <span class="math inline">\(\sigma^2_1\)</span>.</li>
-<li><span class="math inline">\(n_2\)</span> observaciones <span class="math inline">\(x_{21}, x_{22}, \ldots, x_{2,n2}\)</span> provenientes de una población II con media <span class="math inline">\(\mu_2\)</span> y varianza <span class="math inline">\(\sigma^2_2\)</span>.</li>
+<li><span class="math inline">\(n_1\)</span> observaciones <span class="math inline">\(x_{11}, x_{12}, \ldots, x_{1,n1}\)</span> de una población I con media <span class="math inline">\(\mu_1\)</span> y varianza <span class="math inline">\(\sigma^2_1\)</span>.</li>
+<li><span class="math inline">\(n_2\)</span> observaciones <span class="math inline">\(x_{21}, x_{22}, \ldots, x_{2,n2}\)</span> de una población II con media <span class="math inline">\(\mu_2\)</span> y varianza <span class="math inline">\(\sigma^2_2\)</span>.</li>
 <li>Ambas muestras son independientes entre sí.</li>
 </ul>
 <p>Se quiere estudiar la hipótesis nula <span class="math inline">\(H_0: \mu_1 - \mu_2 = \delta_0\)</span> y se sospecha que la diferencia de medias <span class="math inline">\(\mu_1 - \mu_2\)</span> cumple una de las siguientes situaciones:</p>
@@ -135,17 +135,17 @@ $(document).ready(function () {
 <div id="caso-1-varianzas-poblacionales-iguales-sigma_12-sigma_22" class="section level3">
 <h3>Caso 1, varianzas poblacionales iguales <span class="math inline">\(\sigma_1^2 = \sigma_2^2\)</span></h3>
 <p>En este caso el estadístico para realizar la prueba es</p>
-<p><span class="math display">\[t=\frac{\bar{x}_1 - \bar{x}_2 - \delta_0}{S_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}},\]</span></p>
+<p><span class="math display">\[t_0=\frac{\bar{x}_1 - \bar{x}_2 - \delta_0}{S_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}},\]</span></p>
 <p>donde <span class="math inline">\(\bar{x}_1\)</span> y <span class="math inline">\(\bar{x}_2\)</span> son las medias muestrales de las poblaciones I y II respectivamente, la cantidad <span class="math inline">\(S_p\)</span> es una desviación combinada y se obtiene como</p>
 <p><span class="math display">\[S_p=\frac{(n_1-1)s_1^2+(n_2-1)s_2^2}{n_1+n_2-2},\]</span></p>
 <p>donde <span class="math inline">\(s_1^2\)</span> y <span class="math inline">\(s_2^2\)</span> son las varianzas muestrales de las poblaciones I y II respectivamente.</p>
-<p>En este caso el estadístico <span class="math inline">\(t\)</span>, bajo la suposición de que <span class="math inline">\(H_0\)</span> es verdadera, tiene distribución <span class="math inline">\(t\)</span>-student con <span class="math inline">\(n_1+n_2-2\)</span> grados de libertad.</p>
+<p>En este caso el estadístico <span class="math inline">\(t_0\)</span>, bajo la suposición de que <span class="math inline">\(H_0\)</span> es verdadera, tiene distribución <span class="math inline">\(t\)</span>-student con <span class="math inline">\(n_1+n_2-2\)</span> grados de libertad.</p>
 </div>
 <div id="caso-2-varianzas-poblacionales-diferentes-sigma_12-neq-sigma_22" class="section level3">
 <h3>Caso 2, varianzas poblacionales diferentes <span class="math inline">\(\sigma_1^2 \neq \sigma_2^2\)</span></h3>
 <p>En este caso el estadístico para realizar la prueba es</p>
-<p><span class="math display">\[t=\frac{\bar{x}_1 - \bar{x}_2 - \delta_0}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}\]</span></p>
-<p>En este caso el estadístico <span class="math inline">\(t\)</span>, bajo la suposición de que <span class="math inline">\(H_0\)</span> es verdadera, tiene distribución <span class="math inline">\(t\)</span>-student con <span class="math inline">\(v\)</span> grados de libertad calculados como:</p>
+<p><span class="math display">\[t_0=\frac{\bar{x}_1 - \bar{x}_2 - \delta_0}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}\]</span></p>
+<p>En este caso el estadístico <span class="math inline">\(t_0\)</span>, bajo la suposición de que <span class="math inline">\(H_0\)</span> es verdadera, tiene distribución <span class="math inline">\(t\)</span>-student con <span class="math inline">\(v\)</span> grados de libertad calculados como:</p>
 <p><span class="math display">\[v=\frac{ \left( \frac{s_1^2}{n_1} + \frac{s_2^2}{n_2} \right)^2 }{ \frac{(s_1^2/n_1)^2}{n_1-1} + \frac{(s_2^2/n_2)^2}{n_2-1}}\]</span></p>
 </div>
 
