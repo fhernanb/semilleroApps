@@ -1,0 +1,1 @@
+Esta aplicacion sirve para realizar prueba de hipótesis para el cociente de varianzas de variables cuantitativas.
