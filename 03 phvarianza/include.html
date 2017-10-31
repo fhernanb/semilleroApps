@@ -119,17 +119,15 @@ $(document).ready(function () {
 </div>
 
 
-<p>Suponga que se tiene una muestra aleatoria <span class="math inline">\(x_1, x_2, \ldots, x_n\)</span> proveniente de una población normal. Se quiere estudiar la hipótesis nula <span class="math inline">\(H_0: \mu = \mu_0\)</span> y se sospecha que la media <span class="math inline">\(\mu\)</span> cumple una de las siguientes situaciones:</p>
+<p>Suponga que se tiene una muestra aleatoria <span class="math inline">\(x_1, x_2, \ldots, x_n\)</span> proveniente de una población normal. Se quiere estudiar la hipótesis nula <span class="math inline">\(H_0: \sigma^2 = \sigma_0^2\)</span> y se sospecha que la varianza <span class="math inline">\(\sigma^2\)</span> cumple una de las siguientes situaciones:</p>
 <ol style="list-style-type: decimal">
-<li><span class="math inline">\(H_1: \mu &lt; \mu_0\)</span></li>
-<li><span class="math inline">\(H_1: \mu \neq \mu_0\)</span></li>
-<li><span class="math inline">\(H_1: \mu &gt; \mu_0\)</span></li>
+<li><span class="math inline">\(H_1: \sigma^2 &lt; \sigma_0^2\)</span></li>
+<li><span class="math inline">\(H_1: \sigma^2 \neq \sigma_0^2\)</span></li>
+<li><span class="math inline">\(H_1: \sigma^2 &gt; \sigma_0^2\)</span></li>
 </ol>
-<p>El estadístico para realizar la prueba es <span class="math display">\[t_0=\frac{\bar{x} - \mu_0}{s/\sqrt{n}},\]</span></p>
-<p>donde <span class="math inline">\(\bar{x}\)</span> y <span class="math inline">\(s\)</span> son la media y desviación estándar muestrales respectivamente.</p>
-<p>Bajo la suposición de que <span class="math inline">\(H_0\)</span> es verdadera, <span class="math inline">\(t_0\)</span> tiene distribución <span class="math inline">\(t\)</span>-student con <span class="math inline">\(n-1\)</span> grados de libertad.</p>
-<p>Si se dá el caso en que la muestra aleatoria no proviene de una población normal pero se cumple que <span class="math inline">\(n \geq 40\)</span>, entonces en virtud del Teorema del Límite Central el estadístico para realizar la prueba es <span class="math display">\[Z=\frac{\bar{x} - \mu_0}{s/\sqrt{n}},\]</span></p>
-<p>y en esta situación el estadístico <span class="math inline">\(Z\)</span> tiene una distribución <span class="math inline">\(N(0, 1)\)</span>.</p>
+<p>El estadístico para realizar la prueba es <span class="math display">\[\chi_0^2=\frac{(n-1) s^2}{\sigma_0^2},\]</span></p>
+<p>donde <span class="math inline">\(s\)</span> desviación estándar muestral.</p>
+<p>Bajo la suposición de que <span class="math inline">\(H_0\)</span> es verdadera, <span class="math inline">\(\chi_0^2\)</span> tiene distribución <span class="math inline">\(\chi^2\)</span> con <span class="math inline">\(n-1\)</span> grados de libertad (Montgomery &amp; Runger, 1996).</p>
 
 
 
