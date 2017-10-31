@@ -44,9 +44,12 @@ shinyUI(pageWithSidebar(
                 label="Elija la variable cualitativa 
                 de agrupacion, DEBE tener 2 niveles y ser un factor.",
                 choices=""),
-
+    
     selectInput(inputId="h0", 
-                label=HTML("Elija el tipo de hipotesis alterna
+                label=HTML("La hipótesis nula de la prueba es Ho:
+                            &sigma;<sup>2</sup><sub>1</sub> / 
+                            &sigma;<sup>2</sup><sub>2</sub> = 1, 
+                            elija el tipo de hipotesis alterna
                            < , &ne; o >"), 
                 choices=list("Menor" = "less", 
                              "Diferente" = "two.sided",
