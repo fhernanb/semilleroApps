@@ -1,0 +1,13 @@
+Las pruebas de hipótesis para analizar la varianza son:
+
+$H_0: \sigma^2_1 = \sigma^2_2$
+
+$H_a: \sigma^2_1 < \sigma^2_2$ prueba de una sola cola (m?s baja)
+
+$\quad \quad \sigma^2_1 > \sigma^2_2$ prueba de una sola cola (m?s alta)
+
+$\quad \quad \sigma^2_1 \neq \sigma^2_2$ prueba de dos colas
+
+El estad?stico de prueba es: $F = s^2_1/s^2_2$, donde $s^2_1$ y $s^2_2$ son las varianzas muestrales.
+
+El estad?stico $F$ sigue una distribuci?n $F$  con $N_1 - 1$  y $N_2 - 1$ grados de libertad, donde $N_1$ es el tama?o muestral del grupo 1 y $N_2$ es el del grupo 2.
