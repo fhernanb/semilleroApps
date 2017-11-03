@@ -1,5 +1,5 @@
 shinyUI(fluidPage(
-  titlePanel(h1("Tamaños de muestra",align="center", style="color:steelblue")),
+  titlePanel("Tamaños de muestra"),
   h4(p("Esta aplicación entrega los tamaños de muestra para
         diferentes niveles de confianza cuando el interés es
         estimar una proporción o una media."), align="left"),
