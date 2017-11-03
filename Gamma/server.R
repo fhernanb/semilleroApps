@@ -5,16 +5,15 @@ shinyServer(function(input, output)
   
   output$grafico1 <- renderPlot({
     require(gamlss)
-    curve(dgamma(x, input$alpha, input$lambda),
+    curve(dgamma(x, shape=input$shape, scale=input$scale),
           from=0, to=input$x.max, ylab="Densidad",
           las=1, lwd=3, col="deepskyblue3")
     grid()
   })
   
-  output$github <- renderText({
-    esperanza <- ( input$alpha) * (1/input$lambda)
-    varianza <- ( input$alpha) * (1/(input$lambda^2))
-    escala <- (1/input$lambda)
+  output$med_var <- renderText({
+    esperanza <- (input$shape) * input$scale
+    varianza <- (input$shape) * input$scale^2
     paste(c("Para esta configuración E(X) =", round(esperanza, 2),
             "con Var(X) =", round(varianza, 2)))
   })

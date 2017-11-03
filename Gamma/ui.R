@@ -1,25 +1,23 @@
 library(shiny)
 
-# Define UI for application that draws a histogram
 shinyUI(fluidPage(
   
   # Application title
-  titlePanel("Distribución Gamma"),
+  titlePanel("Distribución gamma"),
   
-  # Sidebar with a slider input for the number of bins
   sidebarLayout(
     sidebarPanel(
       HTML("Modifique los valores de los parámetros y 
-            observe lo que sucede con la densidad.
-            Recuerde que Escala = 1 / &lambda;."),
+            observe lo que sucede con la densidad"),
       br(),
-      numericInput(inputId = "alpha",
-                   label = HTML("Ingrese el valor de &alpha;:"),
+      br(),
+      numericInput(inputId = "shape",
+                   label = HTML("Ingrese el valor del parámetro shape:"),
                    min = 0.0001,
                    value = 0.7,
                    step= 0.1),
-      numericInput(inputId = "lambda",
-                   label = HTML("Ingrese el valor de &lambda;:"),
+      numericInput(inputId = "scale",
+                   label = HTML("Ingrese el valor del parámetro scale:"),
                    min = 0.0001,
                    value = 0.3,
                    step= 0.1),
@@ -37,9 +35,9 @@ shinyUI(fluidPage(
     
     # Show a plot of the generated distribution
     mainPanel(
-      h3("Densidad para la distribución Gamma", align = "center"),
+      h3("Densidad para la distribución gamma", align = "center"),
       plotOutput("grafico1"),
-      verbatimTextOutput('github')
+      verbatimTextOutput('med_var')
     )
   )
 ))
