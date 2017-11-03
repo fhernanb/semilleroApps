@@ -18,8 +18,8 @@ shinyServer(function(input, output, session){
       plot(x=nc, y=n, axes=F,
            cex=2, pch=19, col='deepskyblue3',
            xlab='Nivel de confianza (NC)',
-           ylab='Tamano de muestra',
-           main=expression(Tamano~de~muestra~para~estimar~P))
+           ylab='Tamaño de muestra',
+           main=expression(Tamaño~de~muestra~para~estimar~P))
       Axis(side=1, at=nc)
       Axis(side=2, at=n, las=1)
       segments(x0=nc, y0=min(n), x1=nc, y1=n, lty='dotted', col=gray(0.5))
@@ -40,8 +40,8 @@ shinyServer(function(input, output, session){
       plot(x=nc, y=n, axes=F,
            cex=2, pch=19, col='deepskyblue3',
            xlab='Nivel de confianza (NC)',
-           ylab='Tamano de muestra',
-           main=expression(Tamano~de~muestra~para~estimar~mu))
+           ylab='Tamaño de muestra',
+           main=expression(Tamaño~de~muestra~para~estimar~mu))
       Axis(side=1, at=nc)
       Axis(side=2, at=n, las=1)
       segments(x0=nc, y0=min(n), x1=nc, y1=n, lty='dotted', col=gray(0.5))
