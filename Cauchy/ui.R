@@ -1,12 +1,10 @@
 library(shiny)
 
-# Define UI for application that draws a histogram
 shinyUI(fluidPage(
   
   # Application title
   titlePanel("Distribución Cauchy"),
   
-  # Sidebar with a slider input for the number of bins
   sidebarLayout(
     sidebarPanel(
       p("Modifique los valores de los parámetros y 
