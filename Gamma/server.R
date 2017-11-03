@@ -4,7 +4,6 @@ shinyServer(function(input, output)
 {
   
   output$grafico1 <- renderPlot({
-    require(gamlss)
     curve(dgamma(x, shape=input$shape, scale=input$scale),
           from=0, to=input$x.max, ylab="Densidad",
           las=1, lwd=3, col="deepskyblue3")

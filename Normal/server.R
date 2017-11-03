@@ -4,7 +4,6 @@ shinyServer(function(input, output)
 {
   
   output$grafico1 <- renderPlot({
-    require(gamlss)
     curve(dnorm(x, mean=input$media, sd=input$desvi),
           from=input$media - 3 * input$desvi,
           to=input$media + 3 * input$desvi,

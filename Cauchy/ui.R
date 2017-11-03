@@ -38,7 +38,7 @@ shinyUI(fluidPage(
     mainPanel(
       h3("Densidad para la distribución Cauchy", align = "center"),
       plotOutput("grafico1"),
-      verbatimTextOutput('github')
+      verbatimTextOutput('med_var')
     )
   )
 ))
