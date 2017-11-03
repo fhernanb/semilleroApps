@@ -1,12 +1,10 @@
 library(shiny)
 
-# Define UI for application that draws a histogram
 shinyUI(fluidPage(
   
   # Application title
   titlePanel("Distribución log-normal"),
   
-  # Sidebar with a slider input for the number of bins
   sidebarLayout(
     sidebarPanel(
       p("Modifique los valores de los parámetros y observe 
@@ -31,7 +29,7 @@ shinyUI(fluidPage(
     mainPanel(
       h3("Densidad para la distribución log-normal", align = "center"),
       plotOutput("grafico1"),
-      verbatimTextOutput('github')
+      verbatimTextOutput('med_var')
     )
   )
 ))

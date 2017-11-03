@@ -12,7 +12,7 @@ shinyServer(function(input, output)
     grid()
   })
   
-  output$github <- renderText({
+  output$med_var <- renderText({
     esperanza <-exp(input$mu+((input$sigma)^2)/2)
     varianza <-(exp(input$sigma^2)-1)*exp(2*input$mu+((input$sigma)^2))
     paste(c("Para esta configuración E(X)=", round(esperanza, 2),
