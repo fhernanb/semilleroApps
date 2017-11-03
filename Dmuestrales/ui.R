@@ -1,6 +1,5 @@
 shinyUI(fluidPage(
-  titlePanel(h1("Distribuciones muestrales", align="center", 
-                style="color:steelblue")),
+  titlePanel("Distribuciones muestrales"),
   h4(p("Esta aplicacion te ayudara a calcular probabilidades y 
        percentiles de distribuciones asociadas al muestreo."),
      align="left"),
