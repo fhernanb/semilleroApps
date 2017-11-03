@@ -53,7 +53,7 @@ shinyServer(function(input, output, session){
 
            k <- 5  # numero de desviaciones
            curve(dnorm(x, media, desvi), xlim=media+c(-k,k)*desvi, lwd=3,
-                 main='Distribucion normal', ylab="", xlab="", axes=FALSE)
+                 main='Distribución normal', ylab="", xlab="", axes=FALSE)
            axis(1, at=seq(media-k*desvi, media+k*desvi, desvi), pos=0)
            axis(2, las=1)
            if (percentil > media-k*desvi) {
@@ -62,7 +62,8 @@ shinyServer(function(input, output, session){
              cord.y <- c(0, dnorm(secuencia, media, desvi), 0)
              polygon(cord.x, cord.y, col='steelblue')
              altura <- dnorm(percentil, media, desvi)
-             shadowtext(x=percentil, y=altura/2, round(proba, 2), col="orchid2", cex=2)
+             shadowtext(x=percentil, y=altura/2, round(proba, 2), 
+                        col="orchid2", cex=2)
            }
            title(sub=bquote(P(X<.(percentil))==.(proba)), cex.sub=2)
 
@@ -79,14 +80,16 @@ shinyServer(function(input, output, session){
            percentil <- qt(p=proba, df=df, lower.tail=F)
 
            curve(dt(x, df), xlim=c(-5,5), lwd=3,
-                 main='Distribucion t-student', ylab="", xlab="", axes=FALSE)
+                 main='Distribución t-student', ylab="", xlab="", 
+                 axes=FALSE)
            axis(1, at=seq(-5, 5, by=0.5), pos=0)
            axis(2, las=1)
            secuencia <- seq(percentil, 5, length.out=10000)
            cord.x <- c(percentil, secuencia, 5)
            cord.y <- c(0, dt(secuencia, df=df), 0)
            polygon(cord.x, cord.y, col='darkolivegreen3')
-           shadowtext(x=percentil, y=0.01, round(percentil, 2), col="chartreuse", cex=2)
+           shadowtext(x=percentil, y=0.01, round(percentil, 2), 
+                      col="chartreuse", cex=2)
            title(sub=bquote(P(t>.(percentil))==.(proba)), cex.sub=2)
 
            output$perce <- renderText(percentil)
@@ -98,7 +101,8 @@ shinyServer(function(input, output, session){
            proba <- pt(q=percentil, df=df, lower.tail=F)
 
            curve(dt(x, df), xlim=c(-5,5), lwd=3,
-                 main='Distribucion t-student', ylab="", xlab="", axes=FALSE)
+                 main='Distribución t-student', ylab="", xlab="", 
+                 axes=FALSE)
            axis(1, at=seq(-5, 5, by=0.5), pos=0)
            axis(2, las=1)
            secuencia <- seq(percentil, 5, length.out=10000)
@@ -106,7 +110,8 @@ shinyServer(function(input, output, session){
            cord.y <- c(0, dt(secuencia, df=df), 0)
            polygon(cord.x, cord.y, col='darkolivegreen3')
            altura <- dt(x=percentil, df=df)
-           shadowtext(x=percentil, y=altura/2, round(proba, 2), col="orchid2", cex=2)
+           shadowtext(x=percentil, y=altura/2, round(proba, 2), 
+                      col="orchid2", cex=2)
            title(sub=bquote(P(t>.(percentil))==.(proba)), cex.sub=2)
 
          }
@@ -127,14 +132,15 @@ shinyServer(function(input, output, session){
 
            max.x <- 3 * percentil
            curve(df(x, df1, df2), xlim=c(0, max.x), lwd=3,
-                 main='Distribucion F', ylab="", xlab="", axes=FALSE)
+                 main='Distribución F', ylab="", xlab="", axes=FALSE)
            axis(1, at=seq(0, max.x, by=0.5), pos=0)
            axis(2, las=1)
            secuencia <- seq(percentil, max.x, length.out=10000)
            cord.x <- c(percentil, secuencia, max.x)
            cord.y <- c(0, df(secuencia, df1, df2), 0)
            polygon(cord.x, cord.y, col='lightsalmon3')
-           shadowtext(x=percentil, y=0.01, round(percentil, 2), col="chartreuse", cex=2)
+           shadowtext(x=percentil, y=0.01, round(percentil, 2), 
+                      col="chartreuse", cex=2)
            title(sub=bquote(P(F>.(percentil))==.(proba)), cex.sub=2)
 
          }
@@ -147,7 +153,7 @@ shinyServer(function(input, output, session){
 
            max.x <- 3 * percentil
            curve(df(x, df1, df2), xlim=c(0, max.x), lwd=3,
-                 main='Distribucion F', ylab="", xlab="", axes=FALSE)
+                 main='Distribución F', ylab="", xlab="", axes=FALSE)
            axis(1, at=seq(0, max.x, by=0.5), pos=0)
            axis(2, las=1)
            secuencia <- seq(percentil, max.x, length.out=10000)
@@ -155,7 +161,8 @@ shinyServer(function(input, output, session){
            cord.y <- c(0, df(secuencia, df1, df2), 0)
            polygon(cord.x, cord.y, col='lightsalmon3')
            altura <- df(x=percentil, df1, df2)
-           shadowtext(x=percentil, y=altura/2, round(proba, 2), col="orchid2", cex=2)
+           shadowtext(x=percentil, y=altura/2, round(proba, 2), 
+                      col="orchid2", cex=2)
            title(sub=bquote(P(F>.(percentil))==.(proba)), cex.sub=2)
 
 
@@ -173,14 +180,15 @@ shinyServer(function(input, output, session){
 
            max.x <- qchisq(p=0.99, df)
            curve(dchisq(x, df), xlim=c(0, max.x), lwd=3,
-                 main=expression('Distribucion' ~ chi^2), ylab="", xlab="", axes=FALSE)
+                 main=expression('Distribución' ~ chi^2), ylab="", xlab="", axes=FALSE)
            axis(1, at=seq(0, max.x, by=0.5), pos=0)
            axis(2, las=1)
            secuencia <- seq(percentil, max.x, length.out=10000)
            cord.x <- c(percentil, secuencia, max.x)
            cord.y <- c(0, dchisq(secuencia, df), 0)
            polygon(cord.x, cord.y, col='yellow3')
-           shadowtext(x=percentil, y=0, round(percentil, 2), col="chartreuse", cex=2)
+           shadowtext(x=percentil, y=0, round(percentil, 2), 
+                      col="chartreuse", cex=2)
            title(sub=bquote(P(chi^2>.(percentil))==.(proba)), cex.sub=2)
 
 
@@ -193,7 +201,7 @@ shinyServer(function(input, output, session){
 
            max.x <- qchisq(p=0.99, df)
            curve(dchisq(x, df), xlim=c(0, max.x), lwd=3,
-                 main=expression('Distribucion' ~ chi^2), ylab="", xlab="", axes=FALSE)
+                 main=expression('Distribución' ~ chi^2), ylab="", xlab="", axes=FALSE)
            axis(1, at=seq(0, max.x, by=0.5), pos=0)
            axis(2, las=1)
            secuencia <- seq(percentil, max.x, length.out=10000)
@@ -201,7 +209,8 @@ shinyServer(function(input, output, session){
            cord.y <- c(0, dchisq(secuencia, df), 0)
            polygon(cord.x, cord.y, col='yellow3')
            altura <- dchisq(x=percentil, df)
-           shadowtext(x=percentil, y=altura/2, round(proba, 2), col="orchid2", cex=2)
+           shadowtext(x=percentil, y=altura/2, round(proba, 2), 
+                      col="orchid2", cex=2)
            title(sub=bquote(P(chi^2>.(percentil))==.(proba)), cex.sub=2)
 
 

@@ -60,7 +60,8 @@ shinyUI(fluidPage(
                                     label="Ingrese probabilidad",
                                     value=0.70, step=0.001,
                                     min=0.001, max=0.999)),
-
+      img(src="logo.png", height = 60, width = 120),
+      img(src="udea.png", height = 25, width = 70),
       br(),
       p("App creada por el Semillero de R de la Universidad Nacional de Colombia:"),
       tags$a(href="https://srunal.wordpress.com/", "https://srunal.wordpress.com/")
