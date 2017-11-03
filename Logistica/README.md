@@ -1,1 +1,1 @@
-Esta aplicacion tiene por objetivo mostrar como influyen los parametros de la distribucion logistica sobre la forma de la densidad.
+Esta aplicación tiene por objetivo mostrar como influyen los parámetros de la distribución logística sobre la forma de la densidad.

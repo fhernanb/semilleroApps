@@ -12,7 +12,7 @@ shinyServer(function(input, output)
     grid()
   })
   
-  output$github <- renderText({
+  output$med_var <- renderText({
     esperanza <- input$location
     varianza <- pi^2/(3*input$scale^2)
     paste(c("Para esta configuración E(X)=", round(esperanza, 2),
