@@ -4,12 +4,22 @@ shinyServer(function(input, output)
 {
   
   output$grafico1 <- renderPlot({
-    if (input$min > input$max) {
+    # Revisando si la integral es igual a 1
+    a <- input$min
+    b <- input$max
+    fdp <- input$fdp
+    fdp <- substr(fdp, start=6, stop=nchar(fdp))
+    fun <- function(x) eval(parse(text=fdp))
+    area <- integrate(fun, lower=a, upper=b)$value
+    
+    if (input$min > input$max | area != 1) {
       plot(c(-5, 5), c(0, 1), xlab="", ylab="", type='n',
            xaxt='n', yaxt='n', bty='n')
-      text(x=0, y=0.5, col='red', cex=2,
+      text(x=0, y=0.7, col='red', cex=3,
            label='Revise los valores que ingresó.')
-      text(x=0, y=0.4, col='purple', cex=2,
+      text(x=0, y=0.5, col='orange', cex=2,
+           label=paste('El área bajo la curva es', area))
+      text(x=0, y=0.3, col='purple', cex=1,
            label='El mínimo no puede ser mayor que el máximo.')
     }
     else {
