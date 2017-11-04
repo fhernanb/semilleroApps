@@ -8,7 +8,6 @@ shinyServer(function(input, output)
     
     a <- input$min
     b <- input$max
-    #if (is.infinite(input$max)) b <- 999
     fdp <- input$fdp
     fdp <- substr(fdp, start=6, stop=nchar(fdp))
     fdp <- paste(fdp, ' * x^0')
@@ -39,7 +38,6 @@ shinyServer(function(input, output)
   })
   
   output$med_var <- renderText({
-    #if (is.infinite(input$max)) input$max <- 999
     a <- input$min
     b <- input$max
     fdp <- input$fdp
