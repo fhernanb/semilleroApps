@@ -8,8 +8,7 @@ shinyUI(fluidPage(
   sidebarLayout(
     sidebarPanel(
       HTML("Ingrese la función de densidad y los valores
-           mínimo y máximo que ella puede tomar usando
-           los botones de abajo."),
+           mínimo y máximo que ella puede tomar."),
       br(),
       br(),
       textInput("fdp",
@@ -17,10 +16,12 @@ shinyUI(fluidPage(
                 usando los operadores +, -, * y /. Vea el ejemplo abajo.", 
                 "f(x)=3*x^2"),
       numericInput(inputId = "min",
-                   label = HTML("Ingrese el valor mínimo de X"),
+                   label = HTML("Ingrese el valor mínimo de X. Si el
+                                valor mínimo es -Inf escriba -999"),
                    value = 0),
       numericInput(inputId = "max",
-                   label = HTML("Ingrese el valor máximo de X"),
+                   label = HTML("Ingrese el valor máximo de X. Si el
+                                valor máximo es Inf escriba 999"),
                    value = 1),
       br(),
       p("App creada por el Semillero de R de la Universidad Nacional de Colombia:"),
@@ -31,7 +32,7 @@ shinyUI(fluidPage(
     mainPanel(
       h3("Densidad para la distribución ingresada", align = "center"),
       plotOutput("grafico1"),
-      verbatimTextOutput('area')
+      verbatimTextOutput('med_var')
     )
   )
 ))
