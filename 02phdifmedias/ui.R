@@ -72,6 +72,8 @@ shinyUI(pageWithSidebar(
     
     img(src="logo.png", height = 60, width = 120),
     img(src="udea.png", height = 25, width = 70),
+    img(src="cua.png", height = 40, width = 110),
+    br(),
     br(),
     tags$a(href="https://srunal.wordpress.com/", "https://srunal.wordpress.com/")
 
