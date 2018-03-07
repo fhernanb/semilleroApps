@@ -16,7 +16,7 @@ shinyServer(function(input, output)
     esperanza <- a/(a+b)
     varianza <- (a*b) / ((a+b)^2 * (a+b+1))
     paste(c("Para esta configuración E(X) =", round(esperanza, 2),
-            "con Var(X) =", round(varianza, 2)))
+            "con Var(X) =", round(varianza, 4)))
   })
   
 })
