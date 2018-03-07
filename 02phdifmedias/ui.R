@@ -75,7 +75,7 @@ shinyUI(pageWithSidebar(
     img(src="cua.png", height = 40, width = 110),
     br(),
     br(),
-    tags$a(href="https://srunal.wordpress.com/", "https://srunal.wordpress.com/")
+    tags$a(href="https://srunal.github.io", "https://srunal.github.io")
 
 ),
 
