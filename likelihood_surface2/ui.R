@@ -35,9 +35,8 @@ fluidPage(
                   choices=c("Normal", "Weibull", "Gamma"),
                   selected="Normal"),
       p("App creada por el Semillero de R de la Universidad Nacional de Colombia."),
-      img(src="https://fhbunal.files.wordpress.com/2017/08/logo.png",
-          height = 56, width = 136),
-      tags$a(href="https://srunal.wordpress.com/", "https://srunal.wordpress.com/")
+      img(src="https://fhernanb.github.io/docs/logo.png", height = 56, width = 136),
+      tags$a(href="https://srunal.github.io", "https://srunal.github.io")
     ),
     
     # Show a tabset that includes a plot, summary, and table view
