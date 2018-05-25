@@ -92,7 +92,8 @@ fluidPage(
   
 
   p("App creada por el Semillero de R de la Universidad Nacional de Colombia:"),
-  img(src="https://fhernanb.github.io/docs/logo.png", height = 56, width = 136),
+  img(src="https://fhernanb.github.io/docs/logo_unal_negro.png",
+      height = 56, width = 140),
   tags$a(href="https://srunal.github.io", "https://srunal.github.io")
   ),
     
