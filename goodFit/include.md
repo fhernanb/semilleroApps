@@ -10,7 +10,7 @@ donde $l$ corresponde al valor de log-verosimilitud estimada para el modelo, $df
 Distribuciones disponibles
 =======================
 
-Las distribuciones que se pueden elegir en la aplicación son las que están disponibles en el paquete [Manual de gamlss](https://cran.r-project.org/web/packages/gamlss/gamlss.pdf) de R, a continuación el listado de familias y las distribuciones que pertenecen a cada una de ellas.
+Las distribuciones que se pueden elegir en la aplicación son las que están disponibles en el paquete [gamlss](https://cran.r-project.org/web/packages/gamlss/gamlss.pdf) de R, a continuación el listado de familias y las distribuciones que pertenecen a cada una de ellas.
 
 1. Reales positivos: "EXP","GA","IG","LNO", "WEI3", "BCCGo", "exGAUS", "GG", "GIG", "BCTo", "BCPEo".
 2. Reales: "GU", "RG" ,"LO", "NET", "TF", "PE", "SN1", "SN2", "SHASH", "EGB2", "JSU", "SEP1", "SEP2", "SEP3", "SEP4","ST1", "ST2", "ST3", "ST4", "ST5", "GT".
@@ -18,7 +18,7 @@ Las distribuciones que se pueden elegir en la aplicación son las que están dis
 4. Conteos: "PO", "LG", "NBI", "NBII", "PIG", "DEL", "SI", "ZIP", "ZAP", "ZALG", "ZANBI", "ZIP2", "ZIPIG".
 5. Binomiales: "BI", "BB", "ZIBI", "ZIBB", "ZABI", "ZABB".
 
-Para obtener información sobre cada una de las anteriores distribuciones se recomienda consultar la tabla 4.2 y Apéndice A del [Manual de gamlss](http://www.gamlss.org/wp-content/uploads/2013/01/gamlss-manual.pdf).
+Para obtener información sobre cada una de las anteriores distribuciones se recomienda consultar la tabla 4.2 y Apéndice A del [Manual de gamlss](http://www.gamlss.com/wp-content/uploads/2013/01/gamlss-manual.pdf).
 
 
 
