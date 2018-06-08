@@ -2,11 +2,11 @@ library(shiny)
 library(markdown)
 
 shinyUI(pageWithSidebar(
-  headerPanel(title=HTML("Prueba de hipótesis para la media &mu;"),
-              windowTitle="PH media"),
+  headerPanel(title=HTML("Prueba de hipótesis para la proporción;"),
+              windowTitle="PH proporción"),
   sidebarPanel(
     h5('Esta aplicación realiza la prueba de hipótesis para la 
-       media de una variable cuantitativa con distribución normal.'),
+       proporción de una variable cualitativa.'),
     
     h6('La aplicación usa una base de datos de ejemplo pero el usuario
        puede cargar su propia base de datos.'),
