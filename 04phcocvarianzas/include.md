@@ -1,3 +1,5 @@
+# Prueba de hipótesis para el cociente de varianzas
+
 Suponga que se tienen dos muestras aleatorias que provienen de poblaciones normales así:
 
 - $n_1$ observaciones $X_{11}, X_{12}, \ldots, X_{1,n1}$ de una población I con  varianza $\sigma^2_1$, 
@@ -18,9 +20,9 @@ donde $S_1^2$ y $S_2^2$ son las varianzas de las muestras I y II respectivamente
 
 Si el valor calculado para el estadístico dado en la ecuación anterior se denota por $f_0$, entonces el valor-$P$ de la prueba se calcula de acuerdo a la hipótesis alterna $H_a$ así:
 
-- Si $H_a: \sigma_1^2 / \sigma_2^2 < 1$ entonces valor-$P$=$P(f_{n_1-1,n_2-1} \leq f_0)$.
-- Si $H_a: \sigma_1^2 / \sigma_2^2 \neq 1$ entonces valor-$P$=$P(\text{Exceder}~f_0) + P(\text{Exceder}~1/f_0)$.
-- Si $H_a: \sigma_1^2 / \sigma_2^2 > 1$ entonces valor-$P$=$P(f_{n_1-1,n_2-1} \geq f_0)$.
+- Si $H_a: \sigma_1^2 / \sigma_2^2 < \sigma^2_0$ entonces valor-$P$=$P(f_{n_1-1,n_2-1} < f_0)$.
+- Si $H_a: \sigma_1^2 / \sigma_2^2 \neq \sigma^2_0$, valor-$P$=$2 \times \min \left\{ P(f_{n_1-1,n_2-1} < f_0), P(f_{n_1-1,n_2-1} > f_0) \right\}$.
+- Si $H_a: \sigma_1^2 / \sigma_2^2 > \sigma^2_0$ entonces valor-$P$=$P(f_{n_1-1,n_2-1} > f_0)$.
 
 
 En esta prueba, al no rechazar la hipótesis nula $H_0$, se concluye que $\sigma_1^2 / \sigma_2^2 = 1$ lo que implica en términos prácticos que $\sigma_1^2 = \sigma_2^2$, es decir que las varianzas poblacionales se pueden considerar iguales.

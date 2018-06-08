@@ -121,6 +121,8 @@ $(document).ready(function () {
 </div>
 
 
+<div id="prueba-de-hipotesis-para-el-cociente-de-varianzas" class="section level1">
+<h1>Prueba de hipótesis para el cociente de varianzas</h1>
 <p>Suponga que se tienen dos muestras aleatorias que provienen de poblaciones normales así:</p>
 <ul>
 <li><span class="math inline">\(n_1\)</span> observaciones <span class="math inline">\(X_{11}, X_{12}, \ldots, X_{1,n1}\)</span> de una población I con varianza <span class="math inline">\(\sigma^2_1\)</span>,</li>
@@ -138,11 +140,12 @@ F_0=\frac{S_1^2}{S_1^2},
 \]</span> donde <span class="math inline">\(S_1^2\)</span> y <span class="math inline">\(S_2^2\)</span> son las varianzas de las muestras I y II respectivamente. El estadístico <span class="math inline">\(F_0\)</span>, bajo la suposición de que <span class="math inline">\(H_0\)</span> es verdadera, tiene distribución <span class="math inline">\(f\)</span> con <span class="math inline">\(n_1-1\)</span> grados de libertad en el numerador y <span class="math inline">\(n_2-1\)</span> grados de libertad en el denominador.</p>
 <p>Si el valor calculado para el estadístico dado en la ecuación anterior se denota por <span class="math inline">\(f_0\)</span>, entonces el valor-<span class="math inline">\(P\)</span> de la prueba se calcula de acuerdo a la hipótesis alterna <span class="math inline">\(H_a\)</span> así:</p>
 <ul>
-<li>Si <span class="math inline">\(H_a: \sigma_1^2 / \sigma_2^2 &lt; 1\)</span> entonces valor-<span class="math inline">\(P\)</span>=<span class="math inline">\(P(f_{n_1-1,n_2-1} \leq f_0)\)</span>.</li>
-<li>Si <span class="math inline">\(H_a: \sigma_1^2 / \sigma_2^2 \neq 1\)</span> entonces valor-<span class="math inline">\(P\)</span>=<span class="math inline">\(P(\text{Exceder}~f_0) + P(\text{Exceder}~1/f_0)\)</span>.</li>
-<li>Si <span class="math inline">\(H_a: \sigma_1^2 / \sigma_2^2 &gt; 1\)</span> entonces valor-<span class="math inline">\(P\)</span>=<span class="math inline">\(P(f_{n_1-1,n_2-1} \geq f_0)\)</span>.</li>
+<li>Si <span class="math inline">\(H_a: \sigma_1^2 / \sigma_2^2 &lt; \sigma^2_0\)</span> entonces valor-<span class="math inline">\(P\)</span>=<span class="math inline">\(P(f_{n_1-1,n_2-1} &lt; f_0)\)</span>.</li>
+<li>Si <span class="math inline">\(H_a: \sigma_1^2 / \sigma_2^2 \neq \sigma^2_0\)</span>, valor-<span class="math inline">\(P\)</span>=<span class="math inline">\(2 \times \min \left\{ P(f_{n_1-1,n_2-1} &lt; f_0), P(f_{n_1-1,n_2-1} &gt; f_0) \right\}\)</span>.</li>
+<li>Si <span class="math inline">\(H_a: \sigma_1^2 / \sigma_2^2 &gt; \sigma^2_0\)</span> entonces valor-<span class="math inline">\(P\)</span>=<span class="math inline">\(P(f_{n_1-1,n_2-1} &gt; f_0)\)</span>.</li>
 </ul>
 <p>En esta prueba, al no rechazar la hipótesis nula <span class="math inline">\(H_0\)</span>, se concluye que <span class="math inline">\(\sigma_1^2 / \sigma_2^2 = 1\)</span> lo que implica en términos prácticos que <span class="math inline">\(\sigma_1^2 = \sigma_2^2\)</span>, es decir que las varianzas poblacionales se pueden considerar iguales.</p>
+</div>
 
 
 
