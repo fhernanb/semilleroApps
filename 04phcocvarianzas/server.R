@@ -106,7 +106,7 @@ shinyServer(function(input,output,session){
                    ratio=1, 
                    conf.level=input$alfa)
     conclusion <- ifelse(ph$p.value < 0.05, 'se rechaza', 'no se rechaza')
-    paste0('El estadístico de prueba es f=', round(ph$statistic, 4),
+    paste0('El estadístico de prueba es f0=', round(ph$statistic, 4),
            ' con un valor-P de ', round(ph$p.value, 2), ', 
            por lo tanto se concluye
            que, basados en la evidencia muestral, 

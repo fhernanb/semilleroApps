@@ -6,7 +6,7 @@ shinyUI(pageWithSidebar(
               windowTitle="PH media"),
   sidebarPanel(
     h5('Esta aplicación realiza la prueba de hipótesis para la 
-       media de una variable cuantitativa.'),
+       media de una variable cuantitativa con distribución normal.'),
     
     h6('La aplicación usa una base de datos de ejemplo pero el usuario
        puede cargar su propia base de datos.'),
@@ -27,7 +27,7 @@ shinyUI(pageWithSidebar(
                   value=TRUE),
     
     selectInput(inputId="sep",
-                label = "¿Cuál es la sepación de los datos?", 
+                label = "¿Cuál es la separación de los datos?", 
                 choices = list(Tab='\t', Comma=',',
                                Semicolon=';', 'space'=' '),
                 selected = ';'),
@@ -70,15 +70,16 @@ mainPanel(
   tabsetPanel(type = "pills",
               
               tabPanel("Resultados",
-                       h5('A continuación el histograma, densidad, QQplot
-                          y valor-P para la prueba de normalidad
-                          Shapiro-Wilk.'),
+                       h5('A continuación el histograma, ladensidad, 
+                          el QQplot
+                          y valor-P de la prueba de normalidad
+                          Shapiro-Wilk para la muestra.'),
                        
                        plotOutput("appPlot",
                                   width='500px',
                                   height='300px'),
                        
-                       h4("- Tabla de resumen con estadísticos muestrales:"),
+                       h4("- Tabla de resumen con estadísticos los muestrales:"),
                        tableOutput('statistic'),
                        
                        h4("- Resultados de la prueba de hipótesis:"),

@@ -1,1 +1,1 @@
-Esta aplicación sirve para realizar una prueba de hipótesis sobre la media de una variable cuantitativa.
+Esta aplicación realiza la prueba de hipótesis para la media de una variable cuantitativa con distribución normal.

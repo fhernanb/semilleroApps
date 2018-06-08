@@ -9,7 +9,8 @@ shinyUI(pageWithSidebar(
         
   sidebarPanel(
     h5('Esta aplicación sirve para realizar prueba de hipotesis 
-        para el cociente de varianzas de variables cuantitativas.'),
+        para el cociente de varianzas de variables cuantitativas
+        con distribución normal.'),
     
     h6('La aplicación usa una base de datos de ejemplo pero el usuario
        puede cargar su propia base de datos.'),
@@ -30,7 +31,7 @@ shinyUI(pageWithSidebar(
                   value=TRUE),
     
     selectInput(inputId="sep",
-                label = "¿Cuál es la sepación de los datos?", 
+                label = "¿Cuál es la separación de los datos?", 
                 choices = list(Tab='\t', Comma=',',
                                Semicolon=';', 'space'=' '),
                 selected = ';'),

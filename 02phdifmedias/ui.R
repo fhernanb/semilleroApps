@@ -2,13 +2,14 @@ library(shiny)
 library(markdown)
 
 shinyUI(pageWithSidebar(
-  headerPanel(title=HTML("Prueba de hipotesis para diferencia de medias 
+  headerPanel(title=HTML("Prueba de hipótesis para diferencia de medias 
                          &mu;<sub>1</sub> - &mu;<sub>2</sub>"),
               windowTitle="PH dif medias"),
   
   sidebarPanel(
-    h5('Esta aplicación sirve para realizar prueba de hipotesis 
-        para la diferencia de medias de variables cuantitativas.'),
+    h5('Esta aplicación realiza la prueba de hipótesis 
+        para la diferencia de medias de variables cuantitativas
+        que tengan distribución normal.'),
     
     h6('La aplicación usa una base de datos de ejemplo pero el usuario
        puede cargar su propia base de datos.'),
@@ -29,7 +30,7 @@ shinyUI(pageWithSidebar(
                   value=TRUE),
     
     selectInput(inputId="sep",
-                label = "¿Cuál es la sepación de los datos?", 
+                label = "¿Cuál es la separación de los datos?", 
                 choices = list(Tab='\t', Comma=',',
                                Semicolon=';', 'space'=' '),
                 selected = ';'),
@@ -41,7 +42,7 @@ shinyUI(pageWithSidebar(
     
     selectInput(inputId="variable2",
                 label="Elija la variable cualitativa 
-                de agrupacion, DEBE tener 2 niveles y ser un factor.",
+                de agrupación, DEBE tener 2 niveles y ser un factor.",
                 choices=""),
     
     numericInput(inputId='delta0', 
@@ -61,7 +62,7 @@ shinyUI(pageWithSidebar(
     
     checkboxInput(inputId='var.equal',
                   label='Las varianzas poblacionales son iguales', 
-                  value=TRUE),
+                  value=FALSE),
     
     sliderInput(inputId='alfa', 
                 label=HTML("Opcional: elija un nivel de confianza para 
@@ -82,15 +83,16 @@ shinyUI(pageWithSidebar(
 mainPanel(
   tabsetPanel(type = "pills",
               tabPanel(title="Resultados",
-                       h5('A continuación el histograma, densidad, QQplot
+                       h5('A continuación el histograma, la densidad, 
+                          el QQplot
                           y valor-P para la prueba de normalidad
-                          Shapiro-Wilk de cada una de las
+                          Shapiro-Wilk para cada una de las
                           dos muestras.'),
                        plotOutput("appPlot",
                                   width='500px',
                                   height='300px'),
                        
-                       h4("- Tabla de resumen con estadísticos muestrales:"),
+                       h4("- Tabla de resumen con los estadísticos muestrales:"),
                        tableOutput('statistic'),
                        
                        h4("- Resultados de la prueba de hipótesis:"),
