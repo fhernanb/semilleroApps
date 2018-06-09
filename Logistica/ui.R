@@ -11,16 +11,18 @@ shinyUI(fluidPage(
         lo que sucede con la densidad."),
       br(),
       numericInput(inputId = "location",
-                   label = p("Ingrese el valor del parámetro Location:"),
-                   min = -Inf,
-                   max = Inf,
-                   value = 0.7,
-                   step= 0.1),
-      numericInput(inputId = "scale",
-                   label = p("Ingrese el valor del parámetro Scale:"),
-                   min = 0.1,
-                   value = 0.3,
-                   step= 0.1),
+                  label = p("Ingrese el valor del parámetro Location:"),
+                  min = -Inf,
+                  max = Inf,
+                  value = 0.7,
+                  step= 0.1),
+      sliderInput(inputId = "scale",
+                  label = p("Ingrese el valor del parámetro Scale:"),
+                  min = 0.1,
+                  max = 10,
+                  value = 0.3,
+                  step= 0.1,
+                  animate = TRUE),
       numericInput(inputId = "distribuciones",
                    label = p("Ingrese el valor de desviaciones estándar
                              para modificar el rango horizontal:"),
@@ -29,7 +31,8 @@ shinyUI(fluidPage(
                    step= 0.5),
       br(),
       p("App creada por el Semillero de R de la Universidad Nacional de Colombia:"),
-      tags$a(href="https://srunal.wordpress.com/", "https://srunal.wordpress.com/")
+      tags$a(href="https://srunal.github.io/", 
+             "https://srunal.github.io/")
     ),
     
     # Show a plot of the generated distribution
