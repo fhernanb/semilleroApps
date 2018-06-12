@@ -18,4 +18,4 @@ Otra forma sería clonando el repositorio o descargando el repositorio y luego c
 
 Los nombres de las aplicaciones disponibles están al lado derecho de las carpetas azules arriba de este texto. A continuación una figura ilustrativa.
 
-<img src="https://fhbunal.files.wordpress.com/2015/11/figura1.png" alt="some_text">
+<img src="myFigures/figura1.png" alt="some_text">
