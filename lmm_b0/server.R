@@ -1,5 +1,4 @@
 library(shiny)
-#install.packages('latex2exp')
 library(latex2exp)
 
 #Funcion interceptos aleatorios
