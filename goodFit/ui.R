@@ -7,14 +7,14 @@ shinyUI(pageWithSidebar(
 # Here the sidebarpanel
   sidebarPanel(
     h6("This app can be used to identify the best four
-        distributions that fit better for a variable. The user
+        distributions that fit better for a single variable. The user
         can provide the dataset using the buttons below."),
     h6("As an example the app uses the speed variable from
         the dataset cars."),
     h4("To use the app follow the next steps:"),
-    h6('1. Suba su base,'),
-    h6('2. Indique el tipo de separación de su base,'),
-    h6('3. Seleccione la variable de interés.'),
+    h6('1. Upload the file,'),
+    h6('2. Select the separator character,'),
+    h6('3. Select the variable.'),
     fileInput(inputId='file1', label='Use el botón siguiente para
               cargar la base de datos.',
               accept = c(
