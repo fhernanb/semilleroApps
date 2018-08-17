@@ -3,6 +3,7 @@ require(gamlss)
 
 shinyServer(function(input, output, session){
   
+  # Function to plot the four histograms
   four.hist <- function(k, f, p) {
     par(cex.main=0.95)
     inFile <- input$file1

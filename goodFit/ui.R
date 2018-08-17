@@ -39,15 +39,15 @@ shinyUI(pageWithSidebar(
     sliderInput("k", "Choose the number \\( k \\) to penalize for 
                      the excess number of parameters
                      in \\(GAIC=-2 \\times logLik + k \\times df\\).
-                     The value \\( df \\) is the number of 
-                     distribution parameters",
+                     The value \\( df \\) corresponds to the number of 
+                     distribution parameters.",
                 min=2,
                 max=20,
                 value=2,
                 step=1,
                 animate=TRUE),
     radioButtons(inputId = "type_plot", 
-                 label = "Select the file type to download the plot", 
+                 label = "Select the file type to download the plot.", 
                  choices = list("pdf", "png")),
     br(),
     p("This app was created by Semillero de R at Universidad Nacional 
