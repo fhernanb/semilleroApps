@@ -1,0 +1,3 @@
+# Teorema
+
+Sea ${X}_{1},{X}_{2},...,{X}_{n}$ una muestra aleatoria de una distribución uniforme en el intervalo $[0,\theta]$ entonces ${ X }_{ (n) }\overset { P }{ \longrightarrow  } \theta$.

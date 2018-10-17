@@ -1,0 +1,73 @@
+## Teorema
+
+##### Sea ${X}_{1},{X}_{2},...,{X}_{n}$ una muestra aleatoria de una distribución uniforme en el intervalo $[0,\theta]$ entonces ${ X }_{ (n) }\overset { P }{ \longrightarrow  } \theta$.
+
+## Demostraci�n
+
+##### Se sabe que: si ${ X }_{ n }\overset { d }{ \longrightarrow  } c$ entonces ${ X }_{ n }\overset { p }{ \longrightarrow  } c$, para $c\in \mathbb{R}$. En nuestro caso, para probar que ${ X }_{ (n) }\overset { P }{ \longrightarrow  } \theta$ basta con probar que ${ X }_{ (n) }\overset { d }{ \longrightarrow  } \theta$.
+
+##### Sea $T=\theta$, se sabe que la $c.d.f.$ de $\theta$ está dado por:
+
+\begin{equation}
+F(t) = \left\lbrace
+\begin{array}{ll}
+0 & t<\theta\\
+1 & t\ge \theta 
+\end{array}
+\right.
+\end{equation}
+
+##### Ahora para que ${ X }_{ (n) }\overset { d }{ \longrightarrow  } \theta$, por definición se debe cumplir que $\lim_{n \to \infty}({ F }_{ { X }_{ (n) } }(t))=F(t)$; $\forall t$ donde $F$ sea continua.
+
+##### Del ejercicio se sabe que ${X}_{1},{X}_{2},...,{X}_{n}$ es una $m.a.$ de una distribución uniforme, por tanto ${ X }_{ i }\sim U(0,\theta )$ con $i=1,2,...,n$, por tanto se concluye que:
+
+\begin{equation}
+{ f }_{ X }(x) = \left\lbrace
+\begin{array}{ll}
+\frac { 1 }{ \theta  }  & 0<x<\theta\\
+0 & en\quad otro\quad caso
+\end{array}
+\right.
+\end{equation}
+
+##### Y la función acumulada está dada por:
+
+\begin{equation}
+{ F }_{ X }(x) = \left\lbrace
+\begin{array}{ll}
+0 & x\le 0\\
+\frac { x }{ \theta  }  & 0<x<\theta\\
+1 & x\ge 0
+\end{array}
+\right.
+\end{equation}
+
+##### Por otro lado, se sabe que la $p.d.f.$ de ${X}_{(n)}$ está dada por:
+
+##### ${ f }_{ {X}_{(n)} }(x)={n \choose n}n{ { [F }_{ X }(t)] }^{ n-1 }{ { [1-F }_{ X }(t)] }^{ n-n }{ f }_{ X }(t)=n{ \left[ \frac { t }{ \theta  }  \right]  }^{ n-1 }\frac { 1 }{ \theta  }$, $0<t<\theta$
+
+##### Así se tiene que:
+
+##### ${ F }_{ { X }_{ (n) } }(t)=\int _{ -\infty  }^{ t }{ { f }_{ { X }_{ (n) } }(t) } dt=\int _{ -\infty  }^{ 0 }{ { f }_{ { X }_{ (n) } }(t) } dt + \int _{ 0 }^{ t }{ { f }_{ { X }_{ (n) } }(t) } dt=\int _{ 0 }^{ t }{ { f }_{ { X }_{ (n) } }(t) } dt=\int _{ 0 }^{ t }{ n{ \left[ \frac { t }{ \theta  }  \right]  }^{ n-1 }\frac { 1 }{ \theta  }  } dt=\frac { n }{ \theta  } \int _{ 0 }^{ t }{ \frac { { (t) }^{ n-1 } }{ { \theta  }^{ n-1 } }  } dt$
+
+##### ${ F }_{ { X }_{ (n) } }(t)=\frac { n }{ { \theta  }^{ n } } \int _{ 0 }^{ t }{ { t }^{ n-1 } } dt=\frac { n }{ { \theta  }^{ n } } \frac { { t }^{ n } }{ n } =\frac { 1 }{ { \theta  }^{ n } } { ({ t }^{ n }) }_{ 0 }^{ t }=\frac { 1 }{ { \theta  }^{ n } } ({ t }^{ n }-{ 0 }^{ n })=\frac { { t }^{ n } }{ { \theta  }^{ n } }$
+
+##### Por lo tanto, la $c.d.f.$ de ${ X }_{ (n) }$ está dado por:
+
+\begin{equation}
+{ F }_{ X_{(n)} }(t) = \left\lbrace
+\begin{array}{ll}
+0 & t\le 0\\
+\frac { { t }^{ n } }{ { \theta  }^{ n } }  & 0<t<\theta\\
+1 & t\ge \theta
+\end{array}
+\right.
+\end{equation}
+
+##### Ahora debemos mostrar que $\lim_{n \to \infty}({ F }_{ { X }_{ (n) } }(t))=F(t)$.
+
+##### Como $0<t<\theta$, por lo tanto $0<\frac { t }{ \theta  } <1$ luego $\lim_{n \to \infty}{ \left( \frac { t }{ \theta  }  \right)  }^{ n }=0$. Si $t=\theta$, por lo tanto $\frac { t }{ \theta  } =1$, luego $\lim_{n \to \infty}{ \left( \frac { t }{ \theta  }  \right)  }^{ n }=\lim_{n \to \infty}(1)=1$.
+
+##### Así se ha demostrado que $\lim_{n \to \infty}({ F }_{ { X }_{ (n) } }(t))=F(t)$.
+
+##### Finalmente, como ${ X }_{ (n) }\overset { d }{ \longrightarrow  } \theta$ entonces ${ X }_{ (n) }\overset { P }{ \longrightarrow  } \theta$.
