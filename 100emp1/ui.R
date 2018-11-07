@@ -1,27 +1,26 @@
-
 library(shiny)
+source("auxiliar.R")
 
-# Define UI for application that draws a histogram
+# Define UI for application
 shinyUI(fluidPage(
   
   # Application title
-  titlePanel("Indicadores financieros - Sector comercio al por menor"),
+  titlePanel("Indicadores financieros"),
   
   # Sidebar
   sidebarLayout(
     sidebarPanel(
-      img(src="emp.png", height = 60, width = 220,  align = "middle"),
+      img(src="emp.png", height = 120, width = 220,  align = "middle"),
       h5('Esta aplicación crea un modelo de regresión para
          explicar los ingresos de las empresas en función de las variables
          que usted seleccione. El procedimiento usa como
          criterio el BIC (Bayesian Information Criterion) para penalizar
          el exceso de covariables en el modelo.'),
       br(),
-      checkboxGroupInput(inputId="covariables",
-                         label="Por defecto la app tiene 3 variables seleccionadas,
-                         usted puede marcar las casillas para agregar o quitar
-                         variables y así iniciar el proceso de selección.",
-                         choices=c('activos', 'pasivos', 'patrimonio'))
+      selectInput(inputId="sector", label="Seleccione el Sector.", 
+                  choices=sectores),
+      br(),
+      checkboxGroupInput(inputId="covariables", label="")
     ),
     
     # Show the results
@@ -40,8 +39,9 @@ shinyUI(fluidPage(
                            h4("Los ingresos estimados para una empresa
                               están dados por la siguiente ecuación:"),
                            uiOutput("ecuacion1")),
-                  tabPanel("Datos", "A continuación los datos que está usando 
-                        la aplicación.",
+                  tabPanel("Datos", 
+                           h4("A continuación los datos que está usando 
+                              la aplicación."),
                            uiOutput('inputData'))
 
     )

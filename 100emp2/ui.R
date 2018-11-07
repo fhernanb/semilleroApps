@@ -1,27 +1,21 @@
-
 library(shiny)
+source("auxiliar.R")
 
 # Define UI for application
 shinyUI(fluidPage(
   
   # Application title
-  titlePanel("Indicadores financieros"),
+  titlePanel("Indicadores financieros - Sector comercio al por menor"),
   
   # Sidebar
   sidebarLayout(
     sidebarPanel(
-      img(src="emp.png", height = 60, width = 220,  align = "middle"),
+      img(src="emp.png", height = 120, width = 220,  align = "middle"),
       h5('Esta aplicación crea un modelo de regresión para
          explicar los ingresos de las empresas en función de las variables
          que usted seleccione. El procedimiento usa como
          criterio el BIC (Bayesian Information Criterion) para penalizar
          el exceso de covariables en el modelo.'),
-      br(),
-      selectInput("select", label=h3("Select  box"), 
-                  choices=list("Choice 1" = 1,
-                               "Choice 2" = 2,
-                               "Choice 3" = 3), 
-                  selected=1),
       br(),
       checkboxGroupInput(inputId="covariables",
                          label="Por defecto la app tiene 3 variables seleccionadas,

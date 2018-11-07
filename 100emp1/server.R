@@ -1,43 +1,35 @@
-
 library(shiny)
+
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output, session) {
   
   observe({
-    dt <- readxl::read_excel("BDmenor.xlsx")
-    dt <- subset(dt, ing < 55000000)
+    dt <- subset(dt, Sector == input$sector)
     
     updateCheckboxGroupInput(session, "covariables",
                              label = 'Por defecto la app tiene 3 variables seleccionadas,
                          usted puede marcar las casillas para agregar o quitar
-                         variables y así iniciar el proceso de selección',
-                             choices = colnames(dt[, -(1:3)]),
-                             selected = c('activos', 'pasivos', 'patrimonio')
-                             )
+                         variables y así iniciar el proceso de selección.',
+                             choices = colnames(dt[, -(1:5)]),
+                             selected = c('activos', 'pasivos', 'patrimonio'))
   })
   
   output$inputData <- renderTable({
-    dt <- readxl::read_excel("BDmenor.xlsx")
-    dt <- subset(dt, ing < 55000000)
-    
+    dt <- subset(dt, Sector == input$sector)
     dt
   })
   
 
   output$plot1 <- renderPlot({
-    dt <- readxl::read_excel("BDmenor.xlsx")
-    dt <- subset(dt, ing < 55000000)
-
+    dt <- subset(dt, Sector == input$sector)
     plot(density(dt$ing), main='Densidad para ingresos',
          xlab='Ingresos', ylab='Densidad', lwd=2, las=1, col='dodgerblue3')
     rug(dt$ing, col='dodgerblue3')
   })
   
   output$plot2 <- renderPlot({
-    dt <- readxl::read_excel("BDmenor.xlsx")
-    dt <- subset(dt, ing < 55000000)
-
+    dt <- subset(dt, Sector == input$sector)
     panel.cor <- function(x, y, ...) {
       par(usr = c(0, 1, 0, 1))
       txt <- as.character(format(cor(x, y), digits=2))
@@ -46,13 +38,13 @@ shinyServer(function(input, output, session) {
     
     variables <- c('ing', input$covariables)
     pairs(dt[, variables], upper.panel=panel.cor, col='dodgerblue3', las=1,
-          main='Diagrama de dispersión entre Ingresos y las variables seleccionadas')
+          main='Diagrama de dispersión entre Ingresos 
+          y las variables seleccionadas', pch=19)
   })
   
 
   output$regresion <- renderPrint({
-    dt <- readxl::read_excel("BDmenor.xlsx")
-    dt <- subset(dt, ing < 55000000)
+    dt <- subset(dt, Sector == input$sector)
 
     min.scope <- 'ing ~ 1'
     max.scope <- paste('ing ~', paste(input$covariables, collapse=' + '))
@@ -65,8 +57,7 @@ shinyServer(function(input, output, session) {
   
 
   output$ecuacion1 <- renderUI({
-    dt <- readxl::read_excel("BDmenor.xlsx")
-    dt <- subset(dt, ing < 55000000)
+    dt <- subset(dt, Sector == input$sector)
     
     min.scope <- 'ing ~ 1'
     max.scope <- paste('ing ~', paste(input$covariables, collapse=' + '))
@@ -81,9 +72,6 @@ shinyServer(function(input, output, session) {
 
     withMathJax(helpText(tit))
   })
-  
-  
-  
 
   
 })
