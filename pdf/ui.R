@@ -23,9 +23,10 @@ shinyUI(fluidPage(
                    label = HTML("Ingrese el valor máximo de X. Si el
                                 valor máximo es Inf escriba 999"),
                    value = 1),
-      br(),
-      p("App creada por el Semillero de R de la Universidad Nacional de Colombia:"),
-      tags$a(href="https://srunal.wordpress.com/", "https://srunal.wordpress.com/")
+      p("App creada por el Semillero de R de la Universidad Nacional de Colombia."),
+      img(src="https://fhernanb.github.io/docs/logo_unal_negro.png",
+          height = 56, width = 140),
+      tags$a(href="https://srunal.github.io", "https://srunal.github.io")
     ),
     
     # Show a plot

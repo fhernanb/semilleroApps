@@ -1,6 +1,5 @@
 library(shiny)
 library(knitr)
-library(png)
 library(markdown)
 
 #  interfaz del usuario para montaje de comandos y ventanas, bases si se requiere
