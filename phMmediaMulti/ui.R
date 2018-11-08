@@ -43,10 +43,9 @@ shinyUI(pageWithSidebar(
                             &mu;<sub>0</sub> para probar
                 H<sub>0</sub>: &mu; = &mu;<sub>0</sub>. Escriba los valores del vector separados por un espacio, así como se muestra a continuación:"))),
     tags$textarea(id="vectorIng", cols=20, rows=2, "4 50 10"),#cambiar para que sea varias filas
-   
+   br(),
    img(src="https://fhernanb.github.io/docs/logo_unal_negro.png",
        height = 56, width = 140),
-    br(),
     br(),
     tags$a(href="https://srunal.github.io", "https://srunal.github.io"),
     br(),
