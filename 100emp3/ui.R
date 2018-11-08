@@ -8,7 +8,7 @@ shinyUI(fluidPage(theme=shinytheme("journal"),
   titlePanel(title="Las 100 empresas más grandes de Colombia"),
   sidebarLayout(
     sidebarPanel(
-      img(src="emp.png", height = 60, width = 220,  align = "middle"),
+      img(src="emp.png", height = 120, width = 220,  align = "middle"),
       selectInput(inputId="regiones", label="Selecciona la región:",
                   choices=c("Antioquia","Bogotá","Centro",
                              "Costa","Eje","Occidente","Oriente"),
