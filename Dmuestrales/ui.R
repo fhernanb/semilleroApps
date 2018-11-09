@@ -1,6 +1,6 @@
 shinyUI(fluidPage(
   titlePanel("Distribuciones muestrales"),
-  h4(p("Esta aplicacion te ayudara a calcular probabilidades y 
+  h4(p("Esta aplicación te ayudará a calcular probabilidades y 
        percentiles de distribuciones asociadas al muestreo."),
      align="left"),
   sidebarLayout(
@@ -60,11 +60,11 @@ shinyUI(fluidPage(
                                     label="Ingrese probabilidad",
                                     value=0.70, step=0.001,
                                     min=0.001, max=0.999)),
-      img(src="logo.png", height = 60, width = 120),
-      img(src="udea.png", height = 75, width = 70),
+      img(src="logo.png", height = 56, width = 140),
+      img(src="udea.png", height = 65, width = 73),
       br(),
       p("App creada por el Semillero de R de la Universidad Nacional de Colombia:"),
-      tags$a(href="https://srunal.wordpress.com/", "https://srunal.wordpress.com/")
+      tags$a(href="https://srunal.github.io", "https://srunal.github.io")
 
     ),
 

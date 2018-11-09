@@ -44,7 +44,7 @@ shinyUI(pageWithSidebar(
                             para la probar H<sub>0</sub>: 
                             &sigma;<sup>2</sup> = &sigma;
                             <sup>2</sup><sub>0</sub>"),
-                 value=3.14),
+                 value=20),
 
     selectInput(inputId="h0", 
                 label=HTML("Elija la hipótesis alternativa
@@ -64,7 +64,6 @@ shinyUI(pageWithSidebar(
     img(src="logo.png", height = 60, width = 120),
     img(src="udea.png", height = 25, width = 70),
     img(src="cua.png", height = 40, width = 110),
-    br(),
     br(),
     tags$a(href="https://srunal.github.io", "https://srunal.github.io")
     

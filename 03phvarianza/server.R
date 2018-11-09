@@ -1,5 +1,5 @@
 library(shiny)
-source('Var.test.R')
+#source('Var.test.R')
 
 shinyServer(function(input,output,session){
         
@@ -19,8 +19,8 @@ shinyServer(function(input,output,session){
     else dt <- read.csv(inFile$datapath, header=input$header, 
                         sep=input$sep)
     y <- na.omit(dt[, input$variable])  # Para sacar los NA de la variable
-    res <- data.frame(Min=min(y), Varianza=var(y), Max=max(y), 
-                      n=length(y))
+    res <- data.frame(Min=min(y), Varianza=var(y), 
+                      Max=max(y), n=length(y))
     res
   })
   
@@ -60,8 +60,7 @@ shinyServer(function(input,output,session){
     else dt <- read.csv(inFile$datapath, header=input$header, 
                         sep=input$sep)
     y <- na.omit(dt[, input$variable])  # Para sacar los NA de la variable
-    #require(usefultools) # Paquete en el que esta Var.test
-    ph <- Var.test(x=y, alternative=input$h0, null.value=input$sigma20, 
+    ph <- var.test(x=y, alternative=input$h0, null.value=input$sigma20, 
                  conf.level=input$alfa)
     conclusion <- ifelse(ph$p.value < 0.05, 'es rechazada',
                          'no es rechazada')
@@ -79,8 +78,8 @@ shinyServer(function(input,output,session){
     else dt <- read.csv(inFile$datapath, header=input$header, 
                         sep=input$sep)
     y <- na.omit(dt[, input$variable])  # Para sacar los NA de la variable
-    #require(usefultools)
-    ph <- Var.test(x=y, alternative=input$h0, null.value=input$sigma20, 
+    ph <- var.test(x=y, alternative=input$h0,
+                   null.value=input$sigma20, 
                    conf.level=input$alfa)
     intervalo <- paste("(", round(ph$conf.int[1], digits=4), ", ",
                        round(ph$conf.int[2], digits=4), ").", sep='')
