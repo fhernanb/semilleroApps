@@ -1,7 +1,9 @@
-Aplicaciones con Shiny
+Aplicaciones Shiny
 ==============
 
-Aplicaciones desarrolladas con Shiny por el <a href="https://srunal.wordpress.com/" target="_blank">Semillero de R</a> de la <a href="http://ciencias.medellin.unal.edu.co/escuelas/estadistica/" target="_blank">Escuela de Estadística</a>
+![](myFigures/shiny_logo.jpg)
+
+Aplicaciones desarrolladas con Shiny por el <a href="https://srunal.github.io/" target="_blank">Semillero de R</a> de la <a href="http://ciencias.medellin.unal.edu.co/escuelas/estadistica/" target="_blank">Escuela de Estadística</a>
 de la Universidad Nacional de Colombia sede Medellín.
 
 
@@ -18,4 +20,4 @@ Otra forma sería clonando el repositorio o descargando el repositorio y luego c
 
 Los nombres de las aplicaciones disponibles están al lado derecho de las carpetas azules arriba de este texto. A continuación una figura ilustrativa.
 
-<img src="myFigures/figura1.png" alt="some_text">
+![](myFigures/figura1.png)
