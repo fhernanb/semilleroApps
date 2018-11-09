@@ -2,7 +2,7 @@ library(shiny)
 library(markdown)
 
 shinyUI(pageWithSidebar(
-  headerPanel(title=HTML("Prueba de hipótesis para la proporción"),
+  headerPanel(title=HTML("Prueba de hipótesis para la proporción P"),
               windowTitle="PH proporción"),
   sidebarPanel(
     h5('Esta aplicación realiza la prueba de hipótesis para la 
@@ -33,8 +33,16 @@ shinyUI(pageWithSidebar(
                 selected = ';'),
     
     selectInput(inputId="variable",
-                label="Elija la variable cuantitativa para realizar
-                la prueba de hipótesis.",
+                label=p("Elija la variable",
+                        span("cualitativa", style = "color:red"),
+                        "para realizar la prueba de hipótesis."),
+                choices=""),
+    
+    selectInput(inputId="niveles",
+                label=p("Elija un",
+                        span("nivel", style = "color:blue"),
+                        "de la variable cualitativa anterior para
+                         realizar la prueba."),
                 choices=""),
     
     numericInput(inputId='mu0', 
@@ -53,7 +61,7 @@ shinyUI(pageWithSidebar(
     
     sliderInput(inputId='alfa',
                 label=HTML("Opcional: elija un nivel de confianza para 
-                construir el intervalo de confianza para la media &mu;"),
+                construir el intervalo de confianza para la proporción P;"),
                 min=0.90, max=0.99,
                 value=0.95, step=0.01),
     
@@ -69,22 +77,13 @@ mainPanel(
   tabsetPanel(type = "pills",
               
               tabPanel("Resultados",
-                       h5('A continuación el histograma, ladensidad, 
-                          el QQplot
-                          y valor-P de la prueba de normalidad
-                          Shapiro-Wilk para la muestra.'),
-                       
-                       plotOutput("appPlot",
-                                  width='500px',
-                                  height='300px'),
-                       
                        h4("- Tabla de resumen con estadísticos los muestrales:"),
                        tableOutput('statistic'),
                        
                        h4("- Resultados de la prueba de hipótesis:"),
                        textOutput("resul1"),
                        
-                       h4(HTML("- Intervalo de confianza para la media &mu;")),
+                       h4(HTML("- Intervalo de confianza para la proporción P:")),
                        textOutput("resul2")),
               
               tabPanel("Datos", 
