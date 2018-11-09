@@ -41,7 +41,7 @@ shinyUI(pageWithSidebar(
                  label=HTML("Ingrese el valor de referencia
                             &mu;<sub>0</sub> para probar
                             H<sub>0</sub>: &mu; = &mu;<sub>0</sub>"), 
-                 value=0),
+                 value=60),
     
     selectInput(inputId="h0", 
                 label=HTML("Elija la hipótesis alternativa
@@ -60,7 +60,6 @@ shinyUI(pageWithSidebar(
     img(src="logo.png", height = 60, width = 120),
     img(src="udea.png", height = 25, width = 70),
     img(src="cua.png", height = 40, width = 110),
-    br(),
     br(),
     tags$a(href="https://srunal.github.io", "https://srunal.github.io")
 
@@ -85,7 +84,7 @@ mainPanel(
                        h4("- Resultados de la prueba de hipótesis:"),
                        textOutput("resul1"),
                        
-                       h4(HTML("- Intervalo de confianza para la media &mu;")),
+                       h4(HTML("- Intervalo de confianza para la media &mu;:")),
                        textOutput("resul2")),
               
               tabPanel("Datos", 
