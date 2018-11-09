@@ -37,13 +37,15 @@ shinyUI(pageWithSidebar(
                 selected = ';'),
     
     selectInput(inputId="variable1",
-                label="Elija la variable cuantitativa para realizar
-                la prueba de hipótesis.",
+                label=p("Elija la variable",
+                        span("cuantitativa", style = "color:red"),
+                        "para realizar la prueba de hipótesis."),
                 choices=""),
     
     selectInput(inputId="variable2",
-                label="Elija la variable cualitativa 
-                de agrupacion, DEBE tener 2 niveles y ser un factor.",
+                label=p("Elija la variable",
+                        span("cualitativa", style = "color:blue"),
+                        "de agrupacion, DEBE tener 2 niveles y ser un factor."),
                 choices=""),
     
     selectInput(inputId="h0", 
@@ -95,7 +97,7 @@ mainPanel(
                        h4(HTML("- Intervalo de confianza para
                                 el cociente
                                &sigma;<sup>2</sup><sub>1</sub> / 
-                         &sigma;<sup>2</sup><sub>2</sub>")),
+                         &sigma;<sup>2</sup><sub>2</sub>:")),
                        textOutput("resul2")),
               
               tabPanel("Datos", 

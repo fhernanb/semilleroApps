@@ -36,16 +36,18 @@ shinyUI(pageWithSidebar(
                 selected = ';'),
     
     selectInput(inputId="variable1",
-                label="Elija la variable cuantitativa para realizar
-                la prueba de hipótesis.",
+                label=p("Elija la variable",
+                        span("cualitativa", style = "color:red"),
+                        "para realizar la prueba de hipótesis."),
                 choices=""),
     
     selectInput(inputId="variable2",
-                label="Elija la variable cualitativa 
-                de agrupación, DEBE tener 2 niveles y ser un factor.",
+                label=p("Elija la variable",
+                        span("cualitativa", style = "color:blue"),
+                        "de agrupacion, DEBE tener 2 niveles y ser un factor."),
                 choices=""),
-    
-    numericInput(inputId='delta0', 
+
+        numericInput(inputId='delta0', 
                  label=HTML("Ingrese el valor de referencia 
                             &delta;<sub>0</sub> para la probar
                             H<sub>0</sub>: &mu;<sub>1</sub> 
@@ -75,7 +77,6 @@ shinyUI(pageWithSidebar(
     img(src="udea.png", height = 25, width = 70),
     img(src="cua.png", height = 40, width = 110),
     br(),
-    br(),
     tags$a(href="https://srunal.github.io", "https://srunal.github.io")
 
 ),
@@ -100,7 +101,7 @@ mainPanel(
                        
                        h4(HTML("- Intervalo de confianza para la 
                                diferencia de medias 
-                               &mu;<sub>1</sub> - &mu;<sub>2</sub>")),
+                               &mu;<sub>1</sub> - &mu;<sub>2</sub>:")),
                        textOutput("resul2")),
               
               tabPanel("Datos", 

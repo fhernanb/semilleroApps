@@ -2,7 +2,7 @@ library(shiny)
 library(markdown)
 
 shinyUI(pageWithSidebar(
-  headerPanel(title=HTML("Prueba de hipótesis para la proporción;"),
+  headerPanel(title=HTML("Prueba de hipótesis para la proporción"),
               windowTitle="PH proporción"),
   sidebarPanel(
     h5('Esta aplicación realiza la prueba de hipótesis para la 
@@ -60,7 +60,6 @@ shinyUI(pageWithSidebar(
     img(src="logo.png", height = 60, width = 120),
     img(src="udea.png", height = 25, width = 70),
     img(src="cua.png", height = 40, width = 110),
-    br(),
     br(),
     tags$a(href="https://srunal.github.io", "https://srunal.github.io")
 

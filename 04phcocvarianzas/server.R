@@ -1,4 +1,5 @@
 library(shiny)
+
 shinyServer(function(input,output,session){
 
   observe({
@@ -105,13 +106,8 @@ shinyServer(function(input,output,session){
                    alternative=input$h0, 
                    ratio=1, 
                    conf.level=input$alfa)
-    conclusion <- ifelse(ph$p.value < 0.05, 'se rechaza', 'no se rechaza')
     paste0('El estadístico de prueba es f0=', round(ph$statistic, 4),
-           ' con un valor-P de ', round(ph$p.value, 2), ', 
-           por lo tanto se concluye
-           que, basados en la evidencia muestral, 
-           la hipótesis nula ', conclusion,
-           ' (nivel de significancia del 5%).')
+           ' con un valor-P de ', round(ph$p.value, 2), '.')
   })
   
   output$resul2 <- renderText({

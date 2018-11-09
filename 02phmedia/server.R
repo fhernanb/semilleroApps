@@ -62,8 +62,6 @@ shinyServer(function(input,output,session){
     y <- na.omit(dt[, input$variable])  # Para sacar los NA de la variable
     ph <- t.test(x=y, alternative=input$h0, mu=input$mu0, 
                  conf.level=input$alfa)
-    conclusion <- ifelse(ph$p.value < 0.05, 'es rechazada',
-                         'no es rechazada')
     paste0('El estadístico de prueba es to=', round(ph$statistic, 2),
            ' con un valor-P de ', round(ph$p.value, 4), '.')
   })
