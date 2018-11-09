@@ -87,7 +87,7 @@ mainPanel(
                        textOutput("resul1"),
                        
                        h4(HTML("- Intervalo de confianza para la varianza
-                               &sigma;<sup>2</sup>")),
+                               &sigma;<sup>2</sup>:")),
                        textOutput("resul2")
                        
                        ),

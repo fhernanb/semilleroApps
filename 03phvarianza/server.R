@@ -1,5 +1,5 @@
 library(shiny)
-#source('Var.test.R')
+source('var.test.R')
 
 shinyServer(function(input,output,session){
         
@@ -60,15 +60,11 @@ shinyServer(function(input,output,session){
     else dt <- read.csv(inFile$datapath, header=input$header, 
                         sep=input$sep)
     y <- na.omit(dt[, input$variable])  # Para sacar los NA de la variable
-    ph <- var.test(x=y, alternative=input$h0, null.value=input$sigma20, 
-                 conf.level=input$alfa)
-    conclusion <- ifelse(ph$p.value < 0.05, 'es rechazada',
-                         'no es rechazada')
+    ph <- var.test(x=y, alternative=input$h0, 
+                     null.value=input$sigma20, 
+                     conf.level=input$alfa)
     paste0('El estadístico de prueba es ', round(ph$statistic, 2),
-           ' con un valor-P de ', round(ph$p.value, 4), ', por esta razón
-            se puede concluir que, dada la información de la muestra, 
-            la hipótesis nula ', conclusion, 
-           ' (a un nivel de significancia del 5%).')
+           ' con un valor-P de ', round(ph$p.value, 4), '.')
   })
   
   output$resul2 <- renderText({
@@ -79,8 +75,8 @@ shinyServer(function(input,output,session){
                         sep=input$sep)
     y <- na.omit(dt[, input$variable])  # Para sacar los NA de la variable
     ph <- var.test(x=y, alternative=input$h0,
-                   null.value=input$sigma20, 
-                   conf.level=input$alfa)
+                     null.value=input$sigma20, 
+                     conf.level=input$alfa)
     intervalo <- paste("(", round(ph$conf.int[1], digits=4), ", ",
                        round(ph$conf.int[2], digits=4), ").", sep='')
     paste0('El intervalo de confianza del ', 100*input$alfa,
@@ -88,7 +84,7 @@ shinyServer(function(input,output,session){
   })
         
   output$miteoria <- renderUI({
-    HTML(markdown::markdownToHTML(knit(input='incluede.md', quiet = TRUE)))
+    HTML(markdown::markdownToHTML(knit(input='include.md', quiet=TRUE)))
   })
 
 })

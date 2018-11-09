@@ -12,7 +12,7 @@ $$
 
 donde $S$ corresponde a la desviación estándar muestral. Bajo la suposición de que $H_0$ es verdadera, el estadístico $X_0^2$ tiene distribución $\chi^2$ con $n-1$ grados de libertad.
 
-Si valor calculado para el estadístico dado en la ecuación anterior se denota por $\chi_0^2$, entonces el valor-$P$ de la prueba se calcula de acuerdo a la hipótesis alterna $H_a$ así:
+Si el valor calculado para el estadístico dado en la ecuación anterior se denota por $\chi_0^2$, entonces el valor-$P$ de la prueba se calcula de acuerdo a la hipótesis alterna $H_a$ así:
 
 - Si $H_a: \sigma^2 < \sigma_0^2$ entonces valor-$P$=$P(\chi^2_{n-1} < \chi_0^2)$. 
 - Si $H_a: \sigma^2 \neq \sigma_0^2$ entonces valor-$P$=$2 \times \min \left\{ P(\chi^2_{n-1} < \chi_0^2),~ P(\chi^2_{n-1} > \chi_0^2) \right\}$.

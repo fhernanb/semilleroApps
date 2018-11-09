@@ -90,6 +90,9 @@ img {
 .tabbed-pane {
   padding-top: 12px;
 }
+.html-widget {
+  margin-bottom: 20px;
+}
 button.code-folding-btn:focus {
   outline: none;
 }
@@ -132,7 +135,7 @@ $(document).ready(function () {
     X_0^2=\frac{(n-1) S^2}{\sigma_0^2},
 \]</span></p>
 <p>donde <span class="math inline">\(S\)</span> corresponde a la desviación estándar muestral. Bajo la suposición de que <span class="math inline">\(H_0\)</span> es verdadera, el estadístico <span class="math inline">\(X_0^2\)</span> tiene distribución <span class="math inline">\(\chi^2\)</span> con <span class="math inline">\(n-1\)</span> grados de libertad.</p>
-<p>Si valor calculado para el estadístico dado en la ecuación anterior se denota por <span class="math inline">\(\chi_0^2\)</span>, entonces el valor-<span class="math inline">\(P\)</span> de la prueba se calcula de acuerdo a la hipótesis alterna <span class="math inline">\(H_a\)</span> así:</p>
+<p>Si el valor calculado para el estadístico dado en la ecuación anterior se denota por <span class="math inline">\(\chi_0^2\)</span>, entonces el valor-<span class="math inline">\(P\)</span> de la prueba se calcula de acuerdo a la hipótesis alterna <span class="math inline">\(H_a\)</span> así:</p>
 <ul>
 <li>Si <span class="math inline">\(H_a: \sigma^2 &lt; \sigma_0^2\)</span> entonces valor-<span class="math inline">\(P\)</span>=<span class="math inline">\(P(\chi^2_{n-1} &lt; \chi_0^2)\)</span>.</li>
 <li>Si <span class="math inline">\(H_a: \sigma^2 \neq \sigma_0^2\)</span> entonces valor-<span class="math inline">\(P\)</span>=<span class="math inline">\(2 \times \min \left\{ P(\chi^2_{n-1} &lt; \chi_0^2),~ P(\chi^2_{n-1} &gt; \chi_0^2) \right\}\)</span>.</li>
