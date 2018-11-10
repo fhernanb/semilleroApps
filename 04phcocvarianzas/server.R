@@ -37,7 +37,7 @@ shinyServer(function(input,output,session){
     rownames(res) <- c('Media', 'Varianza', 'n')
     t(res)
   },
-  rownames = TRUE) # Para obtener tabla con rownames
+  rownames = TRUE, align='c') # Para obtener tabla con rownames
 
   output$appPlot <- renderPlot({
     inFile <- input$file1

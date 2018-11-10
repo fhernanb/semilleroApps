@@ -32,7 +32,7 @@ shinyUI(pageWithSidebar(
     selectInput(inputId="sep",
                 label = "¿Cuál es la separación de los datos?", 
                 choices = list(Tab='\t', Comma=',',
-                               Semicolon=';', 'space'=' '),
+                               Semicolon=';', 'Space'=' '),
                 selected = ';'),
     
     selectInput(inputId="variable1",

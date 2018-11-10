@@ -30,7 +30,7 @@ shinyUI(pageWithSidebar(
     selectInput(inputId="sep",
                 label = "¿Cuál es la separación de los datos?", 
                 choices = list(Tab='\t', Comma=',',
-                               Semicolon=';', 'space'=' '),
+                               Semicolon=';', 'Space'=' '),
                 selected = ';'),
                 
     selectInput(inputId="variable",
@@ -41,16 +41,16 @@ shinyUI(pageWithSidebar(
     numericInput(inputId='sigma20', 
                  label=HTML("Ingrese el valor de referencia 
                             &sigma;<sup>2</sup><sub>0</sub> 
-                            para la probar H<sub>0</sub>: 
+                            para probar H<sub>0</sub>: 
                             &sigma;<sup>2</sup> = &sigma;
                             <sup>2</sup><sub>0</sub>"),
-                 value=20),
+                 value=20, min=0, step=0.1),
 
     selectInput(inputId="h0", 
                 label=HTML("Elija la hipótesis alternativa
                            < , &ne; o >"), 
                 choices=list("Menor" = "less", 
-                             "Differente" = "two.sided",
+                             "Diferente" = "two.sided",
                              "Mayor" = "greater"),
                 selected = "two.sided"),
                 

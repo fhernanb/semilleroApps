@@ -29,7 +29,7 @@ shinyServer(function(input,output,session){
     y <- na.omit(dt[, input$variable])  # Para sacar los NA de la variable
     res <- data.frame(Media=mean(y), Varianza=var(y), n=length(y))
     res
-  })
+  }, align='c')
   
   output$appPlot <- renderPlot({
     inFile <- input$file1

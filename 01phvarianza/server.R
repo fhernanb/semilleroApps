@@ -19,10 +19,10 @@ shinyServer(function(input,output,session){
     else dt <- read.csv(inFile$datapath, header=input$header, 
                         sep=input$sep)
     y <- na.omit(dt[, input$variable])  # Para sacar los NA de la variable
-    res <- data.frame(Min=min(y), Varianza=var(y), 
+    res <- data.frame(Min=min(y), Var=var(y), 
                       Max=max(y), n=length(y))
     res
-  })
+  }, align='c')
   
   output$appPlot <- renderPlot({
     inFile <- input$file1
