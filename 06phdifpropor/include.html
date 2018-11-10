@@ -126,33 +126,42 @@ $(document).ready(function () {
 
 <div id="prueba-de-hipotesis-para-la-media-mu" class="section level1">
 <h1>Prueba de hipótesis para la media <span class="math inline">\(\mu\)</span></h1>
-<p>Suponga que se tiene el número de éxitos <span class="math inline">\(X\)</span> en una muestra de tamaño <span class="math inline">\(n\)</span>. Se quiere estudiar la hipótesis nula <span class="math inline">\(H_0: p = p_0\)</span> y se sospecha que la proporción <span class="math inline">\(p\)</span> podría estar en alguna de las siguientes situaciones:</p>
+<p>Suponga que se tienen <span class="math inline">\(X\)</span> y <span class="math inline">\(Y\)</span> éxitos de dos variables aleatorias binomiales con las siguientes características:</p>
 <ul>
-<li><span class="math inline">\(H_1: p &lt; p_0\)</span></li>
-<li><span class="math inline">\(H_1: p \neq p_0\)</span></li>
-<li><span class="math inline">\(H_1: p &gt; p_0\)</span></li>
+<li><span class="math inline">\(X\)</span> número de éxitos observados en <span class="math inline">\(n_1\)</span> ensayos cuya probabilidad de éxito es <span class="math inline">\(p_1\)</span>.</li>
+<li><span class="math inline">\(Y\)</span> número de éxitos observados en <span class="math inline">\(n_2\)</span> ensayos cuya probabilidad de éxito es <span class="math inline">\(p_2\)</span>.</li>
 </ul>
-<p>El estadístico para realizar la prueba es:</p>
-<p><span class="math display">\[
-Z_0=\frac{p-p_0}{\sqrt{\frac{p_{0}(1-p_{0})}{n}}},
+<p>En este caso se quiere estudiar la hipótesis nula <span class="math inline">\(H_0: p_1 - p_2 = \delta_0\)</span> y se sospecha que la diferencia de proporciones <span class="math inline">\(p_1 - p_2\)</span> podría estar en alguna de las siguientes situaciones:</p>
+<ul>
+<li><span class="math inline">\(H_a: p_1 - p_2 &lt; \delta_0\)</span></li>
+<li><span class="math inline">\(H_a: p_1 - p_2 \neq \delta_0\)</span></li>
+<li><span class="math inline">\(H_a: p_1 - p_2 &gt; \delta_0\)</span></li>
+</ul>
+<p>El estadístico para realizar la prueba es: <span class="math display">\[
+Z_0=\frac{p_1 -p_2 - \delta_0}{\sqrt{\frac{p_{1}(1-p_{1})}{n_1} +\frac{p_{2}(1-p_{2})}{n_2}}},
 \]</span></p>
-<p>donde <span class="math inline">\(p=X/n\)</span> corresponde a la proporción de éxitos en una muestra de tamaño <span class="math inline">\(n\)</span>. Siempre que <span class="math inline">\(np\)</span> y <span class="math inline">\(n(1-p)\)</span> sean ambos mayores o iguales a 10, y bajo la suposición de que <span class="math inline">\(H_0\)</span> es verdadera, el estadístico <span class="math inline">\(Z_0\)</span> tiene una distribución aproximadamente normal estándar.</p>
-<p>Si el valor calculado para el estadístico dado en la ecuación  se denota por <span class="math inline">\(z_0\)</span>, entonces el valor-<span class="math inline">\(P\)</span> de la prueba se calcula de acuerdo a la hipótesis alterna como:</p>
+<p>donde <span class="math inline">\(p_1 =X/n_1\)</span> y <span class="math inline">\(p_2 =Y/n_2\)</span> corresponden a la proporción de éxitos en una muestra de tamaño <span class="math inline">\(n_1\)</span> y <span class="math inline">\(n_2\)</span>, respectivamente. En estas pruebas es común considerar que <span class="math inline">\(\delta_0=0\)</span>. En este caso, una práctica estándar es crear una estimación conjunta de las proporciones poblacionales tal que <span class="math inline">\(p_1=p_2\)</span>, de tal forma que el estadístico de prueba sea:</p>
+<p><span class="math display">\[
+Z_0=\frac{p_1 -p_2 }{\sqrt{ p(1-p)\left(\frac{1}{n_1} +\frac{1}{n_2} \right)}},
+\]</span></p>
+<p>donde <span class="math inline">\(p=(X+Y)/(n_1 + n_2)\)</span>. Bajo la suposición de que <span class="math inline">\(H_0\)</span> es verdadera, el estadístico <span class="math inline">\(Z_0\)</span> en tiene una distribución aproximadamente normal estándar.</p>
+<p>Si el valor calculado para el estadístico dado en la ecuación se denota por <span class="math inline">\(z_0\)</span>, entonces el valor-<span class="math inline">\(P\)</span> de la prueba se calcula de acuerdo a la hipótesis alterna como:</p>
 <ul>
-<li>Si <span class="math inline">\(H_a: p &lt; p_0\)</span>, entonces valor-<span class="math inline">\(P\)</span>=<span class="math inline">\(P(z &lt; z_0)\)</span>.</li>
-<li>Si <span class="math inline">\(H_a: p \neq p_0\)</span>, entonces valor-<span class="math inline">\(P\)</span>=<span class="math inline">\(2 \times P(z &gt; \lvert z_0 \rvert)\)</span>.</li>
-<li>Si <span class="math inline">\(H_a: p &gt; p_0\)</span>, entonces valor-<span class="math inline">\(P\)</span>=<span class="math inline">\(P(z &gt; z_0)\)</span>.</li>
+<li>Si <span class="math inline">\(H_a:p_1 - p_2 &lt; 0\)</span>, entonces valor-<span class="math inline">\(P\)</span>=<span class="math inline">\(P(z &lt; z_0)\)</span>.</li>
+<li>Si <span class="math inline">\(H_a:p_1 - p_2 \neq 0\)</span>, entonces valor-<span class="math inline">\(P\)</span>=<span class="math inline">\(2 \times P(z &gt; \lvert z_0 \rvert)\)</span>.</li>
+<li>Si <span class="math inline">\(H_a: p_1 - p_2 &gt; 0\)</span>, entonces valor-<span class="math inline">\(P\)</span>=<span class="math inline">\(P(z &gt; z_0)\)</span>.</li>
 </ul>
-<p>La hipótesis nula <span class="math inline">\(H_0\)</span> se rechaza si el valor-<span class="math inline">\(P\)</span> es menor que el nivel de significancia (<span class="math inline">\(\alpha\)</span>).</p>
-<p>Cuando <span class="math inline">\(\left|p-p_{0}\right|&gt;1/2n\)</span> se usa corrección por continuidad en el estadístico de prueba. Así, dependiendo de la hipótesis alterna el estadístico tendrá una expresión diferente:</p>
+<p>La hipótesis nula <span class="math inline">\(H_0\)</span> se rechaza si el valor-<span class="math inline">\(P\)</span> es menor que el nivel de significancia (<span class="math inline">\(\alpha\)</span>).\</p>
+<p>Cuando <span class="math inline">\(\left| p_1-p_2 \right|&gt; 0.5 \left( 1/n_1 + 1/n_2 \right)\)</span> se usa corrección por continuidad en el estadístico de prueba. Así, dependiendo de la hipótesis alterna el estadístico  tendrá una expresión diferente:</p>
 <ul>
-<li>Si <span class="math inline">\(H_a: p &lt; p_0\)</span>, entonces <span class="math display">\[
-Z_0=\frac{p-p_0 +\frac{1}{2n}}{\sqrt{\frac{p_{0}(1-p_{0})}{n}}}. 
+<li>Si <span class="math inline">\(H_a: p_1 -p_2 &lt; 0\)</span>, entonces <span class="math display">\[
+Z_0=\frac{p_1 -p_2 +\frac{1}{2} \left( \frac{1}{n_1} + \frac{1}{n_2} \right)}{\sqrt{ p(1-p)\left(\frac{1}{n_1} +\frac{1}{n_2} \right)}}. 
+  \]</span></li>
+<li>Si <span class="math inline">\(H_a: p_1 -p_2 \neq 0\)</span>, entonces <span class="math display">\[
+Z_0=\frac{p_1 -p_2 +\frac{1}{2} \left( \frac{1}{n_1} + \frac{1}{n_2} \right)}{\sqrt{ p(1-p)\left(\frac{1}{n_1} +\frac{1}{n_2} \right)}}.
 \]</span></li>
-<li>Si <span class="math inline">\(H_a: p \neq p_0\)</span>, entonces <span class="math display">\[
-Z_0=\frac{p-p_0 +\frac{1}{2n}}{\sqrt{\frac{p_{0}(1-p_{0})}{n}}}.
-\]</span></li>
-<li>Si <span class="math inline">\(H_a: p &gt; p_0\)</span>, entonces <span class="math display">\[ Z_0=\frac{p-p_0-\frac{1}{2n}}{\sqrt{\frac{p_{0}(1-p_{0})}{n}}}. 
+<li>Si <span class="math inline">\(H_a: p_1 -p_2 &gt; 0\)</span>, entonces <span class="math display">\[
+Z_0=\frac{p_1 -p_2 -\frac{1}{2} \left( \frac{1}{n_1} + \frac{1}{n_2} \right)}{\sqrt{ p(1-p)\left(\frac{1}{n_1} +\frac{1}{n_2} \right)}}. 
 \]</span></li>
 </ul>
 <p>El criterio del valor-<span class="math inline">\(P\)</span> será el mismo utilizado cuando no se usa corrección por continuidad.</p>

@@ -15,7 +15,12 @@ shinyServer(function(input,output,session){
   
   observeEvent(input$variable, {
     column_levels <- as.character(sort(unique(dt()[[input$variable]])))
-    updateSelectInput(session, "niveles", choices = column_levels)
+    updateSelectInput(session, "niveles1", choices = column_levels)
+  })
+  
+  observeEvent(input$variable, {
+    column_levels <- as.character(sort(unique(dt()[[input$variable]])))
+    updateSelectInput(session, "niveles2", choices = column_levels)
   })
   
   output$inputData <- renderTable({
@@ -47,22 +52,6 @@ shinyServer(function(input,output,session){
 
   })
   
-  output$statistic <- renderTable({
-    inFile <- input$file1
-    if(is.null(inFile)) 
-      dt <- read.table('datos.txt', header=T, sep='\t')
-    else dt <- read.csv(inFile$datapath, header=input$header, 
-                        sep=input$sep)
-    Niveles <- na.omit(dt[, input$variable])  # Para sacar los NA de la variable
-    
-    tabla <- table(Niveles)
-    nombres <- names(tabla)
-    tabla <- cbind(tabla, tabla/sum(tabla))
-    rownames(tabla) <- nombres
-    colnames(tabla) <- c('Frecuencia', 'Frecuencia relativa')
-    tabla
-  }, align='c', rownames=TRUE)
-  
   output$resul1 <- renderText({
     inFile <- input$file1
     if(is.null(inFile)) 
@@ -72,10 +61,11 @@ shinyServer(function(input,output,session){
     
     y <- na.omit(dt[, input$variable])  # Para sacar los NA de la variable
     tabla <- table(y)
-    x <- tabla[input$niveles]
-    n <- sum(tabla)
-    ph <- prop.test(x=x, n=n, alternative=input$h0, 
-                    conf.level=input$alfa, p=input$p0,
+    x1 <- tabla[input$niveles1]
+    x2 <- tabla[input$niveles2]
+    n <- rep(sum(tabla), 2)
+    ph <- prop.test(x=c(x1, x2), n=n, alternative=input$h0, 
+                    conf.level=input$alfa,
                     correct=input$correct)
     
     paste0('El estadístico de prueba es z0=', round(ph$statistic, 4),
@@ -91,10 +81,11 @@ shinyServer(function(input,output,session){
     
     y <- na.omit(dt[, input$variable])  # Para sacar los NA de la variable
     tabla <- table(y)
-    x <- tabla[input$niveles]
-    n <- sum(tabla)
-    ph <- prop.test(x=x, n=n, alternative=input$h0, 
-                    conf.level=input$alfa, p=input$p0,
+    x1 <- tabla[input$niveles1]
+    x2 <- tabla[input$niveles2]
+    n <- rep(sum(tabla), 2)
+    ph <- prop.test(x=c(x1, x2), n=n, alternative=input$h0, 
+                    conf.level=input$alfa,
                     correct=input$correct)
     
     intervalo <- paste("(", round(ph$conf.int[1], digits=4),

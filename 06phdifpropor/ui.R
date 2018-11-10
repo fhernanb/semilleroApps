@@ -39,18 +39,19 @@ shinyUI(pageWithSidebar(
                         "para realizar la prueba de hipótesis."),
                 choices="placeholder1"),
     
-    selectInput(inputId="niveles", 
+    selectInput(inputId="niveles1", 
                 label=p("Elija un",
                         span("nivel", style = "color:blue"),
                         "de la variable cualitativa anterior para
                         realizar la prueba."), 
                 choices="placeholder2"),
     
-    numericInput(inputId='p0', 
-                 label=HTML("Ingrese el valor de referencia
-                            p<sub>0</sub> para probar
-                            H<sub>0</sub>: p = p<sub>0</sub>"), 
-                 value=0.17, min=0, max=1, step=0.01),
+    selectInput(inputId="niveles2", 
+                label=p("Elija",
+                        span("otro nivel", style = "color:orange"),
+                        "de la variable cualitativa anterior para
+                        realizar la prueba."), 
+                choices="placeholder2"),
     
     selectInput(inputId="h0", 
                 label=HTML("Elija la hipótesis alternativa
