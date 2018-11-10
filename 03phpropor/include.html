@@ -90,6 +90,9 @@ img {
 .tabbed-pane {
   padding-top: 12px;
 }
+.html-widget {
+  margin-bottom: 20px;
+}
 button.code-folding-btn:focus {
   outline: none;
 }
@@ -123,25 +126,36 @@ $(document).ready(function () {
 
 <div id="prueba-de-hipotesis-para-la-media-mu" class="section level1">
 <h1>Prueba de hipótesis para la media <span class="math inline">\(\mu\)</span></h1>
-<p>Suponga que se tiene una muestra aleatoria <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> proveniente de una población normal. Se quiere estudiar la hipótesis nula <span class="math inline">\(H_0: \mu = \mu_0\)</span> y se sospecha que la media <span class="math inline">\(\mu\)</span> cumple una de las siguientes situaciones:</p>
-<ol style="list-style-type: decimal">
-<li><span class="math inline">\(H_a: \mu &lt; \mu_0\)</span></li>
-<li><span class="math inline">\(H_a: \mu \neq \mu_0\)</span></li>
-<li><span class="math inline">\(H_a: \mu &gt; \mu_0\)</span></li>
-</ol>
-<p>El estadístico para realizar la prueba es <span class="math display">\[T_0=\frac{\bar{X} - \mu_0}{S/\sqrt{n}},\]</span></p>
-<p>donde <span class="math inline">\(\bar{X}\)</span> y <span class="math inline">\(S\)</span> son la media y desviación estándar muestral respectivamente.</p>
-<p>Bajo la suposición de que <span class="math inline">\(H_0\)</span> es verdadera, <span class="math inline">\(T_0\)</span> tiene distribución <span class="math inline">\(t\)</span>-student con <span class="math inline">\(n-1\)</span> grados de libertad.</p>
-<p>Si el valor calculado para el estadístico dado en la ecuación anterior se denota por <span class="math inline">\(t_0\)</span>, entonces el valor-<span class="math inline">\(P\)</span> de la prueba se calcula de acuerdo a la hipótesis alterna <span class="math inline">\(H_a\)</span> así:</p>
+<p>Suponga que se tiene el número de éxitos <span class="math inline">\(X\)</span> en una muestra de tamaño <span class="math inline">\(n\)</span>. Se quiere estudiar la hipótesis nula <span class="math inline">\(H_0: p = p_0\)</span> y se sospecha que la proporción <span class="math inline">\(p\)</span> podría estar en alguna de las siguientes situaciones:</p>
 <ul>
-<li>Si <span class="math inline">\(H_a: \mu &lt; \mu_0\)</span> entonces valor-<span class="math inline">\(P\)</span>=<span class="math inline">\(P(t_{n-1} &lt; t_0)\)</span>.</li>
-<li>Si <span class="math inline">\(H_a: \mu \neq \mu_0\)</span> entonces valor-<span class="math inline">\(P\)</span>=<span class="math inline">\(2 \times P(t_{n-1} &gt; \lvert t_0 \rvert)\)</span>.</li>
-<li>Si <span class="math inline">\(H_a: \mu &gt; \mu_0\)</span> entonces valor-<span class="math inline">\(P\)</span>=<span class="math inline">\(P(t_{n-1} &gt; t_0)\)</span>.</li>
+<li><span class="math inline">\(H_1: p &lt; p_0\)</span></li>
+<li><span class="math inline">\(H_1: p \neq p_0\)</span></li>
+<li><span class="math inline">\(H_1: p &gt; p_0\)</span></li>
 </ul>
-<p>Si se dá el caso en que la muestra aleatoria no proviene de una población normal pero se cumple que <span class="math inline">\(n \geq 40\)</span>, entonces el estadístico para realizar la prueba es: <span class="math display">\[
-Z_0=\frac{\bar{X} - \mu_0}{S/\sqrt{n}},
-\]</span> y en este caso el estadístico <span class="math inline">\(Z_0\)</span>, en virtud del Teorema del Límite Central, tiene una distribución <span class="math inline">\(z \sim N(0, 1)\)</span> bajo la suposición de que <span class="math inline">\(H_0\)</span> es verdadera. Si el valor calculado del estadístico es <span class="math inline">\(z_0\)</span>, se pueden usar las expresiones anteriores para calcular el valor-<span class="math inline">\(P\)</span> sustituyendo <span class="math inline">\(t_0\)</span> por <span class="math inline">\(z_0\)</span> y <span class="math inline">\(t_{n-1}\)</span> por <span class="math inline">\(z\)</span>.</p>
-<p>En cualquiera de los casos, la hipótesis nula <span class="math inline">\(H_0\)</span> se rechaza si el valor-<span class="math inline">\(P\)</span> es menor que el nivel de significancia (<span class="math inline">\(\alpha\)</span>) fijado previamente por el analista.</p>
+<p>El estadístico para realizar la prueba es:</p>
+<p><span class="math display">\[
+Z_0=\frac{p-p_0}{\sqrt{\frac{p_{0}(1-p_{0})}{n}}},
+\]</span></p>
+<p>donde <span class="math inline">\(p=X/n\)</span> corresponde a la proporción de éxitos en una muestra de tamaño <span class="math inline">\(n\)</span>. Siempre que <span class="math inline">\(np\)</span> y <span class="math inline">\(n(1-p)\)</span> sean ambos mayores o iguales a 10 y bajo la suposición de que <span class="math inline">\(H_0\)</span> es verdadera, el estadístico <span class="math inline">\(Z_0\)</span> tiene una distribución aproximadamente normal estándar.</p>
+<p>Si el valor calculado para el estadístico dado en la ecuación  se denota por <span class="math inline">\(z_0\)</span>, entonces el valor-<span class="math inline">\(P\)</span> de la prueba se calcula de acuerdo a la hipótesis alterna como:</p>
+<ul>
+<li>Si <span class="math inline">\(H_a: p &lt; p_0\)</span>, entonces valor-<span class="math inline">\(P\)</span>=<span class="math inline">\(P(z &lt; z_0)\)</span>.</li>
+<li>Si <span class="math inline">\(H_a: p \neq p_0\)</span>, entonces valor-<span class="math inline">\(P\)</span>=<span class="math inline">\(2 \times P(z &gt; \lvert z_0 \rvert)\)</span>.</li>
+<li>Si <span class="math inline">\(H_a: p &gt; p_0\)</span>, entonces valor-<span class="math inline">\(P\)</span>=<span class="math inline">\(P(z &gt; z_0)\)</span>.</li>
+</ul>
+<p>La hipótesis nula <span class="math inline">\(H_0\)</span> se rechaza si el valor-<span class="math inline">\(P\)</span> es menor que el nivel de significancia (<span class="math inline">\(\alpha\)</span>).</p>
+<p>Cuando <span class="math inline">\(\left|p-p_{0}\right|&gt;1/2n\)</span> se usa corrección por continuidad en el estadístico de prueba. Así, dependiendo de la hipótesis alterna el estadístico tendrá una expresión diferente:</p>
+<ul>
+<li>Si <span class="math inline">\(H_a: p &lt; p_0\)</span>, entonces <span class="math display">\[
+Z_0=\frac{p-p_0 +\frac{1}{2n}}{\sqrt{\frac{p_{0}(1-p_{0})}{n}}}. 
+\]</span></li>
+<li>Si <span class="math inline">\(H_a: p \neq p_0\)</span>, entonces <span class="math display">\[
+Z_0=\frac{p-p_0 +\frac{1}{2n}}{\sqrt{\frac{p_{0}(1-p_{0})}{n}}}.
+\]</span></li>
+<li>Si <span class="math inline">\(H_a: p &gt; p_0\)</span>, entonces <span class="math display">\[ Z_0=\frac{p-p_0-\frac{1}{2n}}{\sqrt{\frac{p_{0}(1-p_{0})}{n}}}. 
+\]</span></li>
+</ul>
+<p>El criterio del valor-<span class="math inline">\(P\)</span> será el mismo utilizado cuando no se usa corrección por continuidad.</p>
 </div>
 
 

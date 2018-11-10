@@ -32,24 +32,24 @@ shinyUI(pageWithSidebar(
                                Semicolon=';', 'space'=' '),
                 selected = ';'),
     
-    selectInput(inputId="variable",
+    selectInput(inputId="variable", 
                 label=p("Elija la variable",
                         span("cualitativa", style = "color:red"),
                         "para realizar la prueba de hipótesis."),
-                choices=""),
+                choices="placeholder1"),
     
-    selectInput(inputId="niveles",
+    selectInput(inputId="niveles", 
                 label=p("Elija un",
                         span("nivel", style = "color:blue"),
                         "de la variable cualitativa anterior para
-                         realizar la prueba."),
-                choices=""),
+                        realizar la prueba."), 
+                choices="placeholder2"),
     
-    numericInput(inputId='mu0', 
+    numericInput(inputId='p0', 
                  label=HTML("Ingrese el valor de referencia
-                            &mu;<sub>0</sub> para probar
-                            H<sub>0</sub>: &mu; = &mu;<sub>0</sub>"), 
-                 value=0),
+                            p<sub>0</sub> para probar
+                            H<sub>0</sub>: p = p<sub>0</sub>"), 
+                 value=0.17, min=0, max=1, step=0.01),
     
     selectInput(inputId="h0", 
                 label=HTML("Elija la hipótesis alternativa
@@ -77,8 +77,11 @@ mainPanel(
   tabsetPanel(type = "pills",
               
               tabPanel("Resultados",
-                       h4("- Tabla de resumen con estadísticos los muestrales:"),
-                       tableOutput('statistic'),
+                       h4('- Diagrama de barras para la variable
+                          seleccionada.'),
+                       plotOutput("appPlot",
+                                  width='500px',
+                                  height='300px'),
                        
                        h4("- Resultados de la prueba de hipótesis:"),
                        textOutput("resul1"),
