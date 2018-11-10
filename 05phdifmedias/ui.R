@@ -2,7 +2,7 @@ library(shiny)
 library(markdown)
 
 shinyUI(pageWithSidebar(
-  headerPanel(title=HTML("Prueba de hipótesis para diferencia de medias 
+  headerPanel(title=HTML("Prueba de hipótesis para la diferencia de medias 
                          &mu;<sub>1</sub> - &mu;<sub>2</sub>"),
               windowTitle="PH dif medias"),
   
@@ -63,7 +63,8 @@ shinyUI(pageWithSidebar(
                 selected = "two.sided"),
     
     checkboxInput(inputId='var.equal',
-                  label='Las varianzas poblacionales son iguales', 
+                  label='Marque la casilla si las varianzas 
+                  poblacionales son iguales', 
                   value=FALSE),
     
     sliderInput(inputId='alfa', 
