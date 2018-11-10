@@ -90,6 +90,9 @@ img {
 .tabbed-pane {
   padding-top: 12px;
 }
+.html-widget {
+  margin-bottom: 20px;
+}
 button.code-folding-btn:focus {
   outline: none;
 }
@@ -121,46 +124,38 @@ $(document).ready(function () {
 </div>
 
 
-<div id="prueba-de-hipotesis-para-la-diferencia-de-medias" class="section level1">
-<h1>Prueba de hipótesis para la diferencia de medias</h1>
-<p>Suponga que se tienen dos muestras aleatorias que provienen de poblaciones normales así:</p>
+<div id="prueba-de-hipotesis-para-la-media-mu" class="section level1">
+<h1>Prueba de hipótesis para la media <span class="math inline">\(\mu\)</span></h1>
+<p>Suponga que se tiene el número de éxitos <span class="math inline">\(X\)</span> en una muestra de tamaño <span class="math inline">\(n\)</span>. Se quiere estudiar la hipótesis nula <span class="math inline">\(H_0: p = p_0\)</span> y se sospecha que la proporción <span class="math inline">\(p\)</span> podría estar en alguna de las siguientes situaciones:</p>
 <ul>
-<li><span class="math inline">\(n_1\)</span> observaciones <span class="math inline">\(X_{11}, X_{12}, \ldots, X_{1,n1}\)</span> de una población I con media <span class="math inline">\(\mu_1\)</span> y varianza <span class="math inline">\(\sigma^2_1\)</span>,</li>
-<li><span class="math inline">\(n_2\)</span> observaciones <span class="math inline">\(X_{21}, X_{22}, \ldots, X_{2,n2}\)</span> de una población II con media <span class="math inline">\(\mu_2\)</span> y varianza <span class="math inline">\(\sigma^2_2\)</span>,</li>
-<li>ambas muestras son independientes entre sí.</li>
+<li><span class="math inline">\(H_1: p &lt; p_0\)</span></li>
+<li><span class="math inline">\(H_1: p \neq p_0\)</span></li>
+<li><span class="math inline">\(H_1: p &gt; p_0\)</span></li>
 </ul>
-<p>En este problema se quiere estudiar la hipótesis nula <span class="math inline">\(H_0: \mu_1 - \mu_2 = \delta_0\)</span> y se sospecha que la diferencia de medias <span class="math inline">\(\mu_1 - \mu_2\)</span> podría estar en alguna de las siguientes situaciones:</p>
+<p>El estadístico para realizar la prueba es:</p>
+<p><span class="math display">\[
+Z_0=\frac{p-p_0}{\sqrt{\frac{p_{0}(1-p_{0})}{n}}},
+\]</span></p>
+<p>donde <span class="math inline">\(p=X/n\)</span> corresponde a la proporción de éxitos en una muestra de tamaño <span class="math inline">\(n\)</span>. Siempre que <span class="math inline">\(np\)</span> y <span class="math inline">\(n(1-p)\)</span> sean ambos mayores o iguales a 10, y bajo la suposición de que <span class="math inline">\(H_0\)</span> es verdadera, el estadístico <span class="math inline">\(Z_0\)</span> tiene una distribución aproximadamente normal estándar.</p>
+<p>Si el valor calculado para el estadístico dado en la ecuación  se denota por <span class="math inline">\(z_0\)</span>, entonces el valor-<span class="math inline">\(P\)</span> de la prueba se calcula de acuerdo a la hipótesis alterna como:</p>
 <ul>
-<li><span class="math inline">\(H_a: \mu_1 - \mu_2 &lt; \delta_0\)</span></li>
-<li><span class="math inline">\(H_a: \mu_1 - \mu_2 \neq \delta_0\)</span></li>
-<li><span class="math inline">\(H_a: \mu_1 - \mu_2 &gt; \delta_0\)</span></li>
+<li>Si <span class="math inline">\(H_a: p &lt; p_0\)</span>, entonces valor-<span class="math inline">\(P\)</span>=<span class="math inline">\(P(z &lt; z_0)\)</span>.</li>
+<li>Si <span class="math inline">\(H_a: p \neq p_0\)</span>, entonces valor-<span class="math inline">\(P\)</span>=<span class="math inline">\(2 \times P(z &gt; \lvert z_0 \rvert)\)</span>.</li>
+<li>Si <span class="math inline">\(H_a: p &gt; p_0\)</span>, entonces valor-<span class="math inline">\(P\)</span>=<span class="math inline">\(P(z &gt; z_0)\)</span>.</li>
 </ul>
-<p>El valor <span class="math inline">\(\delta_0\)</span> corresponde a la diferencia entre las medias poblacionales; cuando <span class="math inline">\(\delta_0=0\)</span>, la hipótesis nula se convierte en <span class="math inline">\(H_0: \mu_1 = \mu_2\)</span> lo que significa que se está probando igualdad de medias.</p>
-<p>Para realizar esta prueba de hipótesis se deben diferenciar dos casos, uno en el que las varianzas poblacionales son iguales y otro caso en el que las varianzas poblaciones son diferentes, esto se puede chequear utilizando la prueba de comparación de varianzas. Para cada uno de los casos hay un estadístico de prueba, una distribución asociada y un valor-<span class="math inline">\(P\)</span>, a continuación se presentan los dos casos en detalle.</p>
-<div id="caso-1-varianzas-poblacionales-iguales-sigma_12-sigma_22" class="section level2">
-<h2>Caso 1: varianzas poblacionales iguales <span class="math inline">\(\sigma_1^2 = \sigma_2^2\)</span></h2>
-<p>En este caso el estadístico para realizar la prueba es: <span class="math display">\[
-T_0=\frac{\bar{X}_1 - \bar{X}_2 - \delta_0}{S_p \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}},
-\]</span> donde <span class="math inline">\(\bar{X}_1\)</span> y <span class="math inline">\(\bar{X}_2\)</span> son las medias de las muestras I y II respectivamente; la cantidad <span class="math inline">\(S_p^2\)</span> es una varianza combinada y se calcula como: <span class="math display">\[S_p^2=\frac{(n_1-1)S_1^2+(n_2-1)S_2^2}{n_1+n_2-2},\]</span> donde <span class="math inline">\(S_1^2\)</span> y <span class="math inline">\(S_2^2\)</span> son las varianzas de las muestras I y II respectivamente. En este caso el estadístico <span class="math inline">\(T_0\)</span>, bajo la suposición de que <span class="math inline">\(H_0\)</span> es verdadera, tiene distribución <span class="math inline">\(t\)</span>-student con <span class="math inline">\(n_1+n_2-2\)</span> grados de libertad .</p>
-<p>Si el valor calculado para el estadístico dado en la ecuación  se denota por <span class="math inline">\(t_0\)</span>, entonces el valor-<span class="math inline">\(P\)</span> de la prueba se calcula de acuerdo a la hipótesis alterna <span class="math inline">\(H_a\)</span> así:</p>
+<p>La hipótesis nula <span class="math inline">\(H_0\)</span> se rechaza si el valor-<span class="math inline">\(P\)</span> es menor que el nivel de significancia (<span class="math inline">\(\alpha\)</span>).</p>
+<p>Cuando <span class="math inline">\(\left|p-p_{0}\right|&gt;1/2n\)</span> se usa corrección por continuidad en el estadístico de prueba. Así, dependiendo de la hipótesis alterna el estadístico tendrá una expresión diferente:</p>
 <ul>
-<li>Si <span class="math inline">\(H_a: \mu_1 - \mu_2 &lt; \delta_0\)</span> entonces valor-<span class="math inline">\(P\)</span>=<span class="math inline">\(P(t_{n_1+n_2-2} &lt; t_0)\)</span>.</li>
-<li>Si <span class="math inline">\(H_a: \mu_1 - \mu_2 \neq \delta_0\)</span> entonces valor-<span class="math inline">\(P\)</span>=<span class="math inline">\(2 \times P(t_{n_1+n_2-2} &gt; \lvert t_0 \rvert)\)</span>.</li>
-<li>Si <span class="math inline">\(H_a: \mu_1 - \mu_2 &gt; \delta_0\)</span> entonces valor-<span class="math inline">\(P\)</span>=<span class="math inline">\(P(t_{n_1+n_2-2} &gt; t_0)\)</span>.</li>
+<li>Si <span class="math inline">\(H_a: p &lt; p_0\)</span>, entonces <span class="math display">\[
+Z_0=\frac{p-p_0 +\frac{1}{2n}}{\sqrt{\frac{p_{0}(1-p_{0})}{n}}}. 
+\]</span></li>
+<li>Si <span class="math inline">\(H_a: p \neq p_0\)</span>, entonces <span class="math display">\[
+Z_0=\frac{p-p_0 +\frac{1}{2n}}{\sqrt{\frac{p_{0}(1-p_{0})}{n}}}.
+\]</span></li>
+<li>Si <span class="math inline">\(H_a: p &gt; p_0\)</span>, entonces <span class="math display">\[ Z_0=\frac{p-p_0-\frac{1}{2n}}{\sqrt{\frac{p_{0}(1-p_{0})}{n}}}. 
+\]</span></li>
 </ul>
-</div>
-<div id="caso-2-varianzas-poblacionales-diferentes-sigma_12-neq-sigma_22" class="section level2">
-<h2>Caso 2: varianzas poblacionales diferentes <span class="math inline">\(\sigma_1^2 \neq \sigma_2^2\)</span></h2>
-<p>En este caso el estadístico para realizar la prueba es: <span class="math display">\[
-T_0=\frac{\bar{X}_1 - \bar{X}_2 - \delta_0}{\sqrt{\frac{S_1^2}{n_1} + \frac{S_2^2}{n_2}}}.
-\]</span> Bajo la suposición de que <span class="math inline">\(H_0\)</span> es verdadera, <span class="math inline">\(T_0\)</span> tiene distribución <span class="math inline">\(t\)</span>-student con <span class="math inline">\(v\)</span> grados de libertad , en donde <span class="math inline">\(v\)</span> se calcula como: <span class="math display">\[v=\frac{ \left( \frac{S_1^2}{n_1} + \frac{S_2^2}{n_2} \right)^2 }{ \frac{(S_1^2/n_1)^2}{n_1-1} + \frac{(S_2^2/n_2)^2}{n_2-1}}\]</span></p>
-<p>Si el valor calculado para el estadístico dado en la ecuación  se denota por <span class="math inline">\(t_0\)</span>, entonces el valor-<span class="math inline">\(P\)</span> de la prueba se calcula de acuerdo a la hipótesis alterna <span class="math inline">\(H_a\)</span> así:</p>
-<ul>
-<li>Si <span class="math inline">\(H_a: \mu_1 - \mu_2 &lt; \delta_0\)</span> entonces valor-<span class="math inline">\(P\)</span>=<span class="math inline">\(P(t_{v} &lt; t_0)\)</span>.</li>
-<li>Si <span class="math inline">\(H_a: \mu_1 - \mu_2 \neq \delta_0\)</span> entonces valor-<span class="math inline">\(P\)</span>=<span class="math inline">\(2 \times P(t_{v} &gt; \lvert t_0 \rvert)\)</span>.</li>
-<li>Si <span class="math inline">\(H_a: \mu_1 - \mu_2 &gt; \delta_0\)</span> entonces valor-<span class="math inline">\(P\)</span>=<span class="math inline">\(P(t_{v} &gt; t_0)\)</span>.</li>
-</ul>
-</div>
+<p>El criterio del valor-<span class="math inline">\(P\)</span> será el mismo utilizado cuando no se usa corrección por continuidad.</p>
 </div>
 
 

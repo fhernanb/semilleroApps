@@ -12,7 +12,7 @@ $$
 Z_0=\frac{p-p_0}{\sqrt{\frac{p_{0}(1-p_{0})}{n}}},
 $$
 
-donde $p=X/n$ corresponde a la proporción de éxitos en una muestra de tamaño $n$. Siempre que $np$ y $n(1-p)$ sean ambos mayores o iguales a 10 y bajo la suposición de que $H_0$ es verdadera, el estadístico $Z_0$ tiene una distribución aproximadamente normal estándar.
+donde $p=X/n$ corresponde a la proporción de éxitos en una muestra de tamaño $n$. Siempre que $np$ y $n(1-p)$ sean ambos mayores o iguales a 10, y bajo la suposición de que $H_0$ es verdadera, el estadístico $Z_0$ tiene una distribución aproximadamente normal estándar.
 
 Si el valor calculado para el estadístico dado en la ecuación \eqref{est_prop} se denota por $z_0$, entonces el valor-$P$ de la prueba se calcula de acuerdo a la hipótesis alterna como:
 

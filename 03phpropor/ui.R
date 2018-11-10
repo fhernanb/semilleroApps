@@ -59,6 +59,10 @@ shinyUI(pageWithSidebar(
                              "Mayor" = "greater"),
                 selected = "two.sided"),
     
+    checkboxInput(inputId="correct", 
+                  label="Marque si desea usar factor de correción", 
+                  value=FALSE, width=NULL),
+    
     sliderInput(inputId='alfa',
                 label=HTML("Opcional: elija un nivel de confianza para 
                 construir el intervalo de confianza para la proporción P;"),

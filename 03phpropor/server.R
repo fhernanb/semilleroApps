@@ -75,7 +75,8 @@ shinyServer(function(input,output,session){
     x <- tabla[input$niveles]
     n <- sum(tabla)
     ph <- prop.test(x=x, n=n, alternative=input$h0, 
-                     conf.level=input$alfa, p=input$p0)
+                    conf.level=input$alfa, p=input$p0,
+                    correct=input$correct)
     
     paste0('El estadístico de prueba es z0=', round(ph$statistic, 4),
            ' con un valor-P de ', round(ph$p.value, 2), '.')
@@ -93,7 +94,8 @@ shinyServer(function(input,output,session){
     x <- tabla[input$niveles]
     n <- sum(tabla)
     ph <- prop.test(x=x, n=n, alternative=input$h0, 
-                    conf.level=input$alfa, p=input$p0)
+                    conf.level=input$alfa, p=input$p0,
+                    correct=input$correct)
     
     intervalo <- paste("(", round(ph$conf.int[1], digits=4),
                        ", ",
