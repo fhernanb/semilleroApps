@@ -78,6 +78,7 @@ shinyServer(function(input,output,session){
                     conf.level=input$alfa, p=input$p0,
                     correct=input$correct)
     
+    ph$statistic <- sign(ph$estimate - ph$null.value) * sqrt(ph$statistic)
     paste0('El estadístico de prueba es z0=', round(ph$statistic, 4),
            ' con un valor-P de ', round(ph$p.value, 2), '.')
 })
