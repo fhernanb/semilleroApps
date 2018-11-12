@@ -34,10 +34,10 @@ shinyServer(function(input,output,session){
     xx <- split(x, group)  # Lista con variable interes
     resumen <- function(x) c(mean(x), var(x), length(x))
     res <- sapply(xx, resumen)
-    rownames(res) <- c('Media', 'Varianza', 'n')
+    rownames(res) <- c('Media', 'Varianza', 'Número obs')
     t(res)
   },
-  rownames = TRUE, align='c') # Para obtener tabla con rownames
+  rownames = TRUE, align='c', bordered = TRUE) # Para obtener tabla con rownames
   
   output$appPlot <- renderPlot({
     inFile <- input$file1

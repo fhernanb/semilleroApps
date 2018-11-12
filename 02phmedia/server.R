@@ -28,8 +28,9 @@ shinyServer(function(input,output,session){
                         sep=input$sep)
     y <- na.omit(dt[, input$variable])  # Para sacar los NA de la variable
     res <- data.frame(Media=mean(y), Varianza=var(y), n=length(y))
+    colnames(res) <- c('Media', 'Varianza', 'Número obs')
     res
-  }, align='c')
+  }, align='c', bordered = TRUE)
   
   output$appPlot <- renderPlot({
     inFile <- input$file1

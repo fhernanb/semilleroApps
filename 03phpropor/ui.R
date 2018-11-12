@@ -61,7 +61,7 @@ shinyUI(pageWithSidebar(
     
     checkboxInput(inputId="correct", 
                   label="Marque si desea usar factor de correción", 
-                  value=FALSE, width=NULL),
+                  value=TRUE, width=NULL),
     
     sliderInput(inputId='alfa',
                 label=HTML("Opcional: elija un nivel de confianza para 
@@ -86,6 +86,9 @@ mainPanel(
                        plotOutput("appPlot",
                                   width='500px',
                                   height='300px'),
+                       
+                       h4("- Tabla resumen de las base de datos:"),
+                       tableOutput("consolidado"),
                        
                        h4("- Resultados de la prueba de hipótesis:"),
                        textOutput("resul1"),

@@ -47,21 +47,22 @@ shinyServer(function(input,output,session){
 
   })
   
-  output$statistic <- renderTable({
+  output$consolidado <- renderTable({
     inFile <- input$file1
     if(is.null(inFile)) 
       dt <- read.table('datos.txt', header=T, sep='\t')
     else dt <- read.csv(inFile$datapath, header=input$header, 
                         sep=input$sep)
-    Niveles <- na.omit(dt[, input$variable])  # Para sacar los NA de la variable
-    
-    tabla <- table(Niveles)
-    nombres <- names(tabla)
-    tabla <- cbind(tabla, tabla/sum(tabla))
-    rownames(tabla) <- nombres
-    colnames(tabla) <- c('Frecuencia', 'Frecuencia relativa')
-    tabla
-  }, align='c', rownames=TRUE)
+    y <- na.omit(dt[, input$variable])  # Para sacar los NA de la variable
+    tabla <- table(y)
+    x <- tabla[input$niveles]
+    n <- sum(tabla)
+    res <- cbind(x, n, x/n)
+    colnames(res) <- c('Número de éxitos', 
+                       'Número de casos', 
+                       'Proporción observada')
+    res
+  }, align='c', bordered = TRUE, digits=4)
   
   output$resul1 <- renderText({
     inFile <- input$file1
