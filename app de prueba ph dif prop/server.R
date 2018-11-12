@@ -1,51 +1,127 @@
 library(shiny)
 shinyServer(function(input,output,session){
   
-  dt <- reactive({
+  dt1 <- reactive({
     inFile <- input$file1
     if(is.null(inFile)) 
-      dt <- read.table('datos.txt', header=T, sep='\t')
-    else dt <- read.csv(inFile$datapath, header=input$header,
+      dt1 <- read.table('datos1.txt', header=T, sep='\t')
+    else dt1 <- read.csv(inFile$datapath, header=input$header,
                         sep=input$sep)
+  })
+  
+  dt2 <- reactive({
+    inFile <- input$file2
+    if(is.null(inFile)) 
+      dt2 <- read.table('datos2.txt', header=T, sep='\t')
+    else dt2 <- read.csv(inFile$datapath, header=input$header,
+                         sep=input$sep)
   })
   
   observe({
-    updateSelectInput(session, "variable", choices=names(dt())) 
+    updateSelectInput(session, "variable1", choices=names(dt1())) 
   })
   
-  observeEvent(input$variable, {
-    column_levels <- as.character(sort(unique(dt()[[input$variable]])))
+  observe({
+    updateSelectInput(session, "variable2", choices=names(dt2())) 
+  })
+  
+  observeEvent(input$variable1, {
+    column_levels <- as.character(sort(unique(dt1()[[input$variable1]])))
     updateSelectInput(session, "niveles1", choices = column_levels)
   })
   
-  observeEvent(input$variable, {
-    column_levels <- as.character(sort(unique(dt()[[input$variable]])))
+  observeEvent(input$variable2, {
+    column_levels <- as.character(sort(unique(dt2()[[input$variable2]])))
     updateSelectInput(session, "niveles2", choices = column_levels)
   })
   
-  output$inputData <- renderTable({
+  output$inputData1 <- renderTable({
     inFile <- input$file1
     if(is.null(inFile)) 
-      dt <- read.table('datos.txt', header=T, sep='\t')
-    else dt <- read.csv(inFile$datapath, header=input$header, 
+      dt1 <- read.table('datos1.txt', header=T, sep='\t')
+    else dt1 <- read.csv(inFile$datapath, header=input$header, 
                         sep=input$sep)
-    dt
+    dt1
   })
+  
+  output$inputData2 <- renderTable({
+    inFile <- input$file2
+    if(is.null(inFile)) 
+      dt2 <- read.table('datos2.txt', header=T, sep='\t')
+    else dt2 <- read.csv(inFile$datapath, header=input$header, 
+                         sep=input$sep)
+    dt2
+  })
+  
+  output$consolidado <- renderTable({
+    inFile <- input$file1
+    if(is.null(inFile)) 
+      dt1 <- read.table('datos1.txt', header=T, sep='\t')
+    else dt1 <- read.csv(inFile$datapath, header=input$header, 
+                         sep=input$sep)
+    
+    inFile <- input$file2
+    if(is.null(inFile)) 
+      dt2 <- read.table('datos2.txt', header=T, sep='\t')
+    else dt2 <- read.csv(inFile$datapath, header=input$header, 
+                         sep=input$sep)
+    
+    y1 <- na.omit(dt1[, input$variable1])  # Para sacar los NA de la variable
+    y2 <- na.omit(dt2[, input$variable2])
+    
+    tabla1 <- table(y1)
+    tabla2 <- table(y2)
+    
+    x1 <- tabla1[input$niveles1]
+    x2 <- tabla2[input$niveles2]
+    
+    n1 <- sum(tabla1)
+    n2 <- sum(tabla2)
+    
+    res <- cbind(c(x1, x2), c(n1, n2), c(x1, x2)/c(n1, n2))
+    colnames(res) <- c('Número de éxitos', 
+                       'Número de casos', 
+                       'Proporción observada')
+    res
+  }, align='c')
   
   
   output$appPlot <- renderPlot({
     inFile <- input$file1
     if(is.null(inFile)) 
-      dt <- read.table('datos.txt', header=T, sep='\t')
-    else dt <- read.csv(inFile$datapath, header=input$header, 
+      dt1 <- read.table('datos1.txt', header=T, sep='\t')
+    else dt1 <- read.csv(inFile$datapath, header=input$header, 
                         sep=input$sep)
-    Niveles <- na.omit(dt[, input$variable])  # Para sacar los NA de la variable
     
+    inFile <- input$file2
+    if(is.null(inFile)) 
+      dt2 <- read.table('datos2.txt', header=T, sep='\t')
+    else dt2 <- read.csv(inFile$datapath, header=input$header, 
+                         sep=input$sep)
+    
+    # Creando la particion
+    par(mfrow=c(1, 2))
+    
+    # Primer barplot
+    Niveles <- na.omit(dt1[, input$variable1])  # Para sacar los NA de la variable
     tabla <- table(Niveles)
     ptabla <- prop.table(tabla)
     xx <- barplot(ptabla, las=1, col='deepskyblue3',
                   ylab='Frecuencia relativa', 
-                  xlab='Niveles', ylim=c(0, max(ptabla)+0.1))
+                  xlab='Niveles', ylim=c(0, max(ptabla)+0.1),
+                  main='Base de datos # 1')
+    
+    text(x=xx, y=ptabla, pos=3, cex=0.8, col="black",
+         label=round(ptabla, 4))
+    
+    # Segundo barplot
+    Niveles <- na.omit(dt2[, input$variable2])  # Para sacar los NA de la variable
+    tabla <- table(Niveles)
+    ptabla <- prop.table(tabla)
+    xx <- barplot(ptabla, las=1, col='deepskyblue3',
+                  ylab='Frecuencia relativa', 
+                  xlab='Niveles', ylim=c(0, max(ptabla)+0.1),
+                  main='Base de datos # 2')
     
     text(x=xx, y=ptabla, pos=3, cex=0.8, col="black",
          label=round(ptabla, 4))
@@ -55,11 +131,11 @@ shinyServer(function(input,output,session){
   output$resul1 <- renderText({
     inFile <- input$file1
     if(is.null(inFile)) 
-      dt <- read.table('datos.txt', header=T, sep='\t')
-    else dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
-    dt <- na.omit(dt)  # Para eliminar obs con NA
+      dt1 <- read.table('datos1.txt', header=T, sep='\t')
+    else dt1 <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
+    dt1 <- na.omit(dt1)  # Para eliminar obs con NA
     
-    y <- na.omit(dt[, input$variable])  # Para sacar los NA de la variable
+    y <- na.omit(dt1[, input$variable1])  # Para sacar los NA de la variable
     tabla <- table(y)
     x1 <- tabla[input$niveles1]
     x2 <- tabla[input$niveles2]
@@ -76,11 +152,11 @@ shinyServer(function(input,output,session){
   output$resul2 <- renderText({
     inFile <- input$file1
     if(is.null(inFile)) 
-      dt <- read.table('datos.txt', header=T, sep='\t')
-    else dt <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
-    dt <- na.omit(dt)  # Para eliminar obs con NA
+      dt1 <- read.table('datos1.txt', header=T, sep='\t')
+    else dt1 <- read.csv(inFile$datapath, header=input$header, sep=input$sep)
+    dt1 <- na.omit(dt1)  # Para eliminar obs con NA
     
-    y <- na.omit(dt[, input$variable])  # Para sacar los NA de la variable
+    y <- na.omit(dt1[, input$variable1])  # Para sacar los NA de la variable
     tabla <- table(y)
     x1 <- tabla[input$niveles1]
     x2 <- tabla[input$niveles2]

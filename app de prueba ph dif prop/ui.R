@@ -46,8 +46,14 @@ shinyUI(pageWithSidebar(
                                Semicolon=';', 'Space'=' '),
                 selected = ';'),
     
-    selectInput(inputId="variable", 
-                label=p("Elija la variable",
+    selectInput(inputId="variable1", 
+                label=p("Elija de la base # 1 la variable",
+                        span("cualitativa", style = "color:red"),
+                        "para realizar la prueba de hipótesis."),
+                choices="placeholder1"),
+    
+    selectInput(inputId="variable2", 
+                label=p("Elija de la base #2  variable",
                         span("cualitativa", style = "color:red"),
                         "para realizar la prueba de hipótesis."),
                 choices="placeholder1"),
@@ -98,9 +104,10 @@ mainPanel(
               tabPanel("Resultados",
                        h4('- Diagrama de barras para la variable
                           seleccionada.'),
-                       plotOutput("appPlot",
-                                  width='500px',
-                                  height='300px'),
+                       plotOutput("appPlot"),
+                       
+                       h4("- Tabla resumen de las bases:"),
+                       tableOutput("consolidado"),
                        
                        h4("- Resultados de la prueba de hipótesis:"),
                        textOutput("resul1"),
@@ -108,10 +115,15 @@ mainPanel(
                        h4(HTML("- Intervalo de confianza para la proporción P:")),
                        textOutput("resul2")),
               
-              tabPanel("Datos", 
+              tabPanel("Base datos # 1", 
                        "A continuación los datos que está usando 
                        la aplicación.",
-                       uiOutput('inputData')),
+                       uiOutput('inputData1')),
+              
+              tabPanel("Base datos # 2", 
+                       "A continuación los datos que está usando 
+                       la aplicación.",
+                       uiOutput('inputData2')),
               
               tabPanel("Teoría", includeHTML("include.html"))
               
