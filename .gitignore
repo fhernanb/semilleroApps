@@ -1,13 +1,4 @@
-# History files
+.Rproj.user
 .Rhistory
 .RData
-
-# Example code in package build process
-*-Ex.R
-.Rproj.user
-
-# ShinyApps manifest
-*.dcf
-
-# Fonts
-*.ttc
+.Ruserdata
