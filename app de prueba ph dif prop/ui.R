@@ -6,11 +6,13 @@ shinyUI(pageWithSidebar(
                          de proporciones P<sub>1</sub> - P<sub>2</sub>"),
               windowTitle="PH proporción"),
   sidebarPanel(
-    h5('Esta aplicación realiza la prueba de hipótesis para la 
-       proporción de una variable cualitativa.'),
+    h5(HTML('Esta aplicación realiza la prueba de hipótesis para la 
+       diferencia de proporciones. La hipótesis nula considerada
+            es H<sub>0</sub>: P<sub>1</sub> - P<sub>2</sub>=0')),
     
     h6('La aplicación usa dos bases de datos de ejemplo pero el usuario
-       puede cargar su propia información.'),
+       puede cargar su propia información. Las bases de datos
+       que ingrese deben tener los mismos nombres de variables.'),
     
     fileInput(inputId='file1',
               label='Use el siguiente botón para cargar 
@@ -46,28 +48,18 @@ shinyUI(pageWithSidebar(
                                Semicolon=';', 'Space'=' '),
                 selected = ';'),
     
-    selectInput(inputId="variable1", 
-                label=p("Elija de la base # 1 la variable",
+    hr(),
+    
+    selectInput(inputId="variable", 
+                label=p("Elija una variable",
                         span("cualitativa", style = "color:red"),
-                        "para realizar la prueba de hipótesis."),
+                        "de las bases para realizar la prueba 
+                        de hipótesis."),
                 choices="placeholder1"),
     
-    selectInput(inputId="variable2", 
-                label=p("Elija de la base #2  variable",
-                        span("cualitativa", style = "color:red"),
-                        "para realizar la prueba de hipótesis."),
-                choices="placeholder1"),
-    
-    selectInput(inputId="niveles1", 
+    selectInput(inputId="niveles", 
                 label=p("Elija un",
                         span("nivel", style = "color:blue"),
-                        "de la variable cualitativa anterior para
-                        realizar la prueba."), 
-                choices="placeholder2"),
-    
-    selectInput(inputId="niveles2", 
-                label=p("Elija",
-                        span("otro nivel", style = "color:orange"),
                         "de la variable cualitativa anterior para
                         realizar la prueba."), 
                 choices="placeholder2"),
@@ -82,7 +74,7 @@ shinyUI(pageWithSidebar(
     
     checkboxInput(inputId="correct", 
                   label="Marque si desea usar factor de correción", 
-                  value=FALSE, width=NULL),
+                  value=TRUE, width=NULL),
     
     sliderInput(inputId='alfa',
                 label=HTML("Opcional: elija un nivel de confianza para 
