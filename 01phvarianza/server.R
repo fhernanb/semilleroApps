@@ -21,8 +21,9 @@ shinyServer(function(input,output,session){
     y <- na.omit(dt[, input$variable])  # Para sacar los NA de la variable
     res <- data.frame(Min=min(y), Var=var(y), 
                       Max=max(y), n=length(y))
+    colnames(res) <- c('Mínimo', 'Varianza', 'Máximo', 'Número obs')
     res
-  }, align='c')
+  }, align='c', bordered=TRUE)
   
   output$appPlot <- renderPlot({
     inFile <- input$file1
