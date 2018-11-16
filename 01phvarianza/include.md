@@ -1,3 +1,5 @@
+# Prueba de hipótesis para la varianza $\sigma^2$
+
 Sea $X_1, X_2, \ldots, X_n$ una muestra aleatoria proveniente de una población normal con varianza $\sigma^2$ y supóngase que se desea probar la hipótesis de que $\sigma^2$ es igual a un valor de referencia $\sigma^2_0$, es decir, la hipótesis nula a estudiar es $H_0: \sigma^2 = \sigma_0^2$. En este problema las sospechas sobre la varianza  $\sigma^2$ se resumen por medio de la hipótesis alterna ($H_a$) en una de tres situaciones como se muestra a continuación:
 
 - $H_a: \sigma^2 < \sigma_0^2$,

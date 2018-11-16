@@ -1,4 +1,4 @@
-# Prueba de hipótesis para la diferencia de proporciones $p_1-p_2$
+# Prueba de hipótesis para la diferencia de proporciones
 
 Suponga que se tienen $X$ y $Y$ éxitos de dos variables aleatorias binomiales con las siguientes características:
 
