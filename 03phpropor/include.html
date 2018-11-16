@@ -134,9 +134,9 @@ $(document).ready(function () {
 </ul>
 <p>El estadístico para realizar la prueba es:</p>
 <p><span class="math display">\[
-Z_0=\frac{p-p_0}{\sqrt{\frac{p_{0}(1-p_{0})}{n}}},
+Z_0=\frac{\hat{p}-p_0}{\sqrt{\frac{p_{0}(1-p_{0})}{n}}},
 \]</span></p>
-<p>donde <span class="math inline">\(p=X/n\)</span> corresponde a la proporción de éxitos en una muestra de tamaño <span class="math inline">\(n\)</span>. Siempre que <span class="math inline">\(np\)</span> y <span class="math inline">\(n(1-p)\)</span> sean ambos mayores o iguales a 10, y bajo la suposición de que <span class="math inline">\(H_0\)</span> es verdadera, el estadístico <span class="math inline">\(Z_0\)</span> tiene una distribución aproximadamente normal estándar.</p>
+<p>donde <span class="math inline">\(\hat{p}=X/n\)</span> corresponde a la proporción de éxitos en una muestra de tamaño <span class="math inline">\(n\)</span>. Siempre que <span class="math inline">\(np\)</span> y <span class="math inline">\(n(1-p)\)</span> sean ambos mayores o iguales a 10, y bajo la suposición de que <span class="math inline">\(H_0\)</span> es verdadera, el estadístico <span class="math inline">\(Z_0\)</span> tiene una distribución aproximadamente normal estándar.</p>
 <p>Si el valor calculado para el estadístico dado en la ecuación  se denota por <span class="math inline">\(z_0\)</span>, entonces el valor-<span class="math inline">\(P\)</span> de la prueba se calcula de acuerdo a la hipótesis alterna como:</p>
 <ul>
 <li>Si <span class="math inline">\(H_a: p &lt; p_0\)</span>, entonces valor-<span class="math inline">\(P\)</span>=<span class="math inline">\(P(z &lt; z_0)\)</span>.</li>
@@ -144,15 +144,13 @@ Z_0=\frac{p-p_0}{\sqrt{\frac{p_{0}(1-p_{0})}{n}}},
 <li>Si <span class="math inline">\(H_a: p &gt; p_0\)</span>, entonces valor-<span class="math inline">\(P\)</span>=<span class="math inline">\(P(z &gt; z_0)\)</span>.</li>
 </ul>
 <p>La hipótesis nula <span class="math inline">\(H_0\)</span> se rechaza si el valor-<span class="math inline">\(P\)</span> es menor que el nivel de significancia (<span class="math inline">\(\alpha\)</span>).</p>
-<p>Cuando <span class="math inline">\(\left|p-p_{0}\right|&gt;1/2n\)</span> se usa corrección por continuidad en el estadístico de prueba. Así, dependiendo de la hipótesis alterna el estadístico tendrá una expresión diferente:</p>
+<p>Cuando <span class="math inline">\(\left|\hat{p}-p_{0}\right|&gt;\frac{1}{2n}\)</span> se usa corrección por continuidad en el estadístico de prueba. Así, dependiendo de la relación entre <span class="math inline">\(\hat{p}\)</span> y <span class="math inline">\(p_0\)</span> el estadístico tendrá una expresión diferente:</p>
 <ul>
-<li>Si <span class="math inline">\(H_a: p &lt; p_0\)</span>, entonces <span class="math display">\[
-Z_0=\frac{p-p_0 +\frac{1}{2n}}{\sqrt{\frac{p_{0}(1-p_{0})}{n}}}. 
+<li>Si <span class="math inline">\(\hat{p} - p_0 &gt; 0\)</span>, entonces <span class="math display">\[
+Z_0=\frac{\hat{p}-p_0 - \frac{1}{2n}}{\sqrt{\frac{p_{0}(1-p_{0})}{n}}}. 
 \]</span></li>
-<li>Si <span class="math inline">\(H_a: p \neq p_0\)</span>, entonces <span class="math display">\[
-Z_0=\frac{p-p_0 +\frac{1}{2n}}{\sqrt{\frac{p_{0}(1-p_{0})}{n}}}.
-\]</span></li>
-<li>Si <span class="math inline">\(H_a: p &gt; p_0\)</span>, entonces <span class="math display">\[ Z_0=\frac{p-p_0-\frac{1}{2n}}{\sqrt{\frac{p_{0}(1-p_{0})}{n}}}. 
+<li>Si <span class="math inline">\(\hat{p} - p_0 &lt; 0\)</span>, entonces <span class="math display">\[
+Z_0=\frac{\hat{p}-p_0 + \frac{1}{2n}}{\sqrt{\frac{p_{0}(1-p_{0})}{n}}}.
 \]</span></li>
 </ul>
 <p>El criterio del valor-<span class="math inline">\(P\)</span> será el mismo utilizado cuando no se usa corrección por continuidad.</p>

@@ -124,8 +124,8 @@ $(document).ready(function () {
 </div>
 
 
-<div id="prueba-de-hipotesis-para-la-media-mu" class="section level1">
-<h1>Prueba de hipótesis para la media <span class="math inline">\(\mu\)</span></h1>
+<div id="prueba-de-hipotesis-para-la-diferencia-de-proporciones-p_1-p_2" class="section level1">
+<h1>Prueba de hipótesis para la diferencia de proporciones <span class="math inline">\(p_1-p_2\)</span></h1>
 <p>Suponga que se tienen <span class="math inline">\(X\)</span> y <span class="math inline">\(Y\)</span> éxitos de dos variables aleatorias binomiales con las siguientes características:</p>
 <ul>
 <li><span class="math inline">\(X\)</span> número de éxitos observados en <span class="math inline">\(n_1\)</span> ensayos cuya probabilidad de éxito es <span class="math inline">\(p_1\)</span>.</li>
@@ -138,13 +138,13 @@ $(document).ready(function () {
 <li><span class="math inline">\(H_a: p_1 - p_2 &gt; \delta_0\)</span></li>
 </ul>
 <p>El estadístico para realizar la prueba es: <span class="math display">\[
-Z_0=\frac{p_1 -p_2 - \delta_0}{\sqrt{\frac{p_{1}(1-p_{1})}{n_1} +\frac{p_{2}(1-p_{2})}{n_2}}},
+Z_0=\frac{\hat{p}_1 - \hat{p}_2 - \delta_0}{\sqrt{\frac{\hat{p}_{1}(1-\hat{p}_{1})}{n_1} +\frac{\hat{p}_{2}(1-\hat{p}_{2})}{n_2}}},
 \]</span></p>
-<p>donde <span class="math inline">\(p_1 =X/n_1\)</span> y <span class="math inline">\(p_2 =Y/n_2\)</span> corresponden a la proporción de éxitos en una muestra de tamaño <span class="math inline">\(n_1\)</span> y <span class="math inline">\(n_2\)</span>, respectivamente. En estas pruebas es común considerar que <span class="math inline">\(\delta_0=0\)</span>. En este caso, una práctica estándar es crear una estimación conjunta de las proporciones poblacionales tal que <span class="math inline">\(p_1=p_2\)</span>, de tal forma que el estadístico de prueba sea:</p>
+<p>donde <span class="math inline">\(\hat{p}_1 =X/n_1\)</span> y <span class="math inline">\(\hat{p}_2 =Y/n_2\)</span> corresponden a la proporción de éxitos en una muestra de tamaño <span class="math inline">\(n_1\)</span> y <span class="math inline">\(n_2\)</span>, respectivamente. En estas pruebas es común considerar que <span class="math inline">\(\delta_0=0\)</span>. En este caso, una práctica estándar es crear una estimación conjunta de las proporciones poblacionales tal que <span class="math inline">\(p_1=p_2\)</span>, de tal forma que el estadístico de prueba es:</p>
 <p><span class="math display">\[
-Z_0=\frac{p_1 -p_2 }{\sqrt{ p(1-p)\left(\frac{1}{n_1} +\frac{1}{n_2} \right)}},
+Z_0=\frac{\hat{p}_1 - \hat{p}_2 }{\sqrt{ \hat{p}(1-\hat{p})\left(\frac{1}{n_1} +\frac{1}{n_2} \right)}},
 \]</span></p>
-<p>donde <span class="math inline">\(p=(X+Y)/(n_1 + n_2)\)</span>. Bajo la suposición de que <span class="math inline">\(H_0\)</span> es verdadera, el estadístico <span class="math inline">\(Z_0\)</span> en tiene una distribución aproximadamente normal estándar.</p>
+<p>donde <span class="math inline">\(\hat{p}=(X+Y)/(n_1 + n_2)\)</span>. Bajo la suposición de que <span class="math inline">\(H_0\)</span> es verdadera, el estadístico <span class="math inline">\(Z_0\)</span> en tiene una distribución aproximadamente normal estándar.</p>
 <p>Si el valor calculado para el estadístico dado en la ecuación se denota por <span class="math inline">\(z_0\)</span>, entonces el valor-<span class="math inline">\(P\)</span> de la prueba se calcula de acuerdo a la hipótesis alterna como:</p>
 <ul>
 <li>Si <span class="math inline">\(H_a:p_1 - p_2 &lt; 0\)</span>, entonces valor-<span class="math inline">\(P\)</span>=<span class="math inline">\(P(z &lt; z_0)\)</span>.</li>
@@ -152,17 +152,14 @@ Z_0=\frac{p_1 -p_2 }{\sqrt{ p(1-p)\left(\frac{1}{n_1} +\frac{1}{n_2} \right)}},
 <li>Si <span class="math inline">\(H_a: p_1 - p_2 &gt; 0\)</span>, entonces valor-<span class="math inline">\(P\)</span>=<span class="math inline">\(P(z &gt; z_0)\)</span>.</li>
 </ul>
 <p>La hipótesis nula <span class="math inline">\(H_0\)</span> se rechaza si el valor-<span class="math inline">\(P\)</span> es menor que el nivel de significancia (<span class="math inline">\(\alpha\)</span>).\</p>
-<p>Cuando <span class="math inline">\(\left| p_1-p_2 \right|&gt; 0.5 \left( 1/n_1 + 1/n_2 \right)\)</span> se usa corrección por continuidad en el estadístico de prueba. Así, dependiendo de la hipótesis alterna el estadístico  tendrá una expresión diferente:</p>
+<p>Cuando <span class="math inline">\(\left| \hat{p}_1-\hat{p}_2 \right|&gt; 0.5 \left( 1/n_1 + 1/n_2 \right)\)</span> se usa corrección por continuidad en el estadístico de prueba. Así el estadístico tendrá una expresión diferente:</p>
 <ul>
-<li>Si <span class="math inline">\(H_a: p_1 -p_2 &lt; 0\)</span>, entonces <span class="math display">\[
-Z_0=\frac{p_1 -p_2 +\frac{1}{2} \left( \frac{1}{n_1} + \frac{1}{n_2} \right)}{\sqrt{ p(1-p)\left(\frac{1}{n_1} +\frac{1}{n_2} \right)}}. 
+<li>Si <span class="math inline">\(\hat{p}_1 - \hat{p}_2 &gt; 0\)</span>, entonces <span class="math display">\[
+Z_0=\frac{\hat{p}_1 - \hat{p}_2 - \frac{1}{2} \left( \frac{1}{n_1} + \frac{1}{n_2} \right)}{\sqrt{ \hat{p}(1-\hat{p})\left(\frac{1}{n_1} +\frac{1}{n_2} \right)}}. 
   \]</span></li>
-<li>Si <span class="math inline">\(H_a: p_1 -p_2 \neq 0\)</span>, entonces <span class="math display">\[
-Z_0=\frac{p_1 -p_2 +\frac{1}{2} \left( \frac{1}{n_1} + \frac{1}{n_2} \right)}{\sqrt{ p(1-p)\left(\frac{1}{n_1} +\frac{1}{n_2} \right)}}.
-\]</span></li>
-<li>Si <span class="math inline">\(H_a: p_1 -p_2 &gt; 0\)</span>, entonces <span class="math display">\[
-Z_0=\frac{p_1 -p_2 -\frac{1}{2} \left( \frac{1}{n_1} + \frac{1}{n_2} \right)}{\sqrt{ p(1-p)\left(\frac{1}{n_1} +\frac{1}{n_2} \right)}}. 
-\]</span></li>
+<li>Si <span class="math inline">\(\hat{p}_1 - \hat{p}_2 &lt; 0\)</span>, entonces <span class="math display">\[
+Z_0=\frac{\hat{p}_1 - \hat{p}_2 + \frac{1}{2} \left( \frac{1}{n_1} + \frac{1}{n_2} \right)}{\sqrt{ \hat{p}(1-\hat{p})\left(\frac{1}{n_1} +\frac{1}{n_2} \right)}}. 
+  \]</span></li>
 </ul>
 <p>El criterio del valor-<span class="math inline">\(P\)</span> será el mismo utilizado cuando no se usa corrección por continuidad.</p>
 </div>

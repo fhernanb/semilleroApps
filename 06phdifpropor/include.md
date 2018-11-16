@@ -1,4 +1,4 @@
-# Prueba de hipótesis para la media $\mu$
+# Prueba de hipótesis para la diferencia de proporciones $p_1-p_2$
 
 Suponga que se tienen $X$ y $Y$ éxitos de dos variables aleatorias binomiales con las siguientes características:
 
@@ -14,16 +14,16 @@ En este caso se quiere estudiar la hipótesis nula $H_0: p_1 - p_2 = \delta_0$ y
 
 El estadístico para realizar la prueba es:
 $$
-Z_0=\frac{p_1 -p_2 - \delta_0}{\sqrt{\frac{p_{1}(1-p_{1})}{n_1} +\frac{p_{2}(1-p_{2})}{n_2}}},
+Z_0=\frac{\hat{p}_1 - \hat{p}_2 - \delta_0}{\sqrt{\frac{\hat{p}_{1}(1-\hat{p}_{1})}{n_1} +\frac{\hat{p}_{2}(1-\hat{p}_{2})}{n_2}}},
 $$
 
-donde $p_1 =X/n_1$ y $p_2 =Y/n_2$ corresponden a la proporción de éxitos en una muestra de tamaño $n_1$ y $n_2$, respectivamente. En estas pruebas es común considerar que $\delta_0=0$. En este caso, una práctica estándar es crear una estimación conjunta de las proporciones poblacionales tal que $p_1=p_2$, de tal forma que el estadístico de prueba sea:
+donde $\hat{p}_1 =X/n_1$ y $\hat{p}_2 =Y/n_2$ corresponden a la proporción de éxitos en una muestra de tamaño $n_1$ y $n_2$, respectivamente. En estas pruebas es común considerar que $\delta_0=0$. En este caso, una práctica estándar es crear una estimación conjunta de las proporciones poblacionales tal que $p_1=p_2$, de tal forma que el estadístico de prueba es:
 
 $$
-Z_0=\frac{p_1 -p_2 }{\sqrt{ p(1-p)\left(\frac{1}{n_1} +\frac{1}{n_2} \right)}},
+Z_0=\frac{\hat{p}_1 - \hat{p}_2 }{\sqrt{ \hat{p}(1-\hat{p})\left(\frac{1}{n_1} +\frac{1}{n_2} \right)}},
 $$
 
-donde $p=(X+Y)/(n_1 + n_2)$. Bajo la suposición de que $H_0$ es verdadera, el estadístico $Z_0$ en \eqref{est_difprop2}tiene una distribución aproximadamente normal estándar.
+donde $\hat{p}=(X+Y)/(n_1 + n_2)$. Bajo la suposición de que $H_0$ es verdadera, el estadístico $Z_0$ en \eqref{est_difprop2}tiene una distribución aproximadamente normal estándar.
 
 Si el valor calculado para el estadístico dado en la ecuación se denota por $z_0$, entonces el valor-$P$ de la prueba se calcula de acuerdo a la hipótesis alterna como:
 
@@ -33,19 +33,15 @@ Si el valor calculado para el estadístico dado en la ecuación se denota por $z
 
 La hipótesis nula $H_0$ se rechaza si el valor-$P$ es menor que el nivel de significancia ($\alpha$).\\
 
-Cuando $\left| p_1-p_2 \right|> 0.5 \left( 1/n_1 + 1/n_2 \right)$ se usa corrección por continuidad en el estadístico de prueba. Así, dependiendo de la hipótesis alterna el estadístico \eqref{est_difprop2} tendrá una expresión diferente: 
+Cuando $\left| \hat{p}_1-\hat{p}_2 \right|> 0.5 \left( 1/n_1 + 1/n_2 \right)$ se usa corrección por continuidad en el estadístico de prueba. Así el estadístico tendrá una expresión diferente:
 
-- Si $H_a: p_1 -p_2 < 0$, entonces
+- Si $\hat{p}_1 - \hat{p}_2 > 0$, entonces
 	$$
-	Z_0=\frac{p_1 -p_2 +\frac{1}{2} \left( \frac{1}{n_1} + \frac{1}{n_2} \right)}{\sqrt{ p(1-p)\left(\frac{1}{n_1} +\frac{1}{n_2} \right)}}. 
+	Z_0=\frac{\hat{p}_1 - \hat{p}_2 - \frac{1}{2} \left( \frac{1}{n_1} + \frac{1}{n_2} \right)}{\sqrt{ \hat{p}(1-\hat{p})\left(\frac{1}{n_1} +\frac{1}{n_2} \right)}}. 
   $$
-- Si $H_a: p_1 -p_2 \neq 0$, entonces
+- Si $\hat{p}_1 - \hat{p}_2 < 0$, entonces
 	$$
-	Z_0=\frac{p_1 -p_2 +\frac{1}{2} \left( \frac{1}{n_1} + \frac{1}{n_2} \right)}{\sqrt{ p(1-p)\left(\frac{1}{n_1} +\frac{1}{n_2} \right)}}.
-	$$
-- Si $H_a: p_1 -p_2 > 0$, entonces 
+	Z_0=\frac{\hat{p}_1 - \hat{p}_2 + \frac{1}{2} \left( \frac{1}{n_1} + \frac{1}{n_2} \right)}{\sqrt{ \hat{p}(1-\hat{p})\left(\frac{1}{n_1} +\frac{1}{n_2} \right)}}. 
   $$
-	Z_0=\frac{p_1 -p_2 -\frac{1}{2} \left( \frac{1}{n_1} + \frac{1}{n_2} \right)}{\sqrt{ p(1-p)\left(\frac{1}{n_1} +\frac{1}{n_2} \right)}}. 
-	$$
 
 El criterio del valor-$P$ será el mismo utilizado cuando no se usa corrección por continuidad.
