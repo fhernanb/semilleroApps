@@ -1,4 +1,4 @@
-# Prueba de hipótesis para la media $\mu$
+# Prueba de hipótesis para la media
 
 Suponga que se tiene una muestra aleatoria $X_1, X_2, \ldots, X_n$ proveniente de una población normal. Se quiere estudiar la hipótesis nula $H_0: \mu = \mu_0$ y se sospecha que la media $\mu$ cumple una de las siguientes situaciones:
 

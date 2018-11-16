@@ -1,4 +1,4 @@
-# Prueba de hipótesis para la proporción $p$
+# Prueba de hipótesis para la proporción
 
 Suponga que se tiene el número de éxitos $X$ en una muestra de tamaño $n$. Se quiere estudiar la hipótesis nula  $H_0: p = p_0$ y se sospecha que la proporción $p$ podría estar en alguna de las siguientes situaciones:
 
