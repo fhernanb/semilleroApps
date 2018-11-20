@@ -1,5 +1,6 @@
 library(shiny)
 source("auxiliar.R")
+source("model_select.R")
 
 # Define UI for application
 shinyUI(fluidPage(

@@ -8,7 +8,8 @@ shinyServer(function(input, output, session) {
     dt <- subset(dt, Sector == input$sector)
     
     updateCheckboxGroupInput(session, "covariables",
-                             label = 'Por defecto la app tiene 3 variables seleccionadas,
+                             label = 'Por defecto la app tiene 3 variables 
+                        seleccionadas,
                          usted puede marcar las casillas para agregar o quitar
                          variables y así iniciar el proceso de selección.',
                              choices = colnames(dt[, -(1:5)]),
@@ -52,6 +53,7 @@ shinyServer(function(input, output, session) {
     m1 <- lm(max.scope, data=dt)
     m2 <- stepAIC(object=m1, direction='backward', trace=0, 
                   steps=5000, k=log(nrow(dt)))
+    m2 <- model.select(model=m2, sig=0.05)
     summary(m2)
   })
   
@@ -65,6 +67,7 @@ shinyServer(function(input, output, session) {
     m1 <- lm(max.scope, data=dt)
     m2 <- stepAIC(object=m1, direction='backward', trace=0, 
                   steps=5000, k=log(nrow(dt)))
+    m2 <- model.select(model=m2, sig=0.05)
     a <- round(coef(m2), digits=2)
     a[a > 0] <- paste0(" +", a[a > 0])
     b <- names(m2$coefficients)[-1]
