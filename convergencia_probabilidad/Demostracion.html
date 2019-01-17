@@ -96,6 +96,9 @@ img {
 button.code-folding-btn:focus {
   outline: none;
 }
+summary {
+  display: list-item;
+}
 </style>
 
 
@@ -103,14 +106,74 @@ button.code-folding-btn:focus {
 <div class="container-fluid main-container">
 
 <!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
 });
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
 </script>
 
 <!-- code folding -->
-
 
 
 
@@ -126,8 +189,8 @@ $(document).ready(function () {
 
 <div id="teorema" class="section level2">
 <h2>Teorema</h2>
-<div id="sea-x_1x_2...x_n-una-muestra-aleatoria-de-una-distribucian-uniforme-en-el-intervalo-0theta-entonces-x-_-n-overset-p-longrightarrow-theta." class="section level5">
-<h5>Sea <span class="math inline">\({X}_{1},{X}_{2},...,{X}_{n}\)</span> una muestra aleatoria de una distribuciÃ³n uniforme en el intervalo <span class="math inline">\([0,\theta]\)</span> entonces <span class="math inline">\({ X }_{ (n) }\overset { P }{ \longrightarrow } \theta\)</span>.</h5>
+<div id="sea-x_1x_2...x_n-una-muestra-aleatoria-de-una-distribucion-uniforme-en-el-intervalo-0theta-entonces-x-_-n-overset-p-longrightarrow-theta." class="section level5">
+<h5>Sea <span class="math inline">\({X}_{1},{X}_{2},...,{X}_{n}\)</span> una muestra aleatoria de una distribución uniforme en el intervalo <span class="math inline">\([0,\theta]\)</span> entonces <span class="math inline">\({ X }_{ (n) }\overset { P }{ \longrightarrow } \theta\)</span>.</h5>
 </div>
 </div>
 <div id="demostracion" class="section level2">
@@ -136,7 +199,7 @@ $(document).ready(function () {
 <h5>Se sabe que: si <span class="math inline">\({ X }_{ n }\overset { d }{ \longrightarrow } c\)</span> entonces <span class="math inline">\({ X }_{ n }\overset { p }{ \longrightarrow } c\)</span>, para <span class="math inline">\(c\in \mathbb{R}\)</span>. En nuestro caso, para probar que <span class="math inline">\({ X }_{ (n) }\overset { P }{ \longrightarrow } \theta\)</span> basta con probar que <span class="math inline">\({ X }_{ (n) }\overset { d }{ \longrightarrow } \theta\)</span>.</h5>
 </div>
 <div id="sea-ttheta-se-sabe-que-la-c.d.f.-de-theta-esta-dado-por" class="section level5">
-<h5>Sea <span class="math inline">\(T=\theta\)</span>, se sabe que la <span class="math inline">\(c.d.f.\)</span> de <span class="math inline">\(\theta\)</span> estÃ¡ dado por:</h5>
+<h5>Sea <span class="math inline">\(T=\theta\)</span>, se sabe que la <span class="math inline">\(c.d.f.\)</span> de <span class="math inline">\(\theta\)</span> está dado por:</h5>
 <span class="math display">\[\begin{equation}
 F(t) = \left\lbrace
 \begin{array}{ll}
@@ -146,11 +209,11 @@ F(t) = \left\lbrace
 \right.
 \end{equation}\]</span>
 </div>
-<div id="ahora-para-que-x-_-n-overset-d-longrightarrow-theta-por-definician-se-debe-cumplir-que-lim_n-to-infty-f-_-x-_-n-tft-forall-t-donde-f-sea-continua." class="section level5">
-<h5>Ahora para que <span class="math inline">\({ X }_{ (n) }\overset { d }{ \longrightarrow } \theta\)</span>, por definiciÃ³n se debe cumplir que <span class="math inline">\(\lim_{n \to \infty}({ F }_{ { X }_{ (n) } }(t))=F(t)\)</span>; <span class="math inline">\(\forall t\)</span> donde <span class="math inline">\(F\)</span> sea continua.</h5>
+<div id="ahora-para-que-x-_-n-overset-d-longrightarrow-theta-por-definicion-se-debe-cumplir-que-lim_n-to-infty-f-_-x-_-n-tft-forall-t-donde-f-sea-continua." class="section level5">
+<h5>Ahora para que <span class="math inline">\({ X }_{ (n) }\overset { d }{ \longrightarrow } \theta\)</span>, por definición se debe cumplir que <span class="math inline">\(\lim_{n \to \infty}({ F }_{ { X }_{ (n) } }(t))=F(t)\)</span>; <span class="math inline">\(\forall t\)</span> donde <span class="math inline">\(F\)</span> sea continua.</h5>
 </div>
-<div id="del-ejercicio-se-sabe-que-x_1x_2...x_n-es-una-m.a.-de-una-distribucian-uniforme-por-tanto-x-_-i-sim-u0theta-con-i12...n-por-tanto-se-concluye-que" class="section level5">
-<h5>Del ejercicio se sabe que <span class="math inline">\({X}_{1},{X}_{2},...,{X}_{n}\)</span> es una <span class="math inline">\(m.a.\)</span> de una distribuciÃ³n uniforme, por tanto <span class="math inline">\({ X }_{ i }\sim U(0,\theta )\)</span> con <span class="math inline">\(i=1,2,...,n\)</span>, por tanto se concluye que:</h5>
+<div id="del-ejercicio-se-sabe-que-x_1x_2...x_n-es-una-m.a.-de-una-distribucion-uniforme-por-tanto-x-_-i-sim-u0theta-con-i12...n-por-tanto-se-concluye-que" class="section level5">
+<h5>Del ejercicio se sabe que <span class="math inline">\({X}_{1},{X}_{2},...,{X}_{n}\)</span> es una <span class="math inline">\(m.a.\)</span> de una distribución uniforme, por tanto <span class="math inline">\({ X }_{ i }\sim U(0,\theta )\)</span> con <span class="math inline">\(i=1,2,...,n\)</span>, por tanto se concluye que:</h5>
 <span class="math display">\[\begin{equation}
 { f }_{ X }(x) = \left\lbrace
 \begin{array}{ll}
@@ -160,8 +223,8 @@ F(t) = \left\lbrace
 \right.
 \end{equation}\]</span>
 </div>
-<div id="y-la-funcian-acumulada-esta-dada-por" class="section level5">
-<h5>Y la funciÃ³n acumulada estÃ¡ dada por:</h5>
+<div id="y-la-funcion-acumulada-esta-dada-por" class="section level5">
+<h5>Y la función acumulada está dada por:</h5>
 <span class="math display">\[\begin{equation}
 { F }_{ X }(x) = \left\lbrace
 \begin{array}{ll}
@@ -173,13 +236,13 @@ F(t) = \left\lbrace
 \end{equation}\]</span>
 </div>
 <div id="por-otro-lado-se-sabe-que-la-p.d.f.-de-x_n-esta-dada-por" class="section level5">
-<h5>Por otro lado, se sabe que la <span class="math inline">\(p.d.f.\)</span> de <span class="math inline">\({X}_{(n)}\)</span> estÃ¡ dada por:</h5>
+<h5>Por otro lado, se sabe que la <span class="math inline">\(p.d.f.\)</span> de <span class="math inline">\({X}_{(n)}\)</span> está dada por:</h5>
 </div>
 <div id="f-_-x_n-xn-choose-nn-f-_-x-t-n-1-1-f-_-x-t-n-n-f-_-x-tn-left-frac-t-theta-right-n-1-frac-1-theta-0ttheta" class="section level5">
 <h5><span class="math inline">\({ f }_{ {X}_{(n)} }(x)={n \choose n}n{ { [F }_{ X }(t)] }^{ n-1 }{ { [1-F }_{ X }(t)] }^{ n-n }{ f }_{ X }(t)=n{ \left[ \frac { t }{ \theta } \right] }^{ n-1 }\frac { 1 }{ \theta }\)</span>, <span class="math inline">\(0&lt;t&lt;\theta\)</span></h5>
 </div>
-<div id="asa-se-tiene-que" class="section level5">
-<h5>AsÃ­ se tiene que:</h5>
+<div id="asi-se-tiene-que" class="section level5">
+<h5>Así se tiene que:</h5>
 </div>
 <div id="f-_-x-_-n-tint-_--infty-t-f-_-x-_-n-t-dtint-_--infty-0-f-_-x-_-n-t-dt-int-_-0-t-f-_-x-_-n-t-dtint-_-0-t-f-_-x-_-n-t-dtint-_-0-t-n-left-frac-t-theta-right-n-1-frac-1-theta-dtfrac-n-theta-int-_-0-t-frac-t-n-1-theta-n-1-dt" class="section level5">
 <h5><span class="math inline">\({ F }_{ { X }_{ (n) } }(t)=\int _{ -\infty }^{ t }{ { f }_{ { X }_{ (n) } }(t) } dt=\int _{ -\infty }^{ 0 }{ { f }_{ { X }_{ (n) } }(t) } dt + \int _{ 0 }^{ t }{ { f }_{ { X }_{ (n) } }(t) } dt=\int _{ 0 }^{ t }{ { f }_{ { X }_{ (n) } }(t) } dt=\int _{ 0 }^{ t }{ n{ \left[ \frac { t }{ \theta } \right] }^{ n-1 }\frac { 1 }{ \theta } } dt=\frac { n }{ \theta } \int _{ 0 }^{ t }{ \frac { { (t) }^{ n-1 } }{ { \theta }^{ n-1 } } } dt\)</span></h5>
@@ -188,7 +251,7 @@ F(t) = \left\lbrace
 <h5><span class="math inline">\({ F }_{ { X }_{ (n) } }(t)=\frac { n }{ { \theta }^{ n } } \int _{ 0 }^{ t }{ { t }^{ n-1 } } dt=\frac { n }{ { \theta }^{ n } } \frac { { t }^{ n } }{ n } =\frac { 1 }{ { \theta }^{ n } } { ({ t }^{ n }) }_{ 0 }^{ t }=\frac { 1 }{ { \theta }^{ n } } ({ t }^{ n }-{ 0 }^{ n })=\frac { { t }^{ n } }{ { \theta }^{ n } }\)</span></h5>
 </div>
 <div id="por-lo-tanto-la-c.d.f.-de-x-_-n-esta-dado-por" class="section level5">
-<h5>Por lo tanto, la <span class="math inline">\(c.d.f.\)</span> de <span class="math inline">\({ X }_{ (n) }\)</span> estÃ¡ dado por:</h5>
+<h5>Por lo tanto, la <span class="math inline">\(c.d.f.\)</span> de <span class="math inline">\({ X }_{ (n) }\)</span> está dado por:</h5>
 <span class="math display">\[\begin{equation}
 { F }_{ X_{(n)} }(t) = \left\lbrace
 \begin{array}{ll}
@@ -205,8 +268,8 @@ F(t) = \left\lbrace
 <div id="como-0ttheta-por-lo-tanto-0frac-t-theta-1-luego-lim_n-to-infty-left-frac-t-theta-right-n-0.-si-ttheta-por-lo-tanto-frac-t-theta-1-luego-lim_n-to-infty-left-frac-t-theta-right-n-lim_n-to-infty11." class="section level5">
 <h5>Como <span class="math inline">\(0&lt;t&lt;\theta\)</span>, por lo tanto <span class="math inline">\(0&lt;\frac { t }{ \theta } &lt;1\)</span> luego <span class="math inline">\(\lim_{n \to \infty}{ \left( \frac { t }{ \theta } \right) }^{ n }=0\)</span>. Si <span class="math inline">\(t=\theta\)</span>, por lo tanto <span class="math inline">\(\frac { t }{ \theta } =1\)</span>, luego <span class="math inline">\(\lim_{n \to \infty}{ \left( \frac { t }{ \theta } \right) }^{ n }=\lim_{n \to \infty}(1)=1\)</span>.</h5>
 </div>
-<div id="asa-se-ha-demostrado-que-lim_n-to-infty-f-_-x-_-n-tft." class="section level5">
-<h5>AsÃ­ se ha demostrado que <span class="math inline">\(\lim_{n \to \infty}({ F }_{ { X }_{ (n) } }(t))=F(t)\)</span>.</h5>
+<div id="asi-se-ha-demostrado-que-lim_n-to-infty-f-_-x-_-n-tft." class="section level5">
+<h5>Así se ha demostrado que <span class="math inline">\(\lim_{n \to \infty}({ F }_{ { X }_{ (n) } }(t))=F(t)\)</span>.</h5>
 </div>
 <div id="finalmente-como-x-_-n-overset-d-longrightarrow-theta-entonces-x-_-n-overset-p-longrightarrow-theta." class="section level5">
 <h5>Finalmente, como <span class="math inline">\({ X }_{ (n) }\overset { d }{ \longrightarrow } \theta\)</span> entonces <span class="math inline">\({ X }_{ (n) }\overset { P }{ \longrightarrow } \theta\)</span>.</h5>

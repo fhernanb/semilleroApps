@@ -24,7 +24,7 @@ shinyUI(fluidPage(
         usuario elije el tamaño de muestra <b>n</b> y el máximo poblacional <b>&#952;</b>.')),
       br(),
       p(HTML("Si se da click en el triángulo pequeño de color azul se podrá obtener una animación de la curva 
-        de la distribución acumulada <b> F <sub> X <sub> (n) </sub> </sub> (x) </b>.")),
+        de la distribución acumulada <b> F<sub>X<sub>(n)</sub></sub>(x)</b>.")),
        sliderInput("n",
                    "Tamaño de muestra n",
                    min = 1,
