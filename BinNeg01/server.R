@@ -11,7 +11,7 @@ shinyServer(function(input, output)
     grid()
   })
   output$github <- renderText({
-    if (input$p==0) paste("No tiene sentido p=0")
+    if (input$p %in% 0:1) paste("No tiene sentido ese valor de p")
   })
 })
 

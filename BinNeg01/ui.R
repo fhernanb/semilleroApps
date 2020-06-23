@@ -5,11 +5,15 @@ library(shiny)
 shinyUI(fluidPage(
   
   # Application title
-  titlePanel("Distribución Binomial Negativa"),
+  titlePanel("Distribución Binomial Negativa - Versión 1"),
   
   # Sidebar with a slider input for the number of bins
   sidebarLayout(
     sidebarPanel(
+      p("En esta parametrización el parámetro p representa
+        la probabilidad de éxito individual y k representa 
+        el número de éxitos."),
+      br(),
       p("Modifique los valores de los parámetros y 
         observe lo que sucede en el diagrama"),
       br(),
@@ -21,7 +25,7 @@ shinyUI(fluidPage(
                   step= 0.1,
                   animate = TRUE),
       sliderInput(inputId = "exitos",
-                  label = "Número de éxitos",
+                  label = "Número de éxitos k:",
                   min = 1,
                   max = 30,
                   value = 5,
@@ -31,7 +35,7 @@ shinyUI(fluidPage(
                   label = "Ingrese el máximo valor de x para el cual desea 
                   ver las probabilidades:",
                   min = 1,
-                  max = 50,
+                  max = 70,
                   value = 15,
                   step = 1),
       br(),
