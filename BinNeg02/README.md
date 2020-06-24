@@ -1,1 +1,1 @@
-Esta aplicación tiene por objetivo mostrar cómo influyen los parámetros en las probabilidades de la distribución binomial negativa.
+Esta aplicación tiene por objetivo mostrar como afectan los parámetros la distribución de probabilidades.

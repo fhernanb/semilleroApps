@@ -1,1 +1,1 @@
-Esta aplicación tiene por objetivo mostrar como afecta el parámetro las probabilidades en la distribución Poisson.
+Esta aplicación tiene por objetivo mostrar como afectan los parámetros la distribución de probabilidades.

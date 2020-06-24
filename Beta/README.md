@@ -1,1 +1,1 @@
-Esta aplicación tiene por objetivo mostrar como influyen los parámetros de la distribución Beta sobre la forma de la densidad.
+Esta aplicación tiene por objetivo mostrar como afectan los parámetros la distribución de probabilidades.

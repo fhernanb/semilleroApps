@@ -1,1 +1,1 @@
-Esta aplicación tiene por objetivo mostrar cómo afecta el parámetro la distribución de las probabilidades en la distribución geométrica.
+Esta aplicación tiene por objetivo mostrar como afectan los parámetros la distribución de probabilidades.
