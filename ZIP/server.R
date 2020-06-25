@@ -12,7 +12,7 @@ shinyServer(function(input, output) {
  # draw the histogram with the specified number of bins
  barplot(y, main='Diagrama de barras para las probabilidades',
          xlab='x', ylab=expression(P(X==x)), las=1, col='deepskyblue3',
-         inside=T, names.arg = x, ylim=c(0, 1))
+         names.arg = x, ylim=c(0, 1))
  grid()
    })
 })
