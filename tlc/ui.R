@@ -23,7 +23,8 @@ fluidPage(
                    choices = c("Normal",
                                "Uniforme",
                                "Gamma",
-                               "Beta"),
+                               "Beta",
+                               "Mezcla de dos normales"),
                    selected = "Gamma"),
   
       br(),
@@ -81,6 +82,43 @@ fluidPage(
                                 min=0.01,
                                 value="0.9",
                                 step=0.1) ),
+  
+  # Distribucion mezcla dos normales
+  conditionalPanel(condition="input.distri == 'Mezcla de dos normales'",
+                   numericInput(inputId="mu1",
+                                label=HTML("Ingrese la media de población 1."),
+                                min=-15,
+                                max= 15,
+                                value="-4",
+                                step=0.1),
+                   
+                   numericInput(inputId="mu2",
+                                label=HTML("Ingrese la media de pobalción 2."),
+                                min=-15,
+                                max= 15,
+                                value="6",
+                                step=0.1),
+                   
+                   numericInput(inputId="sd1",
+                                label=HTML("Ingrese la desviación de población 1."),
+                                min=0.01,
+                                max= 15,
+                                value="1",
+                                step=0.1),
+                   
+                   numericInput(inputId="sd2",
+                                label=HTML("Ingrese la desviación de población 2."),
+                                min=0.01,
+                                max= 15,
+                                value="3",
+                                step=0.1),
+                   
+                   numericInput(inputId="prob1",
+                                label=HTML("Ingrese el porcentaje de observaciones de población 1"),
+                                min=0.01,
+                                max=0.99,
+                                value="0.3",
+                                step=0.01) ),
 
   
   sliderInput(inputId="n", 
