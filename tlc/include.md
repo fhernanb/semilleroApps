@@ -25,5 +25,5 @@ Implicaciones
 	
 * La variabilidad de la distribución de las $\bar{x}$ esta dada por $\sigma^2/n$ y disminuye a medida que aumenta $n$.
 
-* A medida que $n$ aumenta, las medias muestrales $\bar{x}$ tiene distribución normal sin importar la distribución de la población de la cual fueron obtenidas.
+* A medida que $n$ aumenta, las medias muestrales $\bar{x}$ tienen distribución normal sin importar la distribución de la población de la cual fueron obtenidas.
 
