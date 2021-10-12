@@ -39,6 +39,25 @@ shinyServer(function(input, output, session) {
       varia <-  a * b / ((a + b)^2 * (a + b + 1))
     }
     
+    if(input$distri == "Mezcla de dos normales") {
+      
+      rmixnorm <- function(n, mu1, mu2, sd1, sd2, prob1) {
+        components <- sample(1:2, prob=c(prob1, 1-prob1), size=n, replace=TRUE)
+        mus <- c(mu1, mu2)
+        sds <- c(sd1, sd2)
+        samples <- rnorm(n=n, mean=mus[components], sd=sds[components])
+        return(samples)
+      }
+      
+      set.seed(input$mu1 * input$mu2)
+      muestras <- matrix(rmixnorm(k*n, input$mu1, input$mu2, input$sd1, input$sd2, input$prob1), 
+                         nrow=k)
+      media <- input$prob1 * input$mu1 + (1-input$prob1) * input$mu2
+      varia <-  input$prob1 * input$sd1^2 + (1-input$prob1) * input$sd2^2 + 
+        input$prob1 * input$mu1^2 + (1-input$prob1) * input$mu2^2 -
+        (input$prob1 * input$mu1 + (1-input$prob1) * input$mu2)^2
+    }
+    
     medias <- rowMeans(muestras)
     s2n <- varia/n  # Varianza de la distribucion de medias
     

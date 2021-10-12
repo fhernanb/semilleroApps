@@ -1,0 +1,29 @@
+## ¿Qué es un Modelo Lineal Mixto?
+
+El Modelo Lineal Mixto es una generalización del modelo de regresión lineal que toma en cuenta tanto (1) la variación que se explica por los efectos fijos de las variables independientes de interés, y (2) la variación que no se explica por las variables independientes de interés - efectos aleatorios. Dado que el modelo incluye una mezcla de efectos fijos y aleatorios, se llama modelo mixto. Estos efectos aleatorios esencialmente dan estructura al término de error ε y explican los efectos individuales de las diferentes observaciones.
+
+Este tipo de modelos contempla la posible existencia de observaciones correlacionadas o con variabilidad heterogénea. 
+
+Cuando un modelo líneal mixto tiene intercepto aleatorio, significa que cada muestra (o individuo) del grupo tiene variación individual en su intercepto con respecto al individuo promedio (o poblacional), lo cual proporciona mayor flexibilidad al modelo.
+
+## Ecuación del modelo
+
+$$
+Y_{ij} = \beta_0 +
+ \beta_1 X_{ij} + b_{0i} + \epsilon_{ij}.
+$$
+La cantidad $i$ representa el número de grupos/clusters con $i \in {1, 2, \ldots, n}$ y $j$ representa el número de observaciones por grupo/cluster con $j \in {1, 2, \ldots, m_i}$. Los elementos del modelo anterior son:
+
+- $Y$: es la variable respuesta.
+- $Y_{ij}$: es el valor de la $j$-ésima observación dentro grupo/cluster $i$. 
+- $\beta_0\in \Re$: es el intercepto fijo para el modelo de regresión.
+- $\beta_1 \in \Re$: es la pendiente fija para el modelo de regresión.
+- $X_1$: es la covariable del modelo.
+- $X_{1ij}$: es el valor de $X_1$ para la $j$-ésima observación dentro grupo/cluster $i$.
+- $b_{0i} \stackrel{iid}{\sim} N(0, \sigma^2_b)$: es el intercepto aleatorio para el grupo/cluster $i$.
+- $\epsilon_{ij} \stackrel{iid}{\sim} N(0, \sigma^2)$: es el término de error para la observación $i$ del grupo/cluster $j$.
+
+## Utilidad del modelo
+
+Los modelos lineales mixtos pueden ser útiles al analizar los datos de ciertos experimentos, según la forma en que sean diseñados. Cuando hay factores que no le interesan pero que afectan a una observación, esto se denomina diseño bloqueado. Cuando, por ejemplo, desea probar cierto medicamento en una prueba médica. Un efecto aleatorio es entonces la respuesta individual de un sujeto de prueba. Esto generalmente se prueba durante un cierto período de tiempo, es decir, datos longitudinales. Puede haber ciertos grupos de sujetos que tienen un rendimiento diferente cuando se realizan los mismos experimentos en diferentes grupos, es decir, medidas repetidas. Otro ejemplo es datos anidados o cruzados.
+ 

@@ -4,12 +4,14 @@ library(markdown)
 shinyUI(fluidPage(
   
     # Application title
-  titlePanel("MLM Intercepto aleatorio"),
+  titlePanel("MLM con Intercepto aleatorio"),
   
    sidebarLayout(
      sidebarPanel(
-      p("Esta aplicación es una herramienta de aprendizaje que modela gráficamente un Modelo Lineal Mixto con intercepto aleatorio."),
-      p("Esta aplicación sirve para interiorizar/evidenciar el efecto que tiene cada parámetro (fijo u aleatorio) en un Modelo Lineal Mixto con intercepto aleatorio."),
+      p("Esta aplicación es una herramienta de aprendizaje que ilustra 
+        el Modelo Lineal Mixto con intercepto aleatorio."),
+      p("Esta aplicación sirve para comprender el impacto que tiene cada 
+        parámetro del Modelo Lineal Mixto con intercepto aleatorio."),
       hr(), #Traza una linea suave
       p("Modifique los valores de los parámetros y 
         observe lo que sucede con el Modelo Lineal Mixto."),
@@ -21,27 +23,32 @@ shinyUI(fluidPage(
                   value = 5, #Define donde se pone el cursor del slide por defecto al correr el programa.
                   step= 1, animate = TRUE), #Animate= T pone la flecha de play en la parte inferior del slider donde si se da clic va pasando por los valores que tome, de manera automÃ¡tica.
       sliderInput(inputId = "nmuestras",
-                  label = HTML("Ingrese el número de observaciones por grupo/cluster :"),
+                  label = HTML("Ingrese el número de observaciones por 
+                               grupo/cluster :"),
                   min = 1,
                   max = 100,
                   value = 40,
                   step= 1, animate = TRUE),
       sliderInput(inputId = "sigma2b0",
-                  label = HTML("Ingrese el valor de la varianza &sigma;<sub>b</sub><sup>2</sup> del intercepto aleatorio :"),
+                  label = HTML("Ingrese el valor de la varianza 
+                               &sigma;<sub>b</sub><sup>2</sup> del 
+                               intercepto aleatorio :"),
                   min = 0.01,
                   max = 100,
                   value = 60,
                   step= 0.01, animate = TRUE),
       sliderInput(inputId = "sigma2",
-                  label = HTML("Ingrese el valor de la varianza &sigma;<sup>2</sup> del error aleatorio :"),
+                  label = HTML("Ingrese el valor de la varianza 
+                               &sigma;<sup>2</sup> del error 
+                               aleatorio :"),
                   min = 0.01,
                   max = 100,
                   value = 2,
                   step= 0.01, animate = TRUE),
       hr(), #Traza una linea suave
-      br(),
-      
-      p("Otros parámetros del Modelo Lineal Mixto que el usuario puede cambiar son: "),
+
+      p("Otros parámetros del Modelo Lineal Mixto que el 
+      usuario se muestran a continuación. Por favor modifíquelos."),
       numericInput(inputId = "beta0",
                   label = HTML("Ingrese el valor del intercepto fijo :"),
                   value = 0,
@@ -62,24 +69,31 @@ shinyUI(fluidPage(
       
       br(),
       
-      h5(' Autor : Jessica Nathaly Pulzara Mora.'),
+      h5('Autor: Jessica Nathaly Pulzara Mora.'),
       
-      h5(' Asesor: Freddy Hernandez Barajas.')
+      h5('Autor: Freddy Hernandez Barajas.')
       
       ),
     
-    
-    
     # Show a plot of the generated distribution
     mainPanel(
-      h2("Modelo Lineal Mixto con intercepto aleatorio", align = "center"), # Crea un título de tamaño h3= mediano, donde hn con n=1,2,.. son títulos de distintos tamaños y n grande -> título más pequeño
-      tabsetPanel(type = "tabs", 
-                  tabPanel("Gráfica",br(), h4(HTML(" <em> Y<sub>ij</sub> &#61; &beta;<sub>&#48;</sub> &#43; &beta;<sub>&#49;</sub> X<sub>&#49;ij</sub> &#43; b<sub>&#48;i</sub> &#43; &epsilon;<sub>ij</sub> </em>"), align = "center"), br(), 
+      h2("Modelo Lineal Mixto con intercepto aleatorio", 
+         align = "center"), # Crea un título de tamaño h3= mediano, donde hn con n=1,2,.. son títulos de distintos tamaños y n grande -> título más pequeño
+      tabsetPanel(type = "pills", 
+                  tabPanel("Ilustración",br(), 
+                           h4(HTML("Modelo <em> Y<sub>ij</sub> &#61; &beta;<sub>&#48;</sub> &#43; &beta;<sub>&#49;</sub> X<sub>&#49;ij</sub> &#43; b<sub>&#48;i</sub> &#43; &epsilon;<sub>ij</sub> </em>"), align = "center"), br(), 
                            plotOutput("grafico1")),
+                  
+                  tabPanel("Teoríaaa", includeHTML("teoria.html")),
                   
                   tabPanel("Teoría", br(),
                            h3("¿Qué es un MLM?"), br(),
-                            p("Los modelos lineales mixtos son una generalización del modelo de regresión lineal que toma en cuenta tanto (1) la variación que se explica por los efectos fijos de las variables independientes de interés, y (2) la variación que no se explica por las variables independientes de interés - efectos aleatorios. Dado que el modelo incluye una mezcla de efectos fijos y aleatorios, se llama modelo mixto. Estos efectos aleatorios esencialmente dan estructura al término de error ε y explican los efectos individuales de las diferentes observaciones."),
+                            p("Los modelos lineales mixtos son 
+                              una generalización del modelo 
+                              de regresión lineal que toma en 
+                              cuenta tanto (1) la variación que 
+                              se explica por los efectos fijos 
+                              de las variables independientes de interés, y (2) la variación que no se explica por las variables independientes de interés - efectos aleatorios. Dado que el modelo incluye una mezcla de efectos fijos y aleatorios, se llama modelo mixto. Estos efectos aleatorios esencialmente dan estructura al término de error ε y explican los efectos individuales de las diferentes observaciones."),
                             p("Este tipo de modelos contempla la posible existencia de observaciones correlacionadas o con variabilidad heterogénea."),
                             p("Cuando un modelo líneal mixto tiene intercepto aleatorio, significa que cada muestra (o individuo) del grupo tiene variación individual en su intercepto con respecto al individuo promedio (o poblacional); lo cual proporciona mayor flexibilidad al modelo."),
                             br(), 
