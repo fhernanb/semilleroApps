@@ -20,7 +20,7 @@ shinyServer(function(input, output, session) {
       set.seed(input$min * input$max)
       muestras <- matrix(runif(k*n, input$min, input$max), nrow=k)
       media <- (input$min + input$max) / 2
-      varia <- (input$max + input$min)^2 / 12
+      varia <- (input$max - input$min)^2 / 12
     }
     
     if(input$distri == "Gamma") {
