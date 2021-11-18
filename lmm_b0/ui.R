@@ -1,5 +1,4 @@
-library(latex2exp)
-library(markdown)
+library(shiny)
 
 shinyUI(fluidPage(
   

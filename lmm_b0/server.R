@@ -1,5 +1,4 @@
 library(shiny)
-library(latex2exp)
 
 # Funcion interceptos aleatorios
 
