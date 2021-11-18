@@ -26,4 +26,12 @@ La cantidad $i$ representa el número de grupos/clusters con $i \in {1, 2, \ldot
 ## Utilidad del modelo
 
 Los modelos lineales mixtos pueden ser útiles al analizar los datos de ciertos experimentos, según la forma en que sean diseñados. Cuando hay factores que no le interesan pero que afectan a una observación, esto se denomina diseño bloqueado. Cuando, por ejemplo, desea probar cierto medicamento en una prueba médica. Un efecto aleatorio es entonces la respuesta individual de un sujeto de prueba. Esto generalmente se prueba durante un cierto período de tiempo, es decir, datos longitudinales. Puede haber ciertos grupos de sujetos que tienen un rendimiento diferente cuando se realizan los mismos experimentos en diferentes grupos, es decir, medidas repetidas. Otro ejemplo es datos anidados o cruzados.
+
+## Referencias
+
+- http://eio.usc.es/pub/gridecmb/index.php/modelos-mixtos-utilizando-r  
+- https://web.stanford.edu/class/psych252/section/Mixed_models_tutorial.html 
+- https://beta.vu.nl/nl/Images/werkstuk-loon_tcm235-419752.pdf 
+- http://users.stat.umn.edu/~helwig/notes/lmer-Notes.pdf
+
  

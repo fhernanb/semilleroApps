@@ -1,7 +1,4 @@
-
 shinyUI(fluidPage(
-  
-  
   
   # Application title
   titlePanel("MLM intercepto y pendiente aleatoria"),
@@ -10,10 +7,14 @@ shinyUI(fluidPage(
     sidebarPanel(
       p("Esta aplicación es una herramienta de aprendizaje que modela gráficamente un Modelo Lineal Mixto con intercepto y pendiente aleatoria."),
       p("Esta aplicación sirve para interiorizar/evidenciar el efecto que tiene cada parámetro (fijo u aleatorio) en un Modelo Lineal Mixto con intercepto y pendiente aleatoria."),
+      
       hr(), #Traza una linea suave
+      
       p("Modifique los valores de los parámetros y 
         observe lo que sucede con el Modelo Lineal Mixto."),
+      
       br(), # Deja un espacio en blanco osea salta una línea.
+      
       sliderInput(inputId = "mgrupos",
                   label = HTML("Ingrese el número de grupos/clusters :"),  #HTML para que reconozca el caracter mu y sigma (para que los dibuje bonito)
                   min = 1,
@@ -68,14 +69,8 @@ shinyUI(fluidPage(
                    value = 1,
                    step= 0.01),
       
-     
-      
-      
-      
-      
-      
-      
-      img(src="logo.png", height = 60, width = 120), #style="display: block; margin-left: auto; margin-right: auto;
+      img(src="https://fhernanb.github.io/docs/logo_unal_negro.png",
+          height = 56, width = 140),
       
       br(),
       
