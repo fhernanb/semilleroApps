@@ -99,10 +99,11 @@ shinyUI(fluidPage(
         mainPanel(
             tabsetPanel(type = "pills",
                         tabPanel("Results",
-                                 plotOutput("distPlot", click = "plot_click"),
+                                 plotOutput("distPlot", 
+                                            click = "plot_click"),
                                  htmlOutput("info_00")),
-                        tabPanel("Proof", 
-                                 htmlOutput("demostracion"))
+                        tabPanel("Proofs", 
+                                 includeHTML("Proof.html"))
                         )
         )
     )

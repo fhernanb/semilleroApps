@@ -76,8 +76,11 @@ shinyUI(fluidPage(
         mainPanel(
             tabsetPanel(type = "pills",
                         tabPanel("Illustration",
-                                 plotOutput("MLE", width="800px", height="700px")),
-                        tabPanel("Proof", includeHTML("Proof.html")))
+                                 plotOutput("MLE", 
+                                            #width="800px", 
+                                            height="700px"
+                                            )),
+                        tabPanel("Proofs", includeHTML("Proof.html")))
             
         )
     )
