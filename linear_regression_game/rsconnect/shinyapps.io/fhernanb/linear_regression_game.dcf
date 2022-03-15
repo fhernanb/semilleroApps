@@ -1,0 +1,12 @@
+name: linear_regression_game
+title: linear_regression_game
+username:
+account: fhernanb
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2661595
+bundleId: 4326742
+url: https://fhernanb.shinyapps.io/linear_regression_game/
+when: 1615390626.45444
+asMultiple: FALSE
+asStatic: FALSE
