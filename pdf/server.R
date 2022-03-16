@@ -48,9 +48,19 @@ shinyServer(function(input, output)
     f2 <- function(x) x^2 * fun(x)
     varianza <- integrate(f2, lower=a, upper=b)$value
     varianza <- varianza - esperanza^2
-    paste(c("Para la distribución ingresada se tiene que E(X) =",
-            round(esperanza, 2),
-            "con Var(X) =", round(varianza, 2)))
+    
+    area <- integrate(fun, lower=a, upper=b)$value
+    
+    if (input$min > input$max | area > 1.1 | area < 0.9) {
+      paste(c("Hay algo errado!!!"))
+    }
+    else {
+      paste(c("Para la distribución ingresada se tiene que E(X) =",
+              round(esperanza, 2),
+              "con Var(X) =", round(varianza, 2)))
+    }
+
+    
   })
   
 })

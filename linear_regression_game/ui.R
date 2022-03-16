@@ -9,33 +9,34 @@ shinyUI(fluidPage(
     # Sidebar with a slider input for number of bins
     sidebarLayout(
         sidebarPanel(
-            h4("En este juego usted debe adivinar los valores 
-               de los parametros para un problema de regresion 
-               lineal simple."),
+            h5("En este juego usted debe adivinar el intercepto
+                y la pendiente de la linea recta azul que mejor
+               explica la nube de puntos. El objetivo es MINIMIZAR 
+               la suma de cuadrados de los errores (SCE)."),
+            h5("En el diagrama de la izquierda estan los puntos
+               y la linea recta."),
+            h5("En el diagrama de la derecha se muestra la evolucion
+                del SCE para cada intento. La linea de color verde
+                representa el minimo
+               valor de SCE, ese
+               es el valor objetivo que usted debe alcanzar."),
+            br(),
             textInput("nombre", 
                       label="Por favor ingrese su nombre"),
-            h5('En este juego usted debe elegir los valores
-               apropiados para el intercepto y la
-               pendiente con el objetivo de MINIMIZAR 
-               la suma de cuadrados del error.'),
             numericInput("b0",
-                        "Introduce the intercept:",
+                        "Ingrese el valor del intercepto:",
                         min = -50,
                         max = 50,
                         step = 0.01,
                         value = 0),
             numericInput("b1",
-                         "Introduce the slope:",
+                         "Ingrese el valor de la pendiente:",
                          min = -50,
                          max = 50,
                          step = 0.01,
                          value = 1),
             #submitButton("Submit"),
             actionButton("update", "Someter los valores"),
-            h5("La linea de color verde en el segundo
-               diagrama de dispersion representa el minimo
-               valor de la suma de cuadrados del error, ese
-               es el valor objetivo que usted debe alcanzar."),
             br(),
             img(src="logo.png", height=200, width=200)
             
