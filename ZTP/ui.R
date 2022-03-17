@@ -2,10 +2,14 @@
 
   shinyUI(fluidPage(
   # Application title
-  titlePanel("Distribución Zero Truncated Poisson"),
+  titlePanel("Distribución Zero Truncated Poisson (ZTP)"),
 
   sidebarLayout(
   sidebarPanel(
+    HTML("En la distribución ZTP el parámetro &lambda; representa
+          la media de la distribución Poisson, en esta distribución
+         no hay ceros, está truncada en cero e inicia en 1."),
+    br(),
     p("Modifique los valores de los parámetros y 
       observe lo que sucede en el gráfico."),
     br(),

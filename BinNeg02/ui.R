@@ -10,12 +10,12 @@ shinyUI(fluidPage(
   # Sidebar with a slider input for the number of bins
   sidebarLayout(
     sidebarPanel(
-      p("En esta parametrización de la Binomial Negativa 
-        el parámetro mu representa la media y 
+      HTML("En esta parametrización de la Binomial Negativa 
+        el parámetro &mu; representa la media y 
         k representa el parámetro de precisión"),
       br(),
       p("Modifique los valores de los parámetros y 
-        observe lo que sucede en el diagrama"),
+        observe lo que sucede en el diagrama."),
       br(),
       sliderInput(inputId = "mu",
                   label = HTML("Media &mu;:"),

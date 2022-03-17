@@ -29,7 +29,7 @@ shinyUI(fluidPage(
                   label = "Ingrese el máximo valor de x para
                   mostrar en el gráfico:",
                   min = 1,
-                  max = 30,
+                  max = 100,
                   value = 9,
                   step = 1),
       br(),

@@ -1,10 +1,14 @@
   library(shiny)
   shinyUI(fluidPage(
   # Application title
-  titlePanel("Distribución ZIP"),
+  titlePanel("Distribución Zero Inflated Poisson (ZIP)"),
 
   sidebarLayout(
   sidebarPanel(
+    HTML("En la distribución ZIP el parámetro &lambda; representa
+          la media de la distribución Poisson y 
+          Prop representa el porcentaje de exceso de ceros."),
+    br(),
     p("Modifique los valores de los parámetros y 
       observe lo que sucede en el gráfico."),
     br(),

@@ -7,8 +7,8 @@ shinyUI(fluidPage(
 
   sidebarLayout(
     sidebarPanel(
-      p("Modifique el valor del parámetro y observe 
-        lo que sucede en el diagrama"),
+      p("Modifique el valor del parámetro p y observe 
+        lo que sucede en el diagrama."),
       br(),
       sliderInput(inputId = "p",
                   label = "Probabilidad de éxito p:",
