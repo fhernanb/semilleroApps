@@ -28,9 +28,9 @@ shinyServer(function(input, output) {
         rta <- round(rta, digits=2)
         SCE_new <- c(values$df$SCE, as.numeric(rta))
         
-        values$df <- data.frame(Intercepto=b0_new, 
-                                Pendiente=b1_new,
-                                SCE=SCE_new)
+        values$df <- data.frame(Intercepto = b0_new, 
+                                Pendiente  = b1_new,
+                                SCE        = SCE_new)
     })
     
     output$example <- renderTable({values$df})
@@ -45,8 +45,12 @@ shinyServer(function(input, output) {
              pch=19, las=1)
         abline(h=0, v=0, lty="dashed", col=gray(0.8))
         aux <- function(inter, slope) inter + slope * x
-        y_hat <- aux(input$b0, input$b1)
-        abline(a=input$b0, b=input$b1, lwd=3, col="deepskyblue3")
+        y_hat <- aux(inter = tail(values$df$Intercepto, n=1), 
+                     slope = tail(values$df$Pendiente, n=1))
+        #abline(a=input$b0, b=input$b1, lwd=3, col="deepskyblue3")
+        abline(a=tail(values$df$Intercepto, n=1), 
+               b=tail(values$df$Pendiente, n=1), 
+               lwd=3, col="deepskyblue3")
         segments(x0=x, y0=y, x1 =x, y1=y_hat, col="tomato", lty="dotted")
 
         # If correct

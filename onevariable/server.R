@@ -6,14 +6,15 @@ shinyServer(function(input,output,session){
     #print(inFile)
     if(is.null(inFile)) return(NULL)
     dt = read.csv(inFile$datapath, header=input$header, sep=input$sep)
-    updateSelectInput(session, "product", choices = names(dt))
+    updateSelectInput(session, "response", choices = names(dt))
+    #updateSelectInput(session, "product", choices = names(dt))
   })
   
   output$summary <- renderTable({
     inFile<-input$file1
     #print(inFile)
-    if(is.null(inFile)) return(NULL)
-    dt = read.csv(inFile$datapath, header=input$header, sep=input$sep)
+    if(is.null(inFile)) dt <- cars
+    else dt = read.csv(inFile$datapath, header=input$header, sep=input$sep)
     dt[1:3, ]
   })
   

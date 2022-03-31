@@ -18,7 +18,7 @@ shinyUI(fluidPage(
                   step= 0.1,
                   animate = TRUE),
       sliderInput(inputId = "n",
-                  label = "Tamaño de la muestra n:",
+                  label = "Número de ensayos n:",
                   min = 1,
                   max = 30,
                   value = 9,
