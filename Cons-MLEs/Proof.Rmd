@@ -1,0 +1,58 @@
+---
+output: bookdown::html_book
+bibliography: refs.bib
+csl: emu-austral-ornithology.csl
+---
+
+```{theorem, label="foo", name="Consistency of MLEs"}
+Assume that ${X}_{1}, \dots, {X}_{n}$ satisfy the subsequent regularity conditions: 
+  
+1. ${X}_{1},{X}_{2}, \dots ,{X}_{n}$ are observed, where ${X}_{i} \, \sim \, f \left( x \, | \, \theta \right)$ are independent and identically distributed (IID).
+
+2. The parameter is identifiable; that is, if $\theta \, \neq \, {\theta}'$, then $f \left( x \, | \, \theta \right) \, \neq \, f \left( x \, | \, {\theta}' \right)$.
+
+3. The densities $f \left( x \, | \, \theta \right)$ have common support, and $f \left( x \, | \, \theta \right)$ is differentiable with respect to $\theta$ in $\Theta$.
+
+4. The parameter space $\Theta$ contains an open set $\omega$ of which the true parameter value ${\theta}_{0}$ is an interior point.
+
+Then the likelihood equation, 
+\begin{equation}
+\frac{\partial}{\partial \theta} L \left (\theta \, | \, \boldsymbol {X} \right) = 0,
+\end{equation}
+or equivalently
+\begin{equation}
+\frac{\partial}{\partial \theta} \ell \left (\theta \, | \, \boldsymbol{X} \right) = 0,
+\end{equation}
+has a solution $\widehat{\theta }_{n}$ such that $\widehat{\theta }_{n} \, \stackrel{p}{\to} \, \theta$ (where $L \left (\cdot \, | \, \boldsymbol {X} \right)$ and $\ell \left (\cdot \, | \, \boldsymbol{X} \right) \, = \, \ln \left[ L \left (\cdot \, | \, \boldsymbol {X} \right) \right]$ are the likelihood and log-likelihood functions, respectively. Moreover, $\boldsymbol{X}$ denotes the random variables ${X}_{1}, \dots ,{X}_{n}$).
+```
+
+```{proof}
+[@Palomino:2022] Let $\delta > 0$ such that $\left ({\theta}_{0} \, - \, \delta \, , \, {\theta}_{0} \, + \, \delta \right) \, \subseteq \, \omega$. Define, 
+\begin{equation}
+{A}_{n , \delta} \, = \, \left \{ \boldsymbol{X} \, : \, \ell \left ( {\theta}_{0} \, | \, \boldsymbol{X} \right ) \, > \, \ell \left ( {\theta}_{0} \, - \, \delta \, | \, \boldsymbol{X} \right ) \right \}.
+\end{equation}
+\begin{equation}
+{B}_{n , \delta} \, = \, \left \{ \boldsymbol{X} \, : \, \ell \left ( {\theta}_{0} \, | \, \boldsymbol{X} \right ) \, > \, \ell \left ( {\theta}_{0} \, + \, \delta \, | \, \boldsymbol{X} \right ) \right \}.
+\end{equation}
+Let ${S}_{n , \delta} \, = \, {A}_{n , \delta} \, \cap \, {B}_{n , \delta}$. Then,
+$$
+\begin{equation} 
+\begin{split}
+1 \, \geq \, P \left ( {S}_{n , \delta} \right ) \, = \, P \left ( {A}_{n , \delta} \, \cap \, {B}_{n , \delta} \right ) \, = \, P \left ({\left ( {A}^{\complement}_{n , \delta} \, \cup \, {B}^{\complement}_{n , \delta} \right )}^{\complement}  \right ) & \, = \, 1 \, - \, P \left ( {A}^{\complement}_{n , \delta} \, \cup \, {B}^{\complement}_{n , \delta} \right ) \\ & \, \geq \, 1 \, - \, P \left ( {A}^{\complement}_{n , \delta} \right ) \, - \, P \left ( {B}^{\complement}_{n , \delta} \right ) \, = \, P \left ( {A}_{n , \delta} \right ) \, + \, P \left ( {B}_{n , \delta} \right ) \, - \, 1.
+\end{split}
+\end{equation}
+$$
+Subsequently,
+\begin{equation}
+1 \, \geq \, \lim _{n \, \to \, \infty}{P \left ( {S}_{n , \delta} \right )} \, \geq \, \lim _{n \, \to \, \infty}{P \left ( {A}_{n , \delta} \right )} \, + \, \lim _{n \, \to \, \infty}{P \left ( {B}_{n , \delta} \right )} \, - \, 1.
+\end{equation}
+Thus, $1 \, \geq \, \lim _{n \, \to \, \infty}{P \left ( {S}_{n , \delta} \right )} \, \geq \, 1$ and, therefore, $\lim _{n \, \to \, \infty}{P \left ( {S}_{n , \delta} \right )} \, = \, 1$. Furthermore, let is prove that ${S}_{n , \delta} \, \subseteq \, \left \{ \boldsymbol{X} \, : \, \left | \, \widehat{\theta }_{n} \, - \, {\theta}_{0} \, \right | \, < \, \delta \right \}$. Assume that $\boldsymbol{X} \in {S}_{n , \delta}$, then $\boldsymbol{X} \in {A}_{n , \delta} \, \wedge \, \boldsymbol{X} \in {B}_{n , \delta}$, namely, $\ell \left ( {\theta}_{0} \, | \, \boldsymbol{X} \right ) \, > \, \ell \left ( {\theta}_{0} \, - \, \delta \, | \, \boldsymbol{X} \right ) \, \wedge \, \ell \left ( {\theta}_{0} \, | \, \boldsymbol{X} \right ) \, > \, \ell \left ( {\theta}_{0} \, + \, \delta \, | \, \boldsymbol{X} \right )$. Since $\ell \left ( \theta \, | \, \boldsymbol{X} \right )$ is differentiable on $\omega$, then, it is differentiable and, in consequence, continuous on $\left ({\theta}_{0} - \delta \, , \, {\theta}_{0} + \delta \right)$. Hence, $\ell \left ( \theta \, | \, \boldsymbol{X} \right )$ has a local maximum on this interval by hypothesis, $\widehat{\theta }_{n}$, and so ${\theta}_{0} \, - \, \delta \, < \, \widehat{\theta }_{n} \, < \, {\theta}_{0} \, + \, \delta \, \leftrightarrow \, \left | \, \widehat{\theta }_{n} \, - \, {\theta}_{0} \, \right | \, < \, \delta$. This validates that ${S}_{n , \delta} \, \subseteq \, \left \{ \boldsymbol{X} \, : \, \left | \, \widehat{\theta }_{n} \, - \, {\theta}_{0} \, \right | \, < \, \delta \right \}$. Thence,
+\begin{equation}
+1 \, = \, \lim _{n \, \to \, \infty}{P \left ( {S}_{n , \delta} \right )} \, \leq \, \lim _{n \, \to \, \infty}{P \left ( \left | \, \widehat{\theta }_{n} \, - \, {\theta}_{0} \, \right | \, < \, \delta \right )} \, \leq \, 1.
+\end{equation}
+As a result, $\lim _{n \, \to \, \infty}{P \left ( \left | \, \widehat{\theta }_{n} \, - \, {\theta}_{0} \, \right | \, < \, \delta \right )} \, = \, 1$, i.e., $\widehat{\theta }_{n} \, \stackrel{p}{\to} \, \theta$.
+<span style="float:right;">$\square$</span></p>
+```
+
+**Reference**
+
