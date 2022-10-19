@@ -21,25 +21,35 @@ shinyUI(fluidPage(
       selectInput(inputId="sector", label="Seleccione el Sector.", 
                   choices=sectores),
       br(),
-      checkboxGroupInput(inputId="covariables", label="")
+      checkboxGroupInput(inputId="covariables", label=""),
+      br(),
+      selectInput(inputId="dist", 
+                  label="Seleccione una posible distribución para Y", 
+                  choices=c("NO","GA","WEI","EXP"),
+                  selected="GA"),
+      p("Olga Cecilia Usuga Manco     - UdeA"),
+      p("Gloria Lucía Ramírez Córdoba - UdeA"),
+      p("Freddy Hernández Barajas     - UNAL")
     ),
     
     # Show the results
     mainPanel(
       tabsetPanel(type = "pills",
-                  tabPanel("Figuras", 
+                  tabPanel("Análisis exploratorio", 
                            plotOutput("plot1", width='500px'),
                            plotOutput("plot2", width='500px')),
-                  tabPanel("Resultados",
+                  tabPanel("Regresión lineal",
                            h4("Tabla de resumen del modelo:"),
                            h5("La aplicación ajustó un modelo de regresión y
                               seleccionó las variables que más aportan para
                               explicar los ingresos."),
                            verbatimTextOutput("regresion")),
-                  tabPanel("Ecuación",
+                  tabPanel("Modelo estimado",
                            h4("Los ingresos estimados para una empresa
                               están dados por la siguiente ecuación:"),
                            uiOutput("ecuacion1")),
+                  tabPanel("Árbol distribucional",
+                           plotOutput("tree", width='500px')),
                   tabPanel("Datos", 
                            h4("A continuación los datos que está usando 
                               la aplicación."),

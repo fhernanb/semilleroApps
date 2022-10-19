@@ -24,13 +24,15 @@ shinyServer(function(input, output, session) {
 
   output$plot1 <- renderPlot({
     dt <- subset(dt, Sector == input$sector)
+    
     plot(density(dt$ing), main='Densidad para ingresos',
-         xlab='Ingresos', ylab='Densidad', lwd=2, las=1, col='dodgerblue3')
+         xlab='Ingresos', ylab='Densidad', lwd=3, las=1, col='dodgerblue3')
     rug(dt$ing, col='dodgerblue3')
   })
   
   output$plot2 <- renderPlot({
     dt <- subset(dt, Sector == input$sector)
+    
     panel.cor <- function(x, y, ...) {
       par(usr = c(0, 1, 0, 1))
       txt <- as.character(format(cor(x, y), digits=2))
@@ -39,8 +41,8 @@ shinyServer(function(input, output, session) {
     
     variables <- c('ing', input$covariables)
     pairs(dt[, variables], upper.panel=panel.cor, col='dodgerblue3', las=1,
-          main='Diagrama de dispersión entre Ingresos 
-          y las variables seleccionadas', pch=19)
+          main='Diagrama de dispersión y correlación lineal entre 
+          Ingresos y las variables seleccionadas', pch=19)
   })
   
 
@@ -57,6 +59,19 @@ shinyServer(function(input, output, session) {
     summary(m2)
   })
   
+  
+  output$tree<- renderPlot({
+    
+    form <- paste('ing ~', paste(input$covariables, collapse=' + '))
+    form <- as.formula(form)
+    
+    require(disttree)
+    tr <- disttree(form, data = dt, family = input$dist)
+    plot(tr, main=paste0("Árbol de regresión con distribución ", input$dist))
+    
+    
+  })
+  
 
   output$ecuacion1 <- renderUI({
     dt <- subset(dt, Sector == input$sector)
@@ -71,7 +86,7 @@ shinyServer(function(input, output, session) {
     a <- round(coef(m2), digits=2)
     a[a > 0] <- paste0(" +", a[a > 0])
     b <- names(m2$coefficients)[-1]
-    tit <- paste(c('$$Ing =', a[1], paste(a[-1], b), '$$'), collapse=' ')
+    tit <- paste(c('$$\\widehat{Ing} =', a[1], paste(a[-1], b), '$$'), collapse=' ')
 
     withMathJax(helpText(tit))
   })
