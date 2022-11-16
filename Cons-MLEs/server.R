@@ -85,7 +85,7 @@ shinyServer(function(input, output) {
                 }
               }
                 #verosimilitud1 <- function(ps) n*log(ps) + sum(muestras[dentro[1], ])*log(1-ps)
-                par(mar=c(5,8.3,3,23.5))
+                par(mar=c(5,8.3,3,24))
                 plot(ps, verosimilitud1(ps), type = "l", 
                      xaxt = "n", yaxt = "n",xlab = "", ylab = "", lwd = 3)
                 # curve(verosimilitud1,
@@ -125,7 +125,7 @@ shinyServer(function(input, output) {
                 #               c(p.exito+delta,verosimilitud1(p.exito-delta-0.05)),
                 #               c(p.exito+delta,max(verosimilitud1(ps))+25),
                 #               c(p.exito-delta,max(verosimilitud1(ps))+25)), col=rgb(0, 1, 0, 0.3), border = NA)
-                title(main = bquote("From 10000 samples on" ~ .(long.dentro) ~ hat(pi)[n]%in%(pi%+-%delta)),
+                title(main = bquote("From 10000 samples on" ~ .(long.dentro) ~ hat(pi)[n]%in%(pi[0]%+-%delta)),
                       xlab = bquote(pi),
                       col.main = "steelblue2",
                       cex.main = 2, cex.lab = 2)
@@ -140,9 +140,9 @@ shinyServer(function(input, output) {
                        col = "brown2",
                        lwd = 3)
                 legend("topleft", 
-                       legend=sapply(c(bquote(pi), 
+                       legend=sapply(c(bquote(pi[0]), 
                                        bquote(hat(pi)[n] ~ "=" ~ 1 ~ "/" ~ "(" ~ bar(X)[n] ~ "+" ~ 1 ~ ")"), 
-                                       expression(paste(pi %+-% delta)),
+                                       expression(paste(pi[0] %+-% delta)),
                                        bquote("ℓ(" ~ pi ~ "|" ~ bold(X) ~ ")")), as.expression),
                        col=c("steelblue2", "darkorchid3", "brown2", "black"), lty = c(rep(3,3),1), lwd = 3, 
                        inset = c(1,0), xpd = TRUE, bty = "n", cex = 2, y.intersp = 1.2)
@@ -159,7 +159,7 @@ shinyServer(function(input, output) {
                   }
                 }
                 #verosimilitud2 <- function(ps) n*log(ps) + sum(muestras[dentro[1], ])*log(1-ps)
-                par(mar=c(5,8.3,3,23.5))
+                par(mar=c(5,8.3,3,24))
                 plot(ps, verosimilitud2(ps), type = "l", 
                      xaxt = "n", yaxt = "n",xlab = "", ylab = "", lwd = 3)
                 # curve(verosimilitud2,
@@ -207,7 +207,7 @@ shinyServer(function(input, output) {
                 #               c(p.exito+delta+0.2,verosimilitud2(p.exito-delta-0.05)),
                 #               c(p.exito+delta+0.2,max(verosimilitud2(ps))+25),
                 #               c(p.exito+delta,max(verosimilitud2(ps))+25)), col=rgb(1, 0, 0, 0.3), border = NA)
-                title(main = bquote("From 10000 samples on" ~ .(long.fuera) ~ hat(pi)[n]%notin%(pi%+-%delta)),
+                title(main = bquote("From 10000 samples on" ~ .(long.fuera) ~ hat(pi)[n]%notin%(pi[0]%+-%delta)),
                       xlab = bquote(pi),
                       col.main = "steelblue2", cex.main = 2, cex.lab = 2)
                 title(ylab = bquote("ℓ(" ~ pi ~ "|" ~ bold(X) ~ ")"),
@@ -221,13 +221,13 @@ shinyServer(function(input, output) {
                        col = "brown2",
                        lwd = 3)
                 legend("topleft", 
-                       legend=sapply(c(bquote(pi), 
+                       legend=sapply(c(bquote(pi[0]), 
                                        bquote(hat(pi)[n] ~ "=" ~ 1 ~ "/" ~ "(" ~ bar(X)[n] ~ "+" ~ 1 ~ ")"), 
-                                       expression(paste(pi %+-% delta)),
+                                       expression(paste(pi[0] %+-% delta)),
                                        bquote("ℓ(" ~ pi ~ "|" ~ bold(X) ~ ")")), as.expression),
                        col=c("steelblue2", "darkorchid3", "brown2", "black"), lty = c(rep(3,3),1), lwd = 3, 
                        inset = c(1,0), xpd = TRUE, bty = "n", cex = 2, y.intersp = 1.2)
-                par(mar=c(5,8.3,3,23.5))
+                par(mar=c(5,8.3,3,24))
                 prob <- barplot(c(prob1, prob2),
                                 ylim = c(0,1.15),
                                 col = c(rgb(0, 1, 0, 0.3), rgb(1, 0, 0, 0.3)),
@@ -244,8 +244,8 @@ shinyServer(function(input, output) {
                   }
                 }
                 #title(main = bquote(n == .(n)), cex.main = 2, col.main = "steelblue2")
-                legend("topleft", sapply(c(bquote("Estimated P(" ~ "|" ~ hat(pi)[n] ~ "-" ~ pi ~ "|" ~ "<" ~ delta ~ ")"), 
-                                           bquote("Estimated P(" ~ "|" ~ hat(pi)[n] ~ "-" ~ pi ~ "|" ~ "\u2265" ~ delta ~ ")")),
+                legend("topleft", sapply(c(bquote("Estimated P(" ~ "|" ~ hat(pi)[n] ~ "-" ~ pi[0] ~ "|" ~ "<" ~ delta ~ ")"), 
+                                           bquote("Estimated P(" ~ "|" ~ hat(pi)[n] ~ "-" ~ pi[0] ~ "|" ~ "\u2265" ~ delta ~ ")")),
                                          as.expression), pch = 15, col = c(rgb(0, 1, 0, 0.3), rgb(1, 0, 0, 0.3)), inset=c(1,0), 
                        xpd=TRUE, bty="n", cex = 2, y.intersp = 1.5)
                 text(x = prob, y = c(prob1, prob2), pos = 3, cex = 2,
@@ -266,7 +266,7 @@ shinyServer(function(input, output) {
                 }
               }
                 #verosimilitud1 <- function(ps) n*log(ps) + sum(muestras[fuera[1], ])*log(1-ps)
-                par(mar=c(5,8.3,3,23.5))
+                par(mar=c(5,8.3,3,24))
                 plot(ps, verosimilitud1(ps), type = "l", 
                      xaxt = "n", yaxt = "n",xlab = "", ylab = "", lwd = 3)
                 # curve(verosimilitud1,
@@ -306,7 +306,7 @@ shinyServer(function(input, output) {
                 #               c(p.exito+delta,verosimilitud1(p.exito-delta-0.05)),
                 #               c(p.exito+delta,max(verosimilitud1(ps))+25),
                 #               c(p.exito-delta,max(verosimilitud1(ps))+25)), col=rgb(0, 1, 0, 0.3), border = NA)
-                title(main = bquote("From 10000 samples on" ~ .(long.dentro) ~ hat(pi)[n]%in%(pi%+-%delta)),
+                title(main = bquote("From 10000 samples on" ~ .(long.dentro) ~ hat(pi)[n]%in%(pi[0]%+-%delta)),
                       xlab = bquote(pi),
                       col.main = "steelblue2",
                       cex.main = 2, cex.lab = 2)
@@ -321,9 +321,9 @@ shinyServer(function(input, output) {
                        col = "brown2",
                        lwd = 3)
                 legend("topleft", 
-                       legend=sapply(c(bquote(pi), 
+                       legend=sapply(c(bquote(pi[0]), 
                                        bquote(hat(pi)[n] ~ "=" ~ 1 ~ "/" ~ "(" ~ bar(X)[n] ~ "+" ~ 1 ~ ")"), 
-                                       expression(paste(pi %+-% delta)),
+                                       expression(paste(pi[0] %+-% delta)),
                                        bquote("ℓ(" ~ pi ~ "|" ~ bold(X) ~ ")")), as.expression),
                        col=c("steelblue2", "darkorchid3", "brown2", "black"), lty = c(rep(3,3),1), lwd = 3, 
                        inset = c(1,0), xpd = TRUE, bty = "n", cex = 2, y.intersp = 1.2)
@@ -340,7 +340,7 @@ shinyServer(function(input, output) {
                   }
                 }
                 #verosimilitud2 <- function(ps) n*log(ps) + sum(muestras[fuera[1], ])*log(1-ps)
-                par(mar=c(5,8.3,3,23.5))
+                par(mar=c(5,8.3,3,24))
                 plot(ps, verosimilitud2(ps), type = "l", 
                      xaxt = "n", yaxt = "n",xlab = "", ylab = "", lwd = 3)
                 # curve(verosimilitud2,
@@ -388,7 +388,7 @@ shinyServer(function(input, output) {
                 #               c(p.exito+delta+0.2,verosimilitud2(p.exito-delta-0.05)),
                 #               c(p.exito+delta+0.2,max(verosimilitud2(ps))+25),
                 #               c(p.exito+delta,max(verosimilitud2(ps))+25)), col=rgb(1, 0, 0, 0.3), border = NA)
-                title(main = bquote("From 10000 samples on" ~ .(long.fuera) ~ hat(pi)[n]%notin%(pi%+-%delta)),
+                title(main = bquote("From 10000 samples on" ~ .(long.fuera) ~ hat(pi)[n]%notin%(pi[0]%+-%delta)),
                       xlab = bquote(pi),
                       col.main = "steelblue2", cex.main = 2, cex.lab = 2)
                 title(ylab = bquote("ℓ(" ~ pi ~ "|" ~ bold(X) ~ ")"),
@@ -402,13 +402,13 @@ shinyServer(function(input, output) {
                        col = "brown2",
                        lwd = 3)
                 legend("topleft", 
-                       legend=sapply(c(bquote(pi), 
+                       legend=sapply(c(bquote(pi[0]), 
                                        bquote(hat(pi)[n] ~ "=" ~ 1 ~ "/" ~ "(" ~ bar(X)[n] ~ "+" ~ 1 ~ ")"), 
-                                       expression(paste(pi %+-% delta)),
+                                       expression(paste(pi[0] %+-% delta)),
                                        bquote("ℓ(" ~ pi ~ "|" ~ bold(X) ~ ")")), as.expression),
                        col=c("steelblue2", "darkorchid3", "brown2", "black"), lty = c(rep(3,3),1), lwd = 3, 
                        inset = c(1,0), xpd = TRUE, bty = "n", cex = 2, y.intersp = 1.2)
-                par(mar=c(5,8.3,3,23.5))
+                par(mar=c(5,8.3,3,24))
                 prob <- barplot(c(prob1, prob2),
                                 ylim = c(0,1.15),
                                 col = c(rgb(0, 1, 0, 0.3), rgb(1, 0, 0, 0.3)),
@@ -425,8 +425,8 @@ shinyServer(function(input, output) {
                   }
                 }
                 #title(main = bquote(n == .(n)), cex.main = 2, col.main = "steelblue2")
-                legend("topleft", sapply(c(bquote("Estimated P(" ~ "|" ~ hat(pi)[n] ~ "-" ~ pi ~ "|" ~ "<" ~ delta ~ ")"), 
-                                           bquote("Estimated P(" ~ "|" ~ hat(pi)[n] ~ "-" ~ pi ~ "|" ~ "\u2265" ~ delta ~ ")")),
+                legend("topleft", sapply(c(bquote("Estimated P(" ~ "|" ~ hat(pi)[n] ~ "-" ~ pi[0] ~ "|" ~ "<" ~ delta ~ ")"), 
+                                           bquote("Estimated P(" ~ "|" ~ hat(pi)[n] ~ "-" ~ pi[0] ~ "|" ~ "\u2265" ~ delta ~ ")")),
                                          as.expression), pch = 15, col = c(rgb(0, 1, 0, 0.3), rgb(1, 0, 0, 0.3)), inset=c(1,0), 
                        xpd=TRUE, bty="n", cex = 2, y.intersp = 1.5)
                 text(x = prob, y = c(prob1, prob2), pos = 3, cex = 2,
@@ -447,7 +447,7 @@ shinyServer(function(input, output) {
                   }
                 }
                 #verosimilitud1 <- function(ps) n*log(ps) + sum(muestras[dentro[1], ])*log(1-ps)
-                par(mar=c(5,8.3,3,23.5))
+                par(mar=c(5,8.3,3,24))
                 plot(ps, verosimilitud1(ps), type = "l", 
                      xaxt = "n", yaxt = "n",xlab = "", ylab = "", lwd = 3)
                 # curve(verosimilitud1,
@@ -483,7 +483,7 @@ shinyServer(function(input, output) {
                               c(p.exito+delta,min(verosimilitud1(ps))-1000000),
                               c(p.exito+delta,max(verosimilitud1(ps))+1000000),
                               c(p.exito-delta,max(verosimilitud1(ps))+1000000)), col=rgb(0, 1, 0, 0.3), border = NA)
-                title(main = bquote("From 10000 samples on" ~ .(long.dentro) ~ hat(pi)[n]%in%(pi%+-%delta)),
+                title(main = bquote("From 10000 samples on" ~ .(long.dentro) ~ hat(pi)[n]%in%(pi[0]%+-%delta)),
                       xlab = bquote(pi),
                       col.main = "steelblue2",
                       cex.main = 2, cex.lab = 2)
@@ -498,9 +498,9 @@ shinyServer(function(input, output) {
                        col = "brown2",
                        lwd = 3)
                 legend("topleft", 
-                       legend=sapply(c(bquote(pi), 
+                       legend=sapply(c(bquote(pi[0]), 
                                        bquote(hat(pi)[n] ~ "=" ~ 1 ~ "/" ~ "(" ~ bar(X)[n] ~ "+" ~ 1 ~ ")"), 
-                                       expression(paste(pi %+-% delta)),
+                                       expression(paste(pi[0] %+-% delta)),
                                        bquote("ℓ(" ~ pi ~ "|" ~ bold(X) ~ ")")), as.expression),
                        col=c("steelblue2", "darkorchid3", "brown2", "black"), lty = c(rep(3,3),1), lwd = 3, 
                        inset = c(1,0), xpd = TRUE, bty = "n", cex = 2, y.intersp = 1.2)
@@ -518,7 +518,7 @@ shinyServer(function(input, output) {
                   }
                 }
                 #verosimilitud2 <- function(ps) n*log(ps) + sum(muestras[fuera[1], ])*log(1-ps)
-                par(mar=c(5,8.3,3,23.5))
+                par(mar=c(5,8.3,3,24))
                 plot(ps, verosimilitud2(ps), type = "l", 
                      xaxt = "n", yaxt = "n",xlab = "", ylab = "", lwd = 3)
                 # curve(verosimilitud2,
@@ -558,7 +558,7 @@ shinyServer(function(input, output) {
                               c(p.exito+delta+1000000,min(verosimilitud2(ps))-1000000),
                               c(p.exito+delta+1000000,max(verosimilitud2(ps))+1000000),
                               c(p.exito+delta,max(verosimilitud2(ps))+1000000)), col=rgb(1, 0, 0, 0.3), border = NA)
-                title(main = bquote("From 10000 samples on" ~ .(long.fuera) ~ hat(pi)[n]%notin%(pi%+-%delta)),
+                title(main = bquote("From 10000 samples on" ~ .(long.fuera) ~ hat(pi)[n]%notin%(pi[0]%+-%delta)),
                       xlab = bquote(pi),
                       col.main = "steelblue2", cex.main = 2, cex.lab = 2)
                 title(ylab = bquote("ℓ(" ~ pi ~ "|" ~ bold(X) ~ ")"),
@@ -572,14 +572,14 @@ shinyServer(function(input, output) {
                        col = "brown2",
                        lwd = 3)
                 legend("topleft", 
-                       legend=sapply(c(bquote(pi), 
+                       legend=sapply(c(bquote(pi[0]), 
                                        bquote(hat(pi)[n] ~ "=" ~ 1 ~ "/" ~ "(" ~ bar(X)[n] ~ "+" ~ 1 ~ ")"), 
-                                       expression(paste(pi %+-% delta)),
+                                       expression(paste(pi[0] %+-% delta)),
                                        bquote("ℓ(" ~ pi ~ "|" ~ bold(X) ~ ")")), as.expression),
                        col=c("steelblue2", "darkorchid3", "brown2", "black"), lty = c(rep(3,3),1), lwd = 3, 
                        inset = c(1,0), xpd = TRUE, bty = "n", cex = 2, y.intersp = 1.2)
                 
-                par(mar=c(5,8.3,3,23.5))
+                par(mar=c(5,8.3,3,24))
                 prob <- barplot(c(prob1, prob2),
                                 ylim = c(0,1.15),
                                 col = c(rgb(0, 1, 0, 0.3), rgb(1, 0, 0, 0.3)),
@@ -596,8 +596,8 @@ shinyServer(function(input, output) {
                   }
                 }
                 #title(main = bquote(n == .(n)), cex.main = 2, col.main = "steelblue2")
-                legend("topleft", sapply(c(bquote("Estimated P(" ~ "|" ~ hat(pi)[n] ~ "-" ~ pi ~ "|" ~ "<" ~ delta ~ ")"), 
-                                           bquote("Estimated P(" ~ "|" ~ hat(pi)[n] ~ "-" ~ pi ~ "|" ~ "\u2265" ~ delta ~ ")")),
+                legend("topleft", sapply(c(bquote("Estimated P(" ~ "|" ~ hat(pi)[n] ~ "-" ~ pi[0] ~ "|" ~ "<" ~ delta ~ ")"), 
+                                           bquote("Estimated P(" ~ "|" ~ hat(pi)[n] ~ "-" ~ pi[0] ~ "|" ~ "\u2265" ~ delta ~ ")")),
                                          as.expression), pch = 15, col = c(rgb(0, 1, 0, 0.3), rgb(1, 0, 0, 0.3)), inset=c(1,0), 
                        xpd=TRUE, bty="n", cex = 2, y.intersp = 1.5)
                 text(x = prob, y = c(prob1, prob2), pos = 3, cex = 2,
@@ -656,7 +656,7 @@ shinyServer(function(input, output) {
                 # verosimilitud1 <- function(lambdas){
                 #     -n*lambdas + sum(muestras[dentro[1], ])*log(lambdas) - sum(log(factorial(muestras[dentro[1], ])))
                 # }
-                par(mar=c(5,8.3,3,23.5))
+                par(mar=c(5,8.3,3,24))
                 plot(lambdas, verosimilitud1(lambdas), type = "l", 
                      xaxt = "n", yaxt = "n",xlab = "", ylab = "", lwd = 3)
                 # curve(verosimilitud1,
@@ -696,7 +696,7 @@ shinyServer(function(input, output) {
                 #               c(lambda+delta,verosimilitud1(1.4)),
                 #               c(lambda+delta,max(verosimilitud1(lambdas))+25),
                 #               c(lambda-delta,max(verosimilitud1(lambdas))+25)), col=rgb(0, 1, 0, 0.3), border = NA)
-                title(main = bquote("From 10000 samples on" ~ .(long.dentro) ~ hat(lambda)[n]%in%(lambda%+-%delta)),
+                title(main = bquote("From 10000 samples on" ~ .(long.dentro) ~ hat(lambda)[n]%in%(lambda[0]%+-%delta)),
                       xlab = bquote(lambda),
                       col.main = "steelblue2",
                       cex.main = 2, cex.lab = 2)
@@ -711,9 +711,9 @@ shinyServer(function(input, output) {
                        col = "brown2",
                        lwd = 3)
                 legend("topleft", 
-                       legend=sapply(c(bquote(lambda), 
+                       legend=sapply(c(bquote(lambda[0]), 
                                        bquote(hat(lambda)[n] ~ "=" ~ bar(X)[n]), 
-                                       expression(paste(lambda %+-% delta)),
+                                       expression(paste(lambda[0] %+-% delta)),
                                        bquote("ℓ(" ~ lambda ~ "|" ~ bold(X) ~ ")")), as.expression),
                        col=c("steelblue2", "darkorchid3", "brown2", "black"), lty = c(rep(3,3),1), lwd = 3, 
                        inset = c(1,0), xpd = TRUE, bty = "n", cex = 2, y.intersp = 1.2)
@@ -740,7 +740,7 @@ shinyServer(function(input, output) {
                 # verosimilitud2 <- function(lambdas){
                 #     -n*lambdas + sum(muestras[dentro[1], ])*log(lambdas) - sum(log(factorial(muestras[dentro[1], ])))
                 # }
-                par(mar=c(5,8.3,3,23.5))
+                par(mar=c(5,8.3,3,24))
                 plot(lambdas, verosimilitud2(lambdas), type = "l", 
                      xaxt = "n", yaxt = "n",xlab = "", ylab = "", lwd = 3)
                 # curve(verosimilitud2,
@@ -788,7 +788,7 @@ shinyServer(function(input, output) {
                 #               c(lambda+delta+0.7,verosimilitud2(1.4)),
                 #               c(lambda+delta+0.7,max(verosimilitud2(lambdas))+25),
                 #               c(lambda+delta,max(verosimilitud2(lambdas))+25)), col=rgb(1, 0, 0, 0.3), border = NA)
-                title(main = bquote("From 10000 samples on" ~ .(long.fuera) ~ hat(lambda)[n]%notin%(lambda%+-%delta)),
+                title(main = bquote("From 10000 samples on" ~ .(long.fuera) ~ hat(lambda)[n]%notin%(lambda[0]%+-%delta)),
                       xlab = bquote(lambda),
                       col.main = "steelblue2", cex.main = 2, cex.lab = 2)
                 title(ylab = bquote("ℓ(" ~ lambda ~ "|" ~ bold(X) ~ ")"),
@@ -802,14 +802,14 @@ shinyServer(function(input, output) {
                        col = "brown2",
                        lwd = 3)
                 legend("topleft", 
-                       legend=sapply(c(bquote(lambda), 
+                       legend=sapply(c(bquote(lambda[0]), 
                                        bquote(hat(lambda)[n] ~ "=" ~ bar(X)[n]), 
-                                       expression(paste(lambda %+-% delta)),
+                                       expression(paste(lambda[0] %+-% delta)),
                                        bquote("ℓ(" ~ lambda ~ "|" ~ bold(X) ~ ")")), as.expression),
                        col=c("steelblue2", "darkorchid3", "brown2", "black"), lty = c(rep(3,3),1), lwd = 3, 
                        inset = c(1,0), xpd = TRUE, bty = "n", cex = 2, y.intersp = 1.2)
                 
-                par(mar=c(5,8.3,3,23.5))
+                par(mar=c(5,8.3,3,24))
                 prob <- barplot(c(prob1, prob2),
                                 ylim = c(0,1.15),
                                 col = c(rgb(0, 1, 0, 0.3), rgb(1, 0, 0, 0.3)),
@@ -826,8 +826,8 @@ shinyServer(function(input, output) {
                   }
                 }
                 #title(main = bquote(n == .(n)), cex.main = 2, col.main = "steelblue2")
-                legend("topleft", sapply(c(bquote("Estimated P(" ~ "|" ~ hat(lambda)[n] ~ "-" ~ lambda ~ "|" ~ "<" ~ delta ~ ")"), 
-                                           bquote("Estimated P(" ~ "|" ~ hat(lambda)[n] ~ "-" ~ lambda ~ "|" ~ "\u2265" ~ delta ~ ")")),
+                legend("topleft", sapply(c(bquote("Estimated P(" ~ "|" ~ hat(lambda)[n] ~ "-" ~ lambda[0] ~ "|" ~ "<" ~ delta ~ ")"), 
+                                           bquote("Estimated P(" ~ "|" ~ hat(lambda)[n] ~ "-" ~ lambda[0] ~ "|" ~ "\u2265" ~ delta ~ ")")),
                                          as.expression), pch = 15, col = c(rgb(0, 1, 0, 0.3), rgb(1, 0, 0, 0.3)), inset=c(1,0), 
                        xpd=TRUE, bty="n", cex = 2, y.intersp = 1.5)
                 text(x = prob, y = c(prob1, prob2), pos = 3, cex = 2,
@@ -858,7 +858,7 @@ shinyServer(function(input, output) {
                 # verosimilitud1 <- function(lambdas){
                 #     -n*lambdas + sum(muestras[fuera[1], ])*log(lambdas) - sum(log(factorial(muestras[fuera[1], ])))
                 # }
-                par(mar=c(5,8.3,3,23.5))
+                par(mar=c(5,8.3,3,24))
                 plot(lambdas, verosimilitud1(lambdas), type = "l", 
                      xaxt = "n", yaxt = "n",xlab = "", ylab = "", lwd = 3)
                 # curve(verosimilitud1,
@@ -898,7 +898,7 @@ shinyServer(function(input, output) {
                 #               c(lambda+delta,verosimilitud1(1.4)),
                 #               c(lambda+delta,max(verosimilitud1(lambdas))+25),
                 #               c(lambda-delta,max(verosimilitud1(lambdas))+25)), col=rgb(0, 1, 0, 0.3), border = NA)
-                title(main = bquote("From 10000 samples on" ~ .(long.dentro) ~ hat(lambda)[n]%in%(lambda%+-%delta)),
+                title(main = bquote("From 10000 samples on" ~ .(long.dentro) ~ hat(lambda)[n]%in%(lambda[0]%+-%delta)),
                       xlab = bquote(lambda),
                       col.main = "steelblue2",
                       cex.main = 2, cex.lab = 2)
@@ -913,9 +913,9 @@ shinyServer(function(input, output) {
                        col = "brown2",
                        lwd = 3)
                 legend("topleft", 
-                       legend=sapply(c(bquote(lambda), 
+                       legend=sapply(c(bquote(lambda[0]), 
                                        bquote(hat(lambda)[n] ~ "=" ~ bar(X)[n]), 
-                                       expression(paste(lambda %+-% delta)),
+                                       expression(paste(lambda[0] %+-% delta)),
                                        bquote("ℓ(" ~ lambda ~ "|" ~ bold(X) ~ ")")), as.expression),
                        col=c("steelblue2", "darkorchid3", "brown2", "black"), lty = c(rep(3,3),1), lwd = 3, 
                        inset = c(1,0), xpd = TRUE, bty = "n", cex = 2, y.intersp = 1.2)
@@ -942,7 +942,7 @@ shinyServer(function(input, output) {
                 # verosimilitud2 <- function(lambdas){
                 #     -n*lambdas + sum(muestras[fuera[1], ])*log(lambdas) - sum(log(factorial(muestras[fuera[1], ])))
                 # }
-                par(mar=c(5,8.3,3,23.5))
+                par(mar=c(5,8.3,3,24))
                 plot(lambdas, verosimilitud2(lambdas), type = "l", 
                      xaxt = "n", yaxt = "n",xlab = "", ylab = "", lwd = 3)
                 # curve(verosimilitud2,
@@ -990,7 +990,7 @@ shinyServer(function(input, output) {
                 #               c(lambda+delta+0.7,verosimilitud2(1.4)),
                 #               c(lambda+delta+0.7,max(verosimilitud2(lambdas))+25),
                 #               c(lambda+delta,max(verosimilitud2(lambdas))+25)), col=rgb(1, 0, 0, 0.3), border = NA)
-                title(main = bquote("From 10000 samples on" ~ .(long.fuera) ~ hat(lambda)[n]%notin%(lambda%+-%delta)),
+                title(main = bquote("From 10000 samples on" ~ .(long.fuera) ~ hat(lambda)[n]%notin%(lambda[0]%+-%delta)),
                       xlab = bquote(lambda),
                       col.main = "steelblue2", cex.main = 2, cex.lab = 2)
                 title(ylab = bquote("ℓ(" ~ lambda ~ "|" ~ bold(X) ~ ")"),
@@ -1004,14 +1004,14 @@ shinyServer(function(input, output) {
                        col = "brown2",
                        lwd = 3)
                 legend("topleft", 
-                       legend=sapply(c(bquote(lambda), 
+                       legend=sapply(c(bquote(lambda[0]), 
                                        bquote(hat(lambda)[n] ~ "=" ~ bar(X)[n]), 
-                                       expression(paste(lambda %+-% delta)),
+                                       expression(paste(lambda[0] %+-% delta)),
                                        bquote("ℓ(" ~ lambda ~ "|" ~ bold(X) ~ ")")), as.expression),
                        col=c("steelblue2", "darkorchid3", "brown2", "black"), lty = c(rep(3,3),1), lwd = 3, 
                        inset = c(1,0), xpd = TRUE, bty = "n", cex = 2, y.intersp = 1.2)
                 
-                par(mar=c(5,8.3,3,23.5))
+                par(mar=c(5,8.3,3,24))
                 prob <- barplot(c(prob1, prob2),
                                 ylim = c(0,1.15),
                                 col = c(rgb(0, 1, 0, 0.3), rgb(1, 0, 0, 0.3)),
@@ -1028,8 +1028,8 @@ shinyServer(function(input, output) {
                   }
                 }
                 #title(main = bquote(n == .(n)), cex.main = 2, col.main = "steelblue2")
-                legend("topleft", sapply(c(bquote("Estimated P(" ~ "|" ~ hat(lambda)[n] ~ "-" ~ lambda ~ "|" ~ "<" ~ delta ~ ")"), 
-                                           bquote("Estimated P(" ~ "|" ~ hat(lambda)[n] ~ "-" ~ lambda ~ "|" ~ "\u2265" ~ delta ~ ")")),
+                legend("topleft", sapply(c(bquote("Estimated P(" ~ "|" ~ hat(lambda)[n] ~ "-" ~ lambda[0] ~ "|" ~ "<" ~ delta ~ ")"), 
+                                           bquote("Estimated P(" ~ "|" ~ hat(lambda)[n] ~ "-" ~ lambda[0] ~ "|" ~ "\u2265" ~ delta ~ ")")),
                                          as.expression), pch = 15, col = c(rgb(0, 1, 0, 0.3), rgb(1, 0, 0, 0.3)), inset=c(1,0), 
                        xpd=TRUE, bty="n", cex = 2, y.intersp = 1.5)
                 text(x = prob, y = c(prob1, prob2), pos = 3, cex = 2,
@@ -1061,7 +1061,7 @@ shinyServer(function(input, output) {
                 #     -n*lambdas + sum(muestras[dentro[1], ])*log(lambdas) - sum(log(factorial(muestras[dentro[1], ])))
                 # }
                 
-                par(mar=c(5,8.3,3,23.5))
+                par(mar=c(5,8.3,3,24))
                 plot(lambdas, verosimilitud1(lambdas), type = "l", 
                      xaxt = "n", yaxt = "n",xlab = "", ylab = "", lwd = 3)
                 #curve(verosimilitud1,
@@ -1097,7 +1097,7 @@ shinyServer(function(input, output) {
                               c(lambda+delta,min(verosimilitud1(lambdas))-1000000),
                               c(lambda+delta,max(verosimilitud1(lambdas))+1000000),
                               c(lambda-delta,max(verosimilitud1(lambdas))+1000000)), col=rgb(0, 1, 0, 0.3), border = NA)
-                title(main = bquote("From 10000 samples on" ~ .(long.dentro) ~ hat(lambda)[n]%in%(lambda%+-%delta)),
+                title(main = bquote("From 10000 samples on" ~ .(long.dentro) ~ hat(lambda)[n]%in%(lambda[0]%+-%delta)),
                       xlab = bquote(lambda), 
                       col.main = "steelblue2",
                       cex.main = 2, cex.lab = 2)
@@ -1112,9 +1112,9 @@ shinyServer(function(input, output) {
                        col = "brown2",
                        lwd = 3)
                 legend("topleft", 
-                       legend=sapply(c(bquote(lambda), 
+                       legend=sapply(c(bquote(lambda[0]), 
                                        bquote(hat(lambda)[n] ~ "=" ~ bar(X)[n]), 
-                                       expression(paste(lambda %+-% delta)),
+                                       expression(paste(lambda[0] %+-% delta)),
                                        bquote("ℓ(" ~ lambda ~ "|" ~ bold(X) ~ ")")), as.expression),
                        col=c("steelblue2", "darkorchid3", "brown2", "black"), lty = c(rep(3,3),1), lwd = 3, 
                        inset = c(1,0), xpd = TRUE, bty = "n", cex = 2, y.intersp = 1.2)
@@ -1141,7 +1141,7 @@ shinyServer(function(input, output) {
                 # verosimilitud2 <- function(lambdas){
                 #     -n*lambdas + sum(muestras[fuera[1], ])*log(lambdas) - sum(log(factorial(muestras[fuera[1], ])))
                 # }
-                par(mar=c(5,8.3,3,23.5))
+                par(mar=c(5,8.3,3,24))
                 plot(lambdas, verosimilitud2(lambdas), type = "l", 
                      xaxt = "n", yaxt = "n",xlab = "", ylab = "", lwd = 3)
                 # curve(verosimilitud2,
@@ -1181,7 +1181,7 @@ shinyServer(function(input, output) {
                               c(lambda+delta+1000000,min(verosimilitud2(lambdas))-1000000),
                               c(lambda+delta+1000000,max(verosimilitud2(lambdas))+1000000),
                               c(lambda+delta,max(verosimilitud2(lambdas))+1000000)), col=rgb(1, 0, 0, 0.3), border = NA)
-                title(main = bquote("From 10000 samples on" ~ .(long.fuera) ~ hat(lambda)[n]%notin%(lambda%+-%delta)),
+                title(main = bquote("From 10000 samples on" ~ .(long.fuera) ~ hat(lambda)[n]%notin%(lambda[0]%+-%delta)),
                       xlab = bquote(lambda),
                       col.main = "steelblue2", cex.main = 2, cex.lab = 2)
                 title(ylab = bquote("ℓ(" ~ lambda ~ "|" ~ bold(X) ~ ")"),
@@ -1195,14 +1195,14 @@ shinyServer(function(input, output) {
                        col = "brown2",
                        lwd = 3)
                 legend("topleft", 
-                       legend=sapply(c(bquote(lambda), 
+                       legend=sapply(c(bquote(lambda[0]), 
                                        bquote(hat(lambda)[n] ~ "=" ~ bar(X)[n]), 
-                                       expression(paste(lambda %+-% delta)),
+                                       expression(paste(lambda[0] %+-% delta)),
                                        bquote("ℓ(" ~ lambda ~ "|" ~ bold(X) ~ ")")), as.expression),
                        col=c("steelblue2", "darkorchid3", "brown2", "black"), lty = c(rep(3,3),1), lwd = 3, 
                        inset = c(1,0), xpd = TRUE, bty = "n", cex = 2, y.intersp = 1.2)
                 
-                par(mar=c(5,8.3,3,23.5))
+                par(mar=c(5,8.3,3,24))
                 prob <- barplot(c(prob1, prob2),
                                 ylim = c(0,1.15),
                                 col = c(rgb(0, 1, 0, 0.3), rgb(1, 0, 0, 0.3)),
@@ -1219,8 +1219,8 @@ shinyServer(function(input, output) {
                   }
                 }
                 #title(main = bquote(n == .(n)), cex.main = 2, col.main = "steelblue2")
-                legend("topleft", sapply(c(bquote("Estimated P(" ~ "|" ~ hat(lambda)[n] ~ "-" ~ lambda ~ "|" ~ "<" ~ delta ~ ")"), 
-                                           bquote("Estimated P(" ~ "|" ~ hat(lambda)[n] ~ "-" ~ lambda ~ "|" ~ "\u2265" ~ delta ~ ")")),
+                legend("topleft", sapply(c(bquote("Estimated P(" ~ "|" ~ hat(lambda)[n] ~ "-" ~ lambda[0] ~ "|" ~ "<" ~ delta ~ ")"), 
+                                           bquote("Estimated P(" ~ "|" ~ hat(lambda)[n] ~ "-" ~ lambda[0] ~ "|" ~ "\u2265" ~ delta ~ ")")),
                                          as.expression), pch = 15, col = c(rgb(0, 1, 0, 0.3), rgb(1, 0, 0, 0.3)), inset=c(1,0), 
                        xpd=TRUE, bty="n", cex = 2, y.intersp = 1.5)
                 text(x = prob, y = c(prob1, prob2), pos = 3, cex = 2,
@@ -1270,7 +1270,7 @@ shinyServer(function(input, output) {
                 }
               }
               #verosimilitud1 <- function(thetas) n*log(thetas) - thetas*sum(muestras[dentro[1], ])
-                par(mar=c(5,8.3,3,23.5))
+                par(mar=c(5,8.3,3,24))
                 plot(thetas, verosimilitud1(thetas), type = "l", 
                      xaxt = "n", yaxt = "n",xlab = "", ylab = "", lwd = 3)
                 # curve(verosimilitud1,
@@ -1310,7 +1310,7 @@ shinyServer(function(input, output) {
                 #               c(theta+delta,verosimilitud1(theta-delta-0.7)),
                 #               c(theta+delta,max(verosimilitud1(thetas))+25),
                 #               c(theta-delta,max(verosimilitud1(thetas))+25)), col=rgb(0, 1, 0, 0.3), border = NA)
-                title(main = bquote("From 10000 samples on" ~ .(long.dentro) ~ hat(phi1)[n]%in%(phi1%+-%delta)),
+                title(main = bquote("From 10000 samples on" ~ .(long.dentro) ~ hat(phi1)[n]%in%(phi1[0]%+-%delta)),
                       xlab = bquote(phi1),
                       col.main = "steelblue2",
                       cex.main = 2, cex.lab = 2)
@@ -1325,9 +1325,9 @@ shinyServer(function(input, output) {
                        col = "brown2",
                        lwd = 3)
                 legend("topleft", 
-                       legend=sapply(c(bquote(phi1), 
+                       legend=sapply(c(bquote(phi1[0]), 
                                        bquote(hat(phi1)[n] ~ "=" ~ 1 ~ "/" ~ bar(X)[n]), 
-                                       expression(paste(phi1 %+-% delta)),
+                                       expression(paste(phi1[0] %+-% delta)),
                                        bquote("ℓ(" ~ phi1 ~ "|" ~ bold(X) ~ ")")), as.expression),
                        col=c("steelblue2", "darkorchid3", "brown2", "black"), lty = c(rep(3,3),1), lwd = 3, 
                        inset = c(1,0), xpd = TRUE, bty = "n", cex = 2, y.intersp = 1.2)
@@ -1344,7 +1344,7 @@ shinyServer(function(input, output) {
                   }
                 }
                 #verosimilitud2 <- function(thetas) n*log(thetas) - thetas*sum(muestras[dentro[1], ])
-                par(mar=c(5,8.3,3,23.5))
+                par(mar=c(5,8.3,3,24))
                 plot(thetas, verosimilitud2(thetas), type = "l", 
                      xaxt = "n", yaxt = "n",xlab = "", ylab = "", lwd = 3)
                 # curve(verosimilitud2,
@@ -1392,7 +1392,7 @@ shinyServer(function(input, output) {
                 #               c(theta+delta+0.7,verosimilitud2(theta-delta-0.7)),
                 #               c(theta+delta+0.7,max(verosimilitud2(thetas))+25),
                 #               c(theta+delta,max(verosimilitud2(thetas))+25)), col=rgb(1, 0, 0, 0.3), border = NA)
-                title(main = bquote("From 10000 samples on" ~ .(long.fuera) ~ hat(phi1)[n]%notin%(phi1%+-%delta)),
+                title(main = bquote("From 10000 samples on" ~ .(long.fuera) ~ hat(phi1)[n]%notin%(phi1[0]%+-%delta)),
                       xlab = bquote(phi1),
                       col.main = "steelblue2", cex.main = 2, cex.lab = 2)
                 title(ylab = bquote("ℓ(" ~ phi1 ~ "|" ~ bold(X) ~ ")"),
@@ -1406,14 +1406,14 @@ shinyServer(function(input, output) {
                        col = "brown2",
                        lwd = 3)
                 legend("topleft", 
-                       legend=sapply(c(bquote(phi1), 
+                       legend=sapply(c(bquote(phi1[0]), 
                                        bquote(hat(phi1)[n] ~ "=" ~ 1 ~ "/" ~ bar(X)[n]), 
-                                       expression(paste(phi1 %+-% delta)),
+                                       expression(paste(phi1[0] %+-% delta)),
                                        bquote("ℓ(" ~ phi1 ~ "|" ~ bold(X) ~ ")")), as.expression),
                        col=c("steelblue2", "darkorchid3", "brown2", "black"), lty = c(rep(3,3),1), lwd = 3, 
                        inset = c(1,0), xpd = TRUE, bty = "n", cex = 2, y.intersp = 1.2)
                 
-                par(mar=c(5,8.3,3,23.5))
+                par(mar=c(5,8.3,3,24))
                 prob <- barplot(c(prob1, prob2),
                                 ylim = c(0,1.15),
                                 col = c(rgb(0, 1, 0, 0.3), rgb(1, 0, 0, 0.3)),
@@ -1430,8 +1430,8 @@ shinyServer(function(input, output) {
                   }
                 }
                 #title(main = bquote(n == .(n)), cex.main = 2, col.main = "steelblue2")
-                legend("topleft", sapply(c(bquote("Estimated P(" ~ "|" ~ hat(phi1)[n] ~ "-" ~ phi1 ~ "|" ~ "<" ~ delta ~ ")"), 
-                                           bquote("Estimated P(" ~ "|" ~ hat(phi1)[n] ~ "-" ~ phi1 ~ "|" ~ "\u2265" ~ delta ~ ")")),
+                legend("topleft", sapply(c(bquote("Estimated P(" ~ "|" ~ hat(phi1)[n] ~ "-" ~ phi1[0] ~ "|" ~ "<" ~ delta ~ ")"), 
+                                           bquote("Estimated P(" ~ "|" ~ hat(phi1)[n] ~ "-" ~ phi1[0] ~ "|" ~ "\u2265" ~ delta ~ ")")),
                                          as.expression), pch = 15, col = c(rgb(0, 1, 0, 0.3), rgb(1, 0, 0, 0.3)), inset=c(1,0), 
                        xpd=TRUE, bty="n", cex = 2, y.intersp = 1.5)
                 text(x = prob, y = c(prob1, prob2), pos = 3, cex = 2,
@@ -1452,7 +1452,7 @@ shinyServer(function(input, output) {
                 }
               }
                 #verosimilitud1 <- function(thetas) n*log(thetas) - thetas*sum(muestras[fuera[1], ])
-                par(mar=c(5,8.3,3,23.5))
+                par(mar=c(5,8.3,3,24))
                 plot(thetas, verosimilitud1(thetas), type = "l", 
                      xaxt = "n", yaxt = "n",xlab = "", ylab = "", lwd = 3)
                 # curve(verosimilitud1,
@@ -1492,7 +1492,7 @@ shinyServer(function(input, output) {
                 #               c(theta+delta,verosimilitud1(theta-delta-0.7)),
                 #               c(theta+delta,max(verosimilitud1(thetas))+25),
                 #               c(theta-delta,max(verosimilitud1(thetas))+25)), col=rgb(0, 1, 0, 0.3), border = NA)
-                title(main = bquote("From 10000 samples on" ~ .(long.dentro) ~ hat(phi1)[n]%in%(phi1%+-%delta)),
+                title(main = bquote("From 10000 samples on" ~ .(long.dentro) ~ hat(phi1)[n]%in%(phi1[0]%+-%delta)),
                       xlab = bquote(phi1),
                       col.main = "steelblue2",
                       cex.main = 2, cex.lab = 2)
@@ -1507,9 +1507,9 @@ shinyServer(function(input, output) {
                        col = "brown2",
                        lwd = 3)
                 legend("topleft", 
-                       legend=sapply(c(bquote(phi1), 
+                       legend=sapply(c(bquote(phi1[0]), 
                                        bquote(hat(phi1)[n] ~ "=" ~ 1 ~ "/" ~ bar(X)[n]), 
-                                       expression(paste(phi1 %+-% delta)),
+                                       expression(paste(phi1[0] %+-% delta)),
                                        bquote("ℓ(" ~ phi1 ~ "|" ~ bold(X) ~ ")")), as.expression),
                        col=c("steelblue2", "darkorchid3", "brown2", "black"), lty = c(rep(3,3),1), lwd = 3, 
                        inset = c(1,0), xpd = TRUE, bty = "n", cex = 2, y.intersp = 1.2)
@@ -1526,7 +1526,7 @@ shinyServer(function(input, output) {
                   }
                 }
                 #verosimilitud2 <- function(thetas) n*log(thetas) - thetas*sum(muestras[fuera[1], ])
-                par(mar=c(5,8.3,3,23.5))
+                par(mar=c(5,8.3,3,24))
                 plot(thetas, verosimilitud2(thetas), type = "l", 
                      xaxt = "n", yaxt = "n",xlab = "", ylab = "", lwd = 3)
                 # curve(verosimilitud2,
@@ -1574,7 +1574,7 @@ shinyServer(function(input, output) {
                 #               c(theta+delta+0.7,verosimilitud2(theta-delta-0.7)),
                 #               c(theta+delta+0.7,max(verosimilitud2(thetas))+25),
                 #               c(theta+delta,max(verosimilitud2(thetas))+25)), col=rgb(1, 0, 0, 0.3), border = NA)
-                title(main = bquote("From 10000 samples on" ~ .(long.fuera) ~ hat(phi1)[n]%notin%(phi1%+-%delta)),
+                title(main = bquote("From 10000 samples on" ~ .(long.fuera) ~ hat(phi1)[n]%notin%(phi1[0]%+-%delta)),
                       xlab = bquote(phi1),
                       col.main = "steelblue2", cex.main = 2, cex.lab = 2)
                 title(ylab = bquote("ℓ(" ~ phi1 ~ "|" ~ bold(X) ~ ")"),
@@ -1588,14 +1588,14 @@ shinyServer(function(input, output) {
                        col = "brown2",
                        lwd = 3)
                 legend("topleft", 
-                       legend=sapply(c(bquote(phi1), 
+                       legend=sapply(c(bquote(phi1[0]), 
                                        bquote(hat(phi1)[n] ~ "=" ~ 1 ~ "/" ~ bar(X)[n]), 
-                                       expression(paste(phi1 %+-% delta)),
+                                       expression(paste(phi1[0] %+-% delta)),
                                        bquote("ℓ(" ~ phi1 ~ "|" ~ bold(X) ~ ")")), as.expression),
                        col=c("steelblue2", "darkorchid3", "brown2", "black"), lty = c(rep(3,3),1), lwd = 3, 
                        inset = c(1,0), xpd = TRUE, bty = "n", cex = 2, y.intersp = 1.2)
                 
-                par(mar=c(5,8.3,3,23.5))
+                par(mar=c(5,8.3,3,24))
                 prob <- barplot(c(prob1, prob2),
                                 ylim = c(0,1.15),
                                 col = c(rgb(0, 1, 0, 0.3), rgb(1, 0, 0, 0.3)),
@@ -1612,8 +1612,8 @@ shinyServer(function(input, output) {
                   }
                 }
                 #title(main = bquote(n == .(n)), cex.main = 2, col.main = "steelblue2")
-                legend("topleft", sapply(c(bquote("Estimated P(" ~ "|" ~ hat(phi1)[n] ~ "-" ~ phi1 ~ "|" ~ "<" ~ delta ~ ")"), 
-                                           bquote("Estimated P(" ~ "|" ~ hat(phi1)[n] ~ "-" ~ phi1 ~ "|" ~ "\u2265" ~ delta ~ ")")),
+                legend("topleft", sapply(c(bquote("Estimated P(" ~ "|" ~ hat(phi1)[n] ~ "-" ~ phi1[0] ~ "|" ~ "<" ~ delta ~ ")"), 
+                                           bquote("Estimated P(" ~ "|" ~ hat(phi1)[n] ~ "-" ~ phi1[0] ~ "|" ~ "\u2265" ~ delta ~ ")")),
                                          as.expression), pch = 15, col = c(rgb(0, 1, 0, 0.3), rgb(1, 0, 0, 0.3)), inset=c(1,0), 
                        xpd=TRUE, bty="n", cex = 2, y.intersp = 1.5)
                 text(x = prob, y = c(prob1, prob2), pos = 3, cex = 2,
@@ -1634,7 +1634,7 @@ shinyServer(function(input, output) {
                   }
                 }
                 #verosimilitud1 <- function(thetas) n*log(thetas) - thetas*sum(muestras[dentro[1], ])
-                par(mar=c(5,8.3,3,23.5))
+                par(mar=c(5,8.3,3,24))
                 plot(thetas, verosimilitud1(thetas), type = "l", 
                      xaxt = "n", yaxt = "n",xlab = "", ylab = "", lwd = 3)
                 # curve(verosimilitud1,
@@ -1670,7 +1670,7 @@ shinyServer(function(input, output) {
                               c(theta+delta,min(verosimilitud1(thetas))-1000000),
                               c(theta+delta,max(verosimilitud1(thetas))+1000000),
                               c(theta-delta,max(verosimilitud1(thetas))+1000000)), col=rgb(0, 1, 0, 0.3), border = NA)
-                title(main = bquote("From 10000 samples on" ~ .(long.dentro) ~ hat(phi1)[n]%in%(phi1%+-%delta)),
+                title(main = bquote("From 10000 samples on" ~ .(long.dentro) ~ hat(phi1)[n]%in%(phi1[0]%+-%delta)),
                       xlab = bquote(phi1),
                       col.main = "steelblue2",
                       cex.main = 2, cex.lab = 2)
@@ -1685,9 +1685,9 @@ shinyServer(function(input, output) {
                        col = "brown2",
                        lwd = 3)
                 legend("topleft", 
-                       legend=sapply(c(bquote(phi1), 
+                       legend=sapply(c(bquote(phi1[0]), 
                                        bquote(hat(phi1)[n] ~ "=" ~ 1 ~ "/" ~ bar(X)[n]), 
-                                       expression(paste(phi1 %+-% delta)),
+                                       expression(paste(phi1[0] %+-% delta)),
                                        bquote("ℓ(" ~ phi1 ~ "|" ~ bold(X) ~ ")")),
                                      as.expression), col=c("steelblue2", "darkorchid3", "brown2", "black"), 
                        lty = c(rep(3,3),1), lwd = 3, inset = c(1,0), xpd = TRUE, bty = "n", cex = 2, y.intersp = 1.2)
@@ -1704,7 +1704,7 @@ shinyServer(function(input, output) {
                   }
                 }
                 #verosimilitud2 <- function(thetas) n*log(thetas) - thetas*sum(muestras[fuera[1], ])
-                par(mar=c(5,8.3,3,23.5))
+                par(mar=c(5,8.3,3,24))
                 plot(thetas, verosimilitud2(thetas), type = "l", 
                      xaxt = "n", yaxt = "n",xlab = "", ylab = "", lwd = 3)
                 # curve(verosimilitud2,
@@ -1744,7 +1744,7 @@ shinyServer(function(input, output) {
                               c(theta+delta+1000000,min(verosimilitud2(thetas))-1000000),
                               c(theta+delta+1000000,max(verosimilitud2(thetas))+1000000),
                               c(theta+delta,max(verosimilitud2(thetas))+1000000)), col=rgb(1, 0, 0, 0.3), border = NA)
-                title(main = bquote("From 10000 samples on" ~ .(long.fuera) ~ hat(phi1)[n]%notin%(phi1%+-%delta)),
+                title(main = bquote("From 10000 samples on" ~ .(long.fuera) ~ hat(phi1)[n]%notin%(phi1[0]%+-%delta)),
                       xlab = bquote(phi1),
                       col.main = "steelblue2", cex.main = 2, cex.lab = 2)
                 title(ylab = bquote("ℓ(" ~ phi1 ~ "|" ~ bold(X) ~ ")"),
@@ -1758,14 +1758,14 @@ shinyServer(function(input, output) {
                        col = "brown2",
                        lwd = 3)
                 legend("topleft", 
-                       legend=sapply(c(bquote(phi1), 
+                       legend=sapply(c(bquote(phi1[0]), 
                                        bquote(hat(phi1)[n] ~ "=" ~ 1 ~ "/" ~ bar(X)[n]), 
-                                       expression(paste(phi1 %+-% delta)),
+                                       expression(paste(phi1[0] %+-% delta)),
                                        bquote("ℓ(" ~ phi1 ~ "|" ~ bold(X) ~ ")")),
                                      as.expression), col=c("steelblue2", "darkorchid3", "brown2", "black"), 
                        lty = c(rep(3,3),1), lwd = 3, inset = c(1,0), xpd = TRUE, bty = "n", cex = 2, y.intersp = 1.2)
                 
-                par(mar=c(5,8.3,3,23.5))
+                par(mar=c(5,8.3,3,24))
                 prob <- barplot(c(prob1, prob2),
                                 ylim = c(0,1.15),
                                 col = c(rgb(0, 1, 0, 0.3), rgb(1, 0, 0, 0.3)),
@@ -1782,8 +1782,8 @@ shinyServer(function(input, output) {
                   }
                 }
                 #title(main = bquote(n == .(n)), cex.main = 2, col.main = "steelblue2")
-                legend("topleft", sapply(c(bquote("Estimated P(" ~ "|" ~ hat(phi1)[n] ~ "-" ~ phi1 ~ "|" ~ "<" ~ delta ~ ")"), 
-                                           bquote("Estimated P(" ~ "|" ~ hat(phi1)[n] ~ "-" ~ phi1 ~ "|" ~ "\u2265" ~ delta ~ ")")),
+                legend("topleft", sapply(c(bquote("Estimated P(" ~ "|" ~ hat(phi1)[n] ~ "-" ~ phi1[0] ~ "|" ~ "<" ~ delta ~ ")"), 
+                                           bquote("Estimated P(" ~ "|" ~ hat(phi1)[n] ~ "-" ~ phi1[0] ~ "|" ~ "\u2265" ~ delta ~ ")")),
                                          as.expression), pch = 15, col = c(rgb(0, 1, 0, 0.3), rgb(1, 0, 0, 0.3)), inset=c(1,0), 
                        xpd=TRUE, bty="n", cex = 2, y.intersp = 1.5)
                 text(x = prob, y = c(prob1, prob2), pos = 3, cex = 2,
