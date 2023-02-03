@@ -10,6 +10,8 @@ shinyUI(fluidPage(
   # Sidebar with a slider input for the number of bins
   sidebarLayout(
     sidebarPanel(
+      p("Zero Adjusted Gamma distribution (ZAGA)"),
+      br(),
       p("Modifique los valores de los parámetros y observe 
         lo que sucede con la densidad."),
       br(),
@@ -37,7 +39,7 @@ shinyUI(fluidPage(
                   step = 1),
     br(),
       p("App creada por el Semillero de R de la Universidad Nacional de Colombia:"),
-      tags$a(href="https://srunal.wordpress.com/", "https://srunal.wordpress.com/")
+      tags$a(href="https://srunal.github.io/", "https://srunal.github.io/")
     ),
     
     # Show a plot of the generated distribution
