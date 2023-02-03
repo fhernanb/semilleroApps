@@ -3,7 +3,7 @@ library(shiny)
 shinyUI(fluidPage(
 
   # Application title
-  titlePanel("Distribución uniforme"),
+  titlePanel("Distribución uniforme discreta"),
 
   sidebarLayout(
     sidebarPanel(
