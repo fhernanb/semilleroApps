@@ -56,7 +56,8 @@ p("This app was created by Semillero de R at Universidad Nacional
       de Colombia:"),
 img(src="https://fhbunal.files.wordpress.com/2017/08/logo.png",
     height = 56, width = 136),
-tags$a(href="https://srunal.github.io/", "https://srunal.github.io/")),
+tags$a(href="https://srunal.wordpress.com/", 
+           "https://srunal.wordpress.com/")),
 mainPanel(
   tabsetPanel(type ="pills",
   tabPanel("Selected distributions I",
