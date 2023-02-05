@@ -1,4 +1,5 @@
 library(shiny)
+library(ggplot2)
 
 source("www/auxiliar_functions.R")
 
@@ -7,12 +8,20 @@ shinyServer(function(input, output) {
 
     output$distPlot <- renderPlot({
       
-      if (input$Distribucion == "Normal")
-          curve(dnorm(x, mean=input$mu_normal, 
-                      sd=input$sigma),
-                ylab="Density", xlab="X", las=1,
-                xlim=c(input$min_normal, input$max_normal), lwd=3, col="indianred1")
-      
+      if (input$Distribucion == "Normal") {
+        p <- ggplot(data = data.frame(x = 0), mapping = aes(x = x)) + 
+          geom_function(aes(colour="indianred1"), fun=dnorm, lwd=2,
+                        args=list(mean=input$mu_normal, sd=input$sigma)) + 
+          xlim(input$min_normal, input$max_normal) +
+          theme(legend.position = "none") + 
+          labs(x="X", y="Density", 
+               title=bquote(paste("X ~ N(",
+                                  mu, "=", .(input$mu_normal),
+                                  ", ",
+                                  sigma^2, "=", .(input$sigma), ")")))
+        print(p)
+      }
+
       if (input$Distribucion == "Gamma")
         curve(dgamma_glm(x, mu=input$mu_gamma, 
                          phi=input$phi_gamma),

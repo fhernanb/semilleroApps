@@ -1,3 +1,4 @@
+library(ggplot2)
 
 dgamma_glm <- function(x, mu, phi) {
   if (any(mu <= 0)) 
