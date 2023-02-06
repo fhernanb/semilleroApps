@@ -69,7 +69,7 @@ shinyUI(fluidPage(
                    value = 1,
                    step= 0.01),
       
-      img(src="https://fhernanb.github.io/docs/logo_unal_negro.png",
+      img(src="https://github.com/fhernanb/fhernanb.github.io/blob/master/my_docs/logo_unal_negro.png?raw=true",
           height = 56, width = 140),
       
       br(),
