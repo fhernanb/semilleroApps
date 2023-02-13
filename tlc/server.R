@@ -16,7 +16,7 @@ shinyServer(function(input, output, session) {
       varia <- input$desvi ^ 2
     }
     
-    if(input$distri == "Uniforme") {
+    if(input$distri == "Uniform") {
       set.seed(input$min * input$max)
       muestras <- matrix(runif(k*n, input$min, input$max), nrow=k)
       media <- (input$min + input$max) / 2
@@ -39,7 +39,7 @@ shinyServer(function(input, output, session) {
       varia <-  a * b / ((a + b)^2 * (a + b + 1))
     }
     
-    if(input$distri == "Mezcla de dos normales") {
+    if(input$distri == "Mix of two normal") {
       
       rmixnorm <- function(n, mu1, mu2, sd1, sd2, prob1) {
         components <- sample(1:2, prob=c(prob1, 1-prob1), size=n, replace=TRUE)
@@ -64,24 +64,24 @@ shinyServer(function(input, output, session) {
     par(mfrow=c(2, 1), bg='gray98')
     
     hist(medias, breaks=30, freq=FALSE,
-         xlab=expression(bar(x)), las=1, ylab='Densidad',
+         xlab=expression(bar(x)), las=1, ylab='Density',
          ylim=c(0, max(c(hist(medias, breaks=30, plot=F)$density,
                 dnorm(media, media, sqrt(s2n))))),
          xlim=media + c(-4, 4) * sqrt(s2n),
-         main='Distribución de las 1000 medias muestrales')
+         main='Distribution of the 1000 sample means')
     
     curve(dnorm(x, mean=media, sd=sqrt(varia/n)),
           add=T, lwd=3, col='dodgerblue3')
     nom <- paste('N(', round(media, 2), ', ', round(s2n, 2),')', sep='')
     legend('topright', legend=nom, lwd=3, col='dodgerblue3', bty='n')
     
-    qqnorm(medias, las=1, main='QQplot para las 1000 medias muestrales',
+    qqnorm(medias, las=1, main='QQplot the 1000 sample means',
            pch=1, col='dodgerblue3',
-           xlab='Cuantiles teóricos', ylab='Cuantiles muestrales')
+           xlab='Theoretical quantiles', ylab='Sample quantiles')
     qqline(medias)
     shapi <- shapiro.test(medias)
     legend('topleft', bty='n', col='red', text.col='dodgerblue3',
-           legend=paste('Prueba de normalidad \nde Shapiro-Wilk \nValor P =',
+           legend=paste('Shapiro-Wilk test \nP-value =',
                         round(shapi$p.value, 4)))
     
 
