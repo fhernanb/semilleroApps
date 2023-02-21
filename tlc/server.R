@@ -68,14 +68,16 @@ shinyServer(function(input, output, session) {
          ylim=c(0, max(c(hist(medias, breaks=30, plot=F)$density,
                 dnorm(media, media, sqrt(s2n))))),
          xlim=media + c(-4, 4) * sqrt(s2n),
-         main='Distribution of the 1000 sample means')
+         main=expression("Distribution of the 1000 sample means ("~bar(x)~")")
+         )
     
     curve(dnorm(x, mean=media, sd=sqrt(varia/n)),
           add=T, lwd=3, col='dodgerblue3')
-    nom <- paste('N(', round(media, 2), ', ', round(s2n, 2),')', sep='')
+    nom <- paste('Limit distribution N(', round(media, 2), ', ', round(s2n, 2),')', sep='')
     legend('topright', legend=nom, lwd=3, col='dodgerblue3', bty='n')
     
-    qqnorm(medias, las=1, main='QQplot the 1000 sample means',
+    qqnorm(medias, las=1, 
+           main=expression("QQplot for the 1000 sample means ("~bar(x)~")"),
            pch=1, col='dodgerblue3',
            xlab='Theoretical quantiles', ylab='Sample quantiles')
     qqline(medias)

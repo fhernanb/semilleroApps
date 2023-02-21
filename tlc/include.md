@@ -1,4 +1,4 @@
-Teorema del Límite Central
+Central Limit Theorem
 =======================
 
 Es un teorema fundamental de probabilidad y estadística que establece que, la distribución de las medias de una muestrales $\bar{x}_n$ provenientes de una población cualquiera con varianza finita ($\sigma^2$), convergen en distribución a una normal a medida que el tamano $n$ de la muestra crece.

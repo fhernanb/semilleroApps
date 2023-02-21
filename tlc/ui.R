@@ -14,9 +14,11 @@ fluidPage(
      sidebarPanel(
        h4('This app illustrates the Central Limit Theorem.'),
        br(),
-       h6('The app simulates 1000 samples from any of five available distribution
-           and the user selects the sample size (n) to verify that
-           distribution of sample mean converges to a Normal distribution.'),
+       h6(HTML('The app simulates 1000 samples from any of five available 
+       distributions below. 
+       The user selects the sample size (n) to verify that
+          the distribution of the Sample Mean (x&#772;) converges to a Normal 
+          distribution.')),
        br(),
   ### relaciona las distribuciones a usar y por defecto selecciona la distribucion normal.    
        selectInput(inputId = "distri",
@@ -130,8 +132,6 @@ fluidPage(
   
 
   p("App created by Semillero de R at Universidad Nacional de Colombia:"),
-  img(src="https://github.com/fhernanb/fhernanb.github.io/blob/master/my_docs/logo_unal_negro.png?raw=true",
-      height = 56, width = 140),
   tags$a(href="https://srunal.github.io", "https://srunal.github.io")
   ),
     
