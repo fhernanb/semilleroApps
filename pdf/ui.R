@@ -24,8 +24,6 @@ shinyUI(fluidPage(
                                 valor máximo es Inf escriba 999"),
                    value = 1),
       p("App creada por el Semillero de R de la Universidad Nacional de Colombia."),
-      img(src="https://github.com/fhernanb/fhernanb.github.io/blob/master/my_docs/logo_unal_negro.png?raw=true",
-          height = 56, width = 140),
       tags$a(href="https://srunal.github.io", "https://srunal.github.io")
     ),
     

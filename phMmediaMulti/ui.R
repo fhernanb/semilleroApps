@@ -6,7 +6,7 @@ shinyUI(pageWithSidebar(
               windowTitle="PH media"),
   sidebarPanel(
     h5('Esta aplicación permite realizar una prueba de hipótesis sobre 
-       el vector de medias poblacionale de una distribución normal 
+       el vector de medias poblacionales de una distribución normal 
        multivariada.'),
     
     h6('La aplicación por defecto usa los datos del ejemplo 5.2 página 214 
@@ -43,9 +43,6 @@ shinyUI(pageWithSidebar(
                             &mu;<sub>0</sub> para probar
                 H<sub>0</sub>: &mu; = &mu;<sub>0</sub>. Escriba los valores del vector separados por un espacio, así como se muestra a continuación:"))),
     tags$textarea(id="vectorIng", cols=20, rows=2, "4 50 10"),#cambiar para que sea varias filas
-   br(),
-   img(src="https://fhernanb.github.io/docs/logo_unal_negro.png",
-       height = 56, width = 140),
     br(),
     tags$a(href="https://srunal.github.io", "https://srunal.github.io"),
     br(),

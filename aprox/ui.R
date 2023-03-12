@@ -20,8 +20,6 @@ shinyUI(fluidPage(
                                      h5("En las pestañas de la parte superior están las diferentes aproximaciones."),
                                      br(),
                                      p("App creada por el Semillero de R de la Universidad Nacional de Colombia."),
-                                     img(src="https://fhernanb.github.io/docs/logo_unal_negro.png",
-                                         height = 56, width = 140),
                                      tags$a(href="https://srunal.github.io", "https://srunal.github.io")),
                         
                         mainPanel(
