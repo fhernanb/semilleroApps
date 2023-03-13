@@ -3,6 +3,7 @@ packs <- c("gamlss",
           "asbio",
           "mvtnorm",
           "ggplot2",
-          "markdown")
+          "markdown",
+          "mvtnorm")
 
 install.packages(packs)
