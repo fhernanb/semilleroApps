@@ -130,8 +130,12 @@ fluidPage(
                   min=1, 
                   max=1000, step=NULL, animate=T),
   
+  br(),
+  
   downloadLink("download", 
                "Click here to get a workshop to interact with the app."),
+  
+  br(),
 
   p("App created by Semillero de R at Universidad Nacional de Colombia:"),
   tags$a(href="https://srunal.github.io", "https://srunal.github.io")
