@@ -90,6 +90,13 @@ shinyServer(function(input, output, session) {
 
   })
   
+  output$download <- downloadHandler(
+    filename = "TLC_workshop.pdf",
+    content = function(file) {
+      file.copy("TLC_workshop.pdf", file)
+    }
+  )
+  
   ##################################################################
   
   
