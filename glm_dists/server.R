@@ -53,28 +53,59 @@ shinyServer(function(input, output) {
       if (input$Distribucion == "Binomial") {
         xs <- seq(from=0, to=input$m)
         ys <- dbinom(x=xs, size=input$m, prob=input$mu_binom)
-        plot(x=xs, y=ys, type='p', xlab='X', ylab='Probability', 
-             col='mediumpurple1', lwd=2, las=1)
-        segments(xs, 0, xs, ys, col="mediumpurple1", lwd=3)
+        
+        p <- ggplot(data=data.frame(x=xs, y=ys,
+                                    yend=rep(0, input$m+1)),
+                    aes(x=x, y=y, xend=x, yend=yend)) + 
+          geom_point(colour="mediumpurple1") +
+          geom_segment(colour="mediumpurple1") +
+          theme(legend.position = "none") + 
+          labs(x="X", y="Probability", 
+               title=bquote(paste("X ~ Binomial(",
+                                  n, "=", .(input$m),
+                                  ", ",
+                                  mu, "=", .(input$mu_binom), ")")))
+        print(p)
       }
       
       if (input$Distribucion == "Poisson") {
         xs <- seq(from=0, to=input$max_pois)
         ys <- dpois(x=xs, lambda=input$mu_pois)
-        plot(x=xs, y=ys, type='p', xlab='X', ylab='Probability', 
-             col='lightsalmon2', lwd=2, las=1)
-        segments(xs, 0, xs, ys, col="lightsalmon2", lwd=3)
+        
+        p <- ggplot(data=data.frame(x=xs, y=ys,
+                                    yend=rep(0, input$max_pois+1)),
+                    aes(x=x, y=y, xend=x, yend=yend)) + 
+          geom_point(colour="lightsalmon2") +
+          geom_segment(colour="lightsalmon2") +
+          theme(legend.position = "none") + 
+          labs(x="X", y="Probability", 
+               title=bquote(paste("X ~ Poisson(",
+                                  mu, "=", .(input$mu_pois),
+                                  # ", ",
+                                  # mu, "=", .(input$mu_binom), 
+                                  ")")))
+        print(p)
       }
       
       if (input$Distribucion == "Negative binomial") {
         xs <- seq(from=0, to=input$max_negbin)
         ys <- dnbinom(x=xs, mu=input$mu_negbin, size=input$k)
-        plot(x=xs, y=ys, type='p', xlab='X', ylab='Probability', 
-             col='olivedrab3', lwd=2, las=1)
-        segments(xs, 0, xs, ys, col="olivedrab3", lwd=3)
-      }
 
+        p <- ggplot(data=data.frame(x=xs, y=ys,
+                                    yend=rep(0, input$k+1)),
+                    aes(x=x, y=y, xend=x, yend=yend)) + 
+          geom_point(colour="olivedrab3") +
+          geom_segment(colour="olivedrab3") +
+          theme(legend.position = "none") + 
+          labs(x="X", y="Probability", 
+               title=bquote(paste("X ~ NegBin(",
+                                  mu, "=", .(input$mu_negbin),
+                                  ", ",
+                                  k, "=", .(input$k), ")")))
+        print(p)
+      }
       
+
     }, res = 96)
 
 })
