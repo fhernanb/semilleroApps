@@ -7,7 +7,7 @@ shinyUI(fluidPage(
     # Application title
     titlePanel("glm distributions"),
     
-    h4("Select the glm distribution and then fixed
+    h4("Select the glm distribution and then fixe
        the parameters to obtain the probability distribution."),
 
     # Sidebar with a slider input for number of bins

@@ -9,8 +9,8 @@ shinyServer(function(input, output) {
     output$distPlot <- renderPlot({
       
       if (input$Distribucion == "Normal") {
-        p <- ggplot(data = data.frame(x = 0), mapping = aes(x = x)) + 
-          geom_function(aes(colour="indianred1"), fun=dnorm, lwd=2,
+        p <- ggplot() + 
+          geom_function(colour="indianred1", fun=dnorm, lwd=2,
                         args=list(mean=input$mu_normal, sd=input$sigma)) + 
           xlim(input$min_normal, input$max_normal) +
           theme(legend.position = "none") + 
@@ -21,18 +21,34 @@ shinyServer(function(input, output) {
                                   sigma^2, "=", .(input$sigma), ")")))
         print(p)
       }
-
-      if (input$Distribucion == "Gamma")
-        curve(dgamma_glm(x, mu=input$mu_gamma, 
-                         phi=input$phi_gamma),
-              ylab="Density", xlab="X", las=1,
-              xlim=c(input$min_gamma, input$max_gamma), lwd=3, col="dodgerblue2")
       
-      if (input$Distribucion == "Inv. gaussian")
-         curve(dinvgaus_glm(x, mu=input$mu_invgaus, 
-                            phi=input$phi_invgaus),
-              ylab="Density", xlab="X", las=1,
-              xlim=c(input$min_invgaus, input$max_invgaus), lwd=3, col="darkslategray3")
+      if (input$Distribucion == "Gamma") {
+        p <- ggplot() + 
+          geom_function(color="dodgerblue2", fun=dgamma_glm, lwd=2,
+                        args=list(mu=input$mu_gamma, phi=input$phi_gamma)) + 
+          xlim(input$min_gamma, input$max_gamma) +
+          theme(legend.position = "none") + 
+          labs(x="X", y="Density", 
+               title=bquote(paste("X ~ Gamma(",
+                                  mu, "=", .(input$mu_gamma),
+                                  ", ",
+                                  phi, "=", .(input$phi_gamma), ")")))
+        print(p)
+      }
+      
+      if (input$Distribucion == "Inv. gaussian") {
+        p <- ggplot() + 
+          geom_function(color="darkslategray3", fun=dinvgaus_glm, lwd=2,
+                        args=list(mu=input$mu_invgaus, phi=input$phi_invgaus)) + 
+          xlim(input$min_invgaus, input$max_invgaus) +
+          theme(legend.position = "none") + 
+          labs(x="X", y="Density", 
+               title=bquote(paste("X ~ InvGaussian(",
+                                  mu, "=", .(input$mu_invgaus),
+                                  ", ",
+                                  phi, "=", .(input$phi_invgaus), ")")))
+        print(p)
+      }
       
       if (input$Distribucion == "Binomial") {
         xs <- seq(from=0, to=input$m)
