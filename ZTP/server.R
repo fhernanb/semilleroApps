@@ -3,14 +3,13 @@
 # http://shiny.rstudio.com
 library(shiny)
 #if (!require("actuar")) install.packages("actuar")
-#library(actuar)
+library(actuar)
 
 shinyServer(function(input, output) {
  output$distPlot <- renderPlot({
  # generate values of the ZIP distribution based on input$mu from ui.R
- x <- seq(0, input$xmax, 1)
- #y <- dztpois(x, lambda=input$lambda)
- y <- dpois(x, lambda=input$lambda)
+ x <- seq(1, input$xmax, 1)
+ y <- dztpois(x, lambda=input$lambda)
  # draw the histogram with the specified number of bins
  barplot(y, main='Diagrama de barras para las probabilidades',
          xlab='x', ylab=expression(P(X==x)), las=1, col='deepskyblue3',
