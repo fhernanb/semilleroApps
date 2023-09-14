@@ -51,13 +51,13 @@ shinyServer(function(input, output)
     
     area <- integrate(fun, lower=a, upper=b)$value
     
-    if (input$min > input$max | area > 1.1 | area < 0.9) {
+    if (input$min > input$max | area > 1.02 | area < 0.98) {
       paste(c("Hay algo errado!!!"))
     }
     else {
       paste(c("Para la distribución ingresada se tiene que E(X) =",
               round(esperanza, 2),
-              "con Var(X) =", round(varianza, 2)))
+              "con Var(X) =", round(varianza, 3)))
     }
 
     

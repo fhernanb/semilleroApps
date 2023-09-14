@@ -3,16 +3,15 @@ library(shiny)
 shinyUI(fluidPage(
   
   # Application title
-  titlePanel("Dibujo de una función de masa de probabilidad"),
+  titlePanel("Función de masa de probabilidad"),
   
   sidebarLayout(
     sidebarPanel(
       HTML("Ingrese la función de masa y los valores
-           mínimo y máximo que X puede tomar."),
+           mínimo y máximo que X puede tomar. La variable X
+           debe tomar valores de uno en uno, comenzando en
+           el mínimo y terminando en el máximo."),
       br(),
-      HTML("Cuidado, la variable X debe tomar valores de uno 
-           en uno, comenzando en el mínimo y terminando
-           en el máximo."),
       br(),
       textInput("fdp",
                 "Ingrese la fórmula de la función de masa en forma apropiada
@@ -32,7 +31,7 @@ shinyUI(fluidPage(
     
     # Show a plot
     mainPanel(
-      h3("Densidad para la distribución ingresada", align = "center"),
+      h3("Distribución de probabilidad para f(x)", align = "center"),
       plotOutput("grafico1"),
       verbatimTextOutput('med_var')
     )

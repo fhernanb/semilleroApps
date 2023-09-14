@@ -3,7 +3,7 @@ library(shiny)
 shinyUI(fluidPage(
   
   # Application title
-  titlePanel("Dibujo de una función de densidad"),
+  titlePanel("Función de densidad de probabilidad"),
   
   sidebarLayout(
     sidebarPanel(
@@ -29,7 +29,7 @@ shinyUI(fluidPage(
     
     # Show a plot
     mainPanel(
-      h3("Densidad para la distribución ingresada", align = "center"),
+      h3("Curva de densidad para f(x)", align = "center"),
       plotOutput("grafico1"),
       verbatimTextOutput('med_var')
     )

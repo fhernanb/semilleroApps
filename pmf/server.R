@@ -56,9 +56,9 @@ shinyServer(function(input, output)
       paste(c("Hay algo errado!!!"))
     }
     else {
-      paste(c("Para la distribución ingresada se tiene que E(X) =",
-              round(esperanza, 2),
-              "con Var(X) =", round(varianza, 2)))
+      paste(c("Para la función ingresada se tiene que E(X) =",
+              round(esperanza, 3),
+              "con Var(X) =", round(varianza, 3)))
     }
 
     
