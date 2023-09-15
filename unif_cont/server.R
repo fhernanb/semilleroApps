@@ -18,10 +18,15 @@ shinyServer(function(input, output) {
   })
   
   output$med_var <- renderText({
-    esperanza <- (input$min + input$max) / 2
-    varianza <- (input$max - input$min)^2 / 12
-    paste(c("Para esta configuración E(X) =", round(esperanza, 2),
-            "con Var(X) =", round(varianza, 2)))
+    if (input$min > input$max) {
+      paste(c("Hay algo errado!!!"))
+    }
+    else {
+      esperanza <- (input$min + input$max) / 2
+      varianza <- (input$max - input$min)^2 / 12
+      paste(c("Para esta configuración E(X) =", round(esperanza, 2),
+              "con Var(X) =", round(varianza, 2)))
+    }
   })
   
 })
