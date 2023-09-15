@@ -15,8 +15,7 @@ shinyUI(fluidPage(
       br(),
       textInput("pmf",
                 "Ingrese la fórmula de la función de masa en forma apropiada
-                usando los operadores +, -, * y /. Vea el ejemplo abajo. 
-                No deje espacios en la fórmula de f(x).", 
+                usando los operadores +, -, * y /. Vea el ejemplo abajo.", 
                 "f(x)=(2*x+1)/25"),
       numericInput(inputId = "min",
                    label = HTML("Ingrese el valor mínimo de X. Si el
