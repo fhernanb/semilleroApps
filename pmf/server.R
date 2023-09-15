@@ -14,6 +14,7 @@ shinyServer(function(input, output)
     a <- input$min
     b <- input$max
     pmf <- input$pmf
+    pmf <- gsub(" ", "", pmf)
     pmf <- substr(pmf, start=6, stop=nchar(pmf))
     funcion <- function(x) eval(parse(text=pmf))
     
@@ -46,6 +47,7 @@ shinyServer(function(input, output)
     a <- input$min
     b <- input$max
     pmf <- input$pmf
+    pmf <- gsub(" ", "", pmf)
     pmf <- substr(pmf, start=6, stop=nchar(pmf))
     funcion <- function(x) eval(parse(text=pmf))
     
