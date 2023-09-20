@@ -7,31 +7,39 @@ shinyUI(fluidPage(
   
   sidebarLayout(
     sidebarPanel(
-      HTML("Ingrese la función de densidad y los valores
-           mínimo y máximo que ella puede tomar."),
+      HTML("Ingrese la función de densidad f(x) y los valores
+           mínimo y máximo que la v.a. X puede tomar."),
       br(),
       br(),
-      textInput("fdp",
+      textInput("pdf",
                 "Ingrese la fórmula de la densidad en forma apropiada
                 usando los operadores +, -, * y /. Vea el ejemplo abajo.", 
-                "f(x)=3*x^2"),
+                "f(x)=(-2*x+3)/2"),
       numericInput(inputId = "min",
                    label = HTML("Ingrese el valor mínimo de X. Si el
-                                valor mínimo es -Inf escriba -999"),
-                   value = 0),
+                                valor mínimo es -&#8734, escriba un 
+                                número negativo grande."),
+                   value = 0, step=0.01),
       numericInput(inputId = "max",
                    label = HTML("Ingrese el valor máximo de X. Si el
-                                valor máximo es Inf escriba 999"),
-                   value = 1),
+                                valor máximo es &#8734, escriba un 
+                                número positivo grande."),
+                   value = 1, step=0.01),
+      numericInput(inputId = "cuantil",
+                   label = HTML("Ingrese el valor de x para el cual desea
+                                calcular P(X &#8804; x)"),
+                   value = 0.75, step=0.01),
+      br(),
       p("App creada por el Semillero de R de la Universidad Nacional de Colombia."),
       tags$a(href="https://srunal.github.io", "https://srunal.github.io")
     ),
     
     # Show a plot
     mainPanel(
-      h3("Curva de densidad para f(x)", align = "center"),
-      plotOutput("grafico1"),
-      verbatimTextOutput('med_var')
+      h3("", align = "center"),
+      plotOutput("grafico1", width = "100%", height = "300px"),
+      verbatimTextOutput('med_var'),
+      verbatimTextOutput('prob_hasta_cuantil')
     )
   )
 ))

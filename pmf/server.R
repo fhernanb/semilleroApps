@@ -1,31 +1,23 @@
 library(shiny)
 
+source("auxiliar.R")
+
 shinyServer(function(input, output) 
 {
   
   output$grafico1 <- renderPlot({
-    # Revisando si la suma es igual a 1
     
-    # input <- NULL
-    # input$min <- 0
-    # input$max <- 4
-    # input$pmf <- "f(x)=(2*x+1)/25"
+    res <- pmf(a=input$min, 
+               b=input$max, 
+               pmf=input$pmf)
     
-    a <- input$min
-    b <- input$max
-    pmf <- input$pmf
-    pmf <- gsub(" ", "", pmf)
-    pmf <- substr(pmf, start=6, stop=nchar(pmf))
-    funcion <- function(x) eval(parse(text=pmf))
+    x_vals      <- res$x_vals
+    probs       <- res$probs
+    cumul_probs <- res$cumul_probs
+    suma        <- res$suma
     
-    x_vals <- a:b
-    n <- length(x_vals)
-    probs <- numeric(n)
-    for (i in 1:n) 
-      probs[i] <- funcion(x_vals[i])
-    suma <- sum(probs)
-    
-    if (input$min > input$max | suma > 1.02 | suma < 0.98) {
+    if (input$min > input$max | suma > 1.01 | suma < 0.99) {
+      
       plot(c(-5, 5), c(0, 1), xlab="", ylab="", type='n',
            xaxt='n', yaxt='n', bty='n')
       text(x=0, y=0.7, col='red', cex=2,
@@ -36,42 +28,69 @@ shinyServer(function(input, output)
            label='El mínimo no puede ser mayor que el máximo.')
     }
     else {
+      par(mfrow=c(1, 2))
+      
+      # Para dibujar f(x)
       plot(x=x_vals, y=probs, las=1,
-           xlab="X", ylab="Probabilidad",
-           type="h", lwd=5, col="steelblue")
+           xlab="X", ylab="f(x)",
+           main="Función de masa",
+           type="h", lwd=3, col="steelblue")
+      grid()
+      
+      # Para dibujar F(x)
+      F <- stepfun(x=x_vals, y=c(0, cumul_probs), right=TRUE)
+      plot(F, verticals=FALSE,
+           lwd=3, col="steelblue", las=1,
+           xlab="X", ylab="F(x)",
+           main="Función acumulada")
       grid()
     }
   })
   
   output$med_var <- renderText({
-    a <- input$min
-    b <- input$max
-    pmf <- input$pmf
-    pmf <- gsub(" ", "", pmf)
-    pmf <- substr(pmf, start=6, stop=nchar(pmf))
-    funcion <- function(x) eval(parse(text=pmf))
     
-    x_vals <- a:b
-    n <- length(x_vals)
-    probs <- numeric(n)
-    for (i in 1:n) 
-      probs[i] <- funcion(x_vals[i])
+    res <- pmf(a=input$min, 
+               b=input$max, 
+               pmf=input$pmf)
+    
+    x_vals      <- res$x_vals
+    probs       <- res$probs
+    cumul_probs <- res$cumul_probs
+    suma        <- res$suma
     
     esperanza <- sum(x_vals * probs)
     varianza <- sum((x_vals - esperanza)^2 * probs)
     
-    suma <- sum(probs)
-    
-    if (input$min > input$max | suma > 1.02 | suma < 0.98) {
+    if (input$min > input$max | suma > 1.01 | suma < 0.99) {
       paste(c("Hay algo errado!!!"))
     }
     else {
-      paste(c("Para la función ingresada se tiene que E(X) =",
-              round(esperanza, 2),
-              "con Var(X) =", round(varianza, 2)))
+      paste0(c("La v.a. X tiene E(X)=",
+              round(esperanza, 4),
+              "y Var(X)=", round(varianza, 4)))
     }
-
-    
   })
+  
+  output$tabla_probs <- renderTable({
+
+    res <- pmf(a=input$min, 
+               b=input$max, 
+               pmf=input$pmf)
+    
+    x_vals      <- res$x_vals
+    probs       <- res$probs
+    cumul_probs <- res$cumul_probs
+    suma        <- res$suma
+    
+    if (input$min > input$max | suma > 1.01 | suma < 0.99) {
+      paste(c("Hay algo errado!!!"))
+    }
+    else {
+      data.frame("X"=x_vals,
+                 "f(x)"=probs,
+                 "F(x)"=cumul_probs,
+                 check.names = FALSE)
+    }
+  }, digits=6, bordered = TRUE, align = "c")
   
 })
