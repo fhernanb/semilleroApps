@@ -1,0 +1,7 @@
+tiempo	mapa
+4	sin
+6	sin
+8	sin
+3	con
+8	con
+3	con
