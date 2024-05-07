@@ -1,9 +1,6 @@
-# This is the server logic for a Shiny web application.
-# You can find out more about building applications with Shiny here:
-# http://shiny.rstudio.com
 library(shiny)
-if (!require('gamlss')) install.packages("gamlss")
-library(gamlss)
+library(gamlss.dist)
+
 shinyServer(function(input, output) {
  output$distPlot <- renderPlot({
  # generate values of the ZIP distribution based on input$mu from ui.R
