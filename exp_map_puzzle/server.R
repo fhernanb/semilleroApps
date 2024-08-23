@@ -26,6 +26,16 @@ shinyServer(function(input, output, session){
     mod <- aov(dt[, resp] ~ dt[, fact])
     qqnorm(residuals(mod), pch=19, las=1)
     qqline(residuals(mod))
+    
+    res <- residuals(mod)
+    shapiro <- shapiro.test(res)
+    shapvalue <- ifelse(shapiro$p.value < 0.001, "P value < 0.001", paste("P value = ", round(shapiro$p.value, 4), sep = ""))
+    shapstat <- paste("W = ", round(shapiro$statistic, 4), sep = "")
+    q <- qqnorm(res, plot.it = FALSE)
+    text(min(q$x, na.rm = TRUE), max(q$y, na.rm = TRUE)*0.95, pos = 4, 'Shapiro-Wilk Test', col = "blue", cex=0.8)
+    text(min(q$x, na.rm = TRUE), max(q$y, na.rm = TRUE)*0.80, pos = 4, shapstat, col = "blue", cex=0.8)
+    text(min(q$x, na.rm = TRUE), max(q$y, na.rm = TRUE)*0.65, pos = 4, shapvalue, col = "blue", cex=0.8)
+    
   }
   
   mi_tabla_anova <- function(resp, fact) {

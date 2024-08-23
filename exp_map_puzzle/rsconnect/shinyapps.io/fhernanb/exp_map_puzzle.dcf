@@ -1,0 +1,12 @@
+name: exp_map_puzzle
+title: exp_map_puzzle
+username: fhernanb
+account: fhernanb
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 10672694
+bundleId: 9018691
+url: https://fhernanb.shinyapps.io/exp_map_puzzle/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
