@@ -10,8 +10,11 @@ de la Universidad Nacional de Colombia sede Medellín.
 Para correr una de las aplicaciones usted debe tener instalado el paquete **shiny** de R, y luego debe usar la fución `runGithub()`. Por ejemplo, para correr la aplicación sobre la distribución **tamaños de muestra** usted debe copiar el siguiente código en la consola de Rstudio:
 
 ```s
-if (!require('shiny')) install.packages("shiny")
-shiny::runGitHub(repo="semilleroApps", user="fhernanb", sub="samplesize")
+if (!require("shiny"")) install.packages("shiny")
+library(shiny)
+runGitHub(repo="semilleroApps", 
+          user="fhernanb", 
+          sub="samplesize")
 ```
 
 Otra forma sería clonando el repositorio o descargando el repositorio y luego copia el siguiente código en la consola de Rstudio:
