@@ -15,7 +15,7 @@ shinyUI(fluidPage(
       conditionalPanel(condition="input.tipo=='Proporcion'",
                        
                        selectInput(inputId="Ncp",
-                                    label="Conoce usted el tamaño N de la población?",
+                                    label="¿Conoce usted el tamaño N de la población?",
                                     choices=c('Si', 'No'),
                                     selected="No"),
                        
@@ -46,7 +46,7 @@ shinyUI(fluidPage(
       conditionalPanel(condition="input.tipo=='Media'",
                        
                        selectInput(inputId="Ncm",
-                                   label="Conoce usted el tamaño N de la población?",
+                                   label="¿Conoce usted el tamaño N de la población?",
                                    choices=c('Si', 'No'),
                                    selected="No"),
                        
